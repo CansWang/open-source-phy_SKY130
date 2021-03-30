@@ -1,0 +1,107 @@
+//*#*********************************************************************************************************************/
+//*
+//*# Technology     : TSMC 16nm CMOS Logic FinFet Compact (FFC) Low Leakage HKMG  						*/
+//*# Memory Type    : TSMC 16nm FFC High Density Single Port Single-Bank SRAM Compiler with d0734 bit cell	 				*/
+//*# Library Name   : ts1n16ffcllsblvtc1024x144m4sw (user specify : ts1n16ffcllsblvtc1024x144m4sw)			*/
+//*# Library Version: 130a												*/
+//*# Generated Time : 2020/05/11, 12:57:39										*/
+//*#*********************************************************************************************************************/
+//*#															*/
+//*# STATEMENT OF USE													*/
+//*#															*/
+//*# This information contains confidential and proprietary information of TSMC.					*/
+//*# No part of this information may be reproduced, transmitted, transcribed,						*/
+//*# stored in a retrieval system, or translated into any human or computer						*/
+//*# language, in any form or by any means, electronic, mechanical, magnetic,						*/
+//*# optical, chemical, manual, or otherwise, without the prior written permission					*/
+//*# of TSMC. This information was prepared for informational purpose and is for					*/
+//*# use by TSMC's customers only. TSMC reserves the right to make changes in the					*/
+//*# information at any time and without notice.									*/
+//*#															*/
+//*#*********************************************************************************************************************/
+
+//* Template Version : S_09_64401   
+MemoryTemplate (TS1N16FFCLLSBLVTC1024X144M4SW) {
+
+      CellName        : TS1N16FFCLLSBLVTC1024X144M4SW;
+      Algorithm       : SMarchCHKBvcd;
+      logicalPorts    : 1rw;
+      NumberOfWords   : 1024;
+      MinHold         : 0.5;
+      MilliWattsPerMegaHertz : 0.027;
+      TransparentMode : None; 		//User options for DFT:
+      					// AsyncMux: 	for low speed scan
+					// SyncMux: 	for at-speed scan
+					// AsyncWriteThru: if there is AWT in this memory
+      
+
+      Port (CLK)  {
+          Function: Clock;
+      }
+      Port (CEB)  {
+                    Function: Select;
+	            Polarity: ActiveLow;	
+
+      }
+
+      Port (WEB) {
+            Function: WriteEnable; 
+	    Polarity: ActiveLow;
+
+      }
+
+      Port (BWEB[143:0]) {
+            Function: GroupWriteEnable; 
+	    Polarity: ActiveLow;
+
+      }
+
+      Port (D[143:0]) { 
+          Function: Data; 
+          Direction:   Input;
+      }
+      Port (Q[143:0]) { 
+          Function: Data; 
+          Direction:   Output; 
+      }
+      port (A[9:0]) {
+          function:    address;
+      }
+
+
+
+
+
+
+
+      Port (RTSEL[1:0]) {
+          Direction : Input;
+	  function  : None;
+	  SafeValue : 2'b01;
+      }
+      Port (WTSEL[1:0]) {
+          Direction : Input;
+	  function  : None;
+	  SafeValue : 2'b00;
+      }
+
+
+// 256 rows by 4 columns.
+      AddressCounter {
+          Function ( Address ) {
+	      LogicalAddressMap {
+                  ColumnAddress[1:0]:Address[1:0];  // number of columns
+		  RowAddress[7:0]:Address[9:2];  // number of rows
+	      }
+	  }
+	  Function ( ColumnAddress ) {
+              CountRange[0:3];
+	  }
+	  Function  ( RowAddress ) {
+              CountRange[0:255];
+	  }
+      }
+
+      OperationSet : syncWR;
+      bitGrouping : 1;
+}

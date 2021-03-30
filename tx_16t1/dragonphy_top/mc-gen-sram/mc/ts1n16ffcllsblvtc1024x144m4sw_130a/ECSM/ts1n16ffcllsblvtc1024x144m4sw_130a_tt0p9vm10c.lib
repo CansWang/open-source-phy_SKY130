@@ -1,0 +1,1399 @@
+/*#*********************************************************************************************************************/
+/*
+/*# Technology     : TSMC 16nm CMOS Logic FinFet Compact (FFC) Low Leakage HKMG  						*/
+/*# Memory Type    : TSMC 16nm FFC High Density Single Port Single-Bank SRAM Compiler with d0734 bit cell	 				*/
+/*# Library Name   : ts1n16ffcllsblvtc1024x144m4sw (user specify : ts1n16ffcllsblvtc1024x144m4sw)			*/
+/*# Library Version: 130a												*/
+/*# Generated Time : 2020/05/11, 12:57:39										*/
+/*#*********************************************************************************************************************/
+/*#															*/
+/*# STATEMENT OF USE													*/
+/*#															*/
+/*# This information contains confidential and proprietary information of TSMC.					*/
+/*# No part of this information may be reproduced, transmitted, transcribed,						*/
+/*# stored in a retrieval system, or translated into any human or computer						*/
+/*# language, in any form or by any means, electronic, mechanical, magnetic,						*/
+/*# optical, chemical, manual, or otherwise, without the prior written permission					*/
+/*# of TSMC. This information was prepared for informational purpose and is for					*/
+/*# use by TSMC's customers only. TSMC reserves the right to make changes in the					*/
+/*# information at any time and without notice.									*/
+/*#															*/
+/*#*********************************************************************************************************************/
+/* Template Version : S_03_54401                                               */
+/****************************************************************************** */
+
+library (  ts1n16ffcllsblvtc1024x144m4sw_tt0p9vm10c ) {
+    technology ( cmos) ;
+    delay_model : table_lookup ;
+    date : "2020/05/11, 12:57:39" ;
+    comment : "Copyright TSMC" ;
+    revision : v1.0 ;
+    simulation : true ;
+    voltage_map ( VDD, 0.900000 ) ;
+    voltage_map ( VSS, 0.0) ;
+    nom_process : 1 ;
+    nom_temperature : -10.000000 ;
+    nom_voltage : 0.900000 ;
+    operating_conditions ( "tt0p9vm10c" ) {
+        process : 1 ;
+        temperature : -10 ;
+        voltage : 0.900000 ;
+        tree_type : "balanced_tree" ;
+    }
+    default_operating_conditions : tt0p9vm10c ;
+    capacitive_load_unit ( 1, pf)  ;
+    voltage_unit : "1V" ;
+    current_unit : "1uA" ;
+    time_unit : "1ns" ;
+    leakage_power_unit : "1uW" ;   
+    pulling_resistance_unit : "1kohm" ;
+    library_features ( report_delay_calculation) ;
+    library_features ( report_power_calculation) ;    
+    define_cell_area ( pad_drivers,pad_driver_sites) ;
+    define_cell_area ( bond_pads,pad_slots) ;
+ 
+    default_max_fanout : 20.0 ;
+    default_fanout_load : 1.0 ;
+    default_inout_pin_cap : 0.0 ;
+    default_input_pin_cap : 0.0 ;
+    default_output_pin_cap : 0.0 ;
+
+    input_voltage(cmos) {
+        vil : 0.3 * VDD ;
+        vih : 0.7 * VDD ;
+        vimin : -0.5 ;
+        vimax : VDD + 0.5 ;
+    }
+    input_voltage(cmos_schmitt) {
+         vil : 0.3 * VDD ;
+         vih : 0.7 * VDD ;
+         vimin : -0.5 ;
+         vimax : VDD + 0.5 ;
+    }
+    input_voltage(schmitt) {
+         vil : 0.3 * VDD ;
+         vih : 0.7 * VDD ;
+         vimin : -0.5 ;
+         vimax : VDD + 0.5 ;
+    }
+    input_voltage(ttl) {
+         vil : 0.8 ;
+         vih : 2.0 ;
+         vimin : -0.5 ;
+         vimax : VDD + 0.5 ;
+    }
+    input_voltage(ttl_schmitt) {
+         vil : 0.8 ;
+         vih : 2.0 ;
+         vimin : -0.5 ;
+         vimax : VDD + 0.5 ;
+    }
+    input_voltage(pci) {
+         vil : 0.8 ;
+         vih : 2.0 ;
+         vimin : -0.5 ;
+         vimax : VDD + 0.5 ;
+    }
+    output_voltage(cmos) {
+         vol : 0.3 * VDD ;
+         voh : 0.7 * VDD ;
+         vomin : -0.5 ;
+         vomax : VDD + 0.5 ;
+    }
+    output_voltage(cmos_schmitt) {
+         vol : 0.3 * VDD ;
+         voh : 0.7 * VDD ;
+         vomin : -0.5 ;
+         vomax : VDD + 0.5 ;
+    }
+    output_voltage(schmitt) {
+         vol : 0.3 * VDD ;
+         voh : 0.7 * VDD ;
+         vomin : -0.5 ;
+         vomax : VDD + 0.5 ;
+    }
+    output_voltage(ttl) {
+         vol : 0.8 ;
+         voh : 2.0 ;
+         vomin : -0.5 ;
+         vomax : VDD + 0.5 ;
+    }
+    output_voltage(ttl_schmitt) {
+         vol : 0.8 ;
+         voh : 2.0 ;
+         vomin : -0.5 ;
+         vomax : VDD + 0.5 ;
+    }
+    output_voltage(pci) {
+         vol : 0.8 ;
+         voh : 2.0 ;
+         vomin : -0.5 ;
+         vomax : VDD + 0.5 ;
+    }
+  
+    slew_lower_threshold_pct_rise : 10.00 ;
+    slew_upper_threshold_pct_rise : 90.00 ;
+    slew_derate_from_library : 1.00 ;
+    input_threshold_pct_fall : 50.00 ;
+    output_threshold_pct_fall : 50.00 ;
+    input_threshold_pct_rise : 50.00 ;
+    output_threshold_pct_rise : 50.00 ;
+    slew_lower_threshold_pct_fall : 10.00 ;
+    slew_upper_threshold_pct_fall : 90.00 ;
+    default_cell_leakage_power : 0.000000 ;
+    default_leakage_power_density : 0.000000 ;
+    k_volt_cell_leakage_power : 0.000000 ;
+    k_temp_cell_leakage_power : 0.000000 ;
+    k_process_cell_leakage_power : 0.000000 ;
+    k_volt_internal_power : 0.000000 ;
+    k_temp_internal_power : 0.000000 ;
+    k_process_internal_power : 0.000000 ;
+
+    define_group(ecsm_waveform, rise_transition);
+    define_group(ecsm_waveform, fall_transition);
+    define_group(ecsm_capacitance, rise_transition);
+    define_group(ecsm_capacitance, fall_transition);
+    define_group(ecsm_capacitance, pin);
+    define(index_1, ecsm_waveform, string);
+    define(values, ecsm_waveform, string);
+    define(index_1, ecsm_capacitance, string);
+    define(values, ecsm_capacitance, string);
+    define(threshold_pct, ecsm_capacitance, string);
+    define(ecsm_version, library, float);
+    ecsm_version : 2.1;
+    /* LIBRARY_DEFINES */
+    /* LIBRARY_ATTRIBUTE */
+    define(functional_peak_current, cell, float);
+    lu_table_template (clktree_constraint_template) {
+         variable_1 : input_net_transition ;
+         index_1 ( "0.011000, 0.052000, 0.107000, 0.217000, 0.437000" ) ;
+    }
+    lu_table_template ( clktran_constraint_template ) {
+        variable_1 : constrained_pin_transition ;
+        index_1 ( "0.011000, 0.052000, 0.107000, 0.217000, 0.437000" ) ;
+    }
+    lu_table_template (asyntran_constraint_template) {
+         variable_1 : constrained_pin_transition ;
+         index_1 ( "0.011000, 0.052000, 0.107000, 0.217000, 0.437000" ) ;
+    }    
+    lu_table_template (asig2sram_delay_template) {
+         variable_1 : input_net_transition ;
+         variable_2 : total_output_net_capacitance ;
+         index_1 ( "0.011000, 0.052000, 0.107000, 0.217000, 0.437000" ) ;
+         index_2 ( "0.002000, 0.024900, 0.052700, 0.108400, 0.219700" ) ;
+    }
+    lu_table_template ( sig2sram_delay_template ) {
+        variable_1 : input_net_transition ;
+        variable_2 : total_output_net_capacitance ;
+        index_1 ( "0.011000, 0.052000, 0.107000, 0.217000, 0.437000" ) ;
+        index_2 ( "0.002000, 0.024900, 0.052700, 0.108400, 0.219700" ) ;
+    }
+    lu_table_template ( sram_load_template ) {
+        variable_1 : total_output_net_capacitance ;
+        index_1 ("0.002000, 0.024900, 0.052700, 0.108400, 0.219700");
+    }
+    lu_table_template ( sig2sram_constraint_template ) {
+        variable_1 : related_pin_transition ;
+        variable_2 : constrained_pin_transition ;
+        index_1 ( "0.011000, 0.052000, 0.107000, 0.217000, 0.437000" ) ;
+        index_2 ( "0.011000, 0.052000, 0.107000, 0.217000, 0.437000" ) ;
+    }
+    power_lut_template ( sram_power_template ) {
+        variable_1 : total_output_net_capacitance ;
+        index_1 ("0.002000, 0.024900, 0.052700, 0.108400, 0.219700");
+    } 
+    /* LIBRARY_TEMPLATE */
+
+    lu_table_template (waveform_template_name) {
+        variable_1 : input_net_transition;
+        variable_2 : normalized_voltage;
+        index_1 ( "0.011000, 0.052000, 0.107000, 0.217000, 0.437000" );
+        index_2 ("0, 0.065, 0.215835, 0.34251, 0.470272, 0.587447, 0.755671, 0.920547, 0.942784, 0.960506, 0.974146, 0.984284, 0.995449, 1");
+    }
+    normalized_driver_waveform (waveform_template_name) {
+        index_1 ( "0.011000, 0.052000, 0.107000, 0.217000, 0.437000" );
+        index_2 ("0, 0.065, 0.215835, 0.34251, 0.470272, 0.587447, 0.755671, 0.920547, 0.942784, 0.960506, 0.974146, 0.984284, 0.995449, 1");
+        values ( \
+              "0.000000, 0.000894, 0.002968, 0.004710, 0.006466, 0.008077, 0.010390, 0.012658, 0.012963, 0.013207, 0.013395, 0.013534, 0.013687, 0.013750",\
+              "0.000000, 0.004225, 0.014029, 0.022263, 0.030568, 0.038184, 0.049119, 0.059836, 0.061281, 0.062433, 0.063319, 0.063978, 0.064704, 0.065000",\
+              "0.000000, 0.008694, 0.028868, 0.045811, 0.062899, 0.078571, 0.101071, 0.123123, 0.126097, 0.128468, 0.130292, 0.131648, 0.133141, 0.133750",\
+              "0.000000, 0.017631, 0.058545, 0.092906, 0.127561, 0.159345, 0.204976, 0.249698, 0.255730, 0.260537, 0.264237, 0.266987, 0.270016, 0.271250",\
+              "0.000000, 0.035506, 0.117900, 0.187096, 0.256886, 0.320893, 0.412785, 0.502849, 0.514996, 0.524676, 0.532127, 0.537665, 0.543764, 0.546250"\
+               );
+    }
+    type ( A_bus_9_to_0 ) {
+        base_type : array ;
+        data_type : bit ;
+        bit_width : 10 ;
+        bit_from : 9 ;
+        bit_to : 0 ;
+        downto : true ;
+    }
+    type ( Q_bus_143_to_0 ) {
+        base_type : array ;
+        data_type : bit ;
+        bit_width : 144 ;
+        bit_from : 143 ;
+        bit_to : 0 ;
+        downto : true ;
+    }
+    type (RTSEL_bus_1_to_0) {
+        base_type : array;
+        data_type : bit;
+        bit_width : 2;
+        bit_from  : 1;
+        bit_to    : 0;
+        downto    : true;
+    }
+    type (WTSEL_bus_1_to_0) {
+        base_type : array;
+        data_type : bit;
+        bit_width : 2;
+        bit_from  : 1;
+        bit_to    : 0;
+        downto    : true;
+    }
+cell ( TS1N16FFCLLSBLVTC1024X144M4SW ) {
+    memory () {
+        type : ram ;
+        address_width : 10 ;
+        word_width : 144 ;
+    }
+    functional_peak_current : 256510.000000;
+    area : 16033.482000 ;
+    interface_timing : TRUE ;
+    dont_use : TRUE ;
+    dont_touch : TRUE ;
+    map_only : TRUE ;
+    is_macro_cell : TRUE ;
+    pg_pin ( VDD ) {
+        voltage_name : VDD ;
+        direction : input;
+        pg_type : primary_power ;
+    }    
+    pg_pin ( VSS ) {
+        voltage_name : VSS ;
+        direction : input;
+        pg_type : primary_ground ;
+    }
+    bus(RTSEL) {
+        bus_type : RTSEL_bus_1_to_0 ;
+        direction : input;
+        max_transition  : 0.437000 ;
+        capacitance     : 0.004686 ;
+                timing() {
+            timing_type     : setup_rising ;
+            related_pin     : "CLK" ;
+    
+      
+            when            : "!CEB" ;
+            sdf_cond        : "check_noidle" ;
+      
+    
+            rise_constraint(asyntran_constraint_template) {
+                values ( "0.583506, 0.591476, 0.597823, 0.678125, 1.365625" ) ;
+            }
+            
+            fall_constraint(asyntran_constraint_template) {
+                values ( "0.583506, 0.591476, 0.597823, 0.678125, 1.365625" ) ;
+            }
+        }
+        timing() {
+            timing_type     : hold_rising ;
+            related_pin     : "CLK" ;
+    
+      
+            when            : "!CEB" ;
+            sdf_cond        : "check_noidle" ;
+      
+    
+            rise_constraint(asyntran_constraint_template) {
+                values ( "   0,    0,    0,    0,    0" ) ;
+            }
+            fall_constraint(asyntran_constraint_template) {
+                values ( "   0,    0,    0,    0,    0" ) ;
+            }
+        }
+
+        timing() {
+            timing_type     : setup_rising ;
+            related_pin     : "CLK" ;
+    
+      
+            when            : "CEB" ;
+            sdf_cond        : "check_idle" ;
+      
+    
+            rise_constraint(asyntran_constraint_template) {
+                values ( "   0,    0,    0,    0,    0" ) ;
+            }
+            fall_constraint(asyntran_constraint_template) {
+                values ( "   0,    0,    0,    0,    0" ) ;
+            }
+        }
+        timing() {
+            timing_type     : hold_rising ;
+            related_pin     : "CLK" ;
+    
+      
+            when            : "CEB" ;
+            sdf_cond        : "check_idle" ;
+      
+    
+            rise_constraint(asyntran_constraint_template) {
+                values ( "0.525155, 0.532328, 0.538041, 0.610313, 1.229063" ) ;
+            }
+            fall_constraint(asyntran_constraint_template) {
+                values ( "0.525155, 0.532328, 0.538041, 0.610313, 1.229063" ) ;
+            }
+        }
+        pin(RTSEL[1:0]) {
+        related_power_pin : VDD;
+        related_ground_pin : VSS;
+            internal_power(){
+                related_pg_pin : VDD;
+                rise_power ( "scalar" ) {
+                    values ( "0.021924" ) ;
+                }
+                fall_power ( "scalar" ) {
+                    values ( "0.025362" ) ;
+                }
+            }
+            /* PIN_NOISE_EXTENSION RTSEL */
+        }
+    }
+    bus(WTSEL) {
+        bus_type : WTSEL_bus_1_to_0 ;
+        direction : input;
+        max_transition  : 0.437000 ;
+        capacitance     : 0.004686 ;
+                timing() {
+            timing_type     : setup_rising ;
+            related_pin     : "CLK" ;
+    
+      
+            when            : "!CEB" ;
+            sdf_cond        : "check_noidle" ;
+      
+    
+            rise_constraint(asyntran_constraint_template) {
+                values ( "0.583506, 0.591476, 0.597823, 0.678125, 1.365625" ) ;
+            }
+            
+            fall_constraint(asyntran_constraint_template) {
+                values ( "0.583506, 0.591476, 0.597823, 0.678125, 1.365625" ) ;
+            }
+        }
+        timing() {
+            timing_type     : hold_rising ;
+            related_pin     : "CLK" ;
+    
+      
+            when            : "!CEB" ;
+            sdf_cond        : "check_noidle" ;
+      
+    
+            rise_constraint(asyntran_constraint_template) {
+                values ( "   0,    0,    0,    0,    0" ) ;
+            }
+            fall_constraint(asyntran_constraint_template) {
+                values ( "   0,    0,    0,    0,    0" ) ;
+            }
+        }
+
+        timing() {
+            timing_type     : setup_rising ;
+            related_pin     : "CLK" ;
+    
+      
+            when            : "CEB" ;
+            sdf_cond        : "check_idle" ;
+      
+    
+            rise_constraint(asyntran_constraint_template) {
+                values ( "   0,    0,    0,    0,    0" ) ;
+            }
+            fall_constraint(asyntran_constraint_template) {
+                values ( "   0,    0,    0,    0,    0" ) ;
+            }
+        }
+        timing() {
+            timing_type     : hold_rising ;
+            related_pin     : "CLK" ;
+    
+      
+            when            : "CEB" ;
+            sdf_cond        : "check_idle" ;
+      
+    
+            rise_constraint(asyntran_constraint_template) {
+                values ( "0.525155, 0.532328, 0.538041, 0.610313, 1.229063" ) ;
+            }
+            fall_constraint(asyntran_constraint_template) {
+                values ( "0.525155, 0.532328, 0.538041, 0.610313, 1.229063" ) ;
+            }
+        }
+        pin(WTSEL[1:0]) {
+        related_power_pin : VDD;
+        related_ground_pin : VSS;
+            internal_power(){
+                related_pg_pin : VDD;
+                rise_power ( "scalar" ) {
+                    values ( "0.021924" ) ;
+                }
+                fall_power ( "scalar" ) {
+                    values ( "0.025362" ) ;
+                }
+            }
+            /* PIN_NOISE_EXTENSION WTSEL */
+        }
+    }
+
+
+
+
+
+    bus ( Q ) {
+        bus_type : Q_bus_143_to_0 ;
+        direction : output ;
+        max_capacitance : 0.219700 ;
+       
+        memory_read () {
+            address : A ;
+        }
+        pin ( Q[143:0] ) {
+            power_down_function : "!VDD + VSS" ;
+            related_power_pin : VDD ;
+            related_ground_pin : VSS ;
+            internal_power () {
+                related_pg_pin : VDD ;
+                rise_power (sram_power_template ) {
+                    values ( "0.006579, 0.006579, 0.006579, 0.006579, 0.006579" ) ;
+                }
+                fall_power (sram_power_template ) {
+                    values ( "0.006579, 0.006579, 0.006579, 0.006579, 0.006579" ) ;
+                }
+            }
+            /* PIN_NOISE_EXTENSION Q */
+        }
+        
+        timing () {
+            related_pin : "CLK" ;
+            timing_type : rising_edge ;
+            timing_sense : non_unate ;
+                when : "!CEB & WEB" ;
+                sdf_cond : "!CEB & WEB" ;
+
+            retaining_fall ( sig2sram_delay_template ) {
+                values ( \
+              "0.371748, 0.385284, 0.398354, 0.423703, 0.473897",\
+              "0.378392, 0.391928, 0.404998, 0.430346, 0.480540",\
+              "0.383543, 0.397079, 0.410149, 0.435497, 0.485691",\
+              "0.390741, 0.404277, 0.417347, 0.442696, 0.492889",\
+              "0.399494, 0.413030, 0.426100, 0.451449, 0.501643"\
+               ) ;
+            }
+            retaining_rise ( sig2sram_delay_template ) {
+                values ( \
+              "0.371748, 0.385284, 0.398354, 0.423703, 0.473897",\
+              "0.378392, 0.391928, 0.404998, 0.430346, 0.480540",\
+              "0.383543, 0.397079, 0.410149, 0.435497, 0.485691",\
+              "0.390741, 0.404277, 0.417347, 0.442696, 0.492889",\
+              "0.399494, 0.413030, 0.426100, 0.451449, 0.501643"\
+               ) ;
+            }      
+            retain_rise_slew ( sig2sram_delay_template ) {
+                values ( \
+              "0.010603, 0.034204, 0.061987, 0.119779, 0.234084",\
+              "0.010603, 0.034204, 0.061987, 0.119779, 0.234084",\
+              "0.010603, 0.034204, 0.061987, 0.119779, 0.234084",\
+              "0.010603, 0.034204, 0.061987, 0.119779, 0.234084",\
+              "0.010603, 0.034204, 0.061987, 0.119779, 0.234084"\
+               ) ;
+            }
+            retain_fall_slew ( sig2sram_delay_template ) {
+                values ( \
+              "0.010603, 0.034204, 0.061987, 0.119779, 0.234084",\
+              "0.010603, 0.034204, 0.061987, 0.119779, 0.234084",\
+              "0.010603, 0.034204, 0.061987, 0.119779, 0.234084",\
+              "0.010603, 0.034204, 0.061987, 0.119779, 0.234084",\
+              "0.010603, 0.034204, 0.061987, 0.119779, 0.234084"\
+               ) ;
+            }
+            cell_rise ( sig2sram_delay_template ) {
+                values ( \
+              "0.454992, 0.472050, 0.487653, 0.516095, 0.572206",\
+              "0.463029, 0.480086, 0.495689, 0.524132, 0.580243",\
+              "0.468914, 0.485972, 0.501575, 0.530017, 0.586128",\
+              "0.477401, 0.494459, 0.510062, 0.538504, 0.594615",\
+              "0.486852, 0.503910, 0.519513, 0.547955, 0.604066"\
+               ) ;
+            }
+            rise_transition(sig2sram_delay_template) {
+                values ( \
+              "0.014673, 0.041060, 0.071232, 0.132782, 0.258238",\
+              "0.014673, 0.041060, 0.071232, 0.132782, 0.258238",\
+              "0.014673, 0.041060, 0.071232, 0.132782, 0.258238",\
+              "0.014673, 0.041060, 0.071232, 0.132782, 0.258238",\
+              "0.014673, 0.041060, 0.071232, 0.132782, 0.258238"\
+               ) ;
+        
+        
+        
+                ecsm_waveform ( "0" ) {
+                    index_1 : "0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95";
+                    values : "0.447702, 0.449741, 0.452298, 0.454189, 0.455835, 0.457345, 0.458794, 0.460267, 0.461923, 0.464414, 0.467484" ;
+                }
+        
+        
+                ecsm_waveform ( "1" ) {
+                    index_1 : "0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95";
+                    values : "0.450394, 0.453971, 0.459206, 0.463487, 0.467495, 0.471300, 0.475253, 0.479706, 0.485519, 0.495031, 0.505546" ;
+                }
+        
+        
+                ecsm_waveform ( "2" ) {
+                    index_1 : "0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95";
+                    values : "0.450513, 0.455552, 0.463541, 0.470685, 0.477065, 0.483467, 0.490404, 0.498498, 0.509193, 0.526784, 0.545660" ;
+                }
+        
+        
+                ecsm_waveform ( "3" ) {
+                    index_1 : "0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95";
+                    values : "0.450753, 0.458435, 0.471165, 0.482648, 0.494062, 0.506093, 0.519343, 0.535031, 0.556187, 0.591217, 0.631279" ;
+                }
+        
+        
+                ecsm_waveform ( "4" ) {
+                    index_1 : "0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95";
+                    values : "0.449819, 0.463027, 0.484815, 0.506331, 0.528565, 0.552386, 0.578625, 0.611065, 0.653128, 0.721265, 0.794000" ;
+                }
+        
+        
+        
+        
+                ecsm_waveform ( "5" ) {
+                    index_1 : "0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95";
+                    values : "0.481363, 0.483402, 0.485960, 0.487850, 0.489497, 0.491007, 0.492456, 0.493928, 0.495585, 0.498076, 0.501146" ;
+                }
+        
+        
+                ecsm_waveform ( "6" ) {
+                    index_1 : "0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95";
+                    values : "0.484056, 0.487633, 0.492868, 0.497149, 0.501157, 0.504962, 0.508915, 0.513368, 0.519180, 0.528693, 0.539208" ;
+                }
+        
+        
+                ecsm_waveform ( "7" ) {
+                    index_1 : "0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95";
+                    values : "0.484174, 0.489214, 0.497203, 0.504346, 0.510726, 0.517129, 0.524066, 0.532160, 0.542855, 0.560445, 0.579321" ;
+                }
+        
+        
+                ecsm_waveform ( "8" ) {
+                    index_1 : "0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95";
+                    values : "0.484415, 0.492096, 0.504827, 0.516309, 0.527724, 0.539755, 0.553005, 0.568692, 0.589848, 0.624879, 0.664941" ;
+                }
+        
+        
+                ecsm_waveform ( "9" ) {
+                    index_1 : "0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95";
+                    values : "0.483481, 0.496689, 0.518477, 0.539993, 0.562227, 0.586047, 0.612287, 0.644727, 0.686790, 0.754927, 0.827662" ;
+                }
+        
+        
+        
+        
+                ecsm_waveform ( "10" ) {
+                    index_1 : "0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95";
+                    values : "0.521624, 0.523663, 0.526220, 0.528111, 0.529757, 0.531267, 0.532716, 0.534189, 0.535845, 0.538336, 0.541406" ;
+                }
+        
+        
+                ecsm_waveform ( "11" ) {
+                    index_1 : "0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95";
+                    values : "0.524316, 0.527893, 0.533128, 0.537409, 0.541417, 0.545222, 0.549175, 0.553628, 0.559440, 0.568953, 0.579468" ;
+                }
+        
+        
+                ecsm_waveform ( "12" ) {
+                    index_1 : "0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95";
+                    values : "0.524435, 0.529474, 0.537463, 0.544607, 0.550986, 0.557389, 0.564326, 0.572420, 0.583115, 0.600705, 0.619582" ;
+                }
+        
+        
+                ecsm_waveform ( "13" ) {
+                    index_1 : "0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95";
+                    values : "0.524675, 0.532356, 0.545087, 0.556570, 0.567984, 0.580015, 0.593265, 0.608952, 0.630109, 0.665139, 0.705201" ;
+                }
+        
+        
+                ecsm_waveform ( "14" ) {
+                    index_1 : "0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95";
+                    values : "0.523741, 0.536949, 0.558737, 0.580253, 0.602487, 0.626308, 0.652547, 0.684987, 0.727050, 0.795187, 0.867922" ;
+                }
+        
+        
+        
+        
+                ecsm_waveform ( "15" ) {
+                    index_1 : "0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95";
+                    values : "0.598861, 0.600900, 0.603457, 0.605348, 0.606994, 0.608504, 0.609953, 0.611426, 0.613082, 0.615573, 0.618643" ;
+                }
+        
+        
+                ecsm_waveform ( "16" ) {
+                    index_1 : "0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95";
+                    values : "0.601553, 0.605131, 0.610365, 0.614646, 0.618654, 0.622459, 0.626412, 0.630865, 0.636678, 0.646190, 0.656705" ;
+                }
+        
+        
+                ecsm_waveform ( "17" ) {
+                    index_1 : "0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95";
+                    values : "0.601672, 0.606711, 0.614700, 0.621844, 0.628224, 0.634626, 0.641563, 0.649657, 0.660353, 0.677943, 0.696819" ;
+                }
+        
+        
+                ecsm_waveform ( "18" ) {
+                    index_1 : "0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95";
+                    values : "0.601912, 0.609594, 0.622325, 0.633807, 0.645221, 0.657252, 0.670502, 0.686190, 0.707346, 0.742376, 0.782438" ;
+                }
+        
+        
+                ecsm_waveform ( "19" ) {
+                    index_1 : "0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95";
+                    values : "0.600978, 0.614186, 0.635974, 0.657490, 0.679724, 0.703545, 0.729784, 0.762224, 0.804287, 0.872424, 0.945159" ;
+                }
+        
+        
+        
+        
+                ecsm_waveform ( "20" ) {
+                    index_1 : "0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95";
+                    values : "0.745812, 0.747851, 0.750408, 0.752299, 0.753945, 0.755455, 0.756904, 0.758377, 0.760033, 0.762524, 0.765594" ;
+                }
+        
+        
+                ecsm_waveform ( "21" ) {
+                    index_1 : "0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95";
+                    values : "0.748505, 0.752082, 0.757316, 0.761597, 0.765605, 0.769410, 0.773363, 0.777816, 0.783629, 0.793141, 0.803656" ;
+                }
+        
+        
+                ecsm_waveform ( "22" ) {
+                    index_1 : "0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95";
+                    values : "0.748623, 0.753662, 0.761651, 0.768795, 0.775175, 0.781577, 0.788514, 0.796608, 0.807304, 0.824894, 0.843770" ;
+                }
+        
+        
+                ecsm_waveform ( "23" ) {
+                    index_1 : "0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95";
+                    values : "0.748863, 0.756545, 0.769276, 0.780758, 0.792172, 0.804203, 0.817453, 0.833141, 0.854297, 0.889327, 0.929389" ;
+                }
+        
+        
+                ecsm_waveform ( "24" ) {
+                    index_1 : "0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95";
+                    values : "0.747929, 0.761138, 0.782925, 0.804441, 0.826675, 0.850496, 0.876735, 0.909176, 0.951238, 1.019376, 1.092110" ;
+                }
+        
+        
+            }
+            cell_fall ( sig2sram_delay_template ) {
+                values ( \
+              "0.454992, 0.472050, 0.487653, 0.516095, 0.572206",\
+              "0.463029, 0.480086, 0.495689, 0.524132, 0.580243",\
+              "0.468914, 0.485972, 0.501575, 0.530017, 0.586128",\
+              "0.477401, 0.494459, 0.510062, 0.538504, 0.594615",\
+              "0.486852, 0.503910, 0.519513, 0.547955, 0.604066"\
+               ) ;
+            }
+            fall_transition(sig2sram_delay_template) {
+                values ( \
+              "0.014673, 0.041060, 0.071232, 0.132782, 0.258238",\
+              "0.014673, 0.041060, 0.071232, 0.132782, 0.258238",\
+              "0.014673, 0.041060, 0.071232, 0.132782, 0.258238",\
+              "0.014673, 0.041060, 0.071232, 0.132782, 0.258238",\
+              "0.014673, 0.041060, 0.071232, 0.132782, 0.258238"\
+               ) ;
+        
+        
+        
+                ecsm_waveform ( "0" ) {
+                    index_1 : "0.95, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.05";
+                    values : "0.447702, 0.449741, 0.452298, 0.454189, 0.455835, 0.457345, 0.458794, 0.460267, 0.461923, 0.464414, 0.467484" ;
+                }
+        
+        
+                ecsm_waveform ( "1" ) {
+                    index_1 : "0.95, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.05";
+                    values : "0.450394, 0.453971, 0.459206, 0.463487, 0.467495, 0.471300, 0.475253, 0.479706, 0.485519, 0.495031, 0.505546" ;
+                }
+        
+        
+                ecsm_waveform ( "2" ) {
+                    index_1 : "0.95, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.05";
+                    values : "0.450513, 0.455552, 0.463541, 0.470685, 0.477065, 0.483467, 0.490404, 0.498498, 0.509193, 0.526784, 0.545660" ;
+                }
+        
+        
+                ecsm_waveform ( "3" ) {
+                    index_1 : "0.95, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.05";
+                    values : "0.450753, 0.458435, 0.471165, 0.482648, 0.494062, 0.506093, 0.519343, 0.535031, 0.556187, 0.591217, 0.631279" ;
+                }
+        
+        
+                ecsm_waveform ( "4" ) {
+                    index_1 : "0.95, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.05";
+                    values : "0.449819, 0.463027, 0.484815, 0.506331, 0.528565, 0.552386, 0.578625, 0.611065, 0.653128, 0.721265, 0.794000" ;
+                }
+        
+        
+        
+        
+                ecsm_waveform ( "5" ) {
+                    index_1 : "0.95, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.05";
+                    values : "0.481363, 0.483402, 0.485960, 0.487850, 0.489497, 0.491007, 0.492456, 0.493928, 0.495585, 0.498076, 0.501146" ;
+                }
+        
+        
+                ecsm_waveform ( "6" ) {
+                    index_1 : "0.95, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.05";
+                    values : "0.484056, 0.487633, 0.492868, 0.497149, 0.501157, 0.504962, 0.508915, 0.513368, 0.519180, 0.528693, 0.539208" ;
+                }
+        
+        
+                ecsm_waveform ( "7" ) {
+                    index_1 : "0.95, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.05";
+                    values : "0.484174, 0.489214, 0.497203, 0.504346, 0.510726, 0.517129, 0.524066, 0.532160, 0.542855, 0.560445, 0.579321" ;
+                }
+        
+        
+                ecsm_waveform ( "8" ) {
+                    index_1 : "0.95, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.05";
+                    values : "0.484415, 0.492096, 0.504827, 0.516309, 0.527724, 0.539755, 0.553005, 0.568692, 0.589848, 0.624879, 0.664941" ;
+                }
+        
+        
+                ecsm_waveform ( "9" ) {
+                    index_1 : "0.95, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.05";
+                    values : "0.483481, 0.496689, 0.518477, 0.539993, 0.562227, 0.586047, 0.612287, 0.644727, 0.686790, 0.754927, 0.827662" ;
+                }
+        
+        
+        
+        
+                ecsm_waveform ( "10" ) {
+                    index_1 : "0.95, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.05";
+                    values : "0.521624, 0.523663, 0.526220, 0.528111, 0.529757, 0.531267, 0.532716, 0.534189, 0.535845, 0.538336, 0.541406" ;
+                }
+        
+        
+                ecsm_waveform ( "11" ) {
+                    index_1 : "0.95, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.05";
+                    values : "0.524316, 0.527893, 0.533128, 0.537409, 0.541417, 0.545222, 0.549175, 0.553628, 0.559440, 0.568953, 0.579468" ;
+                }
+        
+        
+                ecsm_waveform ( "12" ) {
+                    index_1 : "0.95, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.05";
+                    values : "0.524435, 0.529474, 0.537463, 0.544607, 0.550986, 0.557389, 0.564326, 0.572420, 0.583115, 0.600705, 0.619582" ;
+                }
+        
+        
+                ecsm_waveform ( "13" ) {
+                    index_1 : "0.95, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.05";
+                    values : "0.524675, 0.532356, 0.545087, 0.556570, 0.567984, 0.580015, 0.593265, 0.608952, 0.630109, 0.665139, 0.705201" ;
+                }
+        
+        
+                ecsm_waveform ( "14" ) {
+                    index_1 : "0.95, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.05";
+                    values : "0.523741, 0.536949, 0.558737, 0.580253, 0.602487, 0.626308, 0.652547, 0.684987, 0.727050, 0.795187, 0.867922" ;
+                }
+        
+        
+        
+        
+                ecsm_waveform ( "15" ) {
+                    index_1 : "0.95, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.05";
+                    values : "0.598861, 0.600900, 0.603457, 0.605348, 0.606994, 0.608504, 0.609953, 0.611426, 0.613082, 0.615573, 0.618643" ;
+                }
+        
+        
+                ecsm_waveform ( "16" ) {
+                    index_1 : "0.95, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.05";
+                    values : "0.601553, 0.605131, 0.610365, 0.614646, 0.618654, 0.622459, 0.626412, 0.630865, 0.636678, 0.646190, 0.656705" ;
+                }
+        
+        
+                ecsm_waveform ( "17" ) {
+                    index_1 : "0.95, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.05";
+                    values : "0.601672, 0.606711, 0.614700, 0.621844, 0.628224, 0.634626, 0.641563, 0.649657, 0.660353, 0.677943, 0.696819" ;
+                }
+        
+        
+                ecsm_waveform ( "18" ) {
+                    index_1 : "0.95, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.05";
+                    values : "0.601912, 0.609594, 0.622325, 0.633807, 0.645221, 0.657252, 0.670502, 0.686190, 0.707346, 0.742376, 0.782438" ;
+                }
+        
+        
+                ecsm_waveform ( "19" ) {
+                    index_1 : "0.95, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.05";
+                    values : "0.600978, 0.614186, 0.635974, 0.657490, 0.679724, 0.703545, 0.729784, 0.762224, 0.804287, 0.872424, 0.945159" ;
+                }
+        
+        
+        
+        
+                ecsm_waveform ( "20" ) {
+                    index_1 : "0.95, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.05";
+                    values : "0.745812, 0.747851, 0.750408, 0.752299, 0.753945, 0.755455, 0.756904, 0.758377, 0.760033, 0.762524, 0.765594" ;
+                }
+        
+        
+                ecsm_waveform ( "21" ) {
+                    index_1 : "0.95, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.05";
+                    values : "0.748505, 0.752082, 0.757316, 0.761597, 0.765605, 0.769410, 0.773363, 0.777816, 0.783629, 0.793141, 0.803656" ;
+                }
+        
+        
+                ecsm_waveform ( "22" ) {
+                    index_1 : "0.95, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.05";
+                    values : "0.748623, 0.753662, 0.761651, 0.768795, 0.775175, 0.781577, 0.788514, 0.796608, 0.807304, 0.824894, 0.843770" ;
+                }
+        
+        
+                ecsm_waveform ( "23" ) {
+                    index_1 : "0.95, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.05";
+                    values : "0.748863, 0.756545, 0.769276, 0.780758, 0.792172, 0.804203, 0.817453, 0.833141, 0.854297, 0.889327, 0.929389" ;
+                }
+        
+        
+                ecsm_waveform ( "24" ) {
+                    index_1 : "0.95, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.05";
+                    values : "0.747929, 0.761138, 0.782925, 0.804441, 0.826675, 0.850496, 0.876735, 0.909176, 0.951238, 1.019376, 1.092110" ;
+                }
+        
+        
+            }
+        }
+    }
+    pin ( CLK ) {
+        direction : input ;
+        max_transition  : 0.437000 ;
+        related_power_pin : VDD;
+        related_ground_pin : VSS ;
+        capacitance : 0.003580 ;
+        clock : true ;
+        pin_func_type : active_rising ;
+        ecsm_capacitance (rise) {
+            threshold_pct : "50.0";
+            index_1 : "0.011000, 0.052000, 0.107000, 0.217000, 0.437000" ;
+            values : "0.003554, 0.003554, 0.003554, 0.003554, 0.003554" ;
+        }
+        ecsm_capacitance (fall) {
+            threshold_pct : "50.0";
+            index_1 : "0.011000, 0.052000, 0.107000, 0.217000, 0.437000" ;
+            values : "0.003580, 0.003580, 0.003580, 0.003580, 0.003580" ;
+        }
+        timing() {
+            timing_type  : max_clock_tree_path;
+            timing_sense : positive_unate;
+            cell_rise( "clktree_constraint_template" ) {
+                values  ( "   0,    0,    0,    0,    0" );
+            }
+            cell_fall( "clktree_constraint_template" ) {
+                values  ( "   0,    0,    0,    0,    0" );
+            }
+        }
+        timing() {
+            timing_type  : min_clock_tree_path;
+            timing_sense : positive_unate;
+            cell_rise( "clktree_constraint_template" ) {
+                values  ( "   0,    0,    0,    0,    0" );
+            }
+            cell_fall( "clktree_constraint_template" ) {
+                values  ( "   0,    0,    0,    0,    0" );
+            }
+        }
+        timing () {
+            timing_type : "min_pulse_width" ;
+            related_pin : "CLK" ;
+            when : " !CEB" ;
+            sdf_cond : "check_ceb" ;
+            rise_constraint ( "clktran_constraint_template" ) {
+                values ( "0.124515, 0.132614, 0.139006, 0.271250, 0.546250" ) ;
+            }
+            fall_constraint ( "clktran_constraint_template" ) {
+                values ( "0.180932, 0.189750, 0.196875, 0.271250, 0.546250" ) ;
+            }
+        }
+        timing () {
+            timing_type : "minimum_period" ;
+            related_pin : "CLK" ;
+            when : " !CEB" ;
+            sdf_cond : "check_ceb" ;
+            rise_constraint ( "clktran_constraint_template" ) {
+                values ( "0.583506, 0.591476, 0.597823, 0.678125, 1.365625" ) ;
+            }
+            fall_constraint ( "clktran_constraint_template" ) {
+                values ( "0.583506, 0.591476, 0.597823, 0.678125, 1.365625" ) ;
+            }
+        }
+
+
+
+        internal_power () {
+            related_pg_pin : VDD ;
+            when : "!CEB & WEB" ;
+            rise_power ( "scalar" ) {
+                values ( "14.780700" ) ;
+            }
+            fall_power ( "scalar" ) {
+                values ( "0.091458" ) ;
+            }
+        }
+        internal_power () {
+            related_pg_pin : VDD ;
+            when : "!CEB & !WEB &(!BWEB[143] & !BWEB[142] & !BWEB[141] & !BWEB[140] & !BWEB[139] & !BWEB[138] & !BWEB[137] & !BWEB[136] & !BWEB[135] & !BWEB[134] & !BWEB[133] & !BWEB[132] & !BWEB[131] & !BWEB[130] & !BWEB[129] & !BWEB[128] & !BWEB[127] & !BWEB[126] & !BWEB[125] & !BWEB[124] & !BWEB[123] & !BWEB[122] & !BWEB[121] & !BWEB[120] & !BWEB[119] & !BWEB[118] & !BWEB[117] & !BWEB[116] & !BWEB[115] & !BWEB[114] & !BWEB[113] & !BWEB[112] & !BWEB[111] & !BWEB[110] & !BWEB[109] & !BWEB[108] & !BWEB[107] & !BWEB[106] & !BWEB[105] & !BWEB[104] & !BWEB[103] & !BWEB[102] & !BWEB[101] & !BWEB[100] & !BWEB[99] & !BWEB[98] & !BWEB[97] & !BWEB[96] & !BWEB[95] & !BWEB[94] & !BWEB[93] & !BWEB[92] & !BWEB[91] & !BWEB[90] & !BWEB[89] & !BWEB[88] & !BWEB[87] & !BWEB[86] & !BWEB[85] & !BWEB[84] & !BWEB[83] & !BWEB[82] & !BWEB[81] & !BWEB[80] & !BWEB[79] & !BWEB[78] & !BWEB[77] & !BWEB[76] & !BWEB[75] & !BWEB[74] & !BWEB[73] & !BWEB[72] & !BWEB[71] & !BWEB[70] & !BWEB[69] & !BWEB[68] & !BWEB[67] & !BWEB[66] & !BWEB[65] & !BWEB[64] & !BWEB[63] & !BWEB[62] & !BWEB[61] & !BWEB[60] & !BWEB[59] & !BWEB[58] & !BWEB[57] & !BWEB[56] & !BWEB[55] & !BWEB[54] & !BWEB[53] & !BWEB[52] & !BWEB[51] & !BWEB[50] & !BWEB[49] & !BWEB[48] & !BWEB[47] & !BWEB[46] & !BWEB[45] & !BWEB[44] & !BWEB[43] & !BWEB[42] & !BWEB[41] & !BWEB[40] & !BWEB[39] & !BWEB[38] & !BWEB[37] & !BWEB[36] & !BWEB[35] & !BWEB[34] & !BWEB[33] & !BWEB[32] & !BWEB[31] & !BWEB[30] & !BWEB[29] & !BWEB[28] & !BWEB[27] & !BWEB[26] & !BWEB[25] & !BWEB[24] & !BWEB[23] & !BWEB[22] & !BWEB[21] & !BWEB[20] & !BWEB[19] & !BWEB[18] & !BWEB[17] & !BWEB[16] & !BWEB[15] & !BWEB[14] & !BWEB[13] & !BWEB[12] & !BWEB[11] & !BWEB[10] & !BWEB[9] & !BWEB[8] & !BWEB[7] & !BWEB[6] & !BWEB[5] & !BWEB[4] & !BWEB[3] & !BWEB[2] & !BWEB[1] & !BWEB[0]) " ;
+            rise_power ( "scalar" ) {
+                values ( "20.916900" ) ;
+            }
+            fall_power ( "scalar" ) {
+                values ( "0.092709" ) ;
+            }
+        }
+        internal_power () {
+            related_pg_pin : VDD ;
+            when : "!CEB & !WEB &(BWEB[143] & BWEB[142] & BWEB[141] & BWEB[140] & BWEB[139] & BWEB[138] & BWEB[137] & BWEB[136] & BWEB[135] & BWEB[134] & BWEB[133] & BWEB[132] & BWEB[131] & BWEB[130] & BWEB[129] & BWEB[128] & BWEB[127] & BWEB[126] & BWEB[125] & BWEB[124] & BWEB[123] & BWEB[122] & BWEB[121] & BWEB[120] & BWEB[119] & BWEB[118] & BWEB[117] & BWEB[116] & BWEB[115] & BWEB[114] & BWEB[113] & BWEB[112] & BWEB[111] & BWEB[110] & BWEB[109] & BWEB[108] & BWEB[107] & BWEB[106] & BWEB[105] & BWEB[104] & BWEB[103] & BWEB[102] & BWEB[101] & BWEB[100] & BWEB[99] & BWEB[98] & BWEB[97] & BWEB[96] & BWEB[95] & BWEB[94] & BWEB[93] & BWEB[92] & BWEB[91] & BWEB[90] & BWEB[89] & BWEB[88] & BWEB[87] & BWEB[86] & BWEB[85] & BWEB[84] & BWEB[83] & BWEB[82] & BWEB[81] & BWEB[80] & BWEB[79] & BWEB[78] & BWEB[77] & BWEB[76] & BWEB[75] & BWEB[74] & BWEB[73] & BWEB[72] & BWEB[71] & BWEB[70] & BWEB[69] & BWEB[68] & BWEB[67] & BWEB[66] & BWEB[65] & BWEB[64] & BWEB[63] & BWEB[62] & BWEB[61] & BWEB[60] & BWEB[59] & BWEB[58] & BWEB[57] & BWEB[56] & BWEB[55] & BWEB[54] & BWEB[53] & BWEB[52] & BWEB[51] & BWEB[50] & BWEB[49] & BWEB[48] & BWEB[47] & BWEB[46] & BWEB[45] & BWEB[44] & BWEB[43] & BWEB[42] & BWEB[41] & BWEB[40] & BWEB[39] & BWEB[38] & BWEB[37] & BWEB[36] & BWEB[35] & BWEB[34] & BWEB[33] & BWEB[32] & BWEB[31] & BWEB[30] & BWEB[29] & BWEB[28] & BWEB[27] & BWEB[26] & BWEB[25] & BWEB[24] & BWEB[23] & BWEB[22] & BWEB[21] & BWEB[20] & BWEB[19] & BWEB[18] & BWEB[17] & BWEB[16] & BWEB[15] & BWEB[14] & BWEB[13] & BWEB[12] & BWEB[11] & BWEB[10] & BWEB[9] & BWEB[8] & BWEB[7] & BWEB[6] & BWEB[5] & BWEB[4] & BWEB[3] & BWEB[2] & BWEB[1] & BWEB[0]) " ;
+            rise_power ( "scalar" ) {
+                values ( "17.431200" ) ;
+            }
+            fall_power ( "scalar" ) {
+                values ( "0.092574" ) ;
+            }
+        }
+        internal_power () {
+            related_pg_pin : VDD ;
+            when : "!CEB & !WEB & (!(BWEB[143] & BWEB[142] & BWEB[141] & BWEB[140] & BWEB[139] & BWEB[138] & BWEB[137] & BWEB[136] & BWEB[135] & BWEB[134] & BWEB[133] & BWEB[132] & BWEB[131] & BWEB[130] & BWEB[129] & BWEB[128] & BWEB[127] & BWEB[126] & BWEB[125] & BWEB[124] & BWEB[123] & BWEB[122] & BWEB[121] & BWEB[120] & BWEB[119] & BWEB[118] & BWEB[117] & BWEB[116] & BWEB[115] & BWEB[114] & BWEB[113] & BWEB[112] & BWEB[111] & BWEB[110] & BWEB[109] & BWEB[108] & BWEB[107] & BWEB[106] & BWEB[105] & BWEB[104] & BWEB[103] & BWEB[102] & BWEB[101] & BWEB[100] & BWEB[99] & BWEB[98] & BWEB[97] & BWEB[96] & BWEB[95] & BWEB[94] & BWEB[93] & BWEB[92] & BWEB[91] & BWEB[90] & BWEB[89] & BWEB[88] & BWEB[87] & BWEB[86] & BWEB[85] & BWEB[84] & BWEB[83] & BWEB[82] & BWEB[81] & BWEB[80] & BWEB[79] & BWEB[78] & BWEB[77] & BWEB[76] & BWEB[75] & BWEB[74] & BWEB[73] & BWEB[72] & BWEB[71] & BWEB[70] & BWEB[69] & BWEB[68] & BWEB[67] & BWEB[66] & BWEB[65] & BWEB[64] & BWEB[63] & BWEB[62] & BWEB[61] & BWEB[60] & BWEB[59] & BWEB[58] & BWEB[57] & BWEB[56] & BWEB[55] & BWEB[54] & BWEB[53] & BWEB[52] & BWEB[51] & BWEB[50] & BWEB[49] & BWEB[48] & BWEB[47] & BWEB[46] & BWEB[45] & BWEB[44] & BWEB[43] & BWEB[42] & BWEB[41] & BWEB[40] & BWEB[39] & BWEB[38] & BWEB[37] & BWEB[36] & BWEB[35] & BWEB[34] & BWEB[33] & BWEB[32] & BWEB[31] & BWEB[30] & BWEB[29] & BWEB[28] & BWEB[27] & BWEB[26] & BWEB[25] & BWEB[24] & BWEB[23] & BWEB[22] & BWEB[21] & BWEB[20] & BWEB[19] & BWEB[18] & BWEB[17] & BWEB[16] & BWEB[15] & BWEB[14] & BWEB[13] & BWEB[12] & BWEB[11] & BWEB[10] & BWEB[9] & BWEB[8] & BWEB[7] & BWEB[6] & BWEB[5] & BWEB[4] & BWEB[3] & BWEB[2] & BWEB[1] & BWEB[0]) & !(!BWEB[143] & !BWEB[142] & !BWEB[141] & !BWEB[140] & !BWEB[139] & !BWEB[138] & !BWEB[137] & !BWEB[136] & !BWEB[135] & !BWEB[134] & !BWEB[133] & !BWEB[132] & !BWEB[131] & !BWEB[130] & !BWEB[129] & !BWEB[128] & !BWEB[127] & !BWEB[126] & !BWEB[125] & !BWEB[124] & !BWEB[123] & !BWEB[122] & !BWEB[121] & !BWEB[120] & !BWEB[119] & !BWEB[118] & !BWEB[117] & !BWEB[116] & !BWEB[115] & !BWEB[114] & !BWEB[113] & !BWEB[112] & !BWEB[111] & !BWEB[110] & !BWEB[109] & !BWEB[108] & !BWEB[107] & !BWEB[106] & !BWEB[105] & !BWEB[104] & !BWEB[103] & !BWEB[102] & !BWEB[101] & !BWEB[100] & !BWEB[99] & !BWEB[98] & !BWEB[97] & !BWEB[96] & !BWEB[95] & !BWEB[94] & !BWEB[93] & !BWEB[92] & !BWEB[91] & !BWEB[90] & !BWEB[89] & !BWEB[88] & !BWEB[87] & !BWEB[86] & !BWEB[85] & !BWEB[84] & !BWEB[83] & !BWEB[82] & !BWEB[81] & !BWEB[80] & !BWEB[79] & !BWEB[78] & !BWEB[77] & !BWEB[76] & !BWEB[75] & !BWEB[74] & !BWEB[73] & !BWEB[72] & !BWEB[71] & !BWEB[70] & !BWEB[69] & !BWEB[68] & !BWEB[67] & !BWEB[66] & !BWEB[65] & !BWEB[64] & !BWEB[63] & !BWEB[62] & !BWEB[61] & !BWEB[60] & !BWEB[59] & !BWEB[58] & !BWEB[57] & !BWEB[56] & !BWEB[55] & !BWEB[54] & !BWEB[53] & !BWEB[52] & !BWEB[51] & !BWEB[50] & !BWEB[49] & !BWEB[48] & !BWEB[47] & !BWEB[46] & !BWEB[45] & !BWEB[44] & !BWEB[43] & !BWEB[42] & !BWEB[41] & !BWEB[40] & !BWEB[39] & !BWEB[38] & !BWEB[37] & !BWEB[36] & !BWEB[35] & !BWEB[34] & !BWEB[33] & !BWEB[32] & !BWEB[31] & !BWEB[30] & !BWEB[29] & !BWEB[28] & !BWEB[27] & !BWEB[26] & !BWEB[25] & !BWEB[24] & !BWEB[23] & !BWEB[22] & !BWEB[21] & !BWEB[20] & !BWEB[19] & !BWEB[18] & !BWEB[17] & !BWEB[16] & !BWEB[15] & !BWEB[14] & !BWEB[13] & !BWEB[12] & !BWEB[11] & !BWEB[10] & !BWEB[9] & !BWEB[8] & !BWEB[7] & !BWEB[6] & !BWEB[5] & !BWEB[4] & !BWEB[3] & !BWEB[2] & !BWEB[1] & !BWEB[0]))  " ;
+            rise_power ( "scalar" ) {
+                values ( "19.174050" ) ;
+            }
+            fall_power ( "scalar" ) {
+                values ( "0.092642" ) ;
+            }
+        }
+        internal_power () {
+            related_pg_pin : VDD ;
+            when : "CEB" ;
+            rise_power ( "scalar" ) {
+                values ( "0.085005" ) ;
+            }
+            fall_power ( "scalar" ) {
+                values ( "0.000000" ) ;
+            }
+        }
+        /* PIN_NOISE_EXTENSION CLK */
+    }
+    pin ( CEB ) {
+        direction : input ;
+        max_transition  : 0.437000 ;
+        related_power_pin : VDD;
+        related_ground_pin : VSS ;
+        capacitance : 0.001704 ;
+        ecsm_capacitance (rise) {
+            threshold_pct : "50.0";
+            index_1 : "0.011000, 0.052000, 0.107000, 0.217000, 0.437000" ;
+            values : "0.001701, 0.001701, 0.001701, 0.001701, 0.001701" ;
+        }
+        ecsm_capacitance (fall) {
+            threshold_pct : "50.0";
+            index_1 : "0.011000, 0.052000, 0.107000, 0.217000, 0.437000" ;
+            values : "0.001704, 0.001704, 0.001704, 0.001704, 0.001704" ;
+        }
+        internal_power () {
+            related_pg_pin : VDD ;
+            rise_power ( "scalar" ) {
+                values ( "0.029853" ) ;
+            }
+            fall_power ( "scalar" ) {
+                values ( "0.030798" ) ;
+            }
+        }
+        timing () {
+            related_pin : "CLK" ;
+            timing_type : setup_rising ;
+            rise_constraint ( sig2sram_constraint_template ) {
+                values ( \
+              "0.084450, 0.093245, 0.101945, 0.115257, 0.137878",\
+              "0.076839, 0.085633, 0.094334, 0.107646, 0.130267",\
+              "0.070847, 0.079642, 0.088342, 0.101654, 0.124275",\
+              "0.063487, 0.072281, 0.080982, 0.094294, 0.116915",\
+              "0.054442, 0.063237, 0.071937, 0.085249, 0.107870"\
+               ) ;
+            }
+            fall_constraint ( sig2sram_constraint_template ) {
+                values ( \
+              "0.084450, 0.093245, 0.101945, 0.115257, 0.137878",\
+              "0.076839, 0.085633, 0.094334, 0.107646, 0.130267",\
+              "0.070847, 0.079642, 0.088342, 0.101654, 0.124275",\
+              "0.063487, 0.072281, 0.080982, 0.094294, 0.116915",\
+              "0.054442, 0.063237, 0.071937, 0.085249, 0.107870"\
+               ) ;
+            }
+        }
+        timing () {
+            related_pin : "CLK" ;
+            timing_type : hold_rising ;
+            rise_constraint ( sig2sram_constraint_template ) {
+                values ( \
+              "0.084772, 0.079844, 0.076693, 0.072432, 0.068471",\
+              "0.093804, 0.088876, 0.085725, 0.081464, 0.077503",\
+              "0.100432, 0.095504, 0.092353, 0.088092, 0.084131",\
+              "0.108425, 0.103497, 0.100346, 0.096085, 0.092124",\
+              "0.118601, 0.113673, 0.110522, 0.106261, 0.102300"\
+               ) ;
+            }
+            fall_constraint ( sig2sram_constraint_template ) {
+                values ( \
+              "0.084772, 0.079844, 0.076693, 0.072432, 0.068471",\
+              "0.093804, 0.088876, 0.085725, 0.081464, 0.077503",\
+              "0.100432, 0.095504, 0.092353, 0.088092, 0.084131",\
+              "0.108425, 0.103497, 0.100346, 0.096085, 0.092124",\
+              "0.118601, 0.113673, 0.110522, 0.106261, 0.102300"\
+               ) ;
+            }
+        }
+        /* PIN_NOISE_EXTENSION CEB */
+    }
+    pin ( WEB ) {
+        direction : input ;
+        max_transition  : 0.437000 ;
+        related_power_pin : VDD;
+        related_ground_pin : VSS ;
+        capacitance : 0.001453 ;
+        ecsm_capacitance (rise) {
+            threshold_pct : "50.0";
+            index_1 : "0.011000, 0.052000, 0.107000, 0.217000, 0.437000" ;
+            values : "0.001452, 0.001452, 0.001452, 0.001452, 0.001452" ;
+        }
+        ecsm_capacitance (fall) {
+            threshold_pct : "50.0";
+            index_1 : "0.011000, 0.052000, 0.107000, 0.217000, 0.437000" ;
+            values : "0.001453, 0.001453, 0.001453, 0.001453, 0.001453" ;
+        }
+        internal_power () {
+            related_pg_pin : VDD ;
+            rise_power ( "scalar" ) {
+                values ( "0.021924" ) ;
+            }
+            fall_power ( "scalar" ) {
+                values ( "0.025362" ) ;
+            }
+        }
+        timing () {
+            related_pin : "CLK" ;
+            when : " !CEB" ;
+            sdf_cond : "check_noidle" ;
+            timing_type : setup_rising ;
+            rise_constraint ( sig2sram_constraint_template ) {
+                values ( \
+              "0.070508, 0.078126, 0.085379, 0.095152, 0.107569",\
+              "0.063026, 0.070644, 0.077897, 0.087670, 0.100087",\
+              "0.056832, 0.064450, 0.071703, 0.081476, 0.093893",\
+              "0.049631, 0.057249, 0.064502, 0.074275, 0.086692",\
+              "0.040553, 0.048171, 0.055424, 0.065197, 0.077614"\
+               ) ;
+            }
+            fall_constraint ( sig2sram_constraint_template ) {
+                values ( \
+              "0.070508, 0.078126, 0.085379, 0.095152, 0.107569",\
+              "0.063026, 0.070644, 0.077897, 0.087670, 0.100087",\
+              "0.056832, 0.064450, 0.071703, 0.081476, 0.093893",\
+              "0.049631, 0.057249, 0.064502, 0.074275, 0.086692",\
+              "0.040553, 0.048171, 0.055424, 0.065197, 0.077614"\
+               ) ;
+            }
+        }
+        timing () {
+            related_pin : "CLK" ;
+            when : " !CEB" ;
+            sdf_cond : "check_noidle" ;
+            timing_type : hold_rising ;
+            rise_constraint ( sig2sram_constraint_template ) {
+                values ( \
+              "0.087094, 0.080776, 0.076242, 0.070614, 0.063450",\
+              "0.095659, 0.089341, 0.084807, 0.079179, 0.072015",\
+              "0.102242, 0.095924, 0.091390, 0.085762, 0.078598",\
+              "0.110759, 0.104441, 0.099907, 0.094279, 0.087115",\
+              "0.120863, 0.114545, 0.110011, 0.104383, 0.097219"\
+               ) ;
+            }
+            fall_constraint ( sig2sram_constraint_template ) {
+                values ( \
+              "0.087094, 0.080776, 0.076242, 0.070614, 0.063450",\
+              "0.095659, 0.089341, 0.084807, 0.079179, 0.072015",\
+              "0.102242, 0.095924, 0.091390, 0.085762, 0.078598",\
+              "0.110759, 0.104441, 0.099907, 0.094279, 0.087115",\
+              "0.120863, 0.114545, 0.110011, 0.104383, 0.097219"\
+               ) ;
+            }
+        }
+
+        /* PIN_NOISE_EXTENSION WEB */
+    }
+    bus ( A ) {
+        bus_type : A_bus_9_to_0 ;
+        direction : input ;
+        max_transition  : 0.437000 ;
+        
+        capacitance : 0.001492 ;
+        pin (A[9:0] ) {
+            related_power_pin : VDD;
+            related_ground_pin : VSS ;
+            ecsm_capacitance (rise) {
+                threshold_pct : "50.0";
+                index_1 : "0.011000, 0.052000, 0.107000, 0.217000, 0.437000" ;
+                values : "0.001443, 0.001443, 0.001443, 0.001443, 0.001443" ;
+            }
+            ecsm_capacitance (fall) {
+                threshold_pct : "50.0";
+                index_1 : "0.011000, 0.052000, 0.107000, 0.217000, 0.437000" ;
+                values : "0.001453, 0.001453, 0.001453, 0.001453, 0.001453" ;
+            }
+            internal_power () {
+                related_pg_pin : VDD ;
+                rise_power ( "scalar" ) {
+                    values ( "0.009198" ) ;
+                }
+                fall_power ( "scalar" ) {
+                    values ( "0.009135" ) ;
+                }
+            }
+            /* PIN_NOISE_EXTENSION A */
+        }
+        timing () {
+            related_pin : "CLK" ;
+            when : " !CEB";
+            sdf_cond : "check_noidle" ;
+            timing_type : setup_rising ;
+            rise_constraint ( sig2sram_constraint_template ) {
+                values ( \
+              "0.052521, 0.060418, 0.068771, 0.081260, 0.102047",\
+              "0.044882, 0.052778, 0.061132, 0.073620, 0.094407",\
+              "0.038779, 0.046676, 0.055029, 0.067517, 0.088305",\
+              "0.031457, 0.039354, 0.047707, 0.060196, 0.080983",\
+              "0.022430, 0.030327, 0.038680, 0.051168, 0.071956"\
+               ) ;
+            }
+            fall_constraint ( sig2sram_constraint_template ) {
+                values ( \
+              "0.052521, 0.060418, 0.068771, 0.081260, 0.102047",\
+              "0.044882, 0.052778, 0.061132, 0.073620, 0.094407",\
+              "0.038779, 0.046676, 0.055029, 0.067517, 0.088305",\
+              "0.031457, 0.039354, 0.047707, 0.060196, 0.080983",\
+              "0.022430, 0.030327, 0.038680, 0.051168, 0.071956"\
+               ) ;
+            }
+        }
+        timing () {
+            related_pin : "CLK" ;
+            when : " !CEB";
+            sdf_cond : "check_noidle" ;
+            timing_type : hold_rising ;
+            rise_constraint ( sig2sram_constraint_template ) {
+                values ( \
+              "0.099400, 0.094783, 0.091502, 0.087488, 0.084096",\
+              "0.108015, 0.103398, 0.100117, 0.096103, 0.092711",\
+              "0.114607, 0.109990, 0.106709, 0.102695, 0.099303",\
+              "0.122793, 0.118176, 0.114895, 0.110881, 0.107489",\
+              "0.133115, 0.128498, 0.125217, 0.121203, 0.117811"\
+               ) ;
+            }
+            fall_constraint ( sig2sram_constraint_template ) {
+                values ( \
+              "0.099400, 0.094783, 0.091502, 0.087488, 0.084096",\
+              "0.108015, 0.103398, 0.100117, 0.096103, 0.092711",\
+              "0.114607, 0.109990, 0.106709, 0.102695, 0.099303",\
+              "0.122793, 0.118176, 0.114895, 0.110881, 0.107489",\
+              "0.133115, 0.128498, 0.125217, 0.121203, 0.117811"\
+               ) ;
+            }
+        }
+        
+    }
+    bus ( BWEB ) {
+        bus_type : Q_bus_143_to_0 ;
+        direction : input ;
+        max_transition  : 0.437000 ;
+       
+        capacitance : 0.000788 ;
+        pin ( BWEB[143:0] ) {
+            related_power_pin : VDD;
+            related_ground_pin : VSS ;
+            ecsm_capacitance (rise) {
+                threshold_pct : "50.0";
+                index_1 : "0.011000, 0.052000, 0.107000, 0.217000, 0.437000" ;
+                values : "0.000788, 0.000788, 0.000788, 0.000788, 0.000788" ;
+            }
+            ecsm_capacitance (fall) {
+                threshold_pct : "50.0";
+                index_1 : "0.011000, 0.052000, 0.107000, 0.217000, 0.437000" ;
+                values : "0.000782, 0.000782, 0.000782, 0.000782, 0.000782" ;
+            }
+            internal_power () {
+                related_pg_pin : VDD ;
+                rise_power ( "scalar" ) {
+                    values ( "0.003888" ) ;
+                }
+                fall_power ( "scalar" ) {
+                    values ( "0.004896" ) ;
+                }
+            }
+
+            /* PIN_NOISE_EXTENSION BWEB */
+        }
+        timing () {
+            related_pin : "CLK" ;
+            when : " !CEB &!WEB";
+            sdf_cond : "check_write" ;
+            timing_type : setup_rising ;
+            rise_constraint ( sig2sram_constraint_template ) {
+                values ( \
+              "0.010000, 0.010000, 0.010000, 0.010000, 0.022221",\
+              "0.010000, 0.010000, 0.010000, 0.010000, 0.014161",\
+              "0.010000, 0.010000, 0.010000, 0.010000, 0.010000",\
+              "0.010000, 0.010000, 0.010000, 0.010000, 0.010000",\
+              "0.010000, 0.010000, 0.010000, 0.010000, 0.010000"\
+               ) ;
+            }
+            fall_constraint ( sig2sram_constraint_template ) {
+                values ( \
+              "0.010000, 0.010000, 0.010000, 0.010000, 0.022221",\
+              "0.010000, 0.010000, 0.010000, 0.010000, 0.014161",\
+              "0.010000, 0.010000, 0.010000, 0.010000, 0.010000",\
+              "0.010000, 0.010000, 0.010000, 0.010000, 0.010000",\
+              "0.010000, 0.010000, 0.010000, 0.010000, 0.010000"\
+               ) ;
+            }
+        }
+        timing () {
+            related_pin : "CLK" ;
+            when : " !CEB &!WEB";
+            sdf_cond : "check_write" ;
+            timing_type : hold_rising ;
+            rise_constraint ( sig2sram_constraint_template ) { 
+                values ( \
+              "0.188004, 0.192312, 0.200954, 0.221923, 0.268866",\
+              "0.207655, 0.211963, 0.220605, 0.241574, 0.288517",\
+              "0.229438, 0.233746, 0.242388, 0.263357, 0.310300",\
+              "0.267708, 0.272016, 0.280658, 0.301627, 0.348570",\
+              "0.338247, 0.342555, 0.351197, 0.372166, 0.419109"\
+               ) ;
+            }
+            fall_constraint ( sig2sram_constraint_template ) {
+                values ( \
+              "0.188004, 0.192312, 0.200954, 0.221923, 0.268866",\
+              "0.207655, 0.211963, 0.220605, 0.241574, 0.288517",\
+              "0.229438, 0.233746, 0.242388, 0.263357, 0.310300",\
+              "0.267708, 0.272016, 0.280658, 0.301627, 0.348570",\
+              "0.338247, 0.342555, 0.351197, 0.372166, 0.419109"\
+               ) ;
+            }
+        }
+        
+    }
+    bus ( D ) {
+        bus_type : Q_bus_143_to_0 ;
+        direction : input ;
+        max_transition  : 0.437000 ;
+       
+        capacitance : 0.000784 ;
+        memory_write() {
+            address : A ;
+            clocked_on : CLK ;
+        }
+        pin ( D[143:0] ) {
+            related_power_pin : VDD;
+            related_ground_pin : VSS ;
+            ecsm_capacitance (rise) {
+                threshold_pct : "50.0";
+                index_1 : "0.011000, 0.052000, 0.107000, 0.217000, 0.437000" ;
+                values : "0.000784, 0.000784, 0.000784, 0.000784, 0.000784" ;
+            }
+            ecsm_capacitance (fall) {
+                threshold_pct : "50.0";
+                index_1 : "0.011000, 0.052000, 0.107000, 0.217000, 0.437000" ;
+                values : "0.000782, 0.000782, 0.000782, 0.000782, 0.000782" ;
+            }
+            internal_power () {
+                related_pg_pin : VDD ;
+                rise_power ( "scalar" ) {
+                    values ( "0.004275" ) ;
+                }
+                fall_power ( "scalar" ) {
+                    values ( "0.005463" ) ;
+                }
+            }
+
+            /* PIN_NOISE_EXTENSION D */
+        }
+        timing () {
+            related_pin : "CLK" ;
+            when : " !CEB &!WEB";
+            sdf_cond : "check_write" ;
+            timing_type : setup_rising ;
+            rise_constraint ( sig2sram_constraint_template ) {
+                values ( \
+              "0.010000, 0.010000, 0.010000, 0.010000, 0.022221",\
+              "0.010000, 0.010000, 0.010000, 0.010000, 0.014161",\
+              "0.010000, 0.010000, 0.010000, 0.010000, 0.010000",\
+              "0.010000, 0.010000, 0.010000, 0.010000, 0.010000",\
+              "0.010000, 0.010000, 0.010000, 0.010000, 0.010000"\
+               ) ;
+            }
+            fall_constraint ( sig2sram_constraint_template ) {
+                values ( \
+              "0.010000, 0.010000, 0.010000, 0.010000, 0.022221",\
+              "0.010000, 0.010000, 0.010000, 0.010000, 0.014161",\
+              "0.010000, 0.010000, 0.010000, 0.010000, 0.010000",\
+              "0.010000, 0.010000, 0.010000, 0.010000, 0.010000",\
+              "0.010000, 0.010000, 0.010000, 0.010000, 0.010000"\
+               ) ;
+            }
+        }
+        timing () {
+            related_pin : "CLK" ;
+            when : " !CEB &!WEB";
+            sdf_cond : "check_write" ;
+            timing_type : hold_rising ;
+            rise_constraint ( sig2sram_constraint_template ) { 
+                values ( \
+              "0.188004, 0.192312, 0.200954, 0.221923, 0.268866",\
+              "0.207655, 0.211963, 0.220605, 0.241574, 0.288517",\
+              "0.229438, 0.233746, 0.242388, 0.263357, 0.310300",\
+              "0.267708, 0.272016, 0.280658, 0.301627, 0.348570",\
+              "0.338247, 0.342555, 0.351197, 0.372166, 0.419109"\
+               ) ;
+            }
+            fall_constraint ( sig2sram_constraint_template ) {
+                values ( \
+              "0.188004, 0.192312, 0.200954, 0.221923, 0.268866",\
+              "0.207655, 0.211963, 0.220605, 0.241574, 0.288517",\
+              "0.229438, 0.233746, 0.242388, 0.263357, 0.310300",\
+              "0.267708, 0.272016, 0.280658, 0.301627, 0.348570",\
+              "0.338247, 0.342555, 0.351197, 0.372166, 0.419109"\
+               ) ;
+            }
+        }
+        
+   }
+
+   leakage_power () {
+        related_pg_pin : VDD ;
+        value : 3.161790 ;
+    }
+}
+}

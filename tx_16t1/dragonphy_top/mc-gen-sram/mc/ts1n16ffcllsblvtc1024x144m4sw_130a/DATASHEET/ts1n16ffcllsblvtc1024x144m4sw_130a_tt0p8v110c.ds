@@ -1,0 +1,140 @@
+####*********************************************************************************************************************/
+###
+#### Technology     : TSMC 16nm CMOS Logic FinFet Compact (FFC) Low Leakage HKMG  						*/
+#### Memory Type    : TSMC 16nm FFC High Density Single Port Single-Bank SRAM Compiler with d0734 bit cell	 				*/
+#### Library Name   : ts1n16ffcllsblvtc1024x144m4sw (user specify : ts1n16ffcllsblvtc1024x144m4sw)			*/
+#### Library Version: 130a												*/
+#### Generated Time : 2020/05/11, 12:57:39										*/
+####*********************************************************************************************************************/
+####															*/
+#### STATEMENT OF USE													*/
+####															*/
+#### This information contains confidential and proprietary information of TSMC.					*/
+#### No part of this information may be reproduced, transmitted, transcribed,						*/
+#### stored in a retrieval system, or translated into any human or computer						*/
+#### language, in any form or by any means, electronic, mechanical, magnetic,						*/
+#### optical, chemical, manual, or otherwise, without the prior written permission					*/
+#### of TSMC. This information was prepared for informational purpose and is for					*/
+#### use by TSMC's customers only. TSMC reserves the right to make changes in the					*/
+#### information at any time and without notice.									*/
+####															*/
+####*********************************************************************************************************************/
+
+1. Area
+    Pre-shrink (dimensions in GDS database)
+    ----------------------------------------------------------------
+    |      Width(um)     |     Height(um)     |     Area(um^2)     |
+    ----------------------------------------------------------------
+    |        64.1750     |       249.8400     |     16033.4820     |
+    ----------------------------------------------------------------
+
+
+
+    2.1 Timing Protocol (Refer to the waveforms in the databook)
+
+    2.2 SRAM timing
+    2.2.1 Normal Mode and Power Management Mode
+    The following values are based on 1st point of LUT (Look Up Table) in NLDM liberty file
+    
+	I Normal
+	
+	Symbol                  Param. Value (ns)     Parameter
+	------                  -----------------     ---------                     
+	tcyc                               0.7090     Minimum CLK cycle time
+	tckh                               0.1475     Minimum CLK Pulse High
+	tckl                               0.2155     Minimum CLK Pulse Low
+	tcd                                0.5525     CLK to valid Q (data output)
+	thold                              0.4477     CLK to invalid Q (data output)
+	tcs                                0.1015     CEB setup before CLK rising
+	tch                                0.0981     CEB hold after CLK rising
+	tas                                0.0654     A setup before CLK rising
+	tah                                0.1128     A hold after CLK rising 
+	tws                                0.0873     WEB setup before CLK rising
+	twh                                0.1008     WEB hold after CLK rising
+	tds                                0.0100     D setup before CLK rising
+	tdh                                0.1939     D hold after CLK rising
+	tbws                               0.0100     BWEB setup before CLK rising
+	tbwh                               0.1939     BWEB hold after CLK rising
+        ttests                             0.7090     Testpin to CLK rising setup time
+        ttesth                             0.6381     Testpin to CLK rising hold time
+
+
+
+                                    
+
+
+ 3. Pin Capacitance
+
+ 	Pin                     Value (pF)
+ 	------------------      -----------------
+	CLK                                0.0035
+	A[9:0]                             0.0015
+	D[143:0]                           0.0008
+	CEB                                0.0017
+	WEB                                0.0015
+	WTSEL[1:0]                         0.0021
+	RTSEL[1:0]                         0.0025
+	BWEB[143:0]                        0.0008
+
+
+
+4. Power
+    
+    The tables below provide static and dynamic power information for the 
+    different operational modes of the memory.  The total average macro power will
+    be the sum of the static component (namely, leakage) and the dynamic components.
+    Although the data provided in this document mainly pertains to a specific
+    process, voltage, and temperature (PVT) condition based on user selection, the
+    leakage at the worst case PVT has also been provided for reference.
+
+    4.1 Static Power
+
+   	Functional Mode					           Total Value                  Preiphery     	         Cell Array 
+        --------------------------			           --------------------         --------------------         --------------------
+        Leakage Current					                   153.3400(uA)                 105.0392(uA)                  48.3008(uA)
+
+
+	Leakage Current = memory is disabled by CEB pin and CLK is not toggling, all signals are in steady state
+
+
+
+     4.2 Dynamic Power - Average
+
+	Activity	Input	Input	Input	Input	Output	VDD
+	Factor		CLK	A	D	BWEB	Q	Value (uA/MHz)
+	------		------	------	------	------	------	--------
+	Read		 50%	50%	 0%	 0%	50%       7.8307
+	Write		 50%	50%	50%	 0%	 0%      10.7548
+	Write		 50%	50%	50%	50%	 0%       9.0107
+	Read		100%	50%	 0%	 0%	50%      15.1608
+	Write		100%	50%	50%	 0%	 0%      21.1062
+	Write		100%	50%	50%	50%	 0%      17.6180
+	Standby		100%	50%	50%	 0%	 0%       0.4874
+
+	Standby Mode = memory is disabled by CEB pin and CLK is toggling; address and data pins maintain 50% activity
+
+	4.2.1  The standby power assume memory is disabled by CEB pin and CLK is toggling; address and data pins maintain 50% activity
+	4.2.2  No load on outputs (Q)
+
+
+
+     4.3 Dynamic Power - Breakout per pin
+
+	Pins                                                       Value (VDD)
+	                                                           (per pin)
+	-------------------------                                  --------------------
+	CLK - Read                                                      14.6601(uA/MHz)
+	CLK - Write w/ no mask                                          20.7027(uA/MHz)
+	CLK - Write w/ half mask                                        18.9586(uA/MHz)
+	CLK - Write w/ full mask                                        17.2146(uA/MHz)
+	CLK - Deselect                                                   0.0840(uA/MHz)
+	A[9:0]                                                           0.0090(uA/MHz)
+	D[143:0]                                                         0.0050(uA/MHz)
+	CEB                                                              0.0299(uA/MHz)
+	WEB                                                              0.0233(uA/MHz)
+	Q[143:0]                                                         0.0063(uA/MHz)
+	WTSEL[1:0]                                                       0.0233(uA/MHz)
+	RTSEL[1:0]                                                       0.0233(uA/MHz)
+	BWEB[143:0]                                                      0.0044(uA/MHz)
+
+	Deselect = memory is disabled by CEB pin and CLK is toggling, all signals are in steady state.
