@@ -61,7 +61,8 @@ __pycache__
 *.debug
 *.layout
 fpga_prj
-
+*.vcd
+test*
 build_*
 xcelium.d
 xrun.*
