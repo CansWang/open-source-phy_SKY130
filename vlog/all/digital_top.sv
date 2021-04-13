@@ -10,7 +10,7 @@ module digital_top (
 
     input wire logic rst, // Global reset for Tx
     input wire logic rst_prbs,
-    input wire logic [31:0] init_vals [16],
+    // input wire logic [31:0] init_vals [16],
     input wire logic inj_error,
     // input wire logic [Npi-1:0] ctl_pi [Nout-1:0],
     // input wire logic clk_async,
