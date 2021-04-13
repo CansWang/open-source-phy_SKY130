@@ -5,24 +5,24 @@ module test (
     output wire logic dout_n   // din to dout, X2
 ); // Module declaration
 
+parameter pi_freq=1.25e9;
 
 // tx_debug_intf tx_intf ();  // Tx debug interfaces
 //Internal variables
-// logic [15:0] prbsdata;  //Output of the prbs generator
-// logic clk_prbs; // Clock for prbs generator
+logic [15:0] prbsdata;  //Output of the prbs generator
+logic clk_prbs; // Clock for prbs generator
 logic rst;  // Reset signal
 logic rst_prbs;
-logic [3:0] clk_interp_slice,
 
 
 logic clk_full; // Full rate clock for prbs_checker 16GBps -> 16GHz
 logic cke;
 // logic [9-1:0] ctl_pi[3:0];
 reg clk_2;  // Clock clk_a divided by 2
-// wire clk_encoder;
+wire clk_encoder;
 // logic ctl_valid;
 logic clk_oversample;
-// logic clk_prbschecker;
+logic clk_prbschecker;
 logic inj_error;
 logic prbs_den;
 logic [15:0] fixed_pa;
@@ -30,6 +30,27 @@ logic [15:0] data;
 logic [7:0] count_flag[7:0];
 
 logic [3:0] clk_interp_slice;
+
+//////////////////////////////////////////////
+//    Simulation Clock Signal Definition    //
+//////////////////////////////////////////////
+
+  logic CKI;
+  logic CKQ;
+  logic CKQB;
+  logic CKIB;
+
+/////////
+// END //
+/////////
+
+    assign clk_interp_slice[0] = CKQ;  // Quarter-rate clock input
+    assign clk_interp_slice[2] = CKQB;
+    assign clk_interp_slice[1] = CKI;
+    assign clk_interp_slice[3] = CKIB;
+
+///////////////////////////////////////////////
+
 
 assign data = prbs_den ? prbsdata : fixed_pa;
 logic [7:0] record_flag;
@@ -72,23 +93,23 @@ logic err_flag;
     assign init_vals[14] = 32'h07ff5566;
     assign init_vals[15] = 32'h7f8afccf;
 
-    // genvar i;  // Declare the generate variable
-    // generate
-    //     for(i=0; i<16; i=i+1) begin
-    //         prbs_generator_syn #(
-    //             .n_prbs(32)
-    //         ) prbs_b (
-    //             .clk(clk_prbs),
-    //             .rst(rst_prbs),
-    //             .cke(1'b1),
-    //             .init_val(init_vals[i]),
-    //             .eqn(32'h100002),
-    //             .inj_err(inj_error),
-    //             .inv_chicken(2'b00),
-    //             .out(prbsdata[i])
-    //         );
-    //     end
-    // endgenerate
+genvar i;  // Declare the generate variable
+    generate
+        for(i=0; i<16; i=i+1) begin
+            prbs_generator_syn #(
+                .n_prbs(32)
+            ) prbs_b (
+                .clk(clk_prbs),
+                .rst(rst_prbs),
+                .cke(1'b1),
+                .init_val(init_vals[i]),
+                .eqn(32'h100002),
+                .inj_err(inj_error),
+                .inv_chicken(2'b00),
+                .out(prbsdata[i])
+            );
+        end
+    endgenerate
 
 // Instantiate a one bit prbs_checker
 prbs_checker_core #(
@@ -103,10 +124,10 @@ prbs_checker_core #(
     .err(err_flag)
 );
 
-tx_top tx_mux (
-    // .din(data),
-    // .mdll_clk(clk_prbschecker),
-    // .ext_clk(1'b0),
+digital_top tx_mux (
+    .din(data),
+    .mdll_clk(clk_prbschecker),
+    .ext_clk(1'b0),
     // .ctl_pi(ctl_pi),
     // .clk_async(1'b0),
     // .clk_encoder(clk_encoder),
@@ -115,7 +136,7 @@ tx_top tx_mux (
     .rst_prbs(rst_prbs),
     .init_vals(init_vals),
     .inj_error(inj_error),
-    // .clk_prbsgen(clk_prbs),  // Output clock for 16-bit prbs generator
+    .clk_prbsgen(clk_prbs),  // Output clock for 16-bit prbs generator
     .clk_interp_slice(clk_interp_slice),
     .dout_p(dout_p),
     .dout_n(dout_n)
@@ -135,12 +156,58 @@ div_b2 divb2 (.clkin(clk_oversample), .rst(rst), .clkout(clk_prbschecker));
 logic [31:0] err_count;
 logic [31:0] error_bits_1;
 
+
+    initial begin
+        force CKQ = 1'b0;
+        #((0.00/pi_freq)*1s);
+        forever begin
+            force CKQ = 1'b1;
+            #((0.5/pi_freq)*1s);
+            force CKQ = 1'b0;
+            #((0.5/pi_freq)*1s);
+        end
+    end
+
+    initial begin
+        force CKI = 1'b0;
+        #((0.25/pi_freq)*1s);
+        forever begin
+            force CKI = 1'b1;
+            #((0.5/pi_freq)*1s);
+            force CKI = 1'b0;
+            #((0.5/pi_freq)*1s);
+        end
+    end
+
+    initial begin
+        force CKQB = 1'b0;
+        #((0.50/pi_freq)*1s);
+        forever begin
+            force CKQB = 1'b1;
+            #((0.5/pi_freq)*1s);
+            force CKQB = 1'b0;
+            #((0.5/pi_freq)*1s);
+        end
+    end
+
+    initial begin
+        force CKIB = 1'b0;
+        #((0.75/pi_freq)*1s);
+        forever begin
+            force CKIB = 1'b1;
+            #((0.5/pi_freq)*1s);
+            force CKIB = 1'b0;
+            #((0.5/pi_freq)*1s);
+        end
+    end
+
+
 initial begin
 
-    `ifdef DUMP_WAVEFORMS
-	        $shm_open("waves.shm");
-	        $shm_probe("ASMC");
-    `endif
+//    $monitor("At time %t, value = %h (%0d)",
+//            $time, value, value);
+    $dumpfile("test.vcd");
+    $dumpvars(0,test); 
     // Initialize all the nodes
     // Global
     clk_full = 1'b0;
@@ -277,9 +344,9 @@ initial begin
     fixed_pa = 16'b1010101010101010;  // 1,0 repetition, asymmetric
     prbs_den = 1'b0;
     //wait for 2 ns
-    #1.1ns; // record flag on
+    #3.4ns; // record flag on
     record_flag[0] = 1'b1;
-    #3ns; // stop recording
+    #8ns; // stop recording
 
     $display("parecord1: %b", parecord1);
 
@@ -293,9 +360,9 @@ initial begin
     fixed_pa = 16'b1010101001010101; // 1,0 repetition, mirrored in middle
     prbs_den = 1'b0;
     //wait for 2 ns
-    #1.1ns; // record flag on
+    #3.4ns; // record flag on
     record_flag[1] = 1'b1;
-    #3ns; // stop recording
+    #8ns; // stop recording
 
     $display("parecord2: %b", parecord2);
 
@@ -309,9 +376,9 @@ initial begin
     fixed_pa = 16'b1101001111110011;  //
     prbs_den = 1'b0;
     //wait for 2 ns
-    #1.1ns; // record flag on
+    #3.4ns; // record flag on
     record_flag[2] = 1'b1;
-    #3ns; // stop recording
+    #8ns; // stop recording
 
     $display("parecord3: %b", parecord3);
 
@@ -324,9 +391,9 @@ initial begin
     // Test Case 5 fixed pattern
     fixed_pa = 16'b1100100000000011;  //
     //wait for 2 ns
-    #1.1ns; // record flag on
+    #3.4ns; // record flag on
     record_flag[3] = 1'b1;
-    #3ns; // stop recording
+    #8ns; // stop recording
 
     $display("parecord4: %b", parecord4);
 
@@ -339,9 +406,9 @@ initial begin
     // Test Case 6 fixed pattern
     fixed_pa = 16'b101110010101011;
     //wait for 2 ns
-    #1.1ns; // record flag on
+    #3.4ns; // record flag on
     record_flag[4] = 1'b1;
-    #3ns; // stop recording
+    #8ns; // stop recording
 
     $display("parecord5: %b", parecord5);
 
@@ -354,9 +421,9 @@ initial begin
     // Test Case 7 fixed pattern
     fixed_pa = 16'b101010001111011;
     //wait for 2 ns
-    #1.1ns; // record flag on
+    #3.4ns; // record flag on
     record_flag[5] = 1'b1;
-    #3ns; // stop recording
+    #8ns; // stop recording
 
     $display("parecord6: %b", parecord6);
 
@@ -369,9 +436,9 @@ initial begin
     // Test Case 8 fixed pattern
     fixed_pa = 16'b101010010101011;
     //wait for 2 ns
-    #1.1ns; // record flag on
+    #3.4ns; // record flag on
     record_flag[6] = 1'b1;
-    #3ns; // stop recording
+    #8ns; // stop recording
 
     $display("parecord7: %b", parecord7);
 
@@ -384,9 +451,9 @@ initial begin
     // Test Case 9 fixed pattern
     fixed_pa = 16'b101011001111011;
     //wait for 2 ns
-    #1.1ns; // record flag on
+    #3.4ns; // record flag on
     record_flag[7] = 1'b1;
-    #3ns; // stop recording
+    #8ns; // stop recording
 
     $display("parecord8: %b", parecord8);
 
@@ -396,13 +463,13 @@ initial begin
         $error("Pattern lost (case 9)");
     end
 
-    #2ns $finish;
+    #30ns $finish;
 end
 
 // always #0.625 clk_a = ~clk_a; // #5 for 1 GHz
-always #(0.0625ns) clk_full <= ~clk_full; // 8GHz
+always #(0.4ns) clk_full <= ~clk_full; // 8GHz
 always #(0.5ns) clk_2 <= ~clk_2; // clk_encoder to load the
-always #(0.03125ns) clk_oversample <= ~clk_oversample; // Clock for prbs checker core
+always #(0.1ns) clk_oversample <= ~clk_oversample; // Clock for prbs checker core
 //Error number counter
 always @(posedge clk_oversample) begin
     if (rst) begin
@@ -426,35 +493,35 @@ always @(posedge clk_prbs) begin
         count_flag[6] <= 8'b0;
         count_flag[7] <= 8'b0;
     end else if (record_flag[0]) begin
-        #0.5ns;  // Manually align the count down with the first bit of the data output, this delay should be fixed if no circuit connection has changed
+        #1.7ns;  // Manually align the count down with the first bit of the data output, this delay should be fixed if no circuit connection has changed
         count_flag[0] = 8'd16; // determine how many bits to store in the shift reg
         record_flag[0] = 1'b0;
     end else if (record_flag[1]) begin
-        #0.5ns;
+        #1.7ns;
         count_flag[1] = 8'd16;
         record_flag[1] = 1'b0;
     end else if (record_flag[2]) begin
-        #0.5ns;
+        #1.7ns;
         count_flag[2] = 8'd16;
         record_flag[2] = 1'b0;
     end else if (record_flag[3]) begin
-        #0.5ns;
+        #1.7ns;
         count_flag[3] = 8'd16;
         record_flag[3] = 1'b0;
     end else if (record_flag[4]) begin
-        #0.5ns;
+        #1.7ns;
         count_flag[4] = 8'd16;
         record_flag[4] = 1'b0;
     end else if (record_flag[5]) begin
-        #0.5ns;
+        #1.7ns;
         count_flag[5] = 8'd16;
         record_flag[5] = 1'b0;
     end else if (record_flag[6]) begin
-        #0.5ns;
+        #1.7ns;
         count_flag[6] = 8'd16;
         record_flag[6] = 1'b0;
     end else if (record_flag[7]) begin
-        #0.5ns;
+        #1.7ns;
         count_flag[7] = 8'd16;
         record_flag[7] = 1'b0;
     end

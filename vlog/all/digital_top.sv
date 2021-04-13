@@ -3,10 +3,10 @@
 `default_nettype none
 
 module digital_top (
-    // input wire logic [15:0] din,
-    // input wire logic mdll_clk, // Clock from MDLL
-    // input wire logic ext_clk, // Clock from external source
-    // input wire logic clk_prbs,
+     input wire logic [15:0] din,
+     input wire logic mdll_clk, // Clock from MDLL
+     input wire logic ext_clk, // Clock from external source
+     input wire logic clk_prbs,
 
     input wire logic rst, // Global reset for Tx
     input wire logic rst_prbs,
@@ -23,7 +23,7 @@ module digital_top (
     // input wire logic [17:0] ctl_buf_p0,
     // input wire logic [17:0] ctl_buf_p1,
 
-    // output wire logic clk_prbsgen,  // Output clock for 16-bit prbs generator
+    output wire logic clk_prbsgen,  // Output clock for 16-bit prbs generator
     output wire logic dout_p, // Data output
     output wire logic dout_n
     // tx_debug_intf.tx tx
@@ -35,8 +35,8 @@ wire [3:0] qr_data_p;  // Output of 16 to 4 mux, positive
 wire [3:0] qr_data_n;  // Output of 16 to 4 mux, negative
 wire clk_halfrate;  // Input clock for 16 to 4 mux
 wire logic clk_halfrate_n;
-wire logic clk_prbsgen;
-wire logic [15:0] din;
+// wire logic clk_prbsgen;
+
 wire logic mtb_n;  // mux to buffer -
 wire logic mtb_p;  // mux to buffer +
 
@@ -61,23 +61,23 @@ assign din_reorder[15] = din[0];
 assign dout_n = mtb_n;
 assign dout_p = mtb_p;
 
-genvar i;  // Declare the generate variable
-generate
-    for(i=0; i<16; i=i+1) begin
-        prbs_generator_syn #(
-            .n_prbs(32)
-        ) prbs_b (
-            .clk(clk_prbsgen),
-            .rst(rst_prbs),
-            .cke(1'b1),
-            .init_val(init_vals[i]),
-            .eqn(32'h100002),
-            .inj_err(inj_error),
-            .inv_chicken(2'b00),
-            .out(din[i])
-        );
-    end
-endgenerate
+// genvar i;  // Declare the generate variable
+// generate
+//     for(i=0; i<16; i=i+1) begin
+//         prbs_generator_syn #(
+//             .n_prbs(32)
+//         ) prbs_b (
+//             .clk(clk_prbsgen),
+//             .rst(rst_prbs),
+//             .cke(1'b1),
+//             .init_val(init_vals[i]),
+//             .eqn(32'h100002),
+//             .inj_err(inj_error),
+//             .inv_chicken(2'b00),
+//             .out(din[i])
+//         );
+//     end
+// endgenerate
 
 // Data + positive
 hr_16t4_mux_top hr_mux_16t4_0 (
@@ -135,6 +135,10 @@ div_b2 div1 (.clkin(clk_halfrate_n), .rst(rst), .clkout(clk_prbsgen));  // 2GHz 
 //     .DOUTP(dout_p)
 // );
 
+////Test purpose, delete it after test//
+//assign dout_n = mtb_n;                //
+//assign dout_p = mtb_p;                //
+////////////////////////////////////////
 
 endmodule
 
