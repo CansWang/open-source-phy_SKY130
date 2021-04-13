@@ -3,7 +3,6 @@
 `default_nettype none
 
 module digital_top (
-) (
     // input wire logic [15:0] din,
     // input wire logic mdll_clk, // Clock from MDLL
     // input wire logic ext_clk, // Clock from external source
@@ -36,8 +35,10 @@ wire [3:0] qr_data_p;  // Output of 16 to 4 mux, positive
 wire [3:0] qr_data_n;  // Output of 16 to 4 mux, negative
 wire clk_halfrate;  // Input clock for 16 to 4 mux
 wire logic clk_halfrate_n;
-// wire logic mtb_n;  // mux to buffer -
-// wire logic mtb_p;  // mux to buffer +
+wire logic clk_prbsgen;
+wire logic [15:0] din;
+wire logic mtb_n;  // mux to buffer -
+wire logic mtb_p;  // mux to buffer +
 
 wire [15:0] din_reorder;
 assign din_reorder[0] = din[15];
@@ -69,7 +70,7 @@ generate
             .clk(clk_prbsgen),
             .rst(rst_prbs),
             .cke(1'b1),
-            .init_val(init_vals),
+            .init_val(init_vals[i]),
             .eqn(32'h100002),
             .inj_err(inj_error),
             .inv_chicken(2'b00),

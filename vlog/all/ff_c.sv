@@ -1,5 +1,4 @@
-module ff_c #(
-) (
+module ff_c (
     input D,
     input CP,
     output reg Q
@@ -8,5 +7,3 @@ module ff_c #(
         Q <=  D;
     end
 endmodule
-
-

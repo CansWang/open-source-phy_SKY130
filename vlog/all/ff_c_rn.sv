@@ -1,5 +1,4 @@
-module ff_c_rn #(
-) (
+module ff_c_rn (
     input D,
     input CP,
     input CDN,
@@ -13,5 +12,3 @@ module ff_c_rn #(
         end
     end
 endmodule
-
-
