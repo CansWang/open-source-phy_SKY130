@@ -16,7 +16,10 @@ module digital_top (
     // input wire logic clk_async,
     // input wire logic clk_encoder,
     // input wire logic ctl_valid,
-    input wire logic [3:0] clk_interp_slice,
+    input wire logic clk_interp_slice_0,
+    input wire logic clk_interp_slice_1,
+    input wire logic clk_interp_slice_2,
+    input wire logic clk_interp_slice_3,
     // output buffer control
     // input wire logic [17:0] ctl_buf_n0,
     // input wire logic [17:0] ctl_buf_n1,
@@ -90,10 +93,10 @@ hr_16t4_mux_top hr_mux_16t4_0 (
 
 //Instantiate quarter-rate 4 to 1 mux top
 qr_4t1_mux_top qr_mux_4t1_0 (
-    .clk_Q(clk_interp_slice[0]),  // Quarter-rate clock input
-    .clk_QB(clk_interp_slice[2]),
-    .clk_I(clk_interp_slice[1]),
-    .clk_IB(clk_interp_slice[3]),
+    .clk_Q(clk_interp_slice_0),  // Quarter-rate clock input
+    .clk_QB(clk_interp_slice_2),
+    .clk_I(clk_interp_slice_1),
+    .clk_IB(clk_interp_slice_3),
     .din(qr_data_p), // Quarter-rate data from half-rate 16 to 4 mux
     .rst(rst),
     .data(mtb_p) // Final data output + positive Output driver and termination needs to be added
@@ -110,16 +113,16 @@ hr_16t4_mux_top hr_mux_16t4_1 (
 
 //Instantiate quarter-rate 4 to 1 mux top
 qr_4t1_mux_top qr_mux_4t1_1 (
-    .clk_Q(clk_interp_slice[0]),  // Quarter-rate clock input
-    .clk_QB(clk_interp_slice[2]),
-    .clk_I(clk_interp_slice[1]),
-    .clk_IB(clk_interp_slice[3]),
+    .clk_Q(clk_interp_slice_0),  // Quarter-rate clock input
+    .clk_QB(clk_interp_slice_2),
+    .clk_I(clk_interp_slice_1),
+    .clk_IB(clk_interp_slice_3),
     .din(qr_data_n), // Quarter-rate data from half-rate 16 to 4 mux
     .rst(rst),
     .data(mtb_n) // Final data output - negative Output driver and termination needs to be added
 );
 
-div_b2 div0 (.clkin(clk_interp_slice[2]), .rst(rst), .clkout(clk_halfrate));  // 4GHz to 2GHz, output goes to hr_16t4_mux
+div_b2 div0 (.clkin(clk_interp_slice_2), .rst(rst), .clkout(clk_halfrate));  // 4GHz to 2GHz, output goes to hr_16t4_mux
 inv clk_inv(.in(clk_halfrate), .out(clk_halfrate_n));
 div_b2 div1 (.clkin(clk_halfrate_n), .rst(rst), .clkout(clk_prbsgen));  // 2GHz to 1GHz, output goes to prbs_gen
 
