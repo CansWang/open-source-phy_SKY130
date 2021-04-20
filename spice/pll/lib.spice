@@ -1,0 +1,2 @@
+* Include SKY130 libraries
+.lib "/afs/ir.stanford.edu/class/ee272/skywater-pdk/libraries/sky130_fd_pr/latest/models/sky130.lib.spice" tt

@@ -1,0 +1,31 @@
+******
+** ngspice-33 : Circuit level simulation program
+** The U. C. Berkeley CAD Group
+** Copyright 1985-1994, Regents of the University of California.
+** Copyright 2001-2020, The ngspice team.
+** Please get your ngspice manual from http://ngspice.sourceforge.net/docs.html
+** Please file your bug-reports at http://ngspice.sourceforge.net/bugrep.html
+** Creation Date: Mon Jan 11 21:02:39 UTC 2021
+******
+
+Circuit: * include sky130 libraries
+
+Scale set
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Warning: include: has no value, DC 0 assumed
+
+No. of Data Rows : 1
+Using transient initial conditions
+
+No. of Data Rows : 25015
+binary raw file "rawspice.raw"
+[?1034hngspice 5 -> 
+Interrupted once . . .
+Warning: clearing control structures
+ngspice 5 -> 
+Interrupted again (ouch)
+Warning: clearing control structures
+ngspice 5 -> 
+ngspice 5 -> 
+ngspice 5 -> 

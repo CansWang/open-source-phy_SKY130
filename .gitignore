@@ -29,6 +29,8 @@
 *.pvl
 *.mr
 *.ddc
+*.raw
+*.report
 qrcTechFile*
 tcbn16*
 pnr/data
@@ -77,3 +79,4 @@ build/
 
 HardFloat-1/
 install_hardfloat.sh
+bsim4v5.out

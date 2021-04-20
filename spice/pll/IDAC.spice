@@ -1,0 +1,11 @@
+.subckt idac sel0 sel1 sel2 sel3 sel4 VDAC GND VDD
+
+X1 sel0 sel4 GND GND VDD VDD VDAC sky130_fd_sc_hs__nand2_1
+X2 sel1 sel4 GND GND VDD VDD VDAC sky130_fd_sc_hs__nand2_1
+X3 sel2 sel4 GND GND VDD VDD VDAC sky130_fd_sc_hs__nand2_1
+X4 sel3 sel4 GND GND VDD VDD VDAC sky130_fd_sc_hs__nand2_1
+
+* Diode-connected Current Mirror
+X5 VDD VDAC GND GND VDD VDD VDAC sky130_fd_sc_hs__nand2_1
+
+.ends
