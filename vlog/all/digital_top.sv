@@ -38,6 +38,7 @@ wire [3:0] qr_data_p;  // Output of 16 to 4 mux, positive
 wire [3:0] qr_data_n;  // Output of 16 to 4 mux, negative
 wire clk_halfrate;  // Input clock for 16 to 4 mux
 wire logic clk_halfrate_n;
+wire logic clk_prbsgen_dummy;
 // wire logic clk_prbsgen;
 
 wire logic mtb_n;  // mux to buffer -
@@ -85,9 +86,9 @@ assign dout_p = mtb_p;
 // Data + positive
 hr_16t4_mux_top hr_mux_16t4_0 (
     .clk_hr(clk_halfrate), // This is a divided (by 2) clock from quarter-rate 4 to 1 mux
-    .clk_prbs(clk_prbsgen),
     .din(din_reorder),
     .rst(rst),
+    .clk_prbs(clk_prbsgen),
     .dout(qr_data_p)
 );
 
@@ -105,9 +106,9 @@ qr_4t1_mux_top qr_mux_4t1_0 (
 // Data - negative
 hr_16t4_mux_top hr_mux_16t4_1 (
     .clk_hr(clk_halfrate), // This is a divided (by 2) clock from quarter-rate 4 to 1 mux
-    .clk_prbs(clk_prbsgen),
     .din(~din_reorder), // Inverting the data input for differential output
     .rst(rst),
+    .clk_prbs(clk_prbsgen_dummy),
     .dout(qr_data_n)
 );
 
@@ -124,7 +125,7 @@ qr_4t1_mux_top qr_mux_4t1_1 (
 
 div_b2 div0 (.clkin(clk_interp_slice_2), .rst(rst), .clkout(clk_halfrate));  // 4GHz to 2GHz, output goes to hr_16t4_mux
 inv clk_inv(.in(clk_halfrate), .out(clk_halfrate_n));
-div_b2 div1 (.clkin(clk_halfrate_n), .rst(rst), .clkout(clk_prbsgen));  // 2GHz to 1GHz, output goes to prbs_gen
+// div_b2 div1 (.clkin(clk_halfrate_n), .rst(rst), .clkout(clk_prbsgen));  // 2GHz to 1GHz, output goes to prbs_gen
 
 // Instantiate the output buf
 // output_buf_tx buf1 (
