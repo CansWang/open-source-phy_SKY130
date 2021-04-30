@@ -1,0 +1,7 @@
+* Miller effect for cap - Coarse tuning
+
+.subckt cc cin en VGND VGND VDD VDD VGND
+
+X0 cin en VGND VGND VDD VDD VGND sky130_fd_sc_hs__nand2_8
+
+.ends

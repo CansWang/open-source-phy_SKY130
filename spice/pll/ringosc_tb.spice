@@ -4,12 +4,16 @@
 .parameter con1=3.3
 .parameter con2=3.3
 .parameter con3=3.3
-
+.parameter loadc=15e-15
 
 * initialize ro_out to 0 to prevent the oscillator
 * from starting the equilibrium point
 .ic V(out)=0
-.op
+.op KEEPOPINFO
+
+
+
+
 
 * NAND3_4
 * Standard Cell instantiation 
@@ -42,6 +46,35 @@ X2 a_117_74# A Y VNB sky130_fd_pr__nfet_01v8_lvt w=740000u l=150000u
 X3 VGND B a_117_74# VNB sky130_fd_pr__nfet_01v8_lvt w=740000u l=150000u
 .ends
 
+
+* NAND2_8 
+.subckt sky130_fd_sc_hs__nand2_8 A B VGND VNB VPB VPWR Y
+X0 VGND B a_27_74# VNB sky130_fd_pr__nfet_01v8_lvt w=740000u l=150000u
+X1 Y A a_27_74# VNB sky130_fd_pr__nfet_01v8_lvt w=740000u l=150000u
+X2 Y B VPWR VPB sky130_fd_pr__pfet_01v8 w=1.12e+06u l=150000u
+X3 a_27_74# B VGND VNB sky130_fd_pr__nfet_01v8_lvt w=740000u l=150000u
+X4 Y A a_27_74# VNB sky130_fd_pr__nfet_01v8_lvt w=740000u l=150000u
+X5 VGND B a_27_74# VNB sky130_fd_pr__nfet_01v8_lvt w=740000u l=150000u
+X6 a_27_74# B VGND VNB sky130_fd_pr__nfet_01v8_lvt w=740000u l=150000u
+X7 a_27_74# A Y VNB sky130_fd_pr__nfet_01v8_lvt w=740000u l=150000u
+X8 VPWR A Y VPB sky130_fd_pr__pfet_01v8 w=1.12e+06u l=150000u
+X9 Y A a_27_74# VNB sky130_fd_pr__nfet_01v8_lvt w=740000u l=150000u
+X10 a_27_74# B VGND VNB sky130_fd_pr__nfet_01v8_lvt w=740000u l=150000u
+X11 a_27_74# A Y VNB sky130_fd_pr__nfet_01v8_lvt w=740000u l=150000u
+X12 VPWR B Y VPB sky130_fd_pr__pfet_01v8 w=1.12e+06u l=150000u
+X13 VPWR B Y VPB sky130_fd_pr__pfet_01v8 w=1.12e+06u l=150000u
+X14 a_27_74# B VGND VNB sky130_fd_pr__nfet_01v8_lvt w=740000u l=150000u
+X15 VPWR A Y VPB sky130_fd_pr__pfet_01v8 w=1.12e+06u l=150000u
+X16 VGND B a_27_74# VNB sky130_fd_pr__nfet_01v8_lvt w=740000u l=150000u
+X17 VGND B a_27_74# VNB sky130_fd_pr__nfet_01v8_lvt w=740000u l=150000u
+X18 a_27_74# A Y VNB sky130_fd_pr__nfet_01v8_lvt w=740000u l=150000u
+X19 Y B VPWR VPB sky130_fd_pr__pfet_01v8 w=1.12e+06u l=150000u
+X20 a_27_74# A Y VNB sky130_fd_pr__nfet_01v8_lvt w=740000u l=150000u
+X21 Y A VPWR VPB sky130_fd_pr__pfet_01v8 w=1.12e+06u l=150000u
+X22 Y A a_27_74# VNB sky130_fd_pr__nfet_01v8_lvt w=740000u l=150000u
+X23 Y A VPWR VPB sky130_fd_pr__pfet_01v8 w=1.12e+06u l=150000u
+.ends
+
 .subckt idac sel0 sel1 sel2 sel3 sel4 VDAC GND VDD
 X1 sel0 sel4 GND GND VDD VDD VDAC sky130_fd_sc_hs__nand2_1
 X2 sel1 sel4 GND GND VDD VDD VDAC sky130_fd_sc_hs__nand2_1
@@ -52,30 +85,88 @@ X4 sel3 sel4 GND GND VDD VDD VDAC sky130_fd_sc_hs__nand2_1
 X5 VDD VDAC GND GND VDD VDD VDAC sky130_fd_sc_hs__nand2_1
 .ends
 
+.subckt sky130_fd_sc_hs__inv_4 A VGND VNB VPB VPWR Y
+X0 VGND A Y VNB sky130_fd_pr__nfet_01v8_lvt w=740000u l=150000u
+X1 VPWR A Y VPB sky130_fd_pr__pfet_01v8 w=1.12e+06u l=150000u
+X2 VPWR A Y VPB sky130_fd_pr__pfet_01v8 w=1.12e+06u l=150000u
+X3 VGND A Y VNB sky130_fd_pr__nfet_01v8_lvt w=740000u l=150000u
+X4 Y A VGND VNB sky130_fd_pr__nfet_01v8_lvt w=740000u l=150000u
+X5 Y A VPWR VPB sky130_fd_pr__pfet_01v8 w=1.12e+06u l=150000u
+X6 Y A VPWR VPB sky130_fd_pr__pfet_01v8 w=1.12e+06u l=150000u
+X7 Y A VGND VNB sky130_fd_pr__nfet_01v8_lvt w=740000u l=150000u
+.ends
+
+
+
+
+.subckt cc cin en VGND VGND VDD VDD VGND
+X0 cin en VGND VGND VDD VDD VGND sky130_fd_sc_hs__nand2_8 m=4
+.ends
+
+.subckt fc cin en VGND VGND VDD VDD VGND
+* inv input buffer
+X1 cin VGND VGND VDD VDD Y1 sky130_fd_sc_hs__inv_4
+X0 Y1 en VGND VGND VDD VDD VGND sky130_fd_sc_hs__nand2_8
+.ends
+
+
+
+
+
+
 V0 VDD 0 DC 3.3V
 V1 en1 0 DC con1
 V2 en2 0 DC con2
 V3 en3 0 DC con3
 
-X1 out en1 VDAC 0 0 VDD VDD Y1 sky130_fd_sc_hs__nand3_4 m=5
-X2 Y1 en2 VDAC 0 0 VDD VDD Y2 sky130_fd_sc_hs__nand3_4 m=5
-X3 Y2 en3 VDAC 0 0 VDD VDD Y3 sky130_fd_sc_hs__nand3_4 m=5
-X4 Y3 en3 VDAC 0 0 VDD VDD Y4 sky130_fd_sc_hs__nand3_4 m=5
-X5 Y4 en3 VDAC 0 0 VDD VDD Y5 sky130_fd_sc_hs__nand3_4 m=5
-X6 Y5 en3 VDAC 0 0 VDD VDD Y6 sky130_fd_sc_hs__nand3_4 m=5
-X7 Y6 en3 VDAC 0 0 VDD VDD out sky130_fd_sc_hs__nand3_4 m=5
+X1 out en1 VDAC 0 0 VDD VDD Y1 sky130_fd_sc_hs__nand3_4 m=4
+X2 Y1 en2 VDAC 0 0 VDD VDD Y2 sky130_fd_sc_hs__nand3_4 m=4
+X3 Y2 en3 VDAC 0 0 VDD VDD Y3 sky130_fd_sc_hs__nand3_4 m=4
+X4 Y3 en3 VDAC 0 0 VDD VDD Y4 sky130_fd_sc_hs__nand3_4 m=4
+X5 Y4 en3 VDAC 0 0 VDD VDD Y5 sky130_fd_sc_hs__nand3_4 m=4
+X6 Y5 en3 VDAC 0 0 VDD VDD Y6 sky130_fd_sc_hs__nand3_4 m=4
+X7 Y6 en3 VDAC 0 0 VDD VDD out sky130_fd_sc_hs__nand3_4 m=4
 
-X4 0 0 VDD VDD 0 VDAC 0 VDD idac
+X8 VDD VDD VDD VDD 0 VDAC 0 VDD idac
+
+
+
+XC1 Y1 VDD 0 0 VDD VDD z1 cc
+XFC1 Y1 VDD 0 0 VDD VDD 0 fc
+
+XC2 Y2 VDD 0 0 VDD VDD 0 cc
+XFC2 Y2 VDD 0 0 VDD VDD 0 fc
+
+XC3 Y3 VDD 0 0 VDD VDD 0 cc
+XFC3 Y3 VDD 0 0 VDD VDD 0 fc
+
+XC4 Y4 VDD 0 0 VDD VDD 0 cc
+XFC4 Y4 VDD 0 0 VDD VDD 0 fc
+
+XC5 Y5 VDD 0 0 VDD VDD 0 cc
+XFC5 Y5 VDD 0 0 VDD VDD 0 fc
+
+XC6 Y6 VDD 0 0 VDD VDD 0 cc
+XFC6 Y6 VDD 0 0 VDD VDD 0 fc
+
+XC7 out VDD 0 0 VDD VDD 0 cc
+XFC7 out VDD 0 0 VDD VDD 0 fc
+
+
 
 * specify simulation duration, with "uic"
 * indicating "use initial conditions"
-.tran 10e-13 25e-09 0e-00 uic
+.tran 5e-12 25e-09 3e-09 uic
 
 * ngspice control commands
 .control
 save all
 run
 write
+print dc i(V0)
+display
+fft V(out)
+plot V(out)
 .endc
 
 * end of the testbench
