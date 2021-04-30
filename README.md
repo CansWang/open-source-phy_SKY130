@@ -20,8 +20,8 @@ Because of the way we set up our testbench, the `prbs_generator_syn` block needs
 
 Therefore we create two sets of scripts:
 - `digital_top.sv` is the top level module (with `prbs_generator_syn` inside) that actually goes to `Openlane` for synthesis with its testbench `test.sv` (1 prbs test case)
-  - Command for compilation: `iverilog -o test -g2012 -v test.sv digital_top.sv prbs_generator_syn.sv hr_16t4_mux_top.sv qr_4t1_mux_top.sv div_b2.sv inv.sv ff_c_rn.sv ../cpu_models/ff_c.sv hr_4t1_mux_top.sv hr_2t1_mux_top.sv mux.sv tx_inv.sv qr_mux_fixed.sv ../prbs/prbs_checker_core.sv`
+  - For compilation, go to `vlog/all/` and run: `iverilog -o test -g2012 -v test.sv digital_top.sv prbs_generator_syn.sv hr_16t4_mux_top.sv qr_4t1_mux_top.sv div_b2.sv inv.sv ff_c_rn.sv ../cpu_models/ff_c.sv hr_4t1_mux_top.sv hr_2t1_mux_top.sv mux.sv tx_inv.sv ../cpu_models/qr_mux_fixed.sv ../prbs/prbs_checker_core.sv`
   - Command for running the testbench: `vvp test -lxt2`
 - `digital_top_no_prbs.sv` is the top level module that runs with `test_prbs.sv`, which has the fixed pattern test cases as well (1 prbs test case + 8 fixed pattern test cases)
-  - Command for compilation: `iverilog -o test_prbs -g2012 -v test_prbs.sv digital_top_no_prbs.sv prbs_generator_syn.sv hr_16t4_mux_top.sv qr_4t1_mux_top.sv div_b2.sv inv.sv ff_c_rn.sv ../cpu_models/ff_c.sv hr_4t1_mux_top.sv hr_2t1_mux_top.sv mux.sv tx_inv.sv qr_mux_fixed.sv ../prbs/prbs_checker_core.sv`
+  - For compilation, go to `vlog/all/` and run: `iverilog -o test_prbs -g2012 -v test_prbs.sv digital_top_no_prbs.sv prbs_generator_syn.sv hr_16t4_mux_top.sv qr_4t1_mux_top.sv div_b2.sv inv.sv ff_c_rn.sv ../cpu_models/ff_c.sv hr_4t1_mux_top.sv hr_2t1_mux_top.sv mux.sv tx_inv.sv ../cpu_models/qr_mux_fixed.sv ../prbs/prbs_checker_core.sv`
   - Command for running the testbench: `vvp test_prbs -lxt2`
