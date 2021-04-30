@@ -1,8 +1,0 @@
-
-.subckt ringosc_sub node1 node2 out VDAC en1 en2 en3 GND VDD
-
-X1 out en1 VDAC GND GND VDD VDD Y1 sky130_fd_sc_hs__nand3_4
-X2 Y1 en2 VDAC GND GND VDD VDD Y2 sky130_fd_sc_hs__nand3_4
-X3 Y2 en3 VDAC GND GND VDD VDD out sky130_fd_sc_hs__nand3_4
-
-.ends
