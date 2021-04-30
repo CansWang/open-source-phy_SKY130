@@ -159,7 +159,7 @@ X1 VGND A Y VNB sky130_fd_pr__nfet_01v8_lvt w=740000u l=150000u
 X0 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
 .ends
 
-* Fine tuning 5 bits
+* Fine tuning 7 bits
 
 .subckt fc1 cin en VGND VDD
 X0 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_1 m=1
