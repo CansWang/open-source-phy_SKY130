@@ -1,0 +1,38 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1619583136
+<< error_s >>
+rect 14190 3007 14980 3012
+rect 14510 2687 15300 2692
+<< metal3 >>
+rect 4924 -364 9924 46
+rect 6320 -548 8686 -364
+<< metal5 >>
+rect -3578 38238 6822 38254
+rect -3654 36758 6822 38238
+rect -3654 12186 -1944 36758
+rect 7068 27240 8416 28352
+rect 14428 14472 18686 16458
+rect 13894 14462 18686 14472
+rect 13894 12864 14970 14462
+rect -1406 12186 -4 12516
+rect -3840 11278 -4 12186
+rect -1406 5188 -4 11278
+rect 2476 558 3894 4588
+rect 16848 2692 18686 14462
+rect 14510 432 18686 2692
+use test  test_0
+timestamp 1619582997
+transform 1 0 -20 0 1 0
+box 0 0 15000 40000
+<< labels >>
+flabel metal5 2476 558 3894 4588 1 FreeSans 6400 0 0 0 VDD
+port 3 n
+flabel metal5 -1406 5188 -4 12516 1 FreeSans 6400 0 0 0 GND
+port 4 n
+flabel metal5 7068 27240 8416 28352 1 FreeSans 6400 0 0 0 out
+port 2 n
+flabel metal3 6320 -548 8686 -334 1 FreeSans 6400 0 0 0 in
+port 1 n
+<< end >>

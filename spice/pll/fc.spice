@@ -1,0 +1,7 @@
+* Miller effect for cap - Coarse tuning
+
+.subckt fc cin en VGND VGND VDD VDD VGND
+* inv input buffer
+X1 cin VGND VGND VDD VDD Y1 sky130_fd_sc_hs__inv_4
+X0 Y1 en VGND VGND VDD VDD VGND sky130_fd_sc_hs__nand2_8
+.ends

@@ -1,0 +1,45 @@
+timestamp 1619341889
+version 8.3
+tech sky130A
+style ngspice()
+scale 1000 1 500000
+resistclasses 2200000 3050000 1700000 3050000 120000 197000 114000 191000 120000 197000 114000 191000 48200 319800 2000000 48200 48200 12200 125 125 47 47 29 5
+parameters sky130_fd_pr__nfet_01v8 l=l w=w
+parameters sky130_fd_pr__pfet_01v8_hvt l=l w=w
+port "out" 1 1150 224 1252 256 li
+port "VDD" 2 662 588 896 680 m1
+port "GND" 3 662 40 722 84 m1
+node "inv1_0[2]/inv_1" 0 0 820 2 comment 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "inv1_0[1]/inv_1" 0 0 405 2 comment 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "inv1_0[0]/inv_1" 0 0 -10 2 comment 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "inv1_0[2]/A" 2034 922.583 555 49 ndif 0 0 0 0 0 0 0 0 6760 364 10400 504 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 18756 1176 0 0 42852 1726 0 0 0 0 0 0 0 0 0 0 0 0
+equiv "inv1_0[2]/A" "inv1_0[1]/Y"
+node "inv1_0[1]/A" 2034 922.583 140 49 ndif 0 0 0 0 0 0 0 0 6760 364 10400 504 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 18756 1176 0 0 42852 1726 0 0 0 0 0 0 0 0 0 0 0 0
+equiv "inv1_0[1]/A" "inv1_0[0]/Y"
+node "inv1_0[2]/Y" 2318 3109.35 54 201 p 0 0 0 0 0 0 0 0 6760 364 10400 504 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 18756 1176 0 0 287267 6834 0 0 0 0 0 0 0 0 0 0 0 0
+equiv "inv1_0[2]/Y" "inv1_0[0]/A"
+equiv "inv1_0[2]/Y" "out"
+node "inv1_0[2]/VPWR" 11595 2622.37 -111 263 nw 0 0 0 0 399645 3132 0 0 33462 1326 31200 1512 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 99252 4020 139644 2854 0 0 0 0 0 0 0 0 0 0
+equiv "inv1_0[2]/VPWR" "inv1_0[1]/VPWR"
+equiv "inv1_0[2]/VPWR" "inv1_0[0]/VPWR"
+equiv "inv1_0[2]/VPWR" "VDD"
+substrate "inv1_0[2]/VGND" 0 0 19 -15 pw 0 0 3468 408 0 0 0 0 20280 1092 31590 1278 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 96480 3612 121560 2750 0 0 0 0 0 0 0 0 0 0
+equiv "inv1_0[2]/VGND" "inv1_0[1]/VGND"
+equiv "inv1_0[2]/VGND" "inv1_0[0]/VGND"
+equiv "inv1_0[2]/VGND" "GND"
+cap "inv1_0[2]/Y" "inv1_0[2]/VPWR" 399.775
+cap "inv1_0[2]/A" "inv1_0[2]/VPWR" 422.028
+cap "inv1_0[1]/A" "inv1_0[2]/Y" 229.593
+cap "inv1_0[2]/A" "inv1_0[1]/A" 188.921
+cap "inv1_0[2]/A" "inv1_0[2]/Y" 233.432
+cap "inv1_0[1]/A" "inv1_0[2]/VPWR" 422.028
+device msubckt sky130_fd_pr__nfet_01v8 940 49 941 50 l=30 w=130 "inv1_0[2]/VGND" "inv1_0[2]/A" 60 0 "inv1_0[2]/VGND" 130 0 "inv1_0[2]/Y" 130 0
+device msubckt sky130_fd_pr__nfet_01v8 525 49 526 50 l=30 w=130 "inv1_0[2]/VGND" "inv1_0[1]/A" 60 0 "inv1_0[2]/VGND" 130 0 "inv1_0[2]/A" 130 0
+device msubckt sky130_fd_pr__nfet_01v8 110 49 111 50 l=30 w=130 "inv1_0[2]/VGND" "inv1_0[2]/Y" 60 0 "inv1_0[2]/VGND" 130 0 "inv1_0[1]/A" 130 0
+device msubckt sky130_fd_pr__pfet_01v8_hvt 940 299 941 300 l=30 w=200 "inv1_0[2]/VPWR" "inv1_0[2]/A" 60 0 "inv1_0[2]/VPWR" 200 0 "inv1_0[2]/Y" 200 0
+device msubckt sky130_fd_pr__pfet_01v8_hvt 525 299 526 300 l=30 w=200 "inv1_0[2]/VPWR" "inv1_0[1]/A" 60 0 "inv1_0[2]/VPWR" 200 0 "inv1_0[2]/A" 200 0
+device msubckt sky130_fd_pr__pfet_01v8_hvt 110 299 111 300 l=30 w=200 "inv1_0[2]/VPWR" "inv1_0[2]/Y" 60 0 "inv1_0[2]/VPWR" 200 0 "inv1_0[1]/A" 200 0
+subcap "inv1_0[2]/A" -439.862
+subcap "inv1_0[1]/A" -439.862
+subcap "inv1_0[2]/Y" -2892.86
+subcap "inv1_0[2]/VGND" -178.742
