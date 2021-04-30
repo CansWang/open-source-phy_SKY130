@@ -75,41 +75,41 @@ logic [15:0] parecord16;
 
 logic err_flag;
 
-    logic [31:0] init_vals [16];
-    assign init_vals[0]  = 32'h0ffd4066;
-    assign init_vals[1]  = 32'h38042b00;
-    assign init_vals[2]  = 32'h001fffff;
-    assign init_vals[3]  = 32'h39fbfe59;
-    assign init_vals[4]  = 32'h1ffd40cc;
-    assign init_vals[5]  = 32'h3e055e6a;
-    assign init_vals[6]  = 32'h03ff554c;
-    assign init_vals[7]  = 32'h3e0aa195;
-    assign init_vals[8]  = 32'h1f02aa60;
-    assign init_vals[9]  = 32'h31f401f3;
-    assign init_vals[10] = 32'h00000555;
-    assign init_vals[11] = 32'h300bab55;
-    assign init_vals[12] = 32'h1f05559f;
-    assign init_vals[13] = 32'h3f8afe65;
-    assign init_vals[14] = 32'h07ff5566;
-    assign init_vals[15] = 32'h7f8afccf;
+    // logic [31:0] init_vals [16];
+    // assign init_vals[0]  = 32'h0ffd4066;
+    // assign init_vals[1]  = 32'h38042b00;
+    // assign init_vals[2]  = 32'h001fffff;
+    // assign init_vals[3]  = 32'h39fbfe59;
+    // assign init_vals[4]  = 32'h1ffd40cc;
+    // assign init_vals[5]  = 32'h3e055e6a;
+    // assign init_vals[6]  = 32'h03ff554c;
+    // assign init_vals[7]  = 32'h3e0aa195;
+    // assign init_vals[8]  = 32'h1f02aa60;
+    // assign init_vals[9]  = 32'h31f401f3;
+    // assign init_vals[10] = 32'h00000555;
+    // assign init_vals[11] = 32'h300bab55;
+    // assign init_vals[12] = 32'h1f05559f;
+    // assign init_vals[13] = 32'h3f8afe65;
+    // assign init_vals[14] = 32'h07ff5566;
+    // assign init_vals[15] = 32'h7f8afccf;
 
-genvar i;  // Declare the generate variable
-    generate
-        for(i=0; i<16; i=i+1) begin
-            prbs_generator_syn #(
-                .n_prbs(32)
-            ) prbs_b (
-                .clk(clk_prbs),
-                .rst(rst_prbs),
-                .cke(1'b1),
-                .init_val(init_vals[i]),
-                .eqn(32'h100002),
-                .inj_err(inj_error),
-                .inv_chicken(2'b00),
-                .out(prbsdata[i])
-            );
-        end
-    endgenerate
+// genvar i;  // Declare the generate variable
+//     generate
+//         for(i=0; i<16; i=i+1) begin
+//             prbs_generator_syn #(
+//                 .n_prbs(32)
+//             ) prbs_b (
+//                 .clk(clk_prbs),
+//                 .rst(rst_prbs),
+//                 .cke(1'b1),
+//                 .init_val(init_vals[i]),
+//                 .eqn(32'h100002),
+//                 .inj_err(inj_error),
+//                 .inv_chicken(2'b00),
+//                 .out(prbsdata[i])
+//             );
+//         end
+//     endgenerate
 
 // Instantiate a one bit prbs_checker
 prbs_checker_core #(
@@ -125,19 +125,22 @@ prbs_checker_core #(
 );
 
 digital_top tx_mux (
-    .din(data),
-    .mdll_clk(clk_prbschecker),
-    .ext_clk(1'b0),
+    // .din(data),
+    // .mdll_clk(clk_prbschecker),
+    // .ext_clk(1'b0),
     // .ctl_pi(ctl_pi),
     // .clk_async(1'b0),
     // .clk_encoder(clk_encoder),
     // .ctl_valid(ctl_valid),
     .rst(rst),
     .rst_prbs(rst_prbs),
-    .init_vals(init_vals),
+    // .init_vals(init_vals),
     .inj_error(inj_error),
-    .clk_prbsgen(clk_prbs),  // Output clock for 16-bit prbs generator
-    .clk_interp_slice(clk_interp_slice),
+    // .clk_prbsgen(clk_prbs),  // Output clock for 16-bit prbs generator
+    .clk_interp_slice_0(clk_interp_slice[0]),
+    .clk_interp_slice_1(clk_interp_slice[1]),
+    .clk_interp_slice_2(clk_interp_slice[2]),
+    .clk_interp_slice_3(clk_interp_slice[3]),
     .dout_p(dout_p),
     .dout_n(dout_n)
     // .tx(tx_intf)
@@ -207,7 +210,7 @@ initial begin
 //    $monitor("At time %t, value = %h (%0d)",
 //            $time, value, value);
     $dumpfile("test.vcd");
-    $dumpvars(0,test); 
+    $dumpvars(0,test);
     // Initialize all the nodes
     // Global
     clk_full = 1'b0;
@@ -340,128 +343,128 @@ initial begin
         $error("Error count incorrect (case 1)");
     end
 
-        // Test Case 2 fixed pattern
-    fixed_pa = 16'b1010101010101010;  // 1,0 repetition, asymmetric
-    prbs_den = 1'b0;
-    //wait for 2 ns
-    #3.4ns; // record flag on
-    record_flag[0] = 1'b1;
-    #8ns; // stop recording
-
-    $display("parecord1: %b", parecord1);
-
-    if (parecord1 == 16'b1010101010101010) begin
-        $display("Pattern deteced, Success! (case 2)");
-    end else begin
-        $error("Pattern lost (case 2)");
-    end
-
-    // Test Case 3 fixed pattern
-    fixed_pa = 16'b1010101001010101; // 1,0 repetition, mirrored in middle
-    prbs_den = 1'b0;
-    //wait for 2 ns
-    #3.4ns; // record flag on
-    record_flag[1] = 1'b1;
-    #8ns; // stop recording
-
-    $display("parecord2: %b", parecord2);
-
-    if (parecord2 == 16'b1010101001010101) begin
-        $display("Pattern deteced, Success! (case 3)");
-    end else begin
-        $error("Pattern lost (case 3)");
-    end
-
-    // Test Case 4 fixed pattern
-    fixed_pa = 16'b1101001111110011;  //
-    prbs_den = 1'b0;
-    //wait for 2 ns
-    #3.4ns; // record flag on
-    record_flag[2] = 1'b1;
-    #8ns; // stop recording
-
-    $display("parecord3: %b", parecord3);
-
-    if (parecord3 == 16'b1101001111110011) begin
-        $display("Pattern deteced, Success! (case 4)");
-    end else begin
-        $error("Pattern lost (case 4)");
-    end
-
-    // Test Case 5 fixed pattern
-    fixed_pa = 16'b1100100000000011;  //
-    //wait for 2 ns
-    #3.4ns; // record flag on
-    record_flag[3] = 1'b1;
-    #8ns; // stop recording
-
-    $display("parecord4: %b", parecord4);
-
-    if (parecord4 == 16'b1100100000000011) begin
-        $display("Pattern deteced, Success! (case 5)");
-    end else begin
-        $error("Pattern lost (case 5)");
-    end
-
-    // Test Case 6 fixed pattern
-    fixed_pa = 16'b101110010101011;
-    //wait for 2 ns
-    #3.4ns; // record flag on
-    record_flag[4] = 1'b1;
-    #8ns; // stop recording
-
-    $display("parecord5: %b", parecord5);
-
-    if (parecord5 == 16'b101110010101011) begin
-        $display("Pattern deteced, Success! (case 6)");
-    end else begin
-        $error("Pattern lost (case 6)");
-    end
-
-    // Test Case 7 fixed pattern
-    fixed_pa = 16'b101010001111011;
-    //wait for 2 ns
-    #3.4ns; // record flag on
-    record_flag[5] = 1'b1;
-    #8ns; // stop recording
-
-    $display("parecord6: %b", parecord6);
-
-    if (parecord6 == 16'b101010001111011) begin
-        $display("Pattern deteced, Success! (case 7)");
-    end else begin
-        $error("Pattern lost (case 7)");
-    end
-
-    // Test Case 8 fixed pattern
-    fixed_pa = 16'b101010010101011;
-    //wait for 2 ns
-    #3.4ns; // record flag on
-    record_flag[6] = 1'b1;
-    #8ns; // stop recording
-
-    $display("parecord7: %b", parecord7);
-
-    if (parecord7 == 16'b101010010101011) begin
-        $display("Pattern deteced, Success! (case 8)");
-    end else begin
-        $error("Pattern lost (case 8)");
-    end
-
-    // Test Case 9 fixed pattern
-    fixed_pa = 16'b101011001111011;
-    //wait for 2 ns
-    #3.4ns; // record flag on
-    record_flag[7] = 1'b1;
-    #8ns; // stop recording
-
-    $display("parecord8: %b", parecord8);
-
-    if (parecord8 == 16'b101011001111011) begin
-        $display("Pattern deteced, Success! (case 9)");
-    end else begin
-        $error("Pattern lost (case 9)");
-    end
+    //     // Test Case 2 fixed pattern
+    // fixed_pa = 16'b1010101010101010;  // 1,0 repetition, asymmetric
+    // prbs_den = 1'b0;
+    // //wait for 2 ns
+    // #3.4ns; // record flag on
+    // record_flag[0] = 1'b1;
+    // #8ns; // stop recording
+    //
+    // $display("parecord1: %b", parecord1);
+    //
+    // if (parecord1 == 16'b1010101010101010) begin
+    //     $display("Pattern deteced, Success! (case 2)");
+    // end else begin
+    //     $error("Pattern lost (case 2)");
+    // end
+    //
+    // // Test Case 3 fixed pattern
+    // fixed_pa = 16'b1010101001010101; // 1,0 repetition, mirrored in middle
+    // prbs_den = 1'b0;
+    // //wait for 2 ns
+    // #3.4ns; // record flag on
+    // record_flag[1] = 1'b1;
+    // #8ns; // stop recording
+    //
+    // $display("parecord2: %b", parecord2);
+    //
+    // if (parecord2 == 16'b1010101001010101) begin
+    //     $display("Pattern deteced, Success! (case 3)");
+    // end else begin
+    //     $error("Pattern lost (case 3)");
+    // end
+    //
+    // // Test Case 4 fixed pattern
+    // fixed_pa = 16'b1101001111110011;  //
+    // prbs_den = 1'b0;
+    // //wait for 2 ns
+    // #3.4ns; // record flag on
+    // record_flag[2] = 1'b1;
+    // #8ns; // stop recording
+    //
+    // $display("parecord3: %b", parecord3);
+    //
+    // if (parecord3 == 16'b1101001111110011) begin
+    //     $display("Pattern deteced, Success! (case 4)");
+    // end else begin
+    //     $error("Pattern lost (case 4)");
+    // end
+    //
+    // // Test Case 5 fixed pattern
+    // fixed_pa = 16'b1100100000000011;  //
+    // //wait for 2 ns
+    // #3.4ns; // record flag on
+    // record_flag[3] = 1'b1;
+    // #8ns; // stop recording
+    //
+    // $display("parecord4: %b", parecord4);
+    //
+    // if (parecord4 == 16'b1100100000000011) begin
+    //     $display("Pattern deteced, Success! (case 5)");
+    // end else begin
+    //     $error("Pattern lost (case 5)");
+    // end
+    //
+    // // Test Case 6 fixed pattern
+    // fixed_pa = 16'b101110010101011;
+    // //wait for 2 ns
+    // #3.4ns; // record flag on
+    // record_flag[4] = 1'b1;
+    // #8ns; // stop recording
+    //
+    // $display("parecord5: %b", parecord5);
+    //
+    // if (parecord5 == 16'b101110010101011) begin
+    //     $display("Pattern deteced, Success! (case 6)");
+    // end else begin
+    //     $error("Pattern lost (case 6)");
+    // end
+    //
+    // // Test Case 7 fixed pattern
+    // fixed_pa = 16'b101010001111011;
+    // //wait for 2 ns
+    // #3.4ns; // record flag on
+    // record_flag[5] = 1'b1;
+    // #8ns; // stop recording
+    //
+    // $display("parecord6: %b", parecord6);
+    //
+    // if (parecord6 == 16'b101010001111011) begin
+    //     $display("Pattern deteced, Success! (case 7)");
+    // end else begin
+    //     $error("Pattern lost (case 7)");
+    // end
+    //
+    // // Test Case 8 fixed pattern
+    // fixed_pa = 16'b101010010101011;
+    // //wait for 2 ns
+    // #3.4ns; // record flag on
+    // record_flag[6] = 1'b1;
+    // #8ns; // stop recording
+    //
+    // $display("parecord7: %b", parecord7);
+    //
+    // if (parecord7 == 16'b101010010101011) begin
+    //     $display("Pattern deteced, Success! (case 8)");
+    // end else begin
+    //     $error("Pattern lost (case 8)");
+    // end
+    //
+    // // Test Case 9 fixed pattern
+    // fixed_pa = 16'b101011001111011;
+    // //wait for 2 ns
+    // #3.4ns; // record flag on
+    // record_flag[7] = 1'b1;
+    // #8ns; // stop recording
+    //
+    // $display("parecord8: %b", parecord8);
+    //
+    // if (parecord8 == 16'b101011001111011) begin
+    //     $display("Pattern deteced, Success! (case 9)");
+    // end else begin
+    //     $error("Pattern lost (case 9)");
+    // end
 
     #30ns $finish;
 end
