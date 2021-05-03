@@ -1,0 +1,14 @@
+.subckt inv1 A Y VPWR VGND
+
+X0 Y A VGND VGND sky130_fd_pr__nfet_01v8 w=650000u l=150000u
+X1 Y A VPWR VPWR sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
+
+.ends
+
+.subckt osc out VDD GND
+
+X0 out n1 VDD GND inv1
+X1 n1 n2 VDD GND inv1
+X2 n2 out VDD GND inv1
+
+.ends

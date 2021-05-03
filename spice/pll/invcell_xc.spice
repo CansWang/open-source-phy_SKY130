@@ -1,0 +1,13 @@
+.subckt invcell_xc inp inn outp outn en vdac GND VDD 
+
+* Positive input
+Xp inp en vdac GND GND VDD VDD outn sky130_fd_sc_hs__nand3_4
+* Negative input
+Xn inn en vdac GND GND VDD VDD outp sky130_fd_sc_hs__nand3_4
+
+
+* XC cell at the output xccell/main_inv=2
+X0 outp GND GND VDD VDD outn sky130_fd_sc_hs__inv_2
+X1 outn GND GND VDD VDD outp sky130_fd_sc_hs__inv_2
+
+.ends

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 timestamp 1619862920
+=======
+timestamp 0
+>>>>>>> 4fc8ec152ed10a0bfcaa5005507078aaca6a9b6b
 version 8.3
 tech sky130A
 style ngspice()

@@ -1,0 +1,298 @@
+timestamp 1619582997
+version 8.3
+tech sky130A
+style ngspice()
+scale 1000 1 500000
+resistclasses 2200000 3050000 1700000 3050000 120000 197000 114000 191000 120000 197000 114000 191000 48200 319800 2000000 48200 48200 12200 125 125 47 47 29 5
+use sky130_fd_io__simple_pad_and_busses sky130_fd_io__simple_pad_and_busses_0 1 0 -8 0 1 -1
+node "VCCHIB" 0 409.5 14746 427 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 266700 2608 0 0
+node "VCCHIB" 0 409.5 0 427 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 266700 2608 0 0
+node "VCCD" 0 347.1 14746 1797 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 226060 2288 0 0
+node "VCCD" 0 347.1 0 1797 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 226060 2288 0 0
+node "VDDA" 0 253.5 14807 3007 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 125450 1686 0 0
+node "VDDA" 0 253.5 0 3007 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 125450 1686 0 0
+node "VDDIO" 0 347.1 14746 3977 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 226060 2288 0 0
+node "VDDIO" 0 347.1 0 3977 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 226060 2288 0 0
+node "VSSIO" 0 347.1 14746 5187 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 226060 2288 0 0
+node "VSSIO" 0 347.1 0 5187 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 226060 2288 0 0
+node "VSWITCH" 0 253.5 14746 6397 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 165100 1808 0 0
+node "VSWITCH" 0 253.5 0 6397 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 165100 1808 0 0
+node "VSSA" 0 253.11 14746 7368 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 164846 1806 0 0
+node "VSSA" 0 253.11 0 7368 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 164846 1806 0 0
+node "VSSD" 0 347.1 14746 8337 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 226060 2288 0 0
+node "VSSD" 0 347.1 0 8337 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 226060 2288 0 0
+node "VSSA" 0 810.204 14746 9547 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 457200 4108 0 0
+node "VSSA" 0 810.204 0 9547 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 457200 4108 0 0
+node "VSSIO_Q" 0 331.5 14746 11667 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 215900 2208 0 0
+node "VSSIO_Q" 0 331.5 0 11667 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 215900 2208 0 0
+node "VDDIO_Q" 0 331.5 14746 12837 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 215900 2208 0 0
+node "VDDIO_Q" 0 331.5 0 12837 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 215900 2208 0 0
+node "VDDIO" 1 1995.63 14746 14007 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1267460 10488 0 0
+node "VDDIO" 1 1995.63 0 14007 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1267460 10488 0 0
+node "P_PAD" 0 671.479 7329 27865 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 350330 3174 0 0
+node "VSSIO" 1 1987.83 14746 35157 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1230122 10194 0 0
+node "VSSIO" 1 1987.83 0 35157 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1230122 10194 0 0
+node "VCCHIB" 0 552.652 14746 407 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 276860 2688 0 0 0 0
+node "VCCHIB" 0 552.652 0 407 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 276860 2688 0 0 0 0
+node "VCCD" 0 485.324 14746 1777 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 236220 2368 0 0 0 0
+node "VCCD" 0 485.324 0 1777 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 236220 2368 0 0 0 0
+node "VDDA" 0 353.344 14807 2987 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 133170 1766 0 0 0 0
+node "VDDA" 0 353.344 0 2987 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 133170 1766 0 0 0 0
+node "VDDIO" 0 485.324 14746 3957 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 236220 2368 0 0 0 0
+node "VDDIO" 0 485.324 0 3957 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 236220 2368 0 0 0 0
+node "VSSIO" 0 485.324 14746 5167 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 236220 2368 0 0 0 0
+node "VSSIO" 0 485.324 0 5167 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 236220 2368 0 0 0 0
+node "VSWITCH" 0 384.332 14746 6377 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 175260 1888 0 0 0 0
+node "VSWITCH" 0 384.332 0 6377 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 175260 1888 0 0 0 0
+node "VSSA" 0 384.332 14746 7347 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 175260 1888 0 0 0 0
+node "VSSA" 0 384.332 0 7347 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 175260 1888 0 0 0 0
+node "VSSD" 0 485.324 14746 8317 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 236220 2368 0 0 0 0
+node "VSSD" 0 485.324 0 8317 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 236220 2368 0 0 0 0
+node "VSSA" 0 121.753 14746 9547 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 16764 640 0 0 0 0
+node "VSSA" 0 121.753 0 9547 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 16764 640 0 0 0 0
+node "AMUXBUS_B" 0 344.777 14746 9673 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 151384 1700 0 0 0 0
+node "AMUXBUS_B" 0 344.777 0 9673 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 151384 1700 0 0 0 0
+node "VSSA" 0 193.289 14746 10329 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 59944 980 0 0 0 0
+node "VSSA" 0 193.289 0 10329 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 59944 980 0 0 0 0
+node "AMUXBUS_A" 0 344.777 14746 10625 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 151384 1700 0 0 0 0
+node "AMUXBUS_A" 0 344.777 0 10625 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 151384 1700 0 0 0 0
+node "VSSA" 0 121.753 14746 11281 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 16764 640 0 0 0 0
+node "VSSA" 0 121.753 0 11281 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 16764 640 0 0 0 0
+node "VSSIO_Q" 0 468.492 14746 11647 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 226060 2288 0 0 0 0
+node "VSSIO_Q" 0 468.492 0 11647 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 226060 2288 0 0 0 0
+node "VDDIO_Q" 0 468.492 14746 12817 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 226060 2288 0 0 0 0
+node "VDDIO_Q" 0 468.492 0 12817 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 226060 2288 0 0 0 0
+node "VDDIO" 1 2195.03 14746 14007 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1268222 10494 0 0 0 0
+node "VDDIO" 1 2195.03 0 14007 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1268222 10494 0 0 0 0
+node "VSSIO" 1 2131.91 14746 35157 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1230122 10194 0 0 0 0
+equiv "VSSIO" "VSSIO"
+node "VSSIO" 1 2131.91 0 35157 m4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1230122 10194 0 0 0 0
+equiv "VSSIO" "VSSIO"
+node "P_CORE" 1 2680.8 5078 0 m3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1868980 10342 0 0 0 0 0 0
+substrate "VSUBS" 0 0 -1073741817 -1073741817 space 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cap "VSSA" "VSSA" 491.058
+cap "AMUXBUS_B" "VSSA" 283.633
+cap "AMUXBUS_A" "AMUXBUS_B" 47.8034
+cap "VSSIO_Q" "VSSA" 56.7267
+cap "VSSA" "AMUXBUS_B" 283.633
+cap "VDDIO_Q" "VDDIO_Q" 577.85
+cap "VDDIO_Q" "VSSIO_Q" 60.7786
+cap "VSSA" "VSSD" 100.806
+cap "VSSA" "VSWITCH" 100.492
+cap "VDDA" "VDDA" 373.455
+cap "VDDA" "VDDIO" 46.1821
+cap "VSSIO_Q" "VSSA" 56.7267
+cap "VCCHIB" "VCCD" 60.7786
+cap "AMUXBUS_B" "VSSA" 283.633
+cap "VSSA" "AMUXBUS_B" 283.633
+cap "VCCD" "VCCD" 595.122
+cap "VSSD" "VSSD" 595.122
+cap "VSWITCH" "VSSIO" 100.806
+cap "VCCD" "VDDA" 76.5969
+cap "VSSA" "AMUXBUS_B" 376.733
+cap "AMUXBUS_A" "AMUXBUS_B" 47.8034
+cap "VSWITCH" "VSSA" 100.492
+cap "VCCHIB" "VCCHIB" 664.21
+cap "VCCD" "VDDA" 46.1821
+cap "VSSA" "AMUXBUS_A" 283.633
+cap "VDDIO" "VDDA" 46.1821
+cap "VDDIO" "VSSIO" 100.806
+cap "VSWITCH" "VSWITCH" 491.49
+cap "VSSIO" "VSSIO" 595.122
+cap "VCCHIB" "VCCHIB" 664.21
+cap "VSSA" "AMUXBUS_A" 376.733
+cap "VSSIO" "VSSIO" 2091.21
+cap "VDDIO" "VDDIO" 2260.09
+cap "VDDIO" "VDDIO_Q" 56.7267
+cap "VDDIO" "VDDIO_Q" 100.806
+cap "VCCD" "VCCD" 595.122
+cap "VSSIO" "VSSIO" 595.122
+cap "VSSD" "VSSA" 56.7267
+cap "VSSIO" "VSSIO" 2091.21
+cap "VSSIO" "VSWITCH" 60.7786
+cap "VSSA" "VSSA" 88.1888
+cap "VSSA" "VSSD" 100.806
+cap "VSSA" "VSWITCH" 60.7786
+cap "VSSA" "VSSD" 60.7786
+cap "VCCD" "VDDA" 76.5969
+cap "VSSIO_Q" "VSSIO_Q" 577.85
+cap "VSSA" "VSSA" 88.1888
+cap "VSSIO" "VSWITCH" 100.806
+cap "VSSIO" "VSWITCH" 60.7786
+cap "VSSA" "VSSA" 221.285
+cap "VSSIO" "VDDIO" 100.806
+cap "VCCD" "VCCHIB" 100.806
+cap "VSWITCH" "VSWITCH" 491.49
+cap "VCCHIB" "VCCD" 60.7786
+cap "VSSA" "VSSIO_Q" 100.806
+cap "VDDIO" "VDDA" 76.5969
+cap "VSSD" "VSSA" 56.7267
+cap "VSSA" "VSSA" 88.1888
+cap "VSSA" "VSSA" 221.285
+cap "VDDIO" "VDDA" 76.5969
+cap "VSSIO_Q" "VDDIO_Q" 100.806
+cap "VDDIO_Q" "VDDIO" 100.806
+cap "VSSIO_Q" "VSSIO_Q" 577.85
+cap "VSSIO" "VDDIO" 60.7786
+cap "VSSIO_Q" "VDDIO_Q" 60.7786
+cap "VSSIO_Q" "VDDIO_Q" 100.806
+cap "VDDA" "VCCD" 46.1821
+cap "VDDIO" "VDDIO_Q" 56.7267
+cap "VDDIO" "VDDIO" 595.122
+cap "AMUXBUS_A" "VSSA" 283.633
+cap "VDDIO" "VSSIO" 60.7786
+cap "VSSA" "VSSD" 100.806
+cap "VDDIO" "VDDIO" 2260.09
+cap "VDDIO" "VDDIO" 595.122
+cap "AMUXBUS_A" "VSSA" 283.633
+cap "VSSA" "VSSIO_Q" 100.806
+cap "VSSA" "AMUXBUS_A" 376.733
+cap "VSSA" "VSSD" 100.806
+cap "VSSD" "VSSA" 60.7786
+cap "VSSA" "AMUXBUS_B" 376.733
+cap "VSSA" "VSSA" 491.058
+cap "VDDIO_Q" "VDDIO_Q" 577.85
+cap "VSSA" "VSSA" 88.1888
+cap "VCCD" "VCCHIB" 100.806
+cap "VDDA" "VDDA" 373.455
+cap "VSSA" "AMUXBUS_A" 283.633
+cap "VSWITCH" "VSSA" 60.7786
+cap "VSSD" "VSSD" 595.122
+subcap "VCCD" -386.105
+subcap "VCCD" -534.711
+cap "VCCHIB" "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VCCD" -22.5703
+cap "VCCHIB" "VCCD" -40.6272
+subcap "P_CORE" -2093.62
+subcap "VCCD" -386.105
+subcap "VCCD" -534.711
+cap "VCCD" "VCCHIB" -40.6272
+cap "VCCHIB" "VCCD" -22.5703
+subcap "VDDA" -351.291
+subcap "VDDA" -451.135
+cap "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VDDA" "VCCD" -61.3895
+cap "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VCCHIB" "VCCD" -161.585
+subcap "VDDA" -351.291
+subcap "VDDA" -451.135
+cap "VCCD" "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VCCHIB" -161.585
+cap "VCCD" "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VDDA" -61.3895
+subcap "VDDIO" -25.6942
+subcap "VDDIO" -163.918
+cap "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VCCD" "VDDA" -61.3895
+cap "VDDA" "VDDIO" -122.779
+subcap "VDDIO" -25.6942
+subcap "VDDIO" -163.918
+cap "VDDA" "VCCD" -61.3895
+cap "VDDIO" "VDDA" -122.779
+subcap "VSSIO" -35.8932
+cap "VSSIO" "VDDIO" -161.585
+subcap "VSSIO" -35.8932
+cap "VDDIO" "VSSIO" -161.585
+subcap "VSSA" -424.261
+subcap "VSSA" -555.483
+cap "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VSSA" "VSWITCH" -68.3504
+cap "VSSIO" "VSWITCH" -161.585
+subcap "VSSA" -424.261
+subcap "VSSA" -555.483
+cap "VSWITCH" "VSSIO" -161.585
+cap "VSWITCH" "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VSSA" -68.3504
+subcap "VSSD" -204.934
+subcap "VSSD" -343.158
+cap "VSWITCH" "VSSA" -161.271
+cap "VSSD" "VSSA" -161.585
+subcap "VSSD" -204.934
+subcap "VSSD" -343.158
+cap "VSSA" "VSSD" -161.585
+cap "VSSA" "VSWITCH" -161.271
+subcap "VSSA" -579.093
+subcap "AMUXBUS_B" -194.382
+cap "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VSSA" "VSSD" -100.806
+cap "VSSD" "VSSA" -56.7267
+cap "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VSSA" "VSSA" -88.1888
+cap "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VSSA" "VSSD" -23.4408
+cap "VSSD" "VSSA" -42.1123
+cap "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VSSA" "AMUXBUS_B" -114.529
+cap "VSSA" "AMUXBUS_B" -283.633
+subcap "VSSA" -579.003
+subcap "AMUXBUS_B" -190.428
+cap "VSSA" "AMUXBUS_B" -283.633
+cap "VSSD" "VSSA" -23.4408
+cap "VSSD" "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VSSA" -100.806
+cap "VSSD" "VSSA" -42.1123
+cap "VSSD" "VSSA" -56.7267
+cap "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VSSA" "AMUXBUS_B" -114.529
+cap "VSSA" "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VSSA" -88.1888
+subcap "VSSA" -146.25
+subcap "AMUXBUS_B" -63.0806
+subcap "AMUXBUS_A" -12.7518
+subcap "VSSA" -132.364
+cap "AMUXBUS_A" "VSSA" -105.049
+cap "AMUXBUS_A" "VSSA" -651.298
+cap "AMUXBUS_B" "VSSA" -605.528
+cap "AMUXBUS_B" "VSSA" -45.5027
+cap "AMUXBUS_A" "AMUXBUS_B" -47.8034
+subcap "VSSA" -146.25
+subcap "AMUXBUS_B" -27.3626
+subcap "AMUXBUS_A" -4.2018
+subcap "VSSA" -132.364
+cap "VSSA" "AMUXBUS_B" -605.528
+cap "AMUXBUS_A" "AMUXBUS_B" -47.8034
+cap "VSSA" "AMUXBUS_A" -105.049
+cap "AMUXBUS_A" "VSSA" -651.298
+cap "VSSA" "AMUXBUS_B" -45.5027
+subcap "VDDIO_Q" -443.046
+subcap "VDDIO_Q" -580.038
+cap "VSSA" "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VSSA" -88.1888
+cap "VSSA" "AMUXBUS_A" -283.633
+cap "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VSSA" "AMUXBUS_A" -68.7578
+cap "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VDDIO_Q" "VSSIO_Q" -80.7924
+cap "VSSA" "VSSIO_Q" -56.7267
+cap "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VSSA" "VSSIO_Q" -100.806
+subcap "VDDIO_Q" -443.046
+subcap "VDDIO_Q" -580.038
+cap "AMUXBUS_A" "VSSA" -283.633
+cap "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VSSA" "AMUXBUS_A" -68.7578
+cap "VSSIO_Q" "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VDDIO_Q" -80.7924
+cap "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VSSA" "VSSA" -88.1888
+cap "VSSIO_Q" "VSSA" -56.7267
+cap "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VSSA" "VSSIO_Q" -100.806
+subcap "VDDIO" -2150.37
+subcap "VDDIO" -2349.78
+cap "VDDIO_Q" "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VSSIO_Q" -80.7924
+cap "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VDDIO" "VDDIO_Q" -78.7665
+subcap "VDDIO" -2150.37
+subcap "VDDIO" -2349.78
+cap "VDDIO_Q" "VSSIO_Q" -80.7924
+cap "VDDIO_Q" "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VDDIO" -78.7665
+subcap "VDDIO" -726.031
+subcap "VDDIO" -925.435
+cap "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VDDIO" "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VDDIO_Q" -78.7665
+subcap "VDDIO" -715.645
+subcap "VDDIO" -915.049
+cap "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VDDIO_Q" "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VDDIO" -78.7665
+subcap "P_PAD" -547.131
+subcap "P_PAD" -292.936
+subcap "P_PAD" -383.359
+subcap "P_PAD" -189.529
+subcap "VSSIO" -2068.07
+subcap "VSSIO" -2212.15
+subcap "VSSIO" -2068.07
+subcap "VSSIO" -2212.15
+subcap "VSSIO" -819.74
+subcap "VSSIO" -963.824
+subcap "VSSIO" -809.9
+subcap "VSSIO" -953.984
+merge "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VSSA" "VSSA" -3489.48 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 197125 -8296 -360854 -11828 0 0
+merge "sky130_fd_io__simple_pad_and_busses_0/VSUBS" "VSUBS" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+merge "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VSSD" "VSSD" -1565.79 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -472440 -4736 -452120 -4576 0 0
+merge "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VDDA" "VDDA" -1187.27 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -194158 -3532 -170998 -3372 0 0
+merge "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/AMUXBUS_A" "AMUXBUS_A" -689.554 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -302768 -3400 0 0 0 0
+merge "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VCCHIB" "VCCHIB" -1825.24 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -553720 -5376 -533400 -5216 0 0
+merge "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/AMUXBUS_B" "AMUXBUS_B" -689.554 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -302768 -3400 0 0 0 0
+merge "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__pad_esd_0/sky130_fd_pr__padplhp__example_559591418080_0/m5_n540_766#" "P_PAD" -1710.77 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -802332 -8156 0 0
+merge "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VSSIO_Q" "VSSIO_Q" -1467.69 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -84101 -4576 -40521 -4416 0 0
+merge "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VCCD" "VCCD" -1310.63 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 408220 -4736 735095 -4576 0 0
+merge "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VDDIO_Q" "VDDIO_Q" -1506.26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -193040 -4576 -152400 -4416 0 0
+merge "sky130_fd_io__simple_pad_and_busses_0/m3_99_16575#" "P_CORE" -4749.7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -4200628 -17022 0 0 0 0 0 0
+merge "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VSSIO" "VSSIO" -9876.42 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2852928 -25124 -2832608 -24964 0 0
+merge "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VDDIO" "VDDIO" -9945.87 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -3005328 -25724 -2983484 -25552 0 0
+merge "sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VSWITCH" "VSWITCH" -1176.6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -350520 -3776 -330200 -3616 0 0

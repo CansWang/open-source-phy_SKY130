@@ -1,0 +1,11 @@
+* NGSPICE file created from osc_flat.ext - technology: sky130A
+
+.subckt osc_flat out VDD GND
+X0 out inv1_0[2]/A GND GND sky130_fd_pr__nfet_01v8 w=650000u l=150000u
+X1 inv1_0[2]/A inv1_0[1]/A VDD VDD sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
+X2 inv1_0[1]/A out VDD VDD sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
+X3 inv1_0[1]/A out GND GND sky130_fd_pr__nfet_01v8 w=650000u l=150000u
+X4 inv1_0[2]/A inv1_0[1]/A GND GND sky130_fd_pr__nfet_01v8 w=650000u l=150000u
+X5 out inv1_0[2]/A VDD VDD sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
+.ends
+
