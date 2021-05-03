@@ -40,21 +40,13 @@ Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hooku
 Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VSSD
 Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VCCHIB
 
-<<<<<<< HEAD
 Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VCCD
 Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VSWITCH
-=======
-Cell sky130_fd_io__com_busses_esd disconnected node: VSUBS
-Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VCCD
-Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VSWITCH
-Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__pad_esd_0/sky130_fd_pr__padplhp__example_559591418080_0/m5_n540_766#
->>>>>>> 4fc8ec152ed10a0bfcaa5005507078aaca6a9b6b
 Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/AMUXBUS_A
 Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VSSIO
 Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/AMUXBUS_B
 Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VDDA
 Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VDDIO
-<<<<<<< HEAD
 Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VSSA
 Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VSSIO_Q
 Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VDDIO_Q
@@ -70,24 +62,13 @@ Number of nets: 3                          |Number of nets: 3
 ---------------------------------------------------------------------------------------
 Circuits match uniquely.
 Netlists match uniquely.
-=======
-Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VSSIO_Q
-Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VDDIO_Q
-Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VSSA
-Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VSSD
-Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VCCHIB
-Equate pins:  cell sky130_fd_io__com_busses_esd and/or sky130_fd_io__com_busses_esd has no elements.
->>>>>>> 4fc8ec152ed10a0bfcaa5005507078aaca6a9b6b
 
 Subcircuit pins:
 Circuit 1: sky130_fd_io__com_busses_esd    |Circuit 2: sky130_fd_io__com_busses_esd    
 -------------------------------------------|-------------------------------------------
-VSUBS                                      |VSUBS                                      
-<<<<<<< HEAD
+VSUBS                                      |(no matching pin)                          
 sky130_fd_io__pad_esd_0/m4_960_20297#      |sky130_fd_io__pad_esd_0/m4_960_20297#      
 sky130_fd_io__pad_esd_0/m5_1354_20528#     |sky130_fd_io__pad_esd_0/m5_1354_20528#     
-=======
->>>>>>> 4fc8ec152ed10a0bfcaa5005507078aaca6a9b6b
 sky130_fd_io__com_bus_hookup_0/VCCD        |sky130_fd_io__com_bus_hookup_0/VCCD        
 sky130_fd_io__com_bus_hookup_0/VSWITCH     |sky130_fd_io__com_bus_hookup_0/VSWITCH     
 sky130_fd_io__com_bus_hookup_0/AMUXBUS_A   |sky130_fd_io__com_bus_hookup_0/AMUXBUS_A   
@@ -100,18 +81,12 @@ sky130_fd_io__com_bus_hookup_0/VDDIO_Q     |sky130_fd_io__com_bus_hookup_0/VDDIO
 sky130_fd_io__com_bus_hookup_0/VSSA        |sky130_fd_io__com_bus_hookup_0/VSSA        
 sky130_fd_io__com_bus_hookup_0/VSSD        |sky130_fd_io__com_bus_hookup_0/VSSD        
 sky130_fd_io__com_bus_hookup_0/VCCHIB      |sky130_fd_io__com_bus_hookup_0/VCCHIB      
-<<<<<<< HEAD
----------------------------------------------------------------------------------------
-Cell pin lists are equivalent.
-Device classes sky130_fd_io__com_busses_esd and sky130_fd_io__com_busses_esd are equivalent.
-
-Cell sky130_fd_io__simple_pad_and_busses disconnected node: w_818_9944#
-=======
-(no matching pin)                          |sky130_fd_io__pad_esd_0/sky130_fd_pr__padp 
 ---------------------------------------------------------------------------------------
 Cell pin lists for sky130_fd_io__com_busses_esd and sky130_fd_io__com_busses_esd altered to match.
->>>>>>> 4fc8ec152ed10a0bfcaa5005507078aaca6a9b6b
 
+Cell sky130_fd_io__simple_pad_and_busses disconnected node: w_818_9944#
+
+Cell sky130_fd_io__simple_pad_and_busses disconnected node: VSUBS
 Cell sky130_fd_io__simple_pad_and_busses disconnected node: w_818_9944#
 
 Subcircuit summary:
@@ -119,11 +94,7 @@ Circuit 1: sky130_fd_io__simple_pad_and_bu |Circuit 2: sky130_fd_io__simple_pad_
 -------------------------------------------|-------------------------------------------
 sky130_fd_io__com_busses_esd (1)           |sky130_fd_io__com_busses_esd (1)           
 Number of devices: 1                       |Number of devices: 1                       
-<<<<<<< HEAD
 Number of nets: 15                         |Number of nets: 15                         
-=======
-Number of nets: 16                         |Number of nets: 16                         
->>>>>>> 4fc8ec152ed10a0bfcaa5005507078aaca6a9b6b
 ---------------------------------------------------------------------------------------
 Circuits match uniquely.
 Netlists match uniquely.
@@ -131,7 +102,6 @@ Netlists match uniquely.
 Subcircuit pins:
 Circuit 1: sky130_fd_io__simple_pad_and_bu |Circuit 2: sky130_fd_io__simple_pad_and_bu 
 -------------------------------------------|-------------------------------------------
-VSUBS                                      |VSUBS                                      
 sky130_fd_io__com_busses_esd_0/sky130_fd_i |sky130_fd_io__com_busses_esd_0/sky130_fd_i 
 sky130_fd_io__com_busses_esd_0/sky130_fd_i |sky130_fd_io__com_busses_esd_0/sky130_fd_i 
 sky130_fd_io__com_busses_esd_0/sky130_fd_i |sky130_fd_io__com_busses_esd_0/sky130_fd_i 
@@ -142,15 +112,15 @@ sky130_fd_io__com_busses_esd_0/sky130_fd_i |sky130_fd_io__com_busses_esd_0/sky13
 sky130_fd_io__com_busses_esd_0/sky130_fd_i |sky130_fd_io__com_busses_esd_0/sky130_fd_i 
 sky130_fd_io__com_busses_esd_0/sky130_fd_i |sky130_fd_io__com_busses_esd_0/sky130_fd_i 
 sky130_fd_io__com_busses_esd_0/sky130_fd_i |sky130_fd_io__com_busses_esd_0/sky130_fd_i 
-<<<<<<< HEAD
 m3_99_16575#                               |m3_99_16575#                               
 sky130_fd_io__com_busses_esd_0/sky130_fd_i |sky130_fd_io__com_busses_esd_0/sky130_fd_i 
 sky130_fd_io__com_busses_esd_0/sky130_fd_i |sky130_fd_io__com_busses_esd_0/sky130_fd_i 
 sky130_fd_io__com_busses_esd_0/sky130_fd_i |sky130_fd_io__com_busses_esd_0/sky130_fd_i 
+VSUBS                                      |(no matching pin)                          
+VSUBS                                      |VSUBS                                      
 w_818_9944#                                |w_818_9944#                                
 ---------------------------------------------------------------------------------------
-Cell pin lists are equivalent.
-Device classes sky130_fd_io__simple_pad_and_busses and sky130_fd_io__simple_pad_and_busses are equivalent.
+Cell pin lists for sky130_fd_io__simple_pad_and_busses and sky130_fd_io__simple_pad_and_busses altered to match.
 
 Subcircuit summary:
 Circuit 1: pad_con                         |Circuit 2: pad_con                         
@@ -167,63 +137,9 @@ Circuit 1: pad_con                         |Circuit 2: pad_con
 -------------------------------------------|-------------------------------------------
 VDD                                        |VDD                                        
 GND                                        |GND                                        
-in                                         |in                                         
 out                                        |out                                        
+in                                         |in                                         
 ---------------------------------------------------------------------------------------
 Cell pin lists are equivalent.
 Device classes pad_con and pad_con are equivalent.
 Circuits match uniquely.
-=======
-sky130_fd_io__com_busses_esd_0/sky130_fd_i |sky130_fd_io__com_busses_esd_0/sky130_fd_i 
-sky130_fd_io__com_busses_esd_0/sky130_fd_i |sky130_fd_io__com_busses_esd_0/sky130_fd_i 
-sky130_fd_io__com_busses_esd_0/            |(no matching pin)                          
-m3_99_16575#                               |(no matching pin)                          
-m3_99_16575#                               |m3_99_16575#                               
----------------------------------------------------------------------------------------
-Cell pin lists for sky130_fd_io__simple_pad_and_busses and sky130_fd_io__simple_pad_and_busses altered to match.
-
-Subcircuit summary:
-Circuit 1: pad_example                     |Circuit 2: pad_con                         
--------------------------------------------|-------------------------------------------
-sky130_fd_io__simple_pad_and_busses (1)    |sky130_fd_io__simple_pad_and_busses (1)    
-(no matching element)                      |sky130_fd_pr__cap_mim_m3_1 (1)             
-Number of devices: 1 **Mismatch**          |Number of devices: 2 **Mismatch**          
-Number of nets: 5                          |Number of nets: 5                          
----------------------------------------------------------------------------------------
-NET mismatches: Class fragments follow (with fanout counts):
-Circuit 1: pad_example                     |Circuit 2: pad_con                         
-
----------------------------------------------------------------------------------------
-Net: GND                                   |Net: GND                                   
-  sky130_fd_io__simple_pad_and_busses/sky1 |  sky130_fd_io__simple_pad_and_busses/VSUB 
-  sky130_fd_io__simple_pad_and_busses/sky1 |  sky130_fd_io__simple_pad_and_busses/sky1 
-  sky130_fd_io__simple_pad_and_busses/sky1 |  sky130_fd_io__simple_pad_and_busses/sky1 
-  sky130_fd_io__simple_pad_and_busses/sky1 |  sky130_fd_io__simple_pad_and_busses/sky1 
-  sky130_fd_io__simple_pad_and_busses/sky1 |  sky130_fd_io__simple_pad_and_busses/sky1 
-  sky130_fd_io__simple_pad_and_busses/sky1 |  sky130_fd_io__simple_pad_and_busses/sky1 
-  sky130_fd_io__simple_pad_and_busses/sky1 |  sky130_fd_io__simple_pad_and_busses/sky1 
-                                           |  sky130_fd_io__simple_pad_and_busses/sky1 
-                                           |  sky130_fd_pr__cap_mim_m3_1/2 = 1         
----------------------------------------------------------------------------------------
-
----------------------------------------------------------------------------------------
-Net: sky130_ef_io__analog_padanalog_pad/sk |Net: dummy_5                               
-  sky130_fd_io__simple_pad_and_busses/VSUB |  sky130_fd_io__simple_pad_and_busses/prox 
-                                           |                                           
-Net: out                                   |Net: c1_14744_38796#                       
-  sky130_fd_io__simple_pad_and_busses/sky1 |  sky130_fd_pr__cap_mim_m3_1/1 = 1         
-                                           |                                           
-Net: in                                    |Net: out                                   
-  sky130_fd_io__simple_pad_and_busses/m3_9 |  sky130_fd_io__simple_pad_and_busses/m3_9 
----------------------------------------------------------------------------------------
-DEVICE mismatches: Class fragments follow (with node fanout counts):
-Circuit 1: pad_example                     |Circuit 2: pad_con                         
-
----------------------------------------------------------------------------------------
-(no matching instance)                     |Instance: sky130_fd_pr__cap_mim_m3_10      
-                                           |  1 = 1                                    
-                                           |  2 = 9                                    
----------------------------------------------------------------------------------------
-Netlists do not match.
-The top level cell failed pin matching.
->>>>>>> 4fc8ec152ed10a0bfcaa5005507078aaca6a9b6b
