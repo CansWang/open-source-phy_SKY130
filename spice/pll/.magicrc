@@ -10,10 +10,13 @@ if {[lindex $scalefac 1] < 2} {
 
 # drc off
 drc euclidean on
+# Change this to a fixed number for repeatable behavior with GDS writes
+# e.g., "random seed 12345"
+catch {random seed}
 
 # Allow override of PDK path from environment variable PDKPATH
 if {[catch {set PDKPATH $env(PDKPATH)}]} {
-    set PDKPATH "/tmp/canw/openlane/pdks/sky130A"
+    set PDKPATH "/usr/share/pdk/sky130A"
 }
 
 # loading technology
@@ -54,6 +57,7 @@ if {[file isdir ${PDKPATH}/libs.ref/${MAGTYPE}]} {
     addpath ${PDKPATH}/libs.ref/${MAGTYPE}/sky130_osu_sc
     addpath ${PDKPATH}/libs.ref/${MAGTYPE}/sky130_osu_sc_t18
     addpath ${PDKPATH}/libs.ref/${MAGTYPE}/sky130_ml_xx_hd
+    addpath ${PDKPATH}/libs.ref/${MAGTYPE}/sky130_sram_macros
 } else {
     addpath ${PDKPATH}/libs.ref/sky130_fd_pr/${MAGTYPE}
     addpath ${PDKPATH}/libs.ref/sky130_fd_io/${MAGTYPE}
@@ -67,6 +71,7 @@ if {[file isdir ${PDKPATH}/libs.ref/${MAGTYPE}]} {
     addpath ${PDKPATH}/libs.ref/sky130_osu_sc/${MAGTYPE}
     addpath ${PDKPATH}/libs.ref/sky130_osu_sc_t18/${MAGTYPE}
     addpath ${PDKPATH}/libs.ref/sky130_ml_xx_hd/${MAGTYPE}
+    addpath ${PDKPATH}/libs.ref/sky130_sram_macros/${MAGTYPE}
 }
 
 
