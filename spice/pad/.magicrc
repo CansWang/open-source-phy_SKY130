@@ -10,7 +10,7 @@ if {[lindex $scalefac 1] < 2} {
 
 # drc off
 drc euclidean on
-<<<<<<< HEAD
+
 # Change this to a fixed number for repeatable behavior with GDS writes
 # e.g., "random seed 12345"
 catch {random seed}
@@ -29,21 +29,6 @@ source $PDKPATH/libs.tech/magic/sky130A.tcl
 # load bind keys (optional)
 # source $PDKPATH/libs.tech/magic/sky130A-BindKeys
 =======
-
-# Allow override of PDK path from environment variable PDKPATH
-if {[catch {set PDKPATH $env(PDKPATH)}]} {
-    set PDKPATH "/afs/ir.stanford.edu/class/ee272/PDKS/sky130A"
-}
-
-# loading technology
-tech load $PDKPATH/libs.tech/magic/current/sky130A.tech
-
-# load device generator
-source $PDKPATH/libs.tech/magic/current/sky130A.tcl
-
-# load bind keys (optional)
-# source $PDKPATH/libs.tech/magic/current/sky130A-BindKeys
->>>>>>> 4fc8ec152ed10a0bfcaa5005507078aaca6a9b6b
 
 # set units to lambda grid 
 snap lambda
@@ -74,10 +59,8 @@ if {[file isdir ${PDKPATH}/libs.ref/${MAGTYPE}]} {
     addpath ${PDKPATH}/libs.ref/${MAGTYPE}/sky130_osu_sc
     addpath ${PDKPATH}/libs.ref/${MAGTYPE}/sky130_osu_sc_t18
     addpath ${PDKPATH}/libs.ref/${MAGTYPE}/sky130_ml_xx_hd
-<<<<<<< HEAD
     addpath ${PDKPATH}/libs.ref/${MAGTYPE}/sky130_sram_macros
-=======
->>>>>>> 4fc8ec152ed10a0bfcaa5005507078aaca6a9b6b
+
 } else {
     addpath ${PDKPATH}/libs.ref/sky130_fd_pr/${MAGTYPE}
     addpath ${PDKPATH}/libs.ref/sky130_fd_io/${MAGTYPE}
@@ -91,10 +74,8 @@ if {[file isdir ${PDKPATH}/libs.ref/${MAGTYPE}]} {
     addpath ${PDKPATH}/libs.ref/sky130_osu_sc/${MAGTYPE}
     addpath ${PDKPATH}/libs.ref/sky130_osu_sc_t18/${MAGTYPE}
     addpath ${PDKPATH}/libs.ref/sky130_ml_xx_hd/${MAGTYPE}
-<<<<<<< HEAD
     addpath ${PDKPATH}/libs.ref/sky130_sram_macros/${MAGTYPE}
-=======
->>>>>>> 4fc8ec152ed10a0bfcaa5005507078aaca6a9b6b
+
 }
 
 # add path to GDS cells

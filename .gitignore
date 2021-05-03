@@ -64,7 +64,6 @@ __pycache__
 *.layout
 fpga_prj
 *.vcd
-test*
 build_*
 xcelium.d
 xrun.*
@@ -80,3 +79,8 @@ build/
 HardFloat-1/
 install_hardfloat.sh
 bsim4v5.out
+
+caddy.bashrc
+*.magicrc
+comp.out
+sim.report
