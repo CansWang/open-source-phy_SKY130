@@ -39,8 +39,13 @@ Xsky130_fd_io__simple_pad_and_busses_0 sky130_fd_io__simple_pad_and_busses_0/VSU
 .ends
 
 
-.subckt pad_con in out VDD GND
-Xpad in GND GND GND GND VDD VDD GND GND VDD VDD VDD GND out sky130_ef_io__analog_pad
+* Wrapper for pad goes here
+.subckt pad_example in out VDD GND
+
+Xanalog_pad in GND GND GND GND VDD VDD GND GND VDD VDD VDD GND out sky130_ef_io__analog_pad
+
 .ends
+
+
 
 
