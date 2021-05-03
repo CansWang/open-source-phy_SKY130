@@ -1,0 +1,118 @@
+timestamp 1619949044
+version 8.3
+tech sky130A
+style ngspice()
+scale 1000 1 500000
+resistclasses 2200000 3050000 1700000 3050000 120000 197000 114000 191000 120000 197000 114000 191000 48200 319800 2000000 48200 48200 12200 125 125 47 47 29 5
+use test test_0 1 0 0 0 1 0
+port "VDD" 3 770 638 2694 4698 m5
+port "out" 2 5764 30240 8976 31676 m5
+port "GND" 4 5816 39430 9028 40866 m5
+port "in" 1 5878 -1304 9090 132 m3
+node "VDD" 0 3505.48 770 638 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7811440 11968 0 0
+node "m5_0_13488#" 0 733.033 0 13488 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 659288 3252 0 0
+node "m5_13902_14426#" 0 9139.87 13902 14426 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 18718848 32472 0 0
+node "out" 0 2504.58 5764 30240 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4612432 9296 0 0
+node "GND" 0 2504.58 5816 39430 m5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4612432 9296 0 0
+node "m4_3262_9952#" 0 369.859 3262 9952 v4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 55696 944 55696 944 0 0
+node "m4_2882_9938#" 0 369.859 2882 9938 v4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 55696 944 55696 944 0 0
+node "m4_2510_9930#" 0 369.859 2510 9930 v4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 55696 944 55696 944 0 0
+node "m4_2024_9970#" 0 369.859 2024 9970 v4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 55696 944 55696 944 0 0
+node "m4_1552_10006#" 0 369.859 1552 10006 v4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 55696 944 55696 944 0 0
+node "m4_1068_9932#" 0 369.859 1068 9932 v4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 55696 944 55696 944 0 0
+node "m4_1518_10962#" 0 369.859 1518 10962 v4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 55696 944 55696 944 0 0
+node "m4_1052_10840#" 0 369.859 1052 10840 v4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 55696 944 55696 944 0 0
+node "m4_176_10814#" 0 26372.8 176 10814 v4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 55696 944 66975268 82816 0 0
+node "in" 0 3289.41 5878 -1304 m3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4612432 9296 0 0 0 0 0 0
+node "w_810_9943#" 3050 0 810 9943 pw 0 0 345900280 78596 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "dw_3262_9952#" 2200 0 3262 9952 dnw 55696 944 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "dw_2882_9938#" 2200 0 2882 9938 dnw 55696 944 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "dw_2510_9930#" 2200 0 2510 9930 dnw 55696 944 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "dw_2024_9970#" 2200 0 2024 9970 dnw 55696 944 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "dw_1552_10006#" 2200 0 1552 10006 dnw 55696 944 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "dw_1068_9932#" 2200 0 1068 9932 dnw 55696 944 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "dw_1518_10962#" 2200 0 1518 10962 dnw 55696 944 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+substrate "VSUBS" 0 0 -1073741817 -1073741817 space 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cap "m4_1052_10840#" "m4_1518_10962#" 96.1565
+cap "m4_2882_9938#" "m4_3262_9952#" 299.083
+cap "m4_2882_9938#" "m4_2510_9930#" 325.235
+cap "m4_176_10814#" "m4_1052_10840#" 258.379
+cap "m4_2024_9970#" "m4_2510_9930#" 152.096
+cap "m4_1068_9932#" "m4_1552_10006#" 126.726
+cap "m4_2024_9970#" "m4_1552_10006#" 164.407
+cap "m4_176_10814#" "m4_1068_9932#" 227.061
+subcap "in" -2262.1
+subcap "VDD" -3002.45
+cap "test_0/VSWITCH" "test_0/sky130_fd_io__simple_pad_and_busses_0/dw_670_9738#" 94.917
+cap "test_0/sky130_fd_io__simple_pad_and_busses_0/dw_670_9738#" "test_0/VSSA" 195.483
+subcap "m4_1552_10006#" -1043.46
+subcap "m4_1068_9932#" -1043.46
+cap "test_0/sky130_fd_io__simple_pad_and_busses_0/dw_670_9738#" "test_0/VSSD" 201.77
+cap "test_0/VSSA" "test_0/VSSD" 235.47
+cap "dw_1068_9932#" "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/sky130_fd_io__com_bus_slice_0/m4_0_15581#" -1.13687e-13
+cap "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/sky130_fd_io__com_bus_slice_2/m4_0_15581#" "dw_2510_9930#" 5.68434e-13
+subcap "m4_176_10814#" -26044.1
+subcap "m4_176_10814#" -25515
+cap "test_0/VSSA" "test_0/VSSA" 3.525
+cap "test_0/VSSA" "test_0/sky130_fd_io__simple_pad_and_busses_0/dw_670_9738#" -44.6
+cap "dw_1518_10962#" "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/sky130_fd_io__com_bus_slice_0/m4_0_15581#" -1.77636e-15
+cap "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/sky130_fd_io__com_bus_slice_0/m4_0_17189#" "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/sky130_fd_io__com_bus_slice_0/m4_0_15581#" -2.84217e-13
+cap "test_0/AMUXBUS_A" "test_0/VSSA" 231.945
+cap "test_0/AMUXBUS_A" "dw_1518_10962#" -49.35
+subcap "m4_1518_10962#" -228.706
+cap "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/sky130_fd_io__com_bus_slice_0/m4_0_17189#" "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/sky130_fd_io__com_bus_slice_0/m4_0_16533#" -5.68434e-14
+subcap "m5_0_13488#" -787.891
+cap "test_0/VDDIO_Q" "test_0/sky130_fd_io__simple_pad_and_busses_0/dw_670_9738#" -49.35
+subcap "m5_13902_14426#" -8645.73
+subcap "m5_13902_14426#" -8867.11
+subcap "m5_13902_14426#" -8543.65
+subcap "m5_13902_14426#" -8368.76
+subcap "out" -2210.58
+subcap "out" -2210.58
+subcap "GND" -2395.8
+subcap "GND" -2120.92
+subcap "GND" -2234.56
+subcap "GND" -1860.41
+merge "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VSSIO" "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/sky130_fd_io__com_bus_slice_0/m4_0_16533#" -2454.68 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1913760 -11116 0 0
+merge "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/sky130_fd_io__com_bus_slice_0/m4_0_16533#" "test_0/AMUXBUS_A"
+merge "test_0/AMUXBUS_A" "test_0/VSSIO_Q"
+merge "test_0/VSSIO_Q" "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/sky130_fd_io__com_bus_slice_2/m4_0_16237#"
+merge "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/sky130_fd_io__com_bus_slice_2/m4_0_16237#" "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/sky130_fd_io__com_bus_slice_2/m4_0_15581#"
+merge "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/sky130_fd_io__com_bus_slice_2/m4_0_15581#" "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/sky130_fd_io__com_bus_slice_0/m4_0_16237#"
+merge "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/sky130_fd_io__com_bus_slice_0/m4_0_16237#" "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/sky130_fd_io__com_bus_slice_0/m4_0_15581#"
+merge "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/sky130_fd_io__com_bus_slice_0/m4_0_15581#" "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VSSA"
+merge "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VSSA" "test_0/VSSD"
+merge "test_0/VSSD" "test_0/VSWITCH"
+merge "test_0/VSWITCH" "test_0/VSSA"
+merge "test_0/VSSA" "test_0/VSSIO"
+merge "test_0/VSSIO" "m4_176_10814#"
+merge "m4_176_10814#" "test_0/AMUXBUS_B"
+merge "test_0/AMUXBUS_B" "m4_1068_9932#"
+merge "m4_1068_9932#" "m4_1552_10006#"
+merge "m4_1552_10006#" "m4_2024_9970#"
+merge "m4_2024_9970#" "m4_2510_9930#"
+merge "m4_2510_9930#" "m4_2882_9938#"
+merge "m4_2882_9938#" "m4_3262_9952#"
+merge "m4_3262_9952#" "m4_1052_10840#"
+merge "m4_1052_10840#" "m4_1518_10962#"
+merge "m4_1518_10962#" "GND"
+merge "test_0/w_810_9943#" "VSUBS" 0 0 0 -689799776 -155265 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+merge "VSUBS" "w_810_9943#"
+merge "test_0/sky130_fd_io__simple_pad_and_busses_0/dw_670_9738#" "dw_1068_9932#" -1490.63 -7148428 -8008 0 0 -532000 -5600 0 0 327958 -2800 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -301720 -2800 114777 0 309708 0 196974 0 0 0 0 0 0 0
+merge "dw_1068_9932#" "dw_1552_10006#"
+merge "dw_1552_10006#" "dw_2024_9970#"
+merge "dw_2024_9970#" "dw_2510_9930#"
+merge "dw_2510_9930#" "dw_2882_9938#"
+merge "dw_2882_9938#" "dw_3262_9952#"
+merge "dw_3262_9952#" "dw_1518_10962#"
+merge "test_0/P_CORE" "in" -1530.31 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -530904 -6688 0 0 0 0 0 0
+merge "test_0/VDDIO_Q" "test_0/VDDIO" -1583.76 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -973332 -8576 0 0
+merge "test_0/VDDIO" "m5_13902_14426#"
+merge "m5_13902_14426#" "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VDDIO"
+merge "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VDDIO" "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VDDA"
+merge "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VDDA" "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VCCHIB"
+merge "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VCCHIB" "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VCCD"
+merge "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__com_bus_hookup_0/VCCD" "VDD"
+merge "VDD" "m5_0_13488#"
+merge "test_0/P_PAD" "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__pad_esd_0/m5_1354_20528#" -4229.81 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -16113952 -9296 0 0
+merge "test_0/sky130_fd_io__simple_pad_and_busses_0/sky130_fd_io__com_busses_esd_0/sky130_fd_io__pad_esd_0/m5_1354_20528#" "out"
