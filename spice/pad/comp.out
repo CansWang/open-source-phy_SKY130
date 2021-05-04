@@ -1,7 +1,5 @@
 Flattening unmatched subcell sky130_ef_io__analog_pad in circuit pad_con (0)(1 instance)
-Flattening unmatched subcell test in circuit pad_con (1)(1 instance)
-
-Cell sky130_fd_io__pad_esd disconnected node: VSUBS
+Flattening unmatched subcell test in circuit pad_con_psub (1)(1 instance)
 
 Cell sky130_fd_io__pad_esd disconnected node: VSUBS
 
@@ -9,24 +7,67 @@ Subcircuit summary:
 Circuit 1: sky130_fd_io__pad_esd           |Circuit 2: sky130_fd_io__pad_esd           
 -------------------------------------------|-------------------------------------------
 sky130_fd_pr__res_generic_m5 (1)           |sky130_fd_pr__res_generic_m5 (1)           
-Number of devices: 1                       |Number of devices: 1                       
-Number of nets: 2                          |Number of nets: 2                          
+(no matching element)                      |c (5)                                      
+Number of devices: 1 **Mismatch**          |Number of devices: 6 **Mismatch**          
+Number of nets: 2 **Mismatch**             |Number of nets: 4 **Mismatch**             
 ---------------------------------------------------------------------------------------
-Resolving automorphisms by property value.
-Resolving automorphisms by pin name.
-Netlists match uniquely.
-Circuits match correctly.
-
-Subcircuit pins:
+NET mismatches: Class fragments follow (with fanout counts):
 Circuit 1: sky130_fd_io__pad_esd           |Circuit 2: sky130_fd_io__pad_esd           
--------------------------------------------|-------------------------------------------
-m4_960_20297#                              |m4_960_20297#                              
-m5_1354_20528#                             |m5_1354_20528#                             
-VSUBS                                      |VSUBS                                      
----------------------------------------------------------------------------------------
-Cell pin lists are equivalent.
-Device classes sky130_fd_io__pad_esd and sky130_fd_io__pad_esd are equivalent.
 
+---------------------------------------------------------------------------------------
+(no matching net)                          |Net: m4_960_20297#                         
+                                           |  sky130_fd_pr__res_generic_m5/(end_a|end_ 
+                                           |  c/bottom = 2                             
+                                           |  c/top = 1                                
+                                           |                                           
+(no matching net)                          |Net: m5_1334_20520#                        
+                                           |  c/top = 2                                
+---------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------
+(no matching net)                          |Net: VSUBS                                 
+                                           |  c/bottom = 3                             
+                                           |                                           
+(no matching net)                          |Net: m5_1354_20528#                        
+                                           |  sky130_fd_pr__res_generic_m5/(end_a|end_ 
+                                           |  c/top = 2                                
+---------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------
+Net: m5_1354_20528#                        |(no matching net)                          
+  sky130_fd_pr__res_generic_m5/(end_a|end_ |                                           
+                                           |                                           
+Net: m4_960_20297#                         |(no matching net)                          
+  sky130_fd_pr__res_generic_m5/(end_a|end_ |                                           
+---------------------------------------------------------------------------------------
+DEVICE mismatches: Class fragments follow (with node fanout counts):
+Circuit 1: sky130_fd_io__pad_esd           |Circuit 2: sky130_fd_io__pad_esd           
+
+---------------------------------------------------------------------------------------
+(no matching instance)                     |Instance: c0                               
+                                           |  top = 2                                  
+                                           |  bottom = 4                               
+                                           |                                           
+(no matching instance)                     |Instance: c1                               
+                                           |  top = 3                                  
+                                           |  bottom = 4                               
+                                           |                                           
+(no matching instance)                     |Instance: c2                               
+                                           |  top = 3                                  
+                                           |  bottom = 3                               
+---------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------
+(no matching instance)                     |Instance: c4                               
+                                           |  top = 4                                  
+                                           |  bottom = 3                               
+                                           |                                           
+(no matching instance)                     |Instance: c3                               
+                                           |  top = 2                                  
+                                           |  bottom = 3                               
+---------------------------------------------------------------------------------------
+Netlists do not match.
+  Flattening non-matched subcircuits sky130_fd_io__pad_esd sky130_fd_io__pad_esd
 Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VCCD
 Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VSWITCH
 Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/AMUXBUS_A
@@ -40,106 +81,1196 @@ Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hooku
 Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VSSD
 Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VCCHIB
 
-Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VCCD
-Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VSWITCH
-Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/AMUXBUS_A
-Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VSSIO
-Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/AMUXBUS_B
-Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VDDA
-Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VDDIO
-Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VSSA
-Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VSSIO_Q
-Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VDDIO_Q
-Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VSSD
-Cell sky130_fd_io__com_busses_esd disconnected node: sky130_fd_io__com_bus_hookup_0/VCCHIB
-
 Subcircuit summary:
 Circuit 1: sky130_fd_io__com_busses_esd    |Circuit 2: sky130_fd_io__com_busses_esd    
 -------------------------------------------|-------------------------------------------
-sky130_fd_io__pad_esd (1)                  |sky130_fd_io__pad_esd (1)                  
-Number of devices: 1                       |Number of devices: 1                       
-Number of nets: 3                          |Number of nets: 3                          
+sky130_fd_pr__res_generic_m5 (1)           |sky130_fd_pr__res_generic_m5 (1)           
+(no matching element)                      |c (33)                                     
+Number of devices: 1 **Mismatch**          |Number of devices: 34 **Mismatch**         
+Number of nets: 2 **Mismatch**             |Number of nets: 16 **Mismatch**            
 ---------------------------------------------------------------------------------------
-Circuits match uniquely.
-Netlists match uniquely.
-
-Subcircuit pins:
+NET mismatches: Class fragments follow (with fanout counts):
 Circuit 1: sky130_fd_io__com_busses_esd    |Circuit 2: sky130_fd_io__com_busses_esd    
--------------------------------------------|-------------------------------------------
-VSUBS                                      |(no matching pin)                          
-sky130_fd_io__pad_esd_0/m4_960_20297#      |sky130_fd_io__pad_esd_0/m4_960_20297#      
-sky130_fd_io__pad_esd_0/m5_1354_20528#     |sky130_fd_io__pad_esd_0/m5_1354_20528#     
-sky130_fd_io__com_bus_hookup_0/VCCD        |sky130_fd_io__com_bus_hookup_0/VCCD        
-sky130_fd_io__com_bus_hookup_0/VSWITCH     |sky130_fd_io__com_bus_hookup_0/VSWITCH     
-sky130_fd_io__com_bus_hookup_0/AMUXBUS_A   |sky130_fd_io__com_bus_hookup_0/AMUXBUS_A   
-sky130_fd_io__com_bus_hookup_0/VSSIO       |sky130_fd_io__com_bus_hookup_0/VSSIO       
-sky130_fd_io__com_bus_hookup_0/AMUXBUS_B   |sky130_fd_io__com_bus_hookup_0/AMUXBUS_B   
-sky130_fd_io__com_bus_hookup_0/VDDA        |sky130_fd_io__com_bus_hookup_0/VDDA        
-sky130_fd_io__com_bus_hookup_0/VDDIO       |sky130_fd_io__com_bus_hookup_0/VDDIO       
-sky130_fd_io__com_bus_hookup_0/VSSIO_Q     |sky130_fd_io__com_bus_hookup_0/VSSIO_Q     
-sky130_fd_io__com_bus_hookup_0/VDDIO_Q     |sky130_fd_io__com_bus_hookup_0/VDDIO_Q     
-sky130_fd_io__com_bus_hookup_0/VSSA        |sky130_fd_io__com_bus_hookup_0/VSSA        
-sky130_fd_io__com_bus_hookup_0/VSSD        |sky130_fd_io__com_bus_hookup_0/VSSD        
-sky130_fd_io__com_bus_hookup_0/VCCHIB      |sky130_fd_io__com_bus_hookup_0/VCCHIB      
----------------------------------------------------------------------------------------
-Cell pin lists for sky130_fd_io__com_busses_esd and sky130_fd_io__com_busses_esd altered to match.
 
+---------------------------------------------------------------------------------------
+(no matching net)                          |Net: VSUBS                                 
+                                           |  c/bottom = 18                            
+                                           |                                           
+(no matching net)                          |Net: sky130_fd_io__pad_esd_0/m4_960_20297# 
+                                           |  sky130_fd_pr__res_generic_m5/(end_a|end_ 
+                                           |  c/bottom = 2                             
+                                           |  c/top = 2                                
+                                           |                                           
+(no matching net)                          |Net: sky130_fd_io__com_bus_hookup_0/AMUXBU 
+                                           |  c/top = 3                                
+                                           |                                           
+(no matching net)                          |Net: sky130_fd_io__com_bus_hookup_0/VDDIO_ 
+                                           |  c/bottom = 2                             
+                                           |  c/top = 1                                
+                                           |                                           
+(no matching net)                          |Net: sky130_fd_io__com_bus_hookup_0/VCCD   
+                                           |  c/bottom = 2                             
+                                           |  c/top = 1                                
+                                           |                                           
+(no matching net)                          |Net: sky130_fd_io__com_bus_hookup_0/VSSIO  
+                                           |  c/bottom = 1                             
+                                           |  c/top = 2                                
+                                           |                                           
+(no matching net)                          |Net: sky130_fd_io__com_bus_hookup_0/VDDA   
+                                           |  c/top = 3                                
+                                           |                                           
+(no matching net)                          |Net: sky130_fd_io__com_bus_hookup_0/VSSA   
+                                           |  c/bottom = 3                             
+                                           |  c/top = 3                                
+---------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------
+(no matching net)                          |Net: sky130_fd_io__com_bus_hookup_0/VSSIO_ 
+                                           |  c/top = 3                                
+                                           |                                           
+(no matching net)                          |Net: sky130_fd_io__pad_esd_0/m5_1334_20520 
+                                           |  c/top = 3                                
+---------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------
+(no matching net)                          |Net: sky130_fd_io__com_bus_hookup_0/AMUXBU 
+                                           |  c/bottom = 2                             
+                                           |  c/top = 1                                
+                                           |                                           
+(no matching net)                          |Net: sky130_fd_io__com_bus_hookup_0/VSWITC 
+                                           |  c/bottom = 2                             
+                                           |  c/top = 1                                
+---------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------
+(no matching net)                          |Net: sky130_fd_io__com_bus_hookup_0/VCCHIB 
+                                           |  c/top = 2                                
+                                           |                                           
+(no matching net)                          |Net: sky130_fd_io__com_bus_hookup_0/VSSD   
+                                           |  c/top = 2                                
+---------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------
+(no matching net)                          |Net: sky130_fd_io__com_bus_hookup_0/VDDIO  
+                                           |  c/top = 3                                
+                                           |  c/bottom = 1                             
+                                           |                                           
+(no matching net)                          |Net: sky130_fd_io__pad_esd_0/m5_1354_20528 
+                                           |  sky130_fd_pr__res_generic_m5/(end_a|end_ 
+                                           |  c/top = 3                                
+---------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------
+Net: sky130_fd_io__pad_esd_0/m5_1354_20528 |(no matching net)                          
+  sky130_fd_pr__res_generic_m5/(end_a|end_ |                                           
+                                           |                                           
+Net: sky130_fd_io__pad_esd_0/m4_960_20297# |(no matching net)                          
+  sky130_fd_pr__res_generic_m5/(end_a|end_ |                                           
+---------------------------------------------------------------------------------------
+DEVICE mismatches: Class fragments follow (with node fanout counts):
+Circuit 1: sky130_fd_io__com_busses_esd    |Circuit 2: sky130_fd_io__com_busses_esd    
+
+---------------------------------------------------------------------------------------
+(no matching instance)                     |Instance: sky130_fd_io__pad_esd_0/c0       
+                                           |  top = 3                                  
+                                           |  bottom = 5                               
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__pad_esd_0/c3       
+                                           |  top = 3                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: c2                               
+                                           |  top = 3                                  
+                                           |  bottom = 3                               
+                                           |                                           
+(no matching instance)                     |Instance: c4                               
+                                           |  top = 3                                  
+                                           |  bottom = 6                               
+                                           |                                           
+(no matching instance)                     |Instance: c14                              
+                                           |  top = 3                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: c26                              
+                                           |  top = 3                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__pad_esd_0/c4       
+                                           |  top = 5                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: c1                               
+                                           |  top = 3                                  
+                                           |  bottom = 6                               
+                                           |                                           
+(no matching instance)                     |Instance: c10                              
+                                           |  top = 3                                  
+                                           |  bottom = 3                               
+                                           |                                           
+(no matching instance)                     |Instance: c15                              
+                                           |  top = 5                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: c17                              
+                                           |  top = 3                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: c18                              
+                                           |  top = 3                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: c20                              
+                                           |  top = 3                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: c22                              
+                                           |  top = 6                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: c25                              
+                                           |  top = 3                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: c27                              
+                                           |  top = 3                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: c6                               
+                                           |  top = 6                                  
+                                           |  bottom = 3                               
+                                           |                                           
+(no matching instance)                     |Instance: c7                               
+                                           |  top = 3                                  
+                                           |  bottom = 3                               
+                                           |                                           
+(no matching instance)                     |Instance: c8                               
+                                           |  top = 3                                  
+                                           |  bottom = 3                               
+                                           |                                           
+(no matching instance)                     |Instance: c9                               
+                                           |  top = 6                                  
+                                           |  bottom = 3                               
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__pad_esd_0/c1       
+                                           |  top = 4                                  
+                                           |  bottom = 5                               
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__pad_esd_0/c2       
+                                           |  top = 4                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: c5                               
+                                           |  top = 4                                  
+                                           |  bottom = 3                               
+                                           |                                           
+(no matching instance)                     |Instance: c12                              
+                                           |  top = 4                                  
+                                           |  bottom = 3                               
+                                           |                                           
+(no matching instance)                     |Instance: c13                              
+                                           |  top = 4                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: c19                              
+                                           |  top = 4                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: c0                               
+                                           |  top = 2                                  
+                                           |  bottom = 6                               
+                                           |                                           
+(no matching instance)                     |Instance: c3                               
+                                           |  top = 2                                  
+                                           |  bottom = 3                               
+                                           |                                           
+(no matching instance)                     |Instance: c16                              
+                                           |  top = 2                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: c23                              
+                                           |  top = 2                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: c11                              
+                                           |  top = 3                                  
+                                           |  bottom = 4                               
+---------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------
+(no matching instance)                     |Instance: c24                              
+                                           |  top = 3                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: c21                              
+                                           |  top = 3                                  
+                                           |  bottom = 18                              
+---------------------------------------------------------------------------------------
+Netlists do not match.
+  Flattening non-matched subcircuits sky130_fd_io__com_busses_esd sky130_fd_io__com_busses_esd
 Cell sky130_fd_io__simple_pad_and_busses disconnected node: w_818_9944#
 
-Cell sky130_fd_io__simple_pad_and_busses disconnected node: VSUBS
 Cell sky130_fd_io__simple_pad_and_busses disconnected node: w_818_9944#
 
 Subcircuit summary:
 Circuit 1: sky130_fd_io__simple_pad_and_bu |Circuit 2: sky130_fd_io__simple_pad_and_bu 
 -------------------------------------------|-------------------------------------------
-sky130_fd_io__com_busses_esd (1)           |sky130_fd_io__com_busses_esd (1)           
-Number of devices: 1                       |Number of devices: 1                       
-Number of nets: 15                         |Number of nets: 15                         
+sky130_fd_pr__res_generic_m5 (1)           |sky130_fd_pr__res_generic_m5 (1)           
+(no matching element)                      |c (83)                                     
+Number of devices: 1 **Mismatch**          |Number of devices: 84 **Mismatch**         
+Number of nets: 2 **Mismatch**             |Number of nets: 17 **Mismatch**            
 ---------------------------------------------------------------------------------------
-Circuits match uniquely.
-Netlists match uniquely.
-
-Subcircuit pins:
+NET mismatches: Class fragments follow (with fanout counts):
 Circuit 1: sky130_fd_io__simple_pad_and_bu |Circuit 2: sky130_fd_io__simple_pad_and_bu 
--------------------------------------------|-------------------------------------------
-sky130_fd_io__com_busses_esd_0/sky130_fd_i |sky130_fd_io__com_busses_esd_0/sky130_fd_i 
-sky130_fd_io__com_busses_esd_0/sky130_fd_i |sky130_fd_io__com_busses_esd_0/sky130_fd_i 
-sky130_fd_io__com_busses_esd_0/sky130_fd_i |sky130_fd_io__com_busses_esd_0/sky130_fd_i 
-sky130_fd_io__com_busses_esd_0/sky130_fd_i |sky130_fd_io__com_busses_esd_0/sky130_fd_i 
-sky130_fd_io__com_busses_esd_0/sky130_fd_i |sky130_fd_io__com_busses_esd_0/sky130_fd_i 
-sky130_fd_io__com_busses_esd_0/sky130_fd_i |sky130_fd_io__com_busses_esd_0/sky130_fd_i 
-sky130_fd_io__com_busses_esd_0/sky130_fd_i |sky130_fd_io__com_busses_esd_0/sky130_fd_i 
-sky130_fd_io__com_busses_esd_0/sky130_fd_i |sky130_fd_io__com_busses_esd_0/sky130_fd_i 
-sky130_fd_io__com_busses_esd_0/sky130_fd_i |sky130_fd_io__com_busses_esd_0/sky130_fd_i 
-sky130_fd_io__com_busses_esd_0/sky130_fd_i |sky130_fd_io__com_busses_esd_0/sky130_fd_i 
-m3_99_16575#                               |m3_99_16575#                               
-sky130_fd_io__com_busses_esd_0/sky130_fd_i |sky130_fd_io__com_busses_esd_0/sky130_fd_i 
-sky130_fd_io__com_busses_esd_0/sky130_fd_i |sky130_fd_io__com_busses_esd_0/sky130_fd_i 
-sky130_fd_io__com_busses_esd_0/sky130_fd_i |sky130_fd_io__com_busses_esd_0/sky130_fd_i 
-VSUBS                                      |(no matching pin)                          
-VSUBS                                      |VSUBS                                      
-w_818_9944#                                |w_818_9944#                                
----------------------------------------------------------------------------------------
-Cell pin lists for sky130_fd_io__simple_pad_and_busses and sky130_fd_io__simple_pad_and_busses altered to match.
 
+---------------------------------------------------------------------------------------
+(no matching net)                          |Net: sky130_fd_io__com_busses_esd_0/sky130 
+                                           |  c/bottom = 10                            
+                                           |  c/top = 4                                
+                                           |                                           
+(no matching net)                          |Net: sky130_fd_io__com_busses_esd_0/sky130 
+                                           |  c/bottom = 3                             
+                                           |  c/top = 5                                
+                                           |                                           
+(no matching net)                          |Net: sky130_fd_io__com_busses_esd_0/sky130 
+                                           |  c/bottom = 5                             
+                                           |  c/top = 3                                
+                                           |                                           
+(no matching net)                          |Net: sky130_fd_io__com_busses_esd_0/sky130 
+                                           |  c/bottom = 2                             
+                                           |  c/top = 6                                
+                                           |                                           
+(no matching net)                          |Net: sky130_fd_io__com_busses_esd_0/sky130 
+                                           |  c/bottom = 4                             
+                                           |  c/top = 4                                
+                                           |                                           
+(no matching net)                          |Net: sky130_fd_io__com_busses_esd_0/sky130 
+                                           |  c/bottom = 5                             
+                                           |  c/top = 2                                
+                                           |                                           
+(no matching net)                          |Net: sky130_fd_io__com_busses_esd_0/sky130 
+                                           |  c/top = 6                                
+                                           |  c/bottom = 3                             
+                                           |                                           
+(no matching net)                          |Net: m3_99_16575#                          
+                                           |  sky130_fd_pr__res_generic_m5/(end_a|end_ 
+                                           |  c/bottom = 4                             
+                                           |  c/top = 15                               
+                                           |                                           
+(no matching net)                          |Net: /sky130_fd_io__com_busses_esd_0/VSUBS 
+                                           |  c/bottom = 18                            
+---------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------
+(no matching net)                          |Net: sky130_fd_io__com_busses_esd_0/sky130 
+                                           |  c/top = 5                                
+                                           |  c/bottom = 3                             
+                                           |                                           
+(no matching net)                          |Net: sky130_fd_io__com_busses_esd_0/sky130 
+                                           |  c/top = 5                                
+                                           |  c/bottom = 3                             
+---------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------
+(no matching net)                          |Net: sky130_fd_io__com_busses_esd_0/sky130 
+                                           |  sky130_fd_pr__res_generic_m5/(end_a|end_ 
+                                           |  c/top = 5                                
+                                           |                                           
+(no matching net)                          |Net: sky130_fd_io__com_busses_esd_0/sky130 
+                                           |  c/top = 4                                
+                                           |  c/bottom = 2                             
+---------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------
+(no matching net)                          |Net: sky130_fd_io__com_busses_esd_0/sky130 
+                                           |  c/top = 4                                
+                                           |  c/bottom = 1                             
+                                           |                                           
+(no matching net)                          |Net: sky130_fd_io__com_busses_esd_0/sky130 
+                                           |  c/top = 4                                
+                                           |  c/bottom = 1                             
+---------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------
+(no matching net)                          |Net: VSUBS                                 
+                                           |  c/bottom = 15                            
+                                           |                                           
+(no matching net)                          |Net: sky130_fd_io__com_busses_esd_0/sky130 
+                                           |  c/top = 11                               
+                                           |  c/bottom = 4                             
+---------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------
+Net: m3_99_16575#                          |(no matching net)                          
+  sky130_fd_pr__res_generic_m5/(end_a|end_ |                                           
+                                           |                                           
+Net: sky130_fd_io__com_busses_esd_0/sky130 |(no matching net)                          
+  sky130_fd_pr__res_generic_m5/(end_a|end_ |                                           
+---------------------------------------------------------------------------------------
+DEVICE mismatches: Class fragments follow (with node fanout counts):
+Circuit 1: sky130_fd_io__simple_pad_and_bu |Circuit 2: sky130_fd_io__simple_pad_and_bu 
+
+---------------------------------------------------------------------------------------
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0// 
+                                           |  top = 5                                  
+                                           |  bottom = 20                              
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0// 
+                                           |  top = 5                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0/c 
+                                           |  top = 5                                  
+                                           |  bottom = 7                               
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0/c 
+                                           |  top = 5                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0/c 
+                                           |  top = 5                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: c2                               
+                                           |  top = 5                                  
+                                           |  bottom = 7                               
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0// 
+                                           |  top = 6                                  
+                                           |  bottom = 20                              
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0// 
+                                           |  top = 6                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0/c 
+                                           |  top = 6                                  
+                                           |  bottom = 14                              
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0/c 
+                                           |  top = 6                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0/c 
+                                           |  top = 6                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: c5                               
+                                           |  top = 6                                  
+                                           |  bottom = 14                              
+                                           |                                           
+(no matching instance)                     |Instance: c21                              
+                                           |  top = 6                                  
+                                           |  bottom = 20                              
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0// 
+                                           |  top = 20                                 
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0/c 
+                                           |  top = 9                                  
+                                           |  bottom = 8                               
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0/c 
+                                           |  top = 14                                 
+                                           |  bottom = 8                               
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0/c 
+                                           |  top = 8                                  
+                                           |  bottom = 8                               
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0/c 
+                                           |  top = 14                                 
+                                           |  bottom = 8                               
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0/c 
+                                           |  top = 9                                  
+                                           |  bottom = 8                               
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0/c 
+                                           |  top = 20                                 
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0/c 
+                                           |  top = 7                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0/c 
+                                           |  top = 9                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0/c 
+                                           |  top = 8                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0/c 
+                                           |  top = 8                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0/c 
+                                           |  top = 14                                 
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0/c 
+                                           |  top = 8                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0/c 
+                                           |  top = 8                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: c0                               
+                                           |  top = 20                                 
+                                           |  bottom = 9                               
+                                           |                                           
+(no matching instance)                     |Instance: c3                               
+                                           |  top = 8                                  
+                                           |  bottom = 14                              
+                                           |                                           
+(no matching instance)                     |Instance: c7                               
+                                           |  top = 20                                 
+                                           |  bottom = 8                               
+                                           |                                           
+(no matching instance)                     |Instance: c9                               
+                                           |  top = 20                                 
+                                           |  bottom = 8                               
+                                           |                                           
+(no matching instance)                     |Instance: c16                              
+                                           |  top = 20                                 
+                                           |  bottom = 7                               
+                                           |                                           
+(no matching instance)                     |Instance: c18                              
+                                           |  top = 8                                  
+                                           |  bottom = 8                               
+                                           |                                           
+(no matching instance)                     |Instance: c19                              
+                                           |  top = 8                                  
+                                           |  bottom = 14                              
+                                           |                                           
+(no matching instance)                     |Instance: c22                              
+                                           |  top = 20                                 
+                                           |  bottom = 8                               
+                                           |                                           
+(no matching instance)                     |Instance: c23                              
+                                           |  top = 9                                  
+                                           |  bottom = 8                               
+                                           |                                           
+(no matching instance)                     |Instance: c27                              
+                                           |  top = 8                                  
+                                           |  bottom = 20                              
+                                           |                                           
+(no matching instance)                     |Instance: c31                              
+                                           |  top = 20                                 
+                                           |  bottom = 14                              
+                                           |                                           
+(no matching instance)                     |Instance: c34                              
+                                           |  top = 8                                  
+                                           |  bottom = 9                               
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0/c 
+                                           |  top = 8                                  
+                                           |  bottom = 14                              
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0/c 
+                                           |  top = 8                                  
+                                           |  bottom = 8                               
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0/c 
+                                           |  top = 8                                  
+                                           |  bottom = 14                              
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0/c 
+                                           |  top = 8                                  
+                                           |  bottom = 8                               
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0/c 
+                                           |  top = 8                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0/c 
+                                           |  top = 8                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: c15                              
+                                           |  top = 8                                  
+                                           |  bottom = 14                              
+                                           |                                           
+(no matching instance)                     |Instance: c20                              
+                                           |  top = 8                                  
+                                           |  bottom = 14                              
+                                           |                                           
+(no matching instance)                     |Instance: c4                               
+                                           |  top = 20                                 
+                                           |  bottom = 8                               
+                                           |                                           
+(no matching instance)                     |Instance: c8                               
+                                           |  top = 8                                  
+                                           |  bottom = 8                               
+                                           |                                           
+(no matching instance)                     |Instance: c10                              
+                                           |  top = 20                                 
+                                           |  bottom = 8                               
+                                           |                                           
+(no matching instance)                     |Instance: c26                              
+                                           |  top = 8                                  
+                                           |  bottom = 8                               
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0/c 
+                                           |  top = 15                                 
+                                           |  bottom = 7                               
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0/c 
+                                           |  top = 15                                 
+                                           |  bottom = 9                               
+                                           |                                           
+(no matching instance)                     |Instance: sky130_fd_io__com_busses_esd_0/c 
+                                           |  top = 15                                 
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: c11                              
+                                           |  top = 15                                 
+                                           |  bottom = 8                               
+                                           |                                           
+(no matching instance)                     |Instance: c13                              
+                                           |  top = 15                                 
+                                           |  bottom = 8                               
+                                           |                                           
+(no matching instance)                     |Instance: c17                              
+                                           |  top = 15                                 
+                                           |  bottom = 7                               
+                                           |                                           
+(no matching instance)                     |Instance: c33                              
+                                           |  top = 15                                 
+                                           |  bottom = 14                              
+                                           |                                           
+(no matching instance)                     |Instance: c1                               
+                                           |  top = 9                                  
+                                           |  bottom = 15                              
+                                           |                                           
+(no matching instance)                     |Instance: c24                              
+                                           |  top = 8                                  
+                                           |  bottom = 15                              
+                                           |                                           
+(no matching instance)                     |Instance: c25                              
+                                           |  top = 20                                 
+                                           |  bottom = 15                              
+                                           |                                           
+(no matching instance)                     |Instance: c30                              
+                                           |  top = 8                                  
+                                           |  bottom = 15                              
+                                           |                                           
+(no matching instance)                     |Instance: c37                              
+                                           |  top = 20                                 
+                                           |  bottom = 15                              
+                                           |                                           
+(no matching instance)                     |Instance: c39                              
+                                           |  top = 7                                  
+                                           |  bottom = 15                              
+                                           |                                           
+(no matching instance)                     |Instance: c41                              
+                                           |  top = 9                                  
+                                           |  bottom = 15                              
+                                           |                                           
+(no matching instance)                     |Instance: c42                              
+                                           |  top = 8                                  
+                                           |  bottom = 15                              
+                                           |                                           
+(no matching instance)                     |Instance: c43                              
+                                           |  top = 8                                  
+                                           |  bottom = 15                              
+                                           |                                           
+(no matching instance)                     |Instance: c44                              
+                                           |  top = 14                                 
+                                           |  bottom = 15                              
+                                           |                                           
+(no matching instance)                     |Instance: c46                              
+                                           |  top = 8                                  
+                                           |  bottom = 15                              
+                                           |                                           
+(no matching instance)                     |Instance: c49                              
+                                           |  top = 8                                  
+                                           |  bottom = 15                              
+                                           |                                           
+(no matching instance)                     |Instance: c29                              
+                                           |  top = 20                                 
+                                           |  bottom = 6                               
+                                           |                                           
+(no matching instance)                     |Instance: c32                              
+                                           |  top = 15                                 
+                                           |  bottom = 6                               
+                                           |                                           
+(no matching instance)                     |Instance: c40                              
+                                           |  top = 15                                 
+                                           |  bottom = 15                              
+---------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------
+(no matching instance)                     |Instance: c48                              
+                                           |  top = 8                                  
+                                           |  bottom = 15                              
+                                           |                                           
+(no matching instance)                     |Instance: c47                              
+                                           |  top = 8                                  
+                                           |  bottom = 15                              
+---------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------
+(no matching instance)                     |Instance: c14                              
+                                           |  top = 15                                 
+                                           |  bottom = 8                               
+                                           |                                           
+(no matching instance)                     |Instance: c6                               
+                                           |  top = 15                                 
+                                           |  bottom = 8                               
+---------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------
+(no matching instance)                     |Instance: c38                              
+                                           |  top = 5                                  
+                                           |  bottom = 15                              
+                                           |                                           
+(no matching instance)                     |Instance: c36                              
+                                           |  top = 5                                  
+                                           |  bottom = 15                              
+---------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------
+(no matching instance)                     |Instance: c45                              
+                                           |  top = 6                                  
+                                           |  bottom = 15                              
+                                           |                                           
+(no matching instance)                     |Instance: c35                              
+                                           |  top = 6                                  
+                                           |  bottom = 15                              
+---------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------
+(no matching instance)                     |Instance: c28                              
+                                           |  top = 20                                 
+                                           |  bottom = 5                               
+                                           |                                           
+(no matching instance)                     |Instance: c12                              
+                                           |  top = 20                                 
+                                           |  bottom = 5                               
+---------------------------------------------------------------------------------------
+Netlists do not match.
+  Flattening non-matched subcircuits sky130_fd_io__simple_pad_and_busses sky130_fd_io__simple_pad_and_busses
 Subcircuit summary:
-Circuit 1: pad_con                         |Circuit 2: pad_con                         
+Circuit 1: pad_con                         |Circuit 2: pad_con_psub                    
 -------------------------------------------|-------------------------------------------
-sky130_fd_io__simple_pad_and_busses (1)    |sky130_fd_io__simple_pad_and_busses (1)    
-Number of devices: 1                       |Number of devices: 1                       
-Number of nets: 5                          |Number of nets: 5                          
+sky130_fd_pr__res_generic_m5 (1)           |sky130_fd_pr__res_generic_m5 (1)           
+(no matching element)                      |c (115)                                    
+Number of devices: 1 **Mismatch**          |Number of devices: 116 **Mismatch**        
+Number of nets: 2 **Mismatch**             |Number of nets: 8 **Mismatch**             
 ---------------------------------------------------------------------------------------
-Circuits match uniquely.
-Netlists match uniquely.
+NET mismatches: Class fragments follow (with fanout counts):
+Circuit 1: pad_con                         |Circuit 2: pad_con_psub                    
 
-Subcircuit pins:
-Circuit 1: pad_con                         |Circuit 2: pad_con                         
--------------------------------------------|-------------------------------------------
-VDD                                        |VDD                                        
-GND                                        |GND                                        
-out                                        |out                                        
-in                                         |in                                         
 ---------------------------------------------------------------------------------------
-Cell pin lists are equivalent.
-Device classes pad_con and pad_con are equivalent.
-Circuits match uniquely.
+(no matching net)                          |Net: GND                                   
+                                           |  c/top = 45                               
+                                           |  c/bottom = 72                            
+                                           |                                           
+(no matching net)                          |Net: VDD                                   
+                                           |  c/bottom = 20                            
+                                           |  c/top = 40                               
+                                           |                                           
+(no matching net)                          |Net: out                                   
+                                           |  sky130_fd_pr__res_generic_m5/(end_a|end_ 
+                                           |  c/top = 7                                
+                                           |                                           
+(no matching net)                          |Net: in                                    
+                                           |  sky130_fd_pr__res_generic_m5/(end_a|end_ 
+                                           |  c/bottom = 4                             
+                                           |  c/top = 17                               
+                                           |                                           
+(no matching net)                          |Net: /test_0//sky130_fd_io__simple_pad_and 
+                                           |  c/top = 4                                
+                                           |  c/bottom = 1                             
+                                           |                                           
+(no matching net)                          |Net: /test_0//sky130_fd_io__simple_pad_and 
+                                           |  c/bottom = 18                            
+---------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------
+Net: in                                    |(no matching net)                          
+  sky130_fd_pr__res_generic_m5/(end_a|end_ |                                           
+                                           |                                           
+Net: out                                   |(no matching net)                          
+  sky130_fd_pr__res_generic_m5/(end_a|end_ |                                           
+---------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------
+(no matching net)                          |Net: test_0/sky130_fd_io__simple_pad_and_b 
+                                           |  c/top = 1                                
+                                           |                                           
+(no matching net)                          |Net: /test_0/sky130_fd_io__simple_pad_and_ 
+                                           |  c/top = 1                                
+---------------------------------------------------------------------------------------
+DEVICE mismatches: Class fragments follow (with node fanout counts):
+Circuit 1: pad_con                         |Circuit 2: pad_con_psub                    
+
+---------------------------------------------------------------------------------------
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 5                                  
+                                           |  bottom = 22                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 8                                  
+                                           |  bottom = 22                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 8                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 5                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 22                                 
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 60                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 60                                 
+                                           |  bottom = 60                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 60                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 60                                 
+                                           |  bottom = 60                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 60                                 
+                                           |  bottom = 60                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 60                                 
+                                           |  bottom = 60                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 8                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 5                                  
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 22                                 
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 60                                 
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 60                                 
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 60                                 
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 60                                 
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 60                                 
+                                           |  bottom = 18                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 22                                 
+                                           |  bottom = 60                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 60                                 
+                                           |  bottom = 60                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 60                                 
+                                           |  bottom = 60                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 22                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 60                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 22                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 60                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 22                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 22                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 60                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 22                                 
+                                           |  bottom = 60                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 60                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 60                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 22                                 
+                                           |  bottom = 60                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 60                                 
+                                           |  bottom = 60                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 8                                  
+                                           |  bottom = 22                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 22                                 
+                                           |  bottom = 60                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 60                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 60                                 
+                                           |  bottom = 60                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 22                                 
+                                           |  bottom = 60                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 22                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 22                                 
+                                           |  bottom = 5                               
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 22                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 60                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 22                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 60                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 60                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 60                                 
+                                           |  bottom = 60                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 8                                  
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 5                                  
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 22                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 60                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 60                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 60                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 60                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0//sky130_fd_io__simple_pad 
+                                           |  top = 60                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0/c0                        
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0/c1                        
+                                           |  top = 60                                 
+                                           |  bottom = 60                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0/c2                        
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0/c3                        
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0/c4                        
+                                           |  top = 60                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0/c5                        
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0/c6                        
+                                           |  top = 60                                 
+                                           |  bottom = 60                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0/c7                        
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0/c8                        
+                                           |  top = 60                                 
+                                           |  bottom = 60                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0/c9                        
+                                           |  top = 60                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0/c10                       
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0/c11                       
+                                           |  top = 60                                 
+                                           |  bottom = 60                              
+                                           |                                           
+(no matching instance)                     |Instance: test_0/c12                       
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0/c13                       
+                                           |  top = 8                                  
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0/c15                       
+                                           |  top = 22                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0/c16                       
+                                           |  top = 60                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0/c17                       
+                                           |  top = 60                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0/c18                       
+                                           |  top = 60                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0/c19                       
+                                           |  top = 60                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0/c20                       
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0/c21                       
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0/c22                       
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0/c23                       
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0/c24                       
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0/c25                       
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0/c26                       
+                                           |  top = 117                                
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0/c27                       
+                                           |  top = 60                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: c0                               
+                                           |  top = 8                                  
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: c2                               
+                                           |  top = 22                                 
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: c3                               
+                                           |  top = 60                                 
+                                           |  bottom = 117                             
+---------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------
+(no matching instance)                     |Instance: c1                               
+                                           |  top = 1                                  
+                                           |  bottom = 117                             
+                                           |                                           
+(no matching instance)                     |Instance: test_0/c14                       
+                                           |  top = 1                                  
+                                           |  bottom = 117                             
+---------------------------------------------------------------------------------------
+Netlists do not match.
+The top level cell failed pin matching.
