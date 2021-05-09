@@ -50,6 +50,7 @@ The design target is to cover a `frequency range of +-0.25 GHz` centered at `1.2
 
 Under current setting, we've achieved 1 ns second resolution due to fact that pre-layout schematic is running at a higher frequency intentionally, so `7-bit` are already good enough to achieve such resolution. Two more bits can be enabled by allowing individual control of delay tuning varactor at each stage.  
 
+---
 ### Setup for mflowgen
 
 Please install the mflowgen on a server that has acess to commercial tools. Installation of mflowgen please follow the step in [here](https://mflowgen.readthedocs.io/en/latest/quick-start.html). Go through the steps until `pip install -e .`.
