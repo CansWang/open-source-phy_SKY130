@@ -5,6 +5,9 @@ commands:
     mkdir -p outputs
     cp -r $VLOG_HOME/mux_4t1 ./outputs
     cat "./outputs/mux_4t1/qr_4t1_mux_top.sv" "./outputs/mux_4t1/qr_mux_fixed.sv" "./outputs/mux_4t1/ff_c.sv" "./outputs/mux_4t1/tx_inv.sv" > "./outputs/design.v"
+    python gen_tcl.py
+
 
 outputs:
   - design.v
+  - read_design.tcl

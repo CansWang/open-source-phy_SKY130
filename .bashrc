@@ -7,6 +7,9 @@ export MGLS_LICENSE_FILE=1717@cadlic0.stanford.edu
 export VLOG_HOME=/tmp/canw/open-source-phy_SKY130/vlog/
 export DESIGN=/tmp/canw/open-source-phy_SKY130/tx_16t1
 
+export design_name=qr_4t1_mux_top
+
+
 source /cad/modules/tcl/init/sh
 module load base
 module load vcs

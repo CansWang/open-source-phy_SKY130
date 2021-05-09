@@ -46,7 +46,7 @@ def construct():
 
   constraints = Step( this_dir + '/constraints' )
   dc = Step( this_dir + '/synopsys-dc-synthesis' )
-  qtm = Step(this_dir + '/qtm')
+  # qtm = Step(this_dir + '/qtm')
   # Define blocks function
 
   blocks = []
@@ -87,57 +87,11 @@ def construct():
   power.extend_inputs(custom_geom.all_outputs())
   place.extend_inputs(custom_place.all_outputs())
 
-
-
-  # Add *.db of macros for downstream nodes 
-  dbs = [
-        'output_buffer_lib.db',
-        'phase_interpolator_lib.db',
-        'termination_lib.db',
-        'input_divider_lib.db'
-  ]
-  dc.extend_inputs(dbs)
-#  pt_signoff.extend_inputs(dbs)
-#  genlibdb.extend_inputs(dbs)
-  
-   # These steps need timing and lef info for black boxes
-  libs = [
-        'output_buffer.lib',
-        'input_divider.lib',
-        'phase_interpolator.lib',
-        'termination.lib'
-  ]
-
-  # lefs
-  lefs = [
-        'output_buffer.lef',
-        'input_divider.lef',
-        'phase_interpolator.lef',
-        'termination.lef'
-  ]
-
-  # gds
-  gds_list  = [
-        'output_buffer.gds',
-        'input_divider.gds',
-        'phase_interpolator.gds',
-        'termination.gds'
-  ]
-  gdsmerge.extend_inputs(gds_list)
-
-  # spi
-  spi_list = [
-        'output_buffer.spi',
-        'input_divider.spi',
-        'phase_interpolator.spi',
-        'termination.spi'
-  ]
-  lvs.extend_inputs(spi_list)  
    
   lib_lef_steps = \
       [iflow, init, power, place, cts, postcts_hold, route, postroute, signoff]
-  for step in lib_lef_steps:
-      step.extend_inputs(libs + lefs)
+#  for step in lib_lef_steps:
+#      step.extend_inputs(libs + lefs)
 
    # gds_list needed for gds_merge step
 
@@ -176,7 +130,7 @@ def construct():
   for block in blocks:
     g.add_step ( block )
 
-  g.add_step( qtm )
+#  g.add_step( qtm )
 
   #g.add_step( custom_geom )
   #-----------------------------------------------------------------------
@@ -199,21 +153,21 @@ def construct():
   g.connect_by_name( adk,            gdsmerge       )
   g.connect_by_name( adk,            drc            )
   g.connect_by_name( adk,            lvs            )
-  g.connect_by_name( adk, 	     qtm            )
+#  g.connect_by_name( adk, 	     qtm            )
 
-  for block in blocks + [qtm]:
-    g.connect_by_name(block, dc)
-    g.connect_by_name(block, iflow)
-    g.connect_by_name(block, init)
-    g.connect_by_name(block, power)
-    g.connect_by_name(block, place)
-    g.connect_by_name(block, cts)
-    g.connect_by_name(block, postcts_hold)
-    g.connect_by_name(block, route)
-    g.connect_by_name(block, postroute)
-    g.connect_by_name(block, signoff)
-    g.connect_by_name(block, gdsmerge)
-    g.connect_by_name(block, lvs)
+#  for block in blocks + [qtm]:
+#    g.connect_by_name(block, dc)
+#    g.connect_by_name(block, iflow)
+#    g.connect_by_name(block, init)
+#    g.connect_by_name(block, power)
+#    g.connect_by_name(block, place)
+#    g.connect_by_name(block, cts)
+#    g.connect_by_name(block, postcts_hold)
+#    g.connect_by_name(block, route)
+#    g.connect_by_name(block, postroute)
+#    g.connect_by_name(block, signoff)
+#    g.connect_by_name(block, gdsmerge)
+#    g.connect_by_name(block, lvs)
   
 
   g.connect_by_name( custom_place,   place          )
