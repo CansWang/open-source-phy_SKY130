@@ -85,3 +85,4 @@ caddy.bashrc
 comp.out
 sim.report
 *.ext
+venv/
