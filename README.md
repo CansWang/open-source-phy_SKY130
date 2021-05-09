@@ -55,7 +55,7 @@ Under current setting, we've achieved 1 ns second resolution due to fact that pr
 
 Please install the mflowgen on a server that has acess to commercial tools. Installation of mflowgen please follow the step in [here](https://mflowgen.readthedocs.io/en/latest/quick-start.html). Go through the steps until `pip install -e .`.
 
-`.bashrc` file in out repo specify the installation path of the mflowgen, verilog code source folder and mflowgen design folder, change it according to your local path.
+`.bashrc` file in our repo specify the installation path of the mflowgen, verilog code source folder and mflowgen design folder, change it according to your local path.
 
 Then execute `source .bashrc` in bash shell, you will still stay `(venv)` environment.
 
