@@ -15,7 +15,7 @@ e = os.environ
 file_list = []
 file_list += [e['VLOG_HOME']+'/all/hr_16t4_mux_top.sv']
 file_list += [e['VLOG_HOME']+'/all/hr_4t1_mux_top.sv']
-file_list += [e['VLOG_HOME']+'/all/hr_2t1_mux_0.sv']
+file_list += [e['VLOG_HOME']+'/all/hr_2t1_mux_top.sv']
 file_list += [e['VLOG_HOME']+'/all/ff_c.sv']
 file_list += [e['VLOG_HOME']+'/all/mux.sv']
 
