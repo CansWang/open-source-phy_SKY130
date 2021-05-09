@@ -57,7 +57,7 @@ Please install the mflowgen on a server that has acess to commercial tools. Inst
 
 `.bashrc` file in our repo specify the installation path of the mflowgen, verilog code source folder and mflowgen design folder, change it according to your local path.
 
-Then execute `source .bashrc` in bash shell, you will still stay `(venv)` environment.
+Then execute `source .bashrc` in bash shell, you shall still stay `(venv)` environment.
 
 DC+Innovus compatible adk is available from [here](https://github.com/CansWang/skywater-130nm-adk.git). Clone it to `$mflowgen+installation+path/adks/`. 
 
