@@ -13,10 +13,7 @@ e = os.environ
 
 # build up a list of source files
 file_list = []
-file_list += [e['VLOG_HOME']+'/all/ff_c.sv']
-file_list += [e['VLOG_HOME']+'/all/qr_4t1_mux_top.sv']
-file_list += [e['VLOG_HOME']+'/all/qr_mux_fixed.sv']
-file_list += [e['VLOG_HOME']+'/all/tx_inv.sv']
+file_list += [e['VLOG_HOME']+'/all/prbs_generator_syn.sv']
 
 print('loaded verilog source file list:', file_list)
 
@@ -29,7 +26,7 @@ set file_list {tcl_list(file_list)}
 analyze -format sverilog $file_list
 
 # Elaborate the design target
-elaborate qr_4t1_mux_top
+elaborate prbs_generator_syn
 '''
 
 # write output text
