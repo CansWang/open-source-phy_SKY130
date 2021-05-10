@@ -23,12 +23,10 @@ set TR_QR [expr {0.4*$T}]
 
 create_clock -name clk_16t4_hr \
     -period $T2 \
-    -waveform "$T2" \
     [get_ports clk_hr]
 
 create_clock -name clk_16t4_prbs \
     -period $T1 \
-    -waveform "$T1" \
     [get_ports clk_prbs]
 
 # Internal nets

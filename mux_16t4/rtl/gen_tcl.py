@@ -30,7 +30,7 @@ set file_list {tcl_list(file_list)}
 analyze -format sverilog $file_list
 
 # Elaborate the design target
-elaborate qr_4t1_mux_top
+elaborate hr_16t4_mux_top
 '''
 
 # write output text
