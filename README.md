@@ -2,9 +2,9 @@
 
 This repository contains the course project of 2021 Spring EE272B, Stanford Univeristy
 
-About the project, please also refer to
-        - Google Doc: https://docs.google.com/document/d/1XlmviEpNJnQxyBGFooT4ouG4fiQuw5VTy6RInX47rTE/edit?ts=602a33a3#
-        - Git repo: https://github.com/StanfordVLSI/dragonphy2
+About the project, please also refer to:
+        - [Google Doc](https://docs.google.com/document/d/1XlmviEpNJnQxyBGFooT4ouG4fiQuw5VTy6RInX47rTE/edit?ts=602a33a3#)
+        - [Git repo](https://github.com/StanfordVLSI/dragonphy2)
 
 ---
 ### Summary
@@ -49,6 +49,26 @@ The simulation results are attached in the `RVCO_sim_results.xslx` under `spice/
 The design target is to cover a `frequency range of +-0.25 GHz` centered at `1.25 GHz`. Assume 125 MHz ref and 10% phase error after accumulation, the resolution needs to be `1ns` for each cell.
 
 Under current setting, we've achieved 1 ns second resolution due to fact that pre-layout schematic is running at a higher frequency intentionally, so `7-bit` are already good enough to achieve such resolution. Two more bits can be enabled by allowing individual control of delay tuning varactor at each stage.  
+
+---
+### Setup for mflowgen
+
+Please install the mflowgen on a server that has access to commercial tools. Installation of mflowgen please follow the step in [here](https://mflowgen.readthedocs.io/en/latest/quick-start.html). Go through the steps until `pip install -e .`.
+
+`.bashrc` file in our repo specify the installation path of the mflowgen, verilog code source folder and mflowgen design folder, change it according to your local path.
+
+Then execute `source .bashrc` in bash shell, you shall still stay `(venv)` environment.
+
+DC+Innovus compatible adk is available from [here](https://github.com/CansWang/skywater-130nm-adk.git). Clone it to `$mflowgen+installation+path/adks/`. 
+
+
+
+
+
+
+
+
+
 
 
 

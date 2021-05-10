@@ -1,0 +1,13 @@
+name: rtl
+
+commands:
+  - |
+    mkdir -p outputs
+    cp -r $VLOG_HOME/all/prbs_generator_syn.sv ./outputs
+    cat "./outputs/prbs_generator_syn.sv" > "./outputs/design.v"
+    python gen_tcl.py
+
+
+outputs:
+  - design.v
+  - read_design.tcl
