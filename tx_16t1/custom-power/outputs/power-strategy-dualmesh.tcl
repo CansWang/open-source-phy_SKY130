@@ -121,7 +121,7 @@
 
 
 #    add_ndr -name tx_out_buf -spacing {M1:M7 0.12} -width {M1:M3 0.12 M4:M7 0.4}
-    setAttribute -net {buf1/BTN buf1/BTP dout_p dout_n} -non_default_rule tx_out_buf
+#    setAttribute -net {buf1/BTN buf1/BTP dout_p dout_n} -non_default_rule tx_out_buf
 
 
 #	placeInstance \
@@ -203,7 +203,7 @@ addStripe \
     -padcore_ring_bottom_layer_limit M1 \
     -padcore_ring_top_layer_limit M1 \
     -spacing 1.8 \
-    -master "BOUND*" \
+    -master "qr_4t1_mux_top" \
     -merge_stripes_value 0.045 \
     -create_pins 1 \
     -direction horizontal \
@@ -254,8 +254,8 @@ set pin_tx_outn_y [expr $origin_ref_y]
 
 #setPtnPinStatus -cell tx_top -pin {*} -status unplaced -silent
 #[tx_outputs]
-createPhysicalPin dout_p -net dout_p -layer 10 -rect $pin_tx_outp_x [expr $pin_tx_outp_y+20] [expr $pin_tx_outp_x+$outbuf_pin_width] [expr $pin_tx_outp_y+$outbuf_pin_height+20]
-createPhysicalPin dout_n -net dout_n -layer 10 -rect $pin_tx_outn_x [expr $pin_tx_outn_y+20] [expr $pin_tx_outn_x+$outbuf_pin_width] [expr $pin_tx_outn_y+$outbuf_pin_height+20]
+#createPhysicalPin dout_p -net dout_p -layer 10 -rect $pin_tx_outp_x [expr $pin_tx_outp_y+20] [expr $pin_tx_outp_x+$outbuf_pin_width] [expr $pin_tx_outp_y+$outbuf_pin_height+20]
+#createPhysicalPin dout_n -net dout_n -layer 10 -rect $pin_tx_outn_x [expr $pin_tx_outn_y+20] [expr $pin_tx_outn_x+$outbuf_pin_width] [expr $pin_tx_outn_y+$outbuf_pin_height+20]
 
 set term_pin_width 4.93
 set term_pin_height 1.2
@@ -263,11 +263,11 @@ set term_pin_offset_x [expr 15.330+$term_pin_width/2]
 set term_pin_offset_y [expr 0.735+$term_pin_height/2]
 
 # Route Blk for via 4-8
-createRouteBlk -box [expr $pin_tx_outp_x - 1] [expr $pin_tx_outp_y + 19] [expr $pin_tx_outp_x + $outbuf_pin_width + 1] [expr $pin_tx_outp_y + $outbuf_pin_height + 21] -layer {VIA4 VIA5 VIA6 VIA7 VIA8} -name blk_term_p_vian_tx_outp_x
-createRouteBlk -box [expr $pin_tx_outn_x + 1] [expr $pin_tx_outn_y + 19] [expr $pin_tx_outn_x + $outbuf_pin_width + 1] [expr $pin_tx_outn_y + $outbuf_pin_height + 21] -layer {VIA4 VIA5 VIA6 VIA7 VIA8} -name blk_term_n_via
+createRouteBlk -box [expr $pin_tx_outp_x - 1] [expr $pin_tx_outp_y + 19] [expr $pin_tx_outp_x + $outbuf_pin_width + 1] [expr $pin_tx_outp_y + $outbuf_pin_height + 21] -layer {via3 via4 } -name blk_term_p_vian_tx_outp_x
+createRouteBlk -box [expr $pin_tx_outn_x + 1] [expr $pin_tx_outn_y + 19] [expr $pin_tx_outn_x + $outbuf_pin_width + 1] [expr $pin_tx_outn_y + $outbuf_pin_height + 21] -layer {via3 via4 } -name blk_term_n_via
 
 setEdit -layer_minimum M1
-setEdit -layer_maximum AP
+setEdit -layer_maximum M5
 setEdit -force_regular 1
 getEditMode -snap_to_track_regular
 getEditMode -snap_to_pin
@@ -281,9 +281,9 @@ setViaGenMode -ignore_DRC false
 setViaGenMode -use_fgc 1
 setViaGenMode -use_cce false
 
-setEdit -layer_vertical M9
+setEdit -layer_vertical M5
 setEdit -width_vertical 4
-setEdit -layer_horizontal M9
+setEdit -layer_horizontal M4
 setEdit -width_horizontal 4
 
 #setEdit -nets ext_tx_outp
@@ -299,26 +299,26 @@ setEdit -width_horizontal 4
 #editCommitRoute [expr $origin_term_n_x+$term_width/2+2] [expr $origin_term_n_y] 
 
 
-setEdit -layer_horizontal M6
+setEdit -layer_horizontal M4
 setEdit -layer_vertical M5
 setEdit -width_horizontal $term_pin_height
 setEdit -width_vertical 1
 
-setEdit -nets buf1/BTP
-editAddRoute [expr $origin_term_p_x+$term_pin_offset_x-$term_pin_width/2] [expr $origin_term_p_y+$term_pin_offset_y]
-editCommitRoute [expr $origin_term_p_x+$term_width-$term_pin_offset_x+$term_pin_width/2] [expr $origin_term_p_y+$term_pin_offset_y] 
-editAddRoute [expr $origin_term_p_x+$term_pin_offset_x] [expr $origin_term_p_y+$term_pin_offset_y]
-editCommitRoute [expr $origin_term_p_x+$term_pin_offset_x] [expr $origin_term_p_y+$term_pin_offset_y-30] 
-editAddRoute [expr $origin_term_p_x+$term_width-$term_pin_offset_x-2] [expr $origin_term_p_y+$term_pin_offset_y]
-editCommitRoute [expr $origin_term_p_x+$term_width-$term_pin_offset_x-2] [expr $origin_term_p_y+$term_pin_offset_y-30] 
+# setEdit -nets buf1/BTP
+# editAddRoute [expr $origin_term_p_x+$term_pin_offset_x-$term_pin_width/2] [expr $origin_term_p_y+$term_pin_offset_y]
+# editCommitRoute [expr $origin_term_p_x+$term_width-$term_pin_offset_x+$term_pin_width/2] [expr $origin_term_p_y+$term_pin_offset_y] 
+# editAddRoute [expr $origin_term_p_x+$term_pin_offset_x] [expr $origin_term_p_y+$term_pin_offset_y]
+# editCommitRoute [expr $origin_term_p_x+$term_pin_offset_x] [expr $origin_term_p_y+$term_pin_offset_y-30] 
+# editAddRoute [expr $origin_term_p_x+$term_width-$term_pin_offset_x-2] [expr $origin_term_p_y+$term_pin_offset_y]
+# editCommitRoute [expr $origin_term_p_x+$term_width-$term_pin_offset_x-2] [expr $origin_term_p_y+$term_pin_offset_y-30] 
 
-setEdit -nets buf1/BTN
-editAddRoute [expr $origin_term_n_x+$term_pin_offset_x-$term_pin_width/2] [expr $origin_term_n_y+$term_pin_offset_y]
-editCommitRoute [expr $origin_term_n_x+$term_width-$term_pin_offset_x+$term_pin_width/2] [expr $origin_term_n_y+$term_pin_offset_y] 
-editAddRoute [expr $origin_term_n_x+$term_pin_offset_x] [expr $origin_term_n_y+$term_pin_offset_y]
-editCommitRoute [expr $origin_term_n_x+$term_pin_offset_x] [expr $origin_term_n_y+$term_pin_offset_y+$term_height+30-2*$term_pin_offset_y]
-editAddRoute [expr $origin_term_n_x+$term_width-$term_pin_offset_x-2] [expr $origin_term_n_y+$term_pin_offset_y]
-editCommitRoute [expr $origin_term_n_x+$term_width-$term_pin_offset_x-2] [expr $origin_term_n_y+$term_pin_offset_y+$term_height+30-2*$term_pin_offset_y]
+# setEdit -nets buf1/BTN
+# editAddRoute [expr $origin_term_n_x+$term_pin_offset_x-$term_pin_width/2] [expr $origin_term_n_y+$term_pin_offset_y]
+# editCommitRoute [expr $origin_term_n_x+$term_width-$term_pin_offset_x+$term_pin_width/2] [expr $origin_term_n_y+$term_pin_offset_y] 
+# editAddRoute [expr $origin_term_n_x+$term_pin_offset_x] [expr $origin_term_n_y+$term_pin_offset_y]
+# editCommitRoute [expr $origin_term_n_x+$term_pin_offset_x] [expr $origin_term_n_y+$term_pin_offset_y+$term_height+30-2*$term_pin_offset_y]
+# editAddRoute [expr $origin_term_n_x+$term_width-$term_pin_offset_x-2] [expr $origin_term_n_y+$term_pin_offset_y]
+# editCommitRoute [expr $origin_term_n_x+$term_width-$term_pin_offset_x-2] [expr $origin_term_n_y+$term_pin_offset_y+$term_height+30-2*$term_pin_offset_y]
 
 setEdit -layer_horizontal M4
 setEdit -layer_vertical M3
@@ -333,24 +333,24 @@ setEdit -width_vertical 0.4
 #editAddRoute [expr $origin_term_p_x+$term_pin_offset_x] [expr 115 + 3*($tri_height*3)-$cell_height]
 #editCommitRoute [expr $origin_term_p_x+$term_width-$term_pin_offset_x] [expr 115 + 3*($tri_height*3)-$cell_height] 
 
-setEdit -nets buf1/BTP
-for {set k 0} {$k<6} {incr k} {
-editAddRoute [expr 39 + (3*$k+1)*($tri_width)+0.4] [expr 134-$cell_height]
-editCommitRoute [expr 39 + (3*$k+1)*($tri_width)+0.4] [expr 134 + 6*($tri_height*3)-$cell_height]
-}
-editAddRoute [expr $origin_term_p_x+$term_pin_offset_x] [expr 134 + 3*($tri_height*3)-$cell_height]
-editCommitRoute [expr $origin_term_p_x+$term_width-$term_pin_offset_x] [expr 134 + 3*($tri_height*3)-$cell_height]
+# setEdit -nets buf1/BTP
+# for {set k 0} {$k<6} {incr k} {
+# editAddRoute [expr 39 + (3*$k+1)*($tri_width)+0.4] [expr 134-$cell_height]
+# editCommitRoute [expr 39 + (3*$k+1)*($tri_width)+0.4] [expr 134 + 6*($tri_height*3)-$cell_height]
+# }
+# editAddRoute [expr $origin_term_p_x+$term_pin_offset_x] [expr 134 + 3*($tri_height*3)-$cell_height]
+# editCommitRoute [expr $origin_term_p_x+$term_width-$term_pin_offset_x] [expr 134 + 3*($tri_height*3)-$cell_height]
 
 
 
 
-setEdit -nets buf1/BTN
-for {set k 0} {$k<6} {incr k} {
-editAddRoute [expr 39 + (3*$k+1)*($tri_width)+0.4] [expr 110-$cell_height]
-editCommitRoute [expr 39 + (3*$k+1)*($tri_width)+0.4] [expr 110 + 6*($tri_height*3)-$cell_height]
-}
-editAddRoute [expr $origin_term_p_x+$term_pin_offset_x] [expr 110 + 3*($tri_height*3)-$cell_height]
-editCommitRoute [expr $origin_term_p_x+$term_width-$term_pin_offset_x] [expr 110 + 3*($tri_height*3)-$cell_height] 
+# setEdit -nets buf1/BTN
+# for {set k 0} {$k<6} {incr k} {
+# editAddRoute [expr 39 + (3*$k+1)*($tri_width)+0.4] [expr 110-$cell_height]
+# editCommitRoute [expr 39 + (3*$k+1)*($tri_width)+0.4] [expr 110 + 6*($tri_height*3)-$cell_height]
+# }
+# editAddRoute [expr $origin_term_p_x+$term_pin_offset_x] [expr 110 + 3*($tri_height*3)-$cell_height]
+# editCommitRoute [expr $origin_term_p_x+$term_width-$term_pin_offset_x] [expr 110 + 3*($tri_height*3)-$cell_height] 
 
 
 deleteRouteBlk -name blk_term_p_via
@@ -378,8 +378,8 @@ deleteRouteBlk -name blk_term_n_via
 #--------------------------------------------------------------------------------------------------------------
 
 #createRouteBlk -box $acore_x [expr $acore_y+$acore_height] [expr $acore_x+$acore_width] $FP_height -layer {2 3 4 5 6 7 8 9} -name blk_acore_top
-createRouteBlk -box $origin_term_p_x $origin_term_p_y [expr $origin_term_p_x+$term_width] [expr $origin_term_p_y+$term_height] -layer {7 8 9} -name blk_term_p
-createRouteBlk -box $origin_term_n_x $origin_term_n_y [expr $origin_term_n_x+$term_width] [expr $origin_term_n_y+$term_height] -layer {7 8 9} -name blk_term_n
+#createRouteBlk -box $origin_term_p_x $origin_term_p_y [expr $origin_term_p_x+$term_width] [expr $origin_term_p_y+$term_height] -layer {7 8 9} -name blk_term_p
+#createRouteBlk -box $origin_term_n_x $origin_term_n_y [expr $origin_term_n_x+$term_width] [expr $origin_term_n_y+$term_height] -layer {7 8 9} -name blk_term_n
 
 # --------------------------------------------------------------------------------------------------------------
 # # M7 power connections for macros
@@ -389,37 +389,36 @@ set inbuf_M7_power_pin_offset2 21.104
 set inbuf_M7_power_width 2
 set inbuf_M7_power_space 1
 
-sroute -connect { blockPin } -inst {idcore/out_buff_i} -layerChangeRange { M7 M7 } -blockPinTarget { boundaryWithPin } -allowJogging 1 -crossoverViaLayerRange { M8 M1 } -nets {DVDD DVSS} -allowLayerChange 0 -blockPin useLef -targetViaLayerRange { M8 M1 }
+#sroute -connect { blockPin } -inst {idcore/out_buff_i} -layerChangeRange { M7 M7 } -blockPinTarget { boundaryWithPin } -allowJogging 1 -crossoverViaLayerRange { M5 M1 } -nets {DVDD DVSS} -allowLayerChange 0 -blockPin useLef -targetViaLayerRange { M5 M1 }
 
 
 addStripe -nets {DVDD DVSS} \
-  -layer M7 -direction vertical -width $inbuf_M7_power_width -spacing $inbuf_M7_power_space -start_offset [expr $inbuf_async_x+$inbuf_M7_power_pin_offset1] -stop_offset [expr $FP_width-($inbuf_async_x+$inbuf_M7_power_pin_offset1+4*$inbuf_M7_power_width+3*$inbuf_M7_power_space)] -set_to_set_distance [expr 2*($inbuf_M7_power_width+$inbuf_M7_power_space)]  -start_from left -switch_layer_over_obs false -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit AP -padcore_ring_bottom_layer_limit M7 -block_ring_top_layer_limit M7 -block_ring_bottom_layer_limit M7 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
+  -layer M4 -direction vertical -width $inbuf_M7_power_width -spacing $inbuf_M7_power_space -start_offset [expr $inbuf_async_x+$inbuf_M7_power_pin_offset1] -stop_offset [expr $FP_width-($inbuf_async_x+$inbuf_M7_power_pin_offset1+4*$inbuf_M7_power_width+3*$inbuf_M7_power_space)] -set_to_set_distance [expr 2*($inbuf_M7_power_width+$inbuf_M7_power_space)]  -start_from left -switch_layer_over_obs false -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit M5 -padcore_ring_bottom_layer_limit M7 -block_ring_top_layer_limit M5 -block_ring_bottom_layer_limit M5 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
 
 addStripe -nets {DVSS DVDD} \
-  -layer M7 -direction vertical -width $inbuf_M7_power_width -spacing $inbuf_M7_power_space -start_offset [expr $inbuf_main_x+$inbuf_M7_power_pin_offset2] -stop_offset [expr $FP_width-($inbuf_main_x+$inbuf_M7_power_pin_offset2+4*$inbuf_M7_power_width+3*$inbuf_M7_power_space)] -set_to_set_distance [expr 2*($inbuf_M7_power_width+$inbuf_M7_power_space)]  -start_from left -switch_layer_over_obs false -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit AP -padcore_ring_bottom_layer_limit M7 -block_ring_top_layer_limit M7 -block_ring_bottom_layer_limit M7 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
+  -layer M4 -direction vertical -width $inbuf_M7_power_width -spacing $inbuf_M7_power_space -start_offset [expr $inbuf_main_x+$inbuf_M7_power_pin_offset2] -stop_offset [expr $FP_width-($inbuf_main_x+$inbuf_M7_power_pin_offset2+4*$inbuf_M7_power_width+3*$inbuf_M7_power_space)] -set_to_set_distance [expr 2*($inbuf_M7_power_width+$inbuf_M7_power_space)]  -start_from left -switch_layer_over_obs false -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit M5 -padcore_ring_bottom_layer_limit M7 -block_ring_top_layer_limit M5 -block_ring_bottom_layer_limit M5 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
 
 
-createRouteBlk -box 0 $mdll_y $inbuf_mdll_mon_x $FP_height -layer 7 -name M7_blk_mdll
 #createRouteBlk -box $outbuf_x 0 [expr $outbuf_x+$output_buffer_width] $outbuf_y -layer 7 -name M7_blk_inbuff_mdll
 
 addStripe -nets {DVSS DVDD} \
-  -layer M7 -direction vertical -width $inbuf_M7_power_width -spacing $inbuf_M7_power_space -start_offset [expr $inbuf_mdll_ref_x+$inbuf_M7_power_pin_offset2] -stop_offset [expr $FP_width-($inbuf_mdll_ref_x+$inbuf_M7_power_pin_offset2+4*$inbuf_M7_power_width+3*$inbuf_M7_power_space)] -set_to_set_distance [expr 2*($inbuf_M7_power_width+$inbuf_M7_power_space)]  -start_from left -switch_layer_over_obs false -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit AP -padcore_ring_bottom_layer_limit M7 -block_ring_top_layer_limit M7 -block_ring_bottom_layer_limit M7 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
+  -layer M4 -direction vertical -width $inbuf_M7_power_width -spacing $inbuf_M7_power_space -start_offset [expr $inbuf_mdll_ref_x+$inbuf_M7_power_pin_offset2] -stop_offset [expr $FP_width-($inbuf_mdll_ref_x+$inbuf_M7_power_pin_offset2+4*$inbuf_M7_power_width+3*$inbuf_M7_power_space)] -set_to_set_distance [expr 2*($inbuf_M7_power_width+$inbuf_M7_power_space)]  -start_from left -switch_layer_over_obs false -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit AP -padcore_ring_bottom_layer_limit M7 -block_ring_top_layer_limit M7 -block_ring_bottom_layer_limit M7 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
 
 
 addStripe -nets {DVDD DVSS} \
-  -layer M7 -direction vertical -width $inbuf_M7_power_width -spacing $inbuf_M7_power_space -start_offset [expr $inbuf_mdll_mon_x+$inbuf_M7_power_pin_offset1] -stop_offset [expr $FP_width-($inbuf_mdll_mon_x+$inbuf_M7_power_pin_offset1+4*$inbuf_M7_power_width+3*$inbuf_M7_power_space)] -set_to_set_distance [expr 2*($inbuf_M7_power_width+$inbuf_M7_power_space)]  -start_from left -switch_layer_over_obs false -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit AP -padcore_ring_bottom_layer_limit M7 -block_ring_top_layer_limit M7 -block_ring_bottom_layer_limit M7 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
+  -layer M4 -direction vertical -width $inbuf_M7_power_width -spacing $inbuf_M7_power_space -start_offset [expr $inbuf_mdll_mon_x+$inbuf_M7_power_pin_offset1] -stop_offset [expr $FP_width-($inbuf_mdll_mon_x+$inbuf_M7_power_pin_offset1+4*$inbuf_M7_power_width+3*$inbuf_M7_power_space)] -set_to_set_distance [expr 2*($inbuf_M7_power_width+$inbuf_M7_power_space)]  -start_from left -switch_layer_over_obs false -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit AP -padcore_ring_bottom_layer_limit M7 -block_ring_top_layer_limit M7 -block_ring_bottom_layer_limit M7 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
 
 
 addStripe -nets {DVDD DVSS} \
-  -layer M7 -direction vertical -width [expr $inbuf_M7_power_width/2] -spacing [expr $inbuf_M7_power_space] -start_offset [expr $outbuf_x+$output_buffer_width/2-$inbuf_M7_power_space/2-$inbuf_M7_power_width/2] -set_to_set_distance $FP_width  -start_from left -switch_layer_over_obs false -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit AP -padcore_ring_bottom_layer_limit M7 -block_ring_top_layer_limit M7 -block_ring_bottom_layer_limit M7 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
+  -layer M4 -direction vertical -width [expr $inbuf_M7_power_width/2] -spacing [expr $inbuf_M7_power_space] -start_offset [expr $outbuf_x+$output_buffer_width/2-$inbuf_M7_power_space/2-$inbuf_M7_power_width/2] -set_to_set_distance $FP_width  -start_from left -switch_layer_over_obs false -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit AP -padcore_ring_bottom_layer_limit M7 -block_ring_top_layer_limit M7 -block_ring_bottom_layer_limit M7 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
 deleteRouteBlk -name M7_blk_inbuff_mdll
 
 deleteRouteBlk -name M7_blk_*
 
 addStripe -nets {DVDD DVSS} \
-  -layer M7 -direction vertical -width [expr $inbuf_M7_power_width/2] -spacing [expr $inbuf_M7_power_space] -start_offset [expr ($inbuf_main_x+$input_buffer_width+$mdll_x)/2-$inbuf_M7_power_space/2-$inbuf_M7_power_width/2] -set_to_set_distance $FP_width  -start_from left -switch_layer_over_obs false -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit AP -padcore_ring_bottom_layer_limit M7 -block_ring_top_layer_limit M7 -block_ring_bottom_layer_limit M7 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
+  -layer M4 -direction vertical -width [expr $inbuf_M7_power_width/2] -spacing [expr $inbuf_M7_power_space] -start_offset [expr ($inbuf_main_x+$input_buffer_width+$mdll_x)/2-$inbuf_M7_power_space/2-$inbuf_M7_power_width/2] -set_to_set_distance $FP_width  -start_from left -switch_layer_over_obs false -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit AP -padcore_ring_bottom_layer_limit M7 -block_ring_top_layer_limit M7 -block_ring_bottom_layer_limit M7 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
 
-sroute -connect { blockPin } -inst {imdll} -layerChangeRange { M7 M7 } -blockPinTarget { boundaryWithPin } -allowJogging 1 -crossoverViaLayerRange { M8 M1 } -nets {DVDD DVSS} -allowLayerChange 0 -blockPin useLef -targetViaLayerRange { M8 M1 }
+#sroute -connect { blockPin } -inst {imdll} -layerChangeRange { M3 M3 } -blockPinTarget { boundaryWithPin } -allowJogging 1 -crossoverViaLayerRange { M5 M1 } -nets {DVDD DVSS} -allowLayerChange 0 -blockPin useLef -targetViaLayerRange { M5 M1 }
 
 
 # --------------------------------------------------------------------------------------------------------------
@@ -463,7 +462,7 @@ set AVDD_pin_offset_y 315.526
 # [CVDD connection between ACORE and MDLL]
 
 setEdit -layer_minimum M1
-setEdit -layer_maximum AP
+setEdit -layer_maximum M5
 setEdit -force_regular 1
 getEditMode -snap_to_track_regular
 getEditMode -snap_to_pin
@@ -477,7 +476,7 @@ setViaGenMode -ignore_DRC false
 setViaGenMode -use_fgc 1
 setViaGenMode -use_cce false
 
-setEdit -layer_vertical M10
+setEdit -layer_vertical M5
 setEdit -width_vertical $M10_power_width
 setEdit -nets CVDD
 #editAddRoute [expr $mdll_x+$mdll_width+$M10_power_width] [expr $acore_y+$CVDD_pin_offset_y]
@@ -501,7 +500,7 @@ setEdit -nets CVDD
 #createRouteBlk -box [expr $outbuf_x+$output_buffer_width] [expr $outbuf_y-5]  [expr $outbuf_x+$output_buffer_width+10] [expr $outbuf_y+$output_buffer_height+5] -layer {7 8 9} -name blk_outbuf
 
 #Routing blockages for tx_out
-createRouteBlk -box [expr $pin_tx_outp_x-2] [expr $pin_tx_outn_y-2]  [expr $pin_tx_outp_x+$outbuf_pin_width+2] [expr $pin_tx_outp_y+$outbuf_pin_width+2] -layer {7 8 9} -name blk_tx_out
+#createRouteBlk -box [expr $pin_tx_outp_x-2] [expr $pin_tx_outn_y-2]  [expr $pin_tx_outp_x+$outbuf_pin_width+2] [expr $pin_tx_outp_y+$outbuf_pin_width+2] -layer {7 8 9} -name blk_tx_out
 
 
 # power grid parameters --------------------------------------------------------------------------------
@@ -523,32 +522,26 @@ set dcore_M9_set_to_set 20
 #createRouteBlk -box $inbuf_main_x 0 [expr $acore_x+$acore_width] $acore_y -layer 7 -name M7_blk_pre_routed
 
 #addStripe -nets {DVDD DVSS} \
-  -layer M7 -direction vertical -width $dcore_M7_width -spacing [expr $dcore_M7_space] -start_offset [expr $boundary_width] -set_to_set_distance $dcore_M7_set_to_set -start_from left -switch_layer_over_obs false -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit AP -padcore_ring_bottom_layer_limit M7 -block_ring_top_layer_limit M7 -block_ring_bottom_layer_limit M7 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
+  -layer M7 -direction vertical -width $dcore_M7_width -spacing [expr $dcore_M7_space] -start_offset [expr $boundary_width] -set_to_set_distance $dcore_M7_set_to_set -start_from left -switch_layer_over_obs false -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit M5 -padcore_ring_bottom_layer_limit M5 -block_ring_top_layer_limit M5 -block_ring_bottom_layer_limit M5 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
 #--------------------------------------------------------------------------------------------------------------
 deleteRouteBlk -name {*out_M7_blk *pre_routed}
 
 # stretch out acore DVDD/DVSS (M8)-------------------------------------------------------------------------
 #sroute -connect { blockPin } -layerChangeRange { M8 M9 } -blockPinTarget { boundaryWithPin } -allowJogging 1 -crossoverViaLayerRange { M8 M7 } -nets { DVDD DVSS } -allowLayerChange 0 -blockPin useLef -targetViaLayerRange { M8 M7 } -inst {iacore}
 #--------------------------------------------------------------------------------------------------------------
-createRouteBlk -box 0 1 500 4 -layer 8 -name M8_blk_PI
-
-createRouteBlk -box $origin_term_n_x $origin_term_n_y [expr $origin_term_p_x + $term_width] [expr $origin_term_p_y + $term_height] -layer 8 -name M8_blk_term_buf
 
 
+#sroute -connect { blockPin } -layerChangeRange { M4 M5 } -blockPinTarget { boundaryWithPin } -allowJogging 1 -crossoverViaLayerRange { M3 M2 } -nets { DVDD DVSS } -allowLayerChange 0 -blockPin useLef -targetViaLayerRange { M8 M7 } -inst {iPI_0__iPI iPI_1__iPI iPI_2__iPI iPI_3__iPI}
 
-sroute -connect { blockPin } -layerChangeRange { M8 M9 } -blockPinTarget { boundaryWithPin } -allowJogging 1 -crossoverViaLayerRange { M8 M7 } -nets { DVDD DVSS } -allowLayerChange 0 -blockPin useLef -targetViaLayerRange { M8 M7 } -inst {iPI_0__iPI iPI_1__iPI iPI_2__iPI iPI_3__iPI}
-
-deleteRouteBlk -name M8_blk_PI
-deleteRouteBlk -name M8_blk_term_buf
 # dcore main power grid (M8)---------------------------------------------------------------------------
 #createRouteBlk -box 0 [expr $acore_y-$blockage_height] $FP_width $FP_height -layer 8 -name M8_blk_acore
 
 #addStripe -nets {DVDD DVSS} \
-  -layer M8 -direction horizontal -width $dcore_M8_width -spacing [expr $dcore_M8_space] -start_offset [expr $boundary_width] -set_to_set_distance $dcore_M8_set_to_set -start_from bottom -switch_layer_over_obs false -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit AP -padcore_ring_bottom_layer_limit M7 -block_ring_top_layer_limit M7 -block_ring_bottom_layer_limit M7 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
+  -layer M8 -direction horizontal -width $dcore_M8_width -spacing [expr $dcore_M8_space] -start_offset [expr $boundary_width] -set_to_set_distance $dcore_M8_set_to_set -start_from bottom -switch_layer_over_obs false -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit M5 -padcore_ring_bottom_layer_limit M5 -block_ring_top_layer_limit M5 -block_ring_bottom_layer_limit M5 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
 #--------------------------------------------------------------------------------------------------------------
 
 #addStripe -nets {DVDD DVSS} \
-  -layer M8 -direction horizontal -width $dcore_M8_width -spacing [expr $dcore_M8_space] -start_offset 0 -set_to_set_distance $dcore_M8_set_to_set -start_from top stop_offset 100 -switch_layer_over_obs false -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit AP -padcore_ring_bottom_layer_limit M7 -block_ring_top_layer_limit M7 -block_ring_bottom_layer_limit M7 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
+  -layer M8 -direction horizontal -width $dcore_M8_width -spacing [expr $dcore_M8_space] -start_offset 0 -set_to_set_distance $dcore_M8_set_to_set -start_from top stop_offset 100 -switch_layer_over_obs false -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit M5-padcore_ring_bottom_layer_limit M5 -block_ring_top_layer_limit M5 -block_ring_bottom_layer_limit M5 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
 #createRouteBlk -box 0 0 $FP_width $FP_height -layer 7 -name M9_via_blk
 
 
@@ -561,12 +554,12 @@ createRouteBlk -box $origin_term_n_x $origin_term_n_y [expr $origin_term_p_x + $
 
 
 addStripe -nets {DVDD DVSS} \
-  -layer M9 -direction vertical -width $dcore_M9_width -spacing [expr $dcore_M9_space] -start_offset [expr $boundary_width] -set_to_set_distance $dcore_M9_set_to_set -start_from left -switch_layer_over_obs false -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit AP -padcore_ring_bottom_layer_limit M7 -block_ring_top_layer_limit M7 -block_ring_bottom_layer_limit M7 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
+  -layer M5 -direction vertical -width $dcore_M9_width -spacing [expr $dcore_M9_space] -start_offset [expr $boundary_width] -set_to_set_distance $dcore_M9_set_to_set -start_from left -switch_layer_over_obs false -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit M5 -padcore_ring_bottom_layer_limit M5 -block_ring_top_layer_limit M5 -block_ring_bottom_layer_limit M5 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
 
 
 
 addStripe -nets {DVDD DVSS} \
-  -layer M7 -direction vertical -width 2 -spacing [expr $dcore_M9_space + 2] -start_offset [expr $boundary_width] -set_to_set_distance $dcore_M9_set_to_set -start_from left -switch_layer_over_obs false -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit AP -padcore_ring_bottom_layer_limit M7 -block_ring_top_layer_limit M7 -block_ring_bottom_layer_limit M7 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
+  -layer M4 -direction vertical -width 2 -spacing [expr $dcore_M9_space + 2] -start_offset [expr $boundary_width] -set_to_set_distance $dcore_M9_set_to_set -start_from left -switch_layer_over_obs false -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit M5 -padcore_ring_bottom_layer_limit M5 -block_ring_top_layer_limit M5 -block_ring_bottom_layer_limit M5 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
 
 
 
