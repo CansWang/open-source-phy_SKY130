@@ -1,4 +1,47 @@
 
-
 .lib "~/proj/skywater-pdk/libraries/sky130_fd_pr/latest/models/sky130.lib.spice" tt
 .include /home/semisamw/proj/open-source-phy_SKY130/spice/pll/osc_inj.spice
+.param freq_ref=1e8
+
+
+
+
+*Supply
+VSUP VDD 0 DC 1.8V
+*Ref
+Vref ref 0 PULSE(0 1.8 '0.3/freq_ref' '0.2/freq_ref' '0.2/freq_ref' '0.3/freq_ref' '1/freq_ref' 0)
+
+Xref_buf0 ref ref_buf VDD 0 inv_del_inj
+Xref_buf1 ref ref_buf VDD 0 inv_del_inj
+Xref_buf2 ref ref_buf VDD 0 inv_del_inj
+Xref_buf3 ref ref_buf VDD 0 inv_del_inj
+Xref_buf4 ref ref_buf VDD 0 inv_del_inj
+Xref_buf5 ref ref_buf VDD 0 inv_del_inj
+Xref_buf6 ref ref_buf VDD 0 inv_del_inj
+Xref_buf7 ref ref_buf VDD 0 inv_del_inj
+
+Xinjector ref_buf VDD VDD 0 edge_inj
+
+
+.tran 10e-12 100e-09 3e-09 uic
+* .pss 1e9 5e-9 nv1p 128 10 50 1e-3 uic
+
+
+* .measure TRAN invdelay
+* +       TRIG v(nv2p)  VAL=0.9 RISE=5
+* +       TARG v(nv1p)  VAL=0.9 RISE=5
+
+* .measure TRAN Cycle
+* +       TRIG v(nv2p)  VAL=0.9 RISE=5
+* +       TARG v(nv2p)  VAL=0.9 RISE=6
+
+
+* ngspice control commands
+.control
+save all
+run 
+write
+.endc
+
+* end of the testbench
+.end
