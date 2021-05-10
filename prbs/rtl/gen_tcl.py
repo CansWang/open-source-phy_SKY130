@@ -26,7 +26,7 @@ set file_list {tcl_list(file_list)}
 analyze -format sverilog $file_list
 
 # Elaborate the design target
-elaborate hr_16t4_mux_top
+elaborate prbs_generator_syn
 '''
 
 # write output text
