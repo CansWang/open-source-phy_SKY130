@@ -21,25 +21,14 @@ set TR [expr {0.1*$T}]
 set TR_HR [expr {0.2*$T}]
 set TR_QR [expr {0.4*$T}]
 
-create_clock -name clk_tx_pi_0 \
-    -period $T \
-    -waveform "$T0 $T2" \
-    [get_ports clk_Q]
+create_clock -name clk_16t4_hr \
+    -period $T2 \
+    -waveform "$T2" \
+    [get_ports clk_hr]
 
-create_clock -name clk_tx_pi_1 \
-    -period $T \
-    -waveform "$T1 $T3" \
-    [get_ports clk_I]
-
-create_clock -name clk_tx_pi_2 \
-    -period $T \
-    -waveform "$T2 $T4" \
-    [get_ports clk_QB]
-
-create_clock -name clk_tx_pi_3 \
-    -period $T \
-    -waveform "$T3 $T5" \
-    [get_ports clk_IB]
+create_clock -name clk_16t4_prbs \
+    -period $T1 \
+    -waveform "$T1" \
+    [get_ports clk_prbs]
 
 # Internal nets
-
