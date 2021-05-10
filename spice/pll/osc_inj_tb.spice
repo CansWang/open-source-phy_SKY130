@@ -1,0 +1,4 @@
+
+
+.lib "~/proj/skywater-pdk/libraries/sky130_fd_pr/latest/models/sky130.lib.spice" tt
+.include /home/semisamw/proj/open-source-phy_SKY130/spice/pll/osc_inj.spice

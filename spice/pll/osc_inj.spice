@@ -1,0 +1,65 @@
+.subckt inv_del_inj in out VDD GND 
+Xinv in GND GND VDD VDD out sky130_fd_sc_hd__inv_2
+.ends
+
+.subckt sky130_fd_sc_hd__dfrtp_2 CLK D RESET_B VGND VNB VPB VPWR Q
+X0 a_1270_413# a_1283_21# VPWR VPB sky130_fd_pr__pfet_01v8_hvt w=420000u l=150000u
+X1 Q a_1283_21# VGND VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
+X2 VPWR a_543_47# a_761_289# VPB sky130_fd_pr__pfet_01v8_hvt w=840000u l=150000u
+X3 VGND a_543_47# a_761_289# VNB sky130_fd_pr__nfet_01v8 w=640000u l=150000u
+X4 VGND D a_448_47# VNB sky130_fd_pr__nfet_01v8 w=420000u l=150000u
+X5 a_1108_47# a_193_47# a_1270_413# VPB sky130_fd_pr__pfet_01v8_hvt w=420000u l=150000u
+X6 VGND a_1283_21# Q VNB sky130_fd_pr__nfet_01v8 w=650000u l=150000u
+X7 a_1217_47# a_1283_21# VGND VNB sky130_fd_pr__nfet_01v8 w=420000u l=150000u
+X8 a_448_47# a_27_47# a_543_47# VNB sky130_fd_pr__nfet_01v8 w=360000u l=150000u
+X9 a_448_47# a_193_47# a_543_47# VPB sky130_fd_pr__pfet_01v8_hvt w=420000u l=150000u
+X10 a_543_47# a_193_47# a_639_47# VNB sky130_fd_pr__nfet_01v8 w=360000u l=150000u
+X11 a_1108_47# a_27_47# a_1217_47# VNB sky130_fd_pr__nfet_01v8 w=360000u l=150000u
+X12 a_1462_47# a_1108_47# a_1283_21# VNB sky130_fd_pr__nfet_01v8 w=420000u l=150000u
+X13 a_543_47# a_27_47# a_651_413# VPB sky130_fd_pr__pfet_01v8_hvt w=420000u l=150000u
+X14 a_805_47# RESET_B VGND VNB sky130_fd_pr__nfet_01v8 w=420000u l=150000u
+X15 Q a_1283_21# VPWR VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
+X16 a_761_289# a_193_47# a_1108_47# VNB sky130_fd_pr__nfet_01v8 w=360000u l=150000u
+X17 VPWR RESET_B a_651_413# VPB sky130_fd_pr__pfet_01v8_hvt w=420000u l=150000u
+X18 VGND a_27_47# a_193_47# VNB sky130_fd_pr__nfet_01v8 w=420000u l=150000u
+X19 a_27_47# CLK VGND VNB sky130_fd_pr__nfet_01v8 w=420000u l=150000u
+X20 a_27_47# CLK VPWR VPB sky130_fd_pr__pfet_01v8_hvt w=640000u l=150000u
+X21 VPWR a_1283_21# Q VPB sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
+X22 VPWR a_27_47# a_193_47# VPB sky130_fd_pr__pfet_01v8_hvt w=640000u l=150000u
+X23 a_1283_21# a_1108_47# VPWR VPB sky130_fd_pr__pfet_01v8_hvt w=420000u l=150000u
+X24 VGND RESET_B a_1462_47# VNB sky130_fd_pr__nfet_01v8 w=420000u l=150000u
+X25 VPWR D a_448_47# VPB sky130_fd_pr__pfet_01v8_hvt w=420000u l=150000u
+X26 a_651_413# a_761_289# VPWR VPB sky130_fd_pr__pfet_01v8_hvt w=420000u l=150000u
+X27 a_761_289# a_27_47# a_1108_47# VPB sky130_fd_pr__pfet_01v8_hvt w=420000u l=150000u
+X28 VPWR RESET_B a_1283_21# VPB sky130_fd_pr__pfet_01v8_hvt w=420000u l=150000u
+X29 a_639_47# a_761_289# a_805_47# VNB sky130_fd_pr__nfet_01v8 w=420000u l=150000u
+.ends
+
+.subckt dffr clk d rb out VDD GND
+Xdff clk d rb GND GND VDD VDD out sky130_fd_sc_hd__dfrtp_2 
+.ends
+
+.subckt edge_inj ref en VDD GDS_END
+* Ref buffer might be needed
+
+
+* Delay line No.01; four stage to be longer than the dff delay
+Xdel0 ref del_0 VDD GND inv_del_inj
+Xdel1 del_0 del_1 VDD GND inv_del_inj
+Xdel2 del_1 del_2 VDD GND inv_del_inj
+Xdel3 del_2 del_out VDD GND inv_del_inj
+
+* Delay line No.02; injection window
+Xdel_inj0 del_out del_inj0 VDD GND inv_del_inj
+Xdel_inj1 del_inj0 del_inj1 VDD GND inv_del_inj
+Xdel_inj2 del_inj1 del_inj2 VDD GND inv_del_inj
+Xdel_inj3 del_inj2 del_inj_out VDD GND inv_del_inj
+
+
+
+Xdff_inj ref VDD 
+
+
+
+
+
