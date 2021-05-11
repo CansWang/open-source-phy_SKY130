@@ -142,7 +142,7 @@ Xdff clk d rb GND GND VDD VDD out sky130_fd_sc_hd__dfrtp_2 m=4
 .ends
 
 
-.subckt edge_inj ref en VDD GDS_END
+.subckt edge_inj ref en inj_stop inj_out VDD GND
 * Ref buffer might be needed
 
 
@@ -169,11 +169,11 @@ Xdel_inj0 del_out del_outb VDD GND inv_1
 Xdel_inj1 del_outb del_inj0 VDD GND inv_1
 Xdel_inj2 del_inj0 del_inj1 VDD GND inv_4
 Xdel_inj3 del_inj1 del_inj2 VDD GND inv_16
-Xdel_inj4 del_inj2 del_inj_out  VDD GND inv_64
+Xdel_inj4 del_inj2 del_inj_out VDD GND inv_64
 * To reset the dff
 
 
-Xinj_restart en d_out fall_inj GND GND VDD VDD inj_out sky130_fd_sc_hd__nand3_4
+Xinj_restart en d_out fall_inj GND GND VDD VDD inj_out sky130_fd_sc_hd__nand3_4 m=4
 
 .ends
 
