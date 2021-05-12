@@ -201,18 +201,21 @@ addStripe \
     -max_same_layer_jog_length 3.6 \
     -padcore_ring_bottom_layer_limit M1 \
     -padcore_ring_top_layer_limit M1 \
-    -spacing 1.8 \
-    -merge_stripes_value 0.045 \
+    -spacing 2.24 \
+    -master "sky130_fd_sc_hd__tap*" \
+    -merge_stripes_value 0.25 \
     -create_pins 1 \
     -direction horizontal \
     -layer M1 \
     -block_ring_bottom_layer_limit M1 \
-    -width 1 \
+    -width 0.24 \
     -extend_to design_boundary \
     -nets {DVDD DVSS}
 
 deleteRouteBlk -name *
 
+# Temperal M1 Power Grid Fix
+sroute -nets {DVDD DVSS}
 
 set acore_x $origin_acore_x
 set acore_y $origin_acore_y    
