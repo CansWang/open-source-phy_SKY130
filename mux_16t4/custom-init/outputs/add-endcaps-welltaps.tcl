@@ -24,3 +24,11 @@ if {[expr {$ADK_END_CAP_CELL == ""} && {$ADK_WELL_TAP_CELL == ""}]} {
  adk_add_well_taps
 }
 
+addWellTap -cell [list $ADK_WELL_TAP_CELL] \
+           -prefix       WELLTAP \
+           -cellInterval $ADK_WELL_TAP_INTERVAL \
+           -checkerboard
+
+verifyWellTap -cells [list $ADK_WELL_TAP_CELL] \
+              -report reports/welltap.rpt \
+              -rule   [ expr $ADK_WELL_TAP_INTERVAL/2 ]

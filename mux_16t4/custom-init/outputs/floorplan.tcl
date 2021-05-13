@@ -81,13 +81,13 @@
     #             $core_margin_l $core_margin_b $core_margin_r $core_margin_t
 
 
-    set FP_width [snap_to_grid [expr 250 + 0] $horiz_pitch ]
-    set FP_height [snap_to_grid 280 $vert_pitch ]
+    set FP_width [snap_to_grid [expr 50 + 0] $horiz_pitch ]
+    set FP_height [snap_to_grid 50 $vert_pitch ]
 
 
-    #floorPlan -site core -s $FP_width $FP_height \
+    #floorPlan -site unithd -s $FP_width $FP_height \
                             $core_margin_l $core_margin_b $core_margin_r $core_margin_t
-    floorPlan -site core -s $FP_width $FP_height 0 0 0 0
+    floorPlan -site unithd -s $FP_width $FP_height 0 0 0 0
 
     setFlipping s
 
@@ -183,46 +183,46 @@
     # Place Instances #
     ###################
 
-	placeInstance \
+#	placeInstance \
         buf1/i_term_n \
         $origin_term_n_x \
         $origin_term_n_y
 
-	placeInstance \
+#	placeInstance \
         buf1/i_term_p \
         $origin_term_p_x \
         $origin_term_p_y
 
-    for {set k 0} {$k<6} {incr k} {
-        for {set j 0} {$j<6} {incr j} {
-            placeInstance \
+ #   for {set k 0} {$k<6} {incr k} {
+  #      for {set j 0} {$j<6} {incr j} {
+   #         placeInstance \
                 buf1/iBUF_[expr ($j) + ($k)*6]\__i_tri_buf_p/tri_buf \
                 [snap_to_grid [expr 39 + ($k) * ($tri_width*3)] $horiz_pitch]\
                 [snap_to_grid [expr 134 + ($j) * ($tri_height*3)] $vert_pitch]
-        }
-    }
+    #    }
+   # }
 
-    for {set k 0} {$k<6} {incr k} {
-        for {set j 0} {$j<6} {incr j} {
-            placeInstance \
+#    for {set k 0} {$k<6} {incr k} {
+ #       for {set j 0} {$j<6} {incr j} {
+  #          placeInstance \
                 buf1/iBUF_[expr ($j) + ($k)*6]\__i_tri_buf_n/tri_buf \
                 [snap_to_grid [expr 39 + ($k) * ($tri_width*3)] $horiz_pitch] \
                 [snap_to_grid [expr 110 + ($j) * ($tri_height*3)] $vert_pitch]
-        }
-    }
+   #     }
+   # }
 
     #PI Macros
     #
     #
-    for {set k 0} {$k<4} {incr k} {
-        placeInstance \
+#    for {set k 0} {$k<4} {incr k} {
+ #       placeInstance \
         iPI_$k\__iPI \
             $origin_txpi_x \
             [expr $origin_txpi_y + ($pi_neighbor_spacing)*($k-1)]
-    }
+  #  }
 
 
-    placeInstance \
+ #   placeInstance \
     indiv \
         [snap_to_grid [expr $origin_txpi_x + $pi_width + 20] $horiz_pitch] \
         [expr $origin_txpi_y + ($pi_neighbor_spacing)] \
