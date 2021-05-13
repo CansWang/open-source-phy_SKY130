@@ -9,6 +9,8 @@ set_max_fanout 20 $dc_design_name
 
 set T 0.5
 
+set time_scale 1.0
+
 set T0 [expr {0.00*$T}]
 set T1 [expr {0.25*$T}]
 set T2 [expr {0.50*$T}]
@@ -41,5 +43,9 @@ create_clock -name clk_tx_pi_3 \
     -waveform "$T3 $T5" \
     [get_ports clk_IB]
 
+set_max_transition [expr {0.025*$time_scale}] [get_ports clk_Q]
+set_max_transition [expr {0.025*$time_scale}] [get_ports clk_I]
+set_max_transition [expr {0.025*$time_scale}] [get_ports clk_QB]
+set_max_transition [expr {0.025*$time_scale}] [get_ports clk_IB]
 # Internal nets
 
