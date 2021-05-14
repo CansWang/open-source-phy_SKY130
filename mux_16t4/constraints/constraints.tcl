@@ -22,8 +22,8 @@ create_clock -name clk_16t4_hr \
     [get_ports clk_hr]
 
 create_generated_clock -name clk_16t4_prbs \
-    -source [get_pins mux_4t1/clk_b] \
+    -source [get_pins clk_inv/in] \
     -divide_by 2 \
-    [get_pins mux_4t1/clk_half]
+    [get_pins div1/clkout]
 
 # Internal nets
