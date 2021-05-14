@@ -7,7 +7,7 @@ set_driving_cell -no_design_rule \
 
 set_max_fanout 20 $dc_design_name
 
-set T 0.5
+set T 0.6
 
 set time_scale 1.0
 

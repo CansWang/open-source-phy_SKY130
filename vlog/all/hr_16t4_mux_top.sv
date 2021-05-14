@@ -20,7 +20,7 @@ generate  // Instantiate 4 hr_4t1_mux_top to form 16:4 mux
         hr_4t1_mux_top mux_4t1 (
             .clk_b(clk_hr),
             .din(din[4*i-1:4*(i-1)]),  // Map 16 bits input to 4 half-rate 4 to 1 mux
-            .clk_half(clk_prbs)
+            .clk_half(clk_prbs),
             .dout(dout[i-1])
         );
     end

@@ -54,8 +54,8 @@ set core_margin_l 0;#[expr 5 * $horiz_pitch]
 
 
 
-set FP_width [snap_to_grid [expr 50  + 0] $horiz_pitch ]
-set FP_height [snap_to_grid 50 $vert_pitch ]
+set FP_width [snap_to_grid [expr 40  + 0] $horiz_pitch ]
+set FP_height [snap_to_grid 40 $vert_pitch ]
 
 set sram_to_acore_spacing_x [snap_to_grid 40 $horiz_pitch]
 set sram_to_acore_spacing_y [snap_to_grid 40 $vert_pitch]
@@ -560,7 +560,8 @@ deleteRouteBlk -name {*out_M7_blk *pre_routed}
 
 
 addStripe -nets {DVDD DVSS} \
-  -layer M4 -direction vertical -width 1 -spacing 2 -start_from left -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit M4 -padcore_ring_bottom_layer_limit M4 -block_ring_top_layer_limit M4 -block_ring_bottom_layer_limit M4 -create_pins 1 -extend_to design_boundary
+  -layer M4 -direction vertical -width 1 -spacing 2 -start_offset 2 -set_to_set_distance 6 -start_from left -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit M4 -padcore_ring_bottom_layer_limit M4 -block_ring_top_layer_limit M4 -block_ring_bottom_layer_limit M4 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
+
 #  -layer M4 -direction vertical -width 1 -spacing 2 -start_offset [expr $boundary_width] -set_to_set_distance 2 -start_from left -switch_layer_over_obs false -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit M5 -padcore_ring_bottom_layer_limit M5 -block_ring_top_layer_limit M5 -block_ring_bottom_layer_limit M5 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
 
 
