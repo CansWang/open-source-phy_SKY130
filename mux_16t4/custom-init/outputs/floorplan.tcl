@@ -171,27 +171,6 @@
     puts $origin_term_p_x
     puts $origin_term_p_y
 
-    # pin placement
-
-    set pins_top {{rst}}
-
-    set pins_right {\
-      {din[0]}  {din[1]}  {din[2]}  {din[3]}  {din[4]}  {din[5]}\
-      {din[6]}  {din[7]}  {din[8]}  {din[9]}  {din[10]} {din[11]}\
-      {din[12]} {din[13]} {din[14]} {din[15]}\
-    }
-
-    set pins_left {{dout[0]} {dout[1]} {dout[2]} {dout[3]}}
-
-    set pins_bottom {{clk_hr}}
-
-    set ports_layer M3
-
-    editPin -layer $ports_layer -pin $pins_right  -side RIGHT  -spreadType SIDE
-    editPin -layer $ports_layer -pin $pins_left   -side LEFT   -spreadType SIDE
-    editPin -layer $ports_layer -pin $pins_bottom -side BOTTOM -spreadType SIDE
-    editPin -layer $ports_layer -pin $pins_top    -side TOP    -spreadType SIDE
-
     #set origin_ref_x [expr $FP_width - 6*$blockage_width - $input_buffer_width - $core_margin_l]
     #set origin_ref_y [expr $origin_out_y + $output_buffer_height + $blockage_height + 10*$vert_pitch]
 

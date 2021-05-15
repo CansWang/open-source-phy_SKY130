@@ -39,5 +39,32 @@ if { $clock_ports != 0 } {
 
 set ports_layer M4
 
-editPin -layer $ports_layer -pin $pins_left_half  -side LEFT  -spreadType SIDE
-editPin -layer $ports_layer -pin $pins_right_half -side RIGHT -spreadType SIDE
+#editPin -layer $ports_layer -pin $pins_left_half  -side LEFT  -spreadType SIDE
+#editPin -layer $ports_layer -pin $pins_right_half -side RIGHT -spreadType SIDE
+
+set pins_top {\
+  {eqn[0]} {eqn[1]} {eqn[2]} {eqn[3]} {eqn[4]} {eqn[5]}\
+  {eqn[6]} {eqn[7]} {eqn[8]} {eqn[9]} {eqn[10]} {eqn[11]}\
+  {eqn[12]} {eqn[13]} {eqn[14]} {eqn[15]} {eqn[16]} {eqn[17]}\
+  {eqn[18]} {eqn[19]} {eqn[20]} {eqn[21]} {eqn[22]} {eqn[23]}\
+  {eqn[24]} {eqn[25]} {eqn[26]} {eqn[27]} {eqn[28]} {eqn[29]}\
+  {eqn[30]} {eqn[31]} {rst} {cke} {inj_err} {inv_chicken[0]} {inv_chicken[1]}\
+}
+
+set pins_right {{out}}
+
+set pins_left {\
+  {init_val[0]} {init_val[1]} {init_val[2]} {init_val[3]} {init_val[4]} {init_val[5]}\
+  {init_val[6]} {init_val[7]} {init_val[8]} {init_val[9]} {init_val[10]} {init_val[11]}\
+  {init_val[12]} {init_val[13]} {init_val[14]} {init_val[15]} {init_val[16]} {init_val[17]}\
+  {init_val[18]} {init_val[19]} {init_val[20]} {init_val[21]} {init_val[22]} {init_val[23]}\
+  {init_val[24]} {init_val[25]} {init_val[26]} {init_val[27]} {init_val[28]} {init_val[29]}\
+  {init_val[30]} {init_val[31]}\
+}
+
+set pins_bottom {{clk}}
+
+editPin -layer $ports_layer -pin $pins_right  -side RIGHT  -spreadType SIDE
+editPin -layer $ports_layer -pin $pins_left   -side LEFT   -spreadType SIDE
+editPin -layer $ports_layer -pin $pins_bottom -side BOTTOM -spreadType SIDE
+editPin -layer $ports_layer -pin $pins_top    -side TOP    -spreadType SIDE
