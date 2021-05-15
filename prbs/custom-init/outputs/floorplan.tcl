@@ -39,10 +39,10 @@
 
     set indiv_width [dbGet [dbGet -p top.insts.name *indiv*].cell.size_x]
     set indiv_height [dbGet [dbGet -p top.insts.name *indiv*].cell.size_y]
-    
+
     set tri_height [dbGet [dbGet -p top.insts.name *iBUF_0__i_tri_buf_p*].cell.size_y]
     set tri_width [dbGet [dbGet -p top.insts.name *iBUF_0__i_tri_buf_p*].cell.size_x]
-    
+
     set term_height [dbGet [lindex [dbGet -p top.insts.name buf1/i_term_p] 0].cell.size_y]
     # set term_height [dbGet [lindex [dbGet -p top.insts.name itx/buf1/i_term_p] 0].cell.size_y]
     set term_width [dbGet [lindex [dbGet -p top.insts.name buf1/i_term_p] 0].cell.size_x]
@@ -63,7 +63,7 @@
     # Core bounding box margins
     # Set in Geom-Vars File
     set core_margin_t 0;#$vert_pitch
-    set core_margin_b 0;#$vert_pitch 
+    set core_margin_b 0;#$vert_pitch
     set core_margin_r 0;#[expr 5 * $horiz_pitch]
     set core_margin_l 0;#[expr 5 * $horiz_pitch]
 
@@ -83,7 +83,7 @@
 
     set FP_width [snap_to_grid [expr 70 + 0] $horiz_pitch ]
     set FP_height [snap_to_grid 70 $vert_pitch ]
-    
+
 
     #floorPlan -site unithd -s $FP_width $FP_height \
                             $core_margin_l $core_margin_b $core_margin_r $core_margin_t
@@ -93,7 +93,7 @@
 
     set sram_to_acore_spacing_x [snap_to_grid 40 $horiz_pitch]
     set sram_to_acore_spacing_y [snap_to_grid 40 $vert_pitch]
-    
+
     set sram_to_buff_spacing_y [snap_to_grid 30 $vert_pitch]
 
     set sram_to_sram_spacing  [snap_to_grid 30 $horiz_pitch]
@@ -108,33 +108,33 @@
     #set origin_acore_y    [expr $sram_height + $sram_to_acore_spacing_y ]
     puts $pi_to_pi_spacing
     puts $pi_neighbor_spacing
-    
+
 
 
     set origin_acore_x    [expr 199.98]
     set origin_acore_y    [expr 399.744 - $bottom_y]
-   
+
     set origin_txindiv_x [expr [snap_to_grid 300 $horiz_pitch]]
     set origin_txindiv_y [expr [snap_to_grid 200 $vert_pitch]]
- 
+
 #    set origin_sram_ffe_x [expr $origin_acore_x + $acore_width + 100 + 15*$blockage_width  + $core_margin_l]
 #    set origin_sram_ffe_y [expr 6*$blockage_height + $core_margin_b]
-   
+
 #    set origin_sram_ffe_y2 [expr $FP_height - 6*$blockage_height - $core_margin_t -$sram_height ]
- 
+
     #set origin_sram_adc_x [expr $origin_sram_ffe_x + $sram_pair_spacing]
 #    set origin_sram_adc_x [expr $origin_sram_ffe_x]
-#    set origin_sram_adc_y [expr 6*$blockage_height + $core_margin_b] 
+#    set origin_sram_adc_y [expr 6*$blockage_height + $core_margin_b]
 #    set origin_sram_adc_y2 [expr $FP_height - 6*$blockage_height - $core_margin_t -$sram_height]
 
     #set origin_async_x [expr 3*$blockage_width  + $core_margin_l]
     #set origin_async_y [expr $origin_sram_ffe_y + $sram_height +  $sram_to_buff_spacing_y]
-    
+
     set origin_async_x [expr 43.56]
     set origin_async_y [expr 312.192 -$bottom_y]
     #set origin_out_x [expr $FP_width - 6*$blockage_width - $output_buffer_width - $core_margin_l]
     #set origin_out_y [expr $origin_sram_adc_y + $sram_height + $sram_to_acore_spacing_y - 4 * $vert_pitch]
-    
+
     set origin_out_x [expr 555.3]
     set origin_out_y [expr 139.968 -$bottom_y]
     #set origin_main_x [expr $origin_acore_x + [snap_to_grid [expr $acore_width/2] $horiz_pitch]]
@@ -143,11 +143,11 @@
     set origin_main_x [expr 373.77 ]
     set origin_main_y [expr 312.192 -$bottom_y]
     #set origin_mdll_x [expr $origin_out_x - $mdll_width - [snap_to_grid 60 $horiz_pitch]]
-    #set origin_mdll_y [expr $origin_acore_y + [snap_to_grid [expr $acore_height/4] $vert_pitch ]  ]   
- 
+    #set origin_mdll_y [expr $origin_acore_y + [snap_to_grid [expr $acore_height/4] $vert_pitch ]  ]
+
     set origin_mdll_x [expr 462.51]
     set origin_mdll_y [expr 301.824 - $bottom_y]
-    
+
     set origin_mon_x [expr 566.82]
     set origin_mon_y [expr 184.32 - $bottom_y]
 
@@ -161,37 +161,66 @@
     puts $origin_txpi_y
     puts $txpi_y_spacing
 
-	set origin_term_n_x [snap_to_grid 15 $horiz_pitch] 
-	set origin_term_n_y [snap_to_grid 90 $vert_pitch] 
-	set origin_term_p_x [snap_to_grid 15 $horiz_pitch] 
-	set origin_term_p_y [snap_to_grid 161 $vert_pitch] 
+	set origin_term_n_x [snap_to_grid 15 $horiz_pitch]
+	set origin_term_n_y [snap_to_grid 90 $vert_pitch]
+	set origin_term_p_x [snap_to_grid 15 $horiz_pitch]
+	set origin_term_p_y [snap_to_grid 161 $vert_pitch]
 
     puts $origin_term_n_x
     puts $origin_term_n_y
     puts $origin_term_p_x
     puts $origin_term_p_y
 
+    # pin placement
 
+    set pins_top {\
+      {eqn[0]} {eqn[1]} {eqn[2]} {eqn[3]} {eqn[4]} {eqn[5]}\
+      {eqn[6]} {eqn[7]} {eqn[8]} {eqn[9]} {eqn[10]} {eqn[11]}\
+      {eqn[12]} {eqn[13]} {eqn[14]} {eqn[15]} {eqn[16]} {eqn[17]}\
+      {eqn[18]} {eqn[19]} {eqn[20]} {eqn[21]} {eqn[22]} {eqn[23]}\
+      {eqn[24]} {eqn[25]} {eqn[26]} {eqn[27]} {eqn[28]} {eqn[29]}\
+      {eqn[30]} {eqn[31]} {rst} {cke} {inj_err} {inv_chicken[0]} {inv_chicken[1]}\
+    }
+
+    set pins_right {{out}}
+
+    set pins_left {\
+      {init_val[0]} {init_val[1]} {init_val[2]} {init_val[3]} {init_val[4]} {init_val[5]}\
+      {init_val[6]} {init_val[7]} {init_val[8]} {init_val[9]} {init_val[10]} {init_val[11]}\
+      {init_val[12]} {init_val[13]} {init_val[14]} {init_val[15]} {init_val[16]} {init_val[17]}\
+      {init_val[18]} {init_val[19]} {init_val[20]} {init_val[21]} {init_val[22]} {init_val[23]}\
+      {init_val[24]} {init_val[25]} {init_val[26]} {init_val[27]} {init_val[28]} {init_val[29]}\
+      {init_val[30]} {init_val[31]}\
+    }
+
+    set pins_bottom {{clk}}
+
+    set ports_layer M3
+
+    editPin -layer $ports_layer -pin $pins_right  -side RIGHT  -spreadType SIDE
+    editPin -layer $ports_layer -pin $pins_left   -side LEFT   -spreadType SIDE
+    editPin -layer $ports_layer -pin $pins_bottom -side BOTTOM -spreadType SIDE
+    editPin -layer $ports_layer -pin $pins_top    -side TOP    -spreadType SIDE
 
     #set origin_ref_x [expr $FP_width - 6*$blockage_width - $input_buffer_width - $core_margin_l]
     #set origin_ref_y [expr $origin_out_y + $output_buffer_height + $blockage_height + 10*$vert_pitch]
-        
+
 
 # Use automatic floorplan synthesis to pack macros (e.g., SRAMs) together
 
     ###################
     # Place Instances #
     ###################
- 
+
 #	placeInstance \
         buf1/i_term_n \
         $origin_term_n_x \
-        $origin_term_n_y 
-    
+        $origin_term_n_y
+
 #	placeInstance \
         buf1/i_term_p \
         $origin_term_p_x \
-        $origin_term_p_y 
+        $origin_term_p_y
 
  #   for {set k 0} {$k<6} {incr k} {
   #      for {set j 0} {$j<6} {incr j} {
@@ -241,8 +270,8 @@
         [expr $origin_txindiv_x -$blockage_width] \
         [expr $origin_txindiv_y -$blockage_height] \
         [expr $origin_txindiv_x + $indiv_width + $blockage_width] \
-        [expr $origin_txindiv_y + $indiv_height + $blockage_height] 
-    
+        [expr $origin_txindiv_y + $indiv_height + $blockage_height]
+
 	#PI Blockages
     for {set k 0} {$k<4} {incr k} {
     	createPlaceBlockage -box \
@@ -252,14 +281,13 @@
         	[expr $origin_txpi_y + ($pi_height)*(1) + ($pi_neighbor_spacing)*($k-1) + $blockage_height]
     }
 
-    
+
    #createPlaceBlockage -box \
         [expr $origin_out_x - $blockage_width] \
         [expr $origin_out_y - $blockage_height] \
         [expr $origin_out_x + $output_buffer_width  + $blockage_width] \
         [expr $origin_out_y + $output_buffer_height + $blockage_height]
-   
+
     #createInstGroup test -region
     #addInstToInstGroup test {qr_mux_4t1_0 qr_mux_4t1_1}
     #createRegion test 35 107 72 145
-     
