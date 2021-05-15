@@ -7,7 +7,7 @@
 
 
 *Supply
-VSUP VDD 0 DC 1.8V
+VSUP VDD 0 DC 1.9V
 *Ref
 Vref ref 0 PULSE(0 1.8 '0.3/freq_ref' '0.2/freq_ref' '0.2/freq_ref' '0.3/freq_ref' '1/freq_ref' 0)
 
@@ -28,8 +28,8 @@ VFC2 con_fc2 0 DC 0V
 VFC3 con_fc3 0 DC 0V
 VFC4 con_fc4 0 DC 0V
 VFC5 con_fc5 0 DC 0V
-VFC6 con_fc6 0 DC 1.8V
-VFC7 con_fc7 0 DC 1.8V
+VFC6 con_fc6 0 DC 0V
+VFC7 con_fc7 0 DC 0V
 
 
 * Oscillation Stage 
@@ -37,29 +37,34 @@ VFC7 con_fc7 0 DC 1.8V
 * X2 nv2p nv2n nv3n nv3p inj_out 0 VDD invcell_xc_nand2_8
 * X3 nv3p nv3n nv1n nv1p en3 0 VDD invcell_xc_nand2_8
 * X4 nv4p nv4n nv1p nv1n en4 0 VDD invcell_xc_nand2_8
-X1 nv1p inj_stop 0 0 VDD VDD nv2p sky130_fd_sc_hd__nand2_8 
-X2 nv2p inj_out 0 0 VDD VDD nv3p sky130_fd_sc_hd__nand2_8 
-X3 nv3p VDD 0 0 VDD VDD nv1p sky130_fd_sc_hd__nand2_8 
+X1 nv1p VDD 0 0 VDD VDD nv2p sky130_fd_sc_hd__nand2_8 
+X2 nv2p VDD 0 0 VDD VDD nv3p sky130_fd_sc_hd__nand2_8 
+X3 nv3p VDD 0 0 VDD VDD nv4p sky130_fd_sc_hd__nand2_8 
+X4 nv4p VDD 0 0 VDD VDD nv1p sky130_fd_sc_hd__nand2_8 
+* X5 nv5p VDD 0 0 VDD VDD nv1p sky130_fd_sc_hd__nand2_8 
+
+* C1 nv2p 0 80fF
+* C2 nv3p 0 80fF
+* C3 nv4p 0 80fF
+* C4 nv5p 0 80fF
+* C5 nv1p 0 80fF
 
 
-C1 nv2p 0 116.8fF
-C2 nv3p 0 116.8fF
-C3 nv1p 0 116.8fF
 
 
 * CAP BANK
 * x1p node
 
-* X1Ap nv1p con_fc1 0 VDD fc1
-* X1Bp nv1p con_fc2 0 VDD fc2
-* X1Cp nv1p con_fc3 0 VDD fc3
-* X1Dp nv1p con_fc4 0 VDD fc4
-* X1Ep nv1p con_fc5 0 VDD fc5
-* X1Fp nv1p con_fc6 0 VDD fc6
-* X1Gp nv1p con_fc7 0 VDD fc7
-*X1Hp nv1p con_fc8 0 VDD fc8
+X1Ap nv1p con_fc1 0 VDD fc1
+X1Bp nv1p con_fc2 0 VDD fc2
+X1Cp nv1p con_fc3 0 VDD fc3
+X1Dp nv1p con_fc4 0 VDD fc4
+X1Ep nv1p con_fc5 0 VDD fc5
+X1Fp nv1p con_fc6 0 VDD fc6
+X1Gp nv1p con_fc7 0 VDD fc7
+* *X1Hp nv1p con_fc8 0 VDD fc8
 
-* x1n node
+* * x1n node
 
 * X1An nv1n con_fc1 0 VDD fc1
 * X1Bn nv1n con_fc2 0 VDD fc2
@@ -68,20 +73,20 @@ C3 nv1p 0 116.8fF
 * X1En nv1n con_fc5 0 VDD fc5
 * X1Fn nv1n con_fc6 0 VDD fc6
 * X1Gn nv1n con_fc7 0 VDD fc7
-*X1Hn nv1n con_fc8 0 VDD fc8
+* *X1Hn nv1n con_fc8 0 VDD fc8
 
-* x2p node
+* * x2p node
 
-* X2Ap nv2p con_fc1 0 VDD fc1
-* X2Bp nv2p con_fc2 0 VDD fc2
-* X2Cp nv2p con_fc3 0 VDD fc3
-* X2Dp nv2p con_fc4 0 VDD fc4
-* X2Ep nv2p con_fc5 0 VDD fc5
-* X2Fp nv2p con_fc6 0 VDD fc6
-* X2Gp nv2p con_fc7 0 VDD fc7
-*X2Hp nv2p con_fc8 0 VDD fc8
+X2Ap nv2p con_fc1 0 VDD fc1
+X2Bp nv2p con_fc2 0 VDD fc2
+X2Cp nv2p con_fc3 0 VDD fc3
+X2Dp nv2p con_fc4 0 VDD fc4
+X2Ep nv2p con_fc5 0 VDD fc5
+X2Fp nv2p con_fc6 0 VDD fc6
+X2Gp nv2p con_fc7 0 VDD fc7
+* *X2Hp nv2p con_fc8 0 VDD fc8
 
-* x2n node
+* * x2n node
 
 * X2An nv2n con_fc1 0 VDD fc1
 * X2Bn nv2n con_fc2 0 VDD fc2
@@ -90,18 +95,18 @@ C3 nv1p 0 116.8fF
 * X2En nv2n con_fc5 0 VDD fc5
 * X2Fn nv2n con_fc6 0 VDD fc6
 * X2Gn nv2n con_fc7 0 VDD fc7
-*X2Hn nv2n con_fc8 0 VDD fc8
+* *X2Hn nv2n con_fc8 0 VDD fc8
 
-* x3p node
+* * x3p node
 
-* X3Ap nv3p con_fc1 0 VDD fc1
-* X3Bp nv3p con_fc2 0 VDD fc2
-* X3Cp nv3p con_fc3 0 VDD fc3
-* X3Dp nv3p con_fc4 0 VDD fc4
-* X3Ep nv3p con_fc5 0 VDD fc5
-* X3Fp nv3p con_fc6 0 VDD fc6
-* X3Gp nv3p con_fc7 0 VDD fc7
-*X3Hp nv3p con_fc8 0 VDD fc8
+X3Ap nv3p con_fc1 0 VDD fc1
+X3Bp nv3p con_fc2 0 VDD fc2
+X3Cp nv3p con_fc3 0 VDD fc3
+X3Dp nv3p con_fc4 0 VDD fc4
+X3Ep nv3p con_fc5 0 VDD fc5
+X3Fp nv3p con_fc6 0 VDD fc6
+X3Gp nv3p con_fc7 0 VDD fc7
+* *X3Hp nv3p con_fc8 0 VDD fc8
 
 * x3n node
 
@@ -117,16 +122,16 @@ C3 nv1p 0 116.8fF
 
 * x4p node
 
-* X4Ap nv4p con_fc1 0 VDD fc1
-* X4Bp nv4p con_fc2 0 VDD fc2
-* X4Cp nv4p con_fc3 0 VDD fc3
-* X4Dp nv4p con_fc4 0 VDD fc4
-* X4Ep nv4p con_fc5 0 VDD fc5
-* X4Fp nv4p con_fc6 0 VDD fc6
-* X4Gp nv4p con_fc7 0 VDD fc7
-* X4Hp nv4p con_fc8 0 VDD fc8
+X4Ap nv4p con_fc1 0 VDD fc1
+X4Bp nv4p con_fc2 0 VDD fc2
+X4Cp nv4p con_fc3 0 VDD fc3
+X4Dp nv4p con_fc4 0 VDD fc4
+X4Ep nv4p con_fc5 0 VDD fc5
+X4Fp nv4p con_fc6 0 VDD fc6
+X4Gp nv4p con_fc7 0 VDD fc7
+* * X4Hp nv4p con_fc8 0 VDD fc8
 
-* x4n node
+* * x4n node
 
 * X4An nv4n con_fc1 0 VDD fc1
 * X4Bn nv4n con_fc2 0 VDD fc2
@@ -136,6 +141,20 @@ C3 nv1p 0 116.8fF
 * X4Fn nv4n con_fc6 0 VDD fc6
 * X4Gn nv4n con_fc7 0 VDD fc7
 * X4Hn nv4n con_fc8 0 VDD fc8
+
+* x4p node
+
+X5Ap nv5p con_fc1 0 VDD fc1
+X5Bp nv5p con_fc2 0 VDD fc2
+X5Cp nv5p con_fc3 0 VDD fc3
+X5Dp nv5p con_fc4 0 VDD fc4
+X5Ep nv5p con_fc5 0 VDD fc5
+X5Fp nv5p con_fc6 0 VDD fc6
+X5Gp nv5p con_fc7 0 VDD fc7
+* * X4Hp nv4p con_fc8 0 VDD fc8
+
+
+
 
 * Calculate the differnetial output
 
