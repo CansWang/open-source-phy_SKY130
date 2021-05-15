@@ -13,10 +13,8 @@ e = os.environ
 
 # build up a list of source files
 file_list = []
-file_list += [e['VLOG_HOME']+'/all/ff_c.sv']
-file_list += [e['VLOG_HOME']+'/all/qr_4t1_mux_top.sv']
-file_list += [e['VLOG_HOME']+'/all/qr_mux_fixed.sv']
-file_list += [e['VLOG_HOME']+'/all/tx_inv.sv']
+file_list += [e['VLOG_HOME']+'/vlog_netlist/osc_core.sv']
+file_list += [e['VLOG_HOME']+'/vlog_netlist/delay_cell_osc.sv']
 
 print('loaded verilog source file list:', file_list)
 

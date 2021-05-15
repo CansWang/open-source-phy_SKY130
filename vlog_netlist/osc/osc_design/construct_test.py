@@ -18,7 +18,7 @@ def construct():
 
   parameters = {
     'construct_path' : __file__,
-    'design_name'    : 'qr_4t1_mux_top',
+    'design_name'    : 'osc_core',
     'clock_period'   : 2.0,
     'adk'            : adk_name,
     'adk_view'       : adk_view,
