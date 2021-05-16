@@ -13,8 +13,8 @@ e = os.environ
 
 # build up a list of source files
 file_list = []
-file_list += [e['VLOG_HOME']+'/vlog_netlist/osc_core.sv']
-file_list += [e['VLOG_HOME']+'/vlog_netlist/delay_cell_osc.sv']
+file_list += ['/tmp/canw/open-source-phy_SKY130/vlog_netlist/osc/osc_core.sv']
+file_list += ['/tmp/canw/open-source-phy_SKY130/vlog_netlist/osc/delay_cell_osc.sv']
 
 print('loaded verilog source file list:', file_list)
 
@@ -27,7 +27,7 @@ set file_list {tcl_list(file_list)}
 analyze -format sverilog $file_list
 
 # Elaborate the design target
-elaborate qr_4t1_mux_top
+elaborate osc_core
 '''
 
 # write output text
