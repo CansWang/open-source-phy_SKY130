@@ -13,6 +13,7 @@ outputs:
   - floorplan.tcl
   - outbuf_route.tcl
   - tx_MS_routes.tcl
+  - view_definition.tcl
 
 parameters:
-  num_mem_tiles: 4
+  num_mem_tiles: 5
