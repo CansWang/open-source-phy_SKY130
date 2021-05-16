@@ -3,6 +3,7 @@ module osc_core (
     input [3:0] delay_con_lsb,
     input [6:0] delay_con_msb,
     input [3:0] con_perb,
+    input ref_clk,
 
     output osc_000,
     output osc_036,
@@ -44,7 +45,7 @@ delay_cell_osc del2 (
 
 delay_cell_osc del3 (
     .in(osc_072),
-    .out(osc_0108)
+    .out(osc_108)
 );
 
 // 4TH STAGE
@@ -56,7 +57,7 @@ delay_cell_osc del4 (
 
 // 5TH STAGE
 
-delay_cell_osc del4 (
+delay_cell_osc del5 (
     .in(osc_144),
     .out(osc_000)
 );
@@ -67,7 +68,7 @@ delay_cell_osc del4 (
 
 
 
-
+endmodule
 
 
 
