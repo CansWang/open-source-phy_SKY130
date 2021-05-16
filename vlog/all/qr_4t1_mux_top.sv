@@ -15,26 +15,26 @@ module qr_4t1_mux_top (
 // Instantiate the data path for Q clk path, use the Q clock as the reference clock
 logic D0DQ;
 logic D1MQ;
-ff_c dff_Q0 (.D(din[3]), .CP(clk_Q), .Q(D0DQ));
+sky130_fd_sc_hs__dfxtp_2 dff_Q0 (.D(din[3]), .CLK(clk_Q), .Q(D0DQ));
 
 // Instantiate the data path for I clk path
 logic D0DI;
 logic D1MI;
-ff_c dff_I0 (.D(din[2]), .CP(clk_I), .Q(D0DI));
+sky130_fd_sc_hs__dfxtp_2 dff_I0 (.D(din[2]), .CLK(clk_I), .Q(D0DI));
 
 // Instantiate the data path for QB clk path
 logic D0DQB;
 logic D1DQB;
 logic D2MQB;
-ff_c dff_QB0 (.D(din[1]), .CP(clk_Q), .Q(D0DQB)); // data captured using Q clk and gradually passed to QB clk.
-ff_c dff_QB1 (.D(D0DQB), .CP(clk_QB), .Q(D1DQB));
+sky130_fd_sc_hs__dfxtp_2 dff_QB0 (.D(din[1]), .CLK(clk_Q), .Q(D0DQB)); // data captured using Q clk and gradually passed to QB clk.
+sky130_fd_sc_hs__dfxtp_2 dff_QB1 (.D(D0DQB), .CLK(clk_QB), .Q(D1DQB));
 
 // Instantiate the data path for QB clk path
 logic D0DIB;
 logic D1DIB;
 logic D2MIB;
-ff_c dff_IB0 (.D(din[0]), .CP(clk_I), .Q(D0DIB)); // data captured using Q clk and gradually passed to IB clk.
-ff_c dff_IB1 (.D(D0DIB), .CP(clk_IB), .Q(D1DIB));
+sky130_fd_sc_hs__dfxtp_2 dff_IB0 (.D(din[0]), .CLK(clk_I), .Q(D0DIB)); // data captured using Q clk and gradually passed to IB clk.
+sky130_fd_sc_hs__dfxtp_2 dff_IB1 (.D(D0DIB), .CLK(clk_IB), .Q(D1DIB));
 
 // Instantiate 4 to 1 mux
 

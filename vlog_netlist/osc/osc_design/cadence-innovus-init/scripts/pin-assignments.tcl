@@ -42,15 +42,17 @@ set ports_layer M4
 #editPin -layer $ports_layer -pin $pins_left_half  -side LEFT  -spreadType SIDE
 #editPin -layer $ports_layer -pin $pins_right_half -side RIGHT -spreadType SIDE
 
-set pins_top {{rst}}
+set pins_top {{osc_000} {osc_036} {osc_072} {osc_108} {osc_144}}
 
-set pins_right {{data}}
+# set pins_top {{rst}}
 
-set pins_left {{din[0]} {din[1]} {din[2]} {din[3]}}
+# set pins_right {{data}}
 
-set pins_bottom {{clk_Q} {clk_QB} {clk_I} {clk_IB}}
+# set pins_left {{din[0]} {din[1]} {din[2]} {din[3]}}
 
-editPin -layer $ports_layer -pin $pins_right  -side RIGHT  -spreadType SIDE
-editPin -layer $ports_layer -pin $pins_left   -side LEFT   -spreadType SIDE
-editPin -layer $ports_layer -pin $pins_bottom -side BOTTOM -spreadType SIDE
+# set pins_bottom {{clk_Q} {clk_QB} {clk_I} {clk_IB}}
+
+# editPin -layer $ports_layer -pin $pins_right  -side RIGHT  -spreadType SIDE
+# editPin -layer $ports_layer -pin $pins_left   -side LEFT   -spreadType SIDE
+# editPin -layer $ports_layer -pin $pins_bottom -side BOTTOM -spreadType SIDE
 editPin -layer $ports_layer -pin $pins_top    -side TOP    -spreadType SIDE

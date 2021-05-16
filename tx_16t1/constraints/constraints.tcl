@@ -49,3 +49,10 @@ set_max_transition [expr {0.025*$time_scale}] [get_ports clk_QB]
 set_max_transition [expr {0.025*$time_scale}] [get_ports clk_IB]
 # Internal nets
 
+set_dont_touch [get_cells {dff_Q0}]
+set_dont_touch [get_cells {dff_I0}]
+set_dont_touch [get_cells {dff_QB0}]
+set_dont_touch [get_cells {dff_QB1}]
+set_dont_touch [get_cells {dff_IB0}]
+set_dont_touch [get_cells {dff_IB1}]
+set_dont_touch [get_cells {mux_4/mux}]
