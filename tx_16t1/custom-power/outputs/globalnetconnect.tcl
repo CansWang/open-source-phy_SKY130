@@ -39,5 +39,3 @@ globalNetConnect DVSS -type pgpin -pin VNB -inst * -override
 #  globalNetConnect VDD    -type pgpin -pin VNW    -inst * -verbose
 #  globalNetConnect VSS    -type pgpin -pin VPW    -inst * -verbose
 #}
-
-

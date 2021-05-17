@@ -7,8 +7,8 @@
 module hr_4t1_mux_top (
     input wire logic clk_b,     // Half rate clock input
     input wire logic [3:0] din,  // Two-bit input data
-    output wire logic dout,
-    input wire logic clk_half  // Divide clock, same as the prbs generator clock
+    input wire logic clk_half,
+    output wire logic dout
 );
 
 wire [1:0] hd; // Din[0] wire connection from DFF to D-Latch

@@ -1,0 +1,292 @@
+.lib "~/proj/skywater-pdk/libraries/sky130_fd_pr/latest/models/sky130.lib.spice" tt
+.include /home/semisamw/proj/open-source-phy_SKY130/spice/pll/osc_inj.spice
+.include /home/semisamw/proj/open-source-phy_SKY130/spice/pll/osc_std.spice
+.param freq_ref=1.25e8
+
+
+
+
+* Supply
+VSUP VDD 0 DC 1.8V
+* Ref
+Vref ref 0 PULSE(0 1.8 '0.3/freq_ref' '0.2/freq_ref' '0.2/freq_ref' '0.3/freq_ref' '1/freq_ref' 0)
+
+Xref_buf0 ref ref_buf VDD 0 inv_del_inj
+Xref_buf1 ref ref_buf VDD 0 inv_del_inj
+Xref_buf2 ref ref_buf VDD 0 inv_del_inj
+Xref_buf3 ref ref_buf VDD 0 inv_del_inj
+Xref_buf4 ref ref_buf VDD 0 inv_del_inj
+Xref_buf5 ref ref_buf VDD 0 inv_del_inj
+Xref_buf6 ref ref_buf VDD 0 inv_del_inj
+Xref_buf7 ref ref_buf VDD 0 inv_del_inj
+
+Xinjector ref_buf VDD inj_stop inj_out VDD 0 edge_inj
+
+.subckt con_mod fc_con ref en con_out VDD GND
+Xnand1 en ref GND GND VDD VDD 1 sky130_fd_sc_hd__nand2_4
+Xnand2 fc_con 1 GND GND VDD VDD 2 sky130_fd_sc_hd__nand2_4
+Xinv 2 con_out VDD GND inv_4
+.ends
+
+
+
+* Oscillator Control Code
+* Stage 1
+VFC1_1 con_fc1_1 0 DC 1.8V
+VFC2_1 con_fc2_1 0 DC 0V
+VFC3_1 con_fc3_1 0 DC 1.8V
+VFC4_1 con_fc4_1 0 DC 1.8V
+VFC5_1 con_fc5_1 0 DC 1.8V
+VFC6_1 con_fc6_1 0 DC 1.8V
+VFC7_1 con_fc7_1 0 DC 0V
+
+Vcen1_1 cen1_1 0 DC 1.8V
+Vcen1_2 cen1_2 0 DC 0V
+Vcen1_3 cen1_3 0 DC 0V
+Vcen1_4 cen1_4 0 DC 0V
+Vcen1_5 cen1_5 0 DC 0V
+Vcen1_6 cen1_6 0 DC 0V
+
+Xcon_1 con_fc1_1 ref_buf cen1_1 con1_1 VDD GND con_mod
+
+
+
+
+
+* Stage 2 
+VFC1_2 con_fc1_2 0 DC 0V
+VFC2_2 con_fc2_2 0 DC 1.8V
+VFC3_2 con_fc3_2 0 DC 1.8V
+VFC4_2 con_fc4_2 0 DC 1.8V
+VFC5_2 con_fc5_2 0 DC 1.8V
+VFC6_2 con_fc6_2 0 DC 1.8V
+VFC7_2 con_fc7_2 0 DC 0V
+
+* Stage 3
+VFC1_3 con_fc1_3 0 DC 0V
+VFC2_3 con_fc2_3 0 DC 1.8V
+VFC3_3 con_fc3_3 0 DC 1.8V
+VFC4_3 con_fc4_3 0 DC 1.8V
+VFC5_3 con_fc5_3 0 DC 1.8V
+VFC6_3 con_fc6_3 0 DC 1.8V
+VFC7_3 con_fc7_3 0 DC 0V
+
+* Stage 4
+VFC1_4 con_fc1_4 0 DC 0V
+VFC2_4 con_fc2_4 0 DC 1.8V
+VFC3_4 con_fc3_4 0 DC 1.8V
+VFC4_4 con_fc4_4 0 DC 1.8V
+VFC5_4 con_fc5_4 0 DC 1.8V
+VFC6_4 con_fc6_4 0 DC 1.8V
+VFC7_4 con_fc7_4 0 DC 0V
+
+* Stage 5
+VFC1_5 con_fc1_5 0 DC 0V
+VFC2_5 con_fc2_5 0 DC 1.8V
+VFC3_5 con_fc3_5 0 DC 1.8V
+VFC4_5 con_fc4_5 0 DC 1.8V
+VFC5_5 con_fc5_5 0 DC 1.8V
+VFC6_5 con_fc6_5 0 DC 1.8V
+VFC7_5 con_fc7_5 0 DC 0V
+
+* Ref select for control bits
+
+
+
+* Phase mixer
+
+
+
+
+* Oscillation Stage 
+* X1 nv1p nv1n nv2n nv2p inj_stop 0 VDD invcell_xc_nand2_8
+* X2 nv2p nv2n nv3n nv3p inj_out 0 VDD invcell_xc_nand2_8
+* X3 nv3p nv3n nv1n nv1p en3 0 VDD invcell_xc_nand2_8
+* X4 nv4p nv4n nv1p nv1n en4 0 VDD invcell_xc_nand2_8
+X1 nv1p inj_stop 0 0 VDD VDD nv2p sky130_fd_sc_hd__nand2_8 
+X2 nv2p inj_out 0 0 VDD VDD nv3p sky130_fd_sc_hd__nand2_8 
+X3 nv3p VDD 0 0 VDD VDD nv4p sky130_fd_sc_hd__nand2_8 
+X4 nv4p VDD 0 0 VDD VDD nv5p sky130_fd_sc_hd__nand2_8 
+X5 nv5p VDD 0 0 VDD VDD nv1p sky130_fd_sc_hd__nand2_8 
+
+* C1 nv2p 0 116.8fF
+* C2 nv3p 0 116.8fF
+* C3 nv4p 0 116.8fF
+* C4 nv5p 0 116.8fF
+* C5 nv1p 0 116.8fF
+
+
+
+
+* CAP BANK
+* x1p node
+
+X1Ap nv1p con1_1 0 VDD fc1
+X1Bp nv1p con_fc2_1 0 VDD fc2
+X1Cp nv1p con_fc3_1 0 VDD fc3
+X1Dp nv1p con_fc4_1 0 VDD fc4
+X1Ep nv1p con_fc5_1 0 VDD fc5
+X1Fp nv1p con_fc6_1 0 VDD fc6
+* X1Gp nv1p con_fc7 0 VDD fc7
+* *X1Hp nv1p con_fc8 0 VDD fc8
+
+* * x1n node
+
+* X1An nv1n con_fc1 0 VDD fc1
+* X1Bn nv1n con_fc2 0 VDD fc2
+* X1Cn nv1n con_fc3 0 VDD fc3
+* X1Dn nv1n con_fc4 0 VDD fc4
+* X1En nv1n con_fc5 0 VDD fc5
+* X1Fn nv1n con_fc6 0 VDD fc6
+* X1Gn nv1n con_fc7 0 VDD fc7
+* *X1Hn nv1n con_fc8 0 VDD fc8
+
+* * x2p node
+
+X2Ap nv2p con_fc1_2 0 VDD fc1
+X2Bp nv2p con_fc2_2 0 VDD fc2
+X2Cp nv2p con_fc3_2 0 VDD fc3
+X2Dp nv2p con_fc4_2 0 VDD fc4
+X2Ep nv2p con_fc5_2 0 VDD fc5
+X2Fp nv2p con_fc6_2 0 VDD fc6
+* X2Gp nv2p con_fc7 0 VDD fc7
+* *X2Hp nv2p con_fc8 0 VDD fc8
+
+* * x2n node
+
+* X2An nv2n con_fc1 0 VDD fc1
+* X2Bn nv2n con_fc2 0 VDD fc2
+* X2Cn nv2n con_fc3 0 VDD fc3
+* X2Dn nv2n con_fc4 0 VDD fc4
+* X2En nv2n con_fc5 0 VDD fc5
+* X2Fn nv2n con_fc6 0 VDD fc6
+* X2Gn nv2n con_fc7 0 VDD fc7
+* *X2Hn nv2n con_fc8 0 VDD fc8
+
+* * x3p node
+
+X3Ap nv3p con_fc1_3 0 VDD fc1
+X3Bp nv3p con_fc2_3 0 VDD fc2
+X3Cp nv3p con_fc3_3 0 VDD fc3
+X3Dp nv3p con_fc4_3 0 VDD fc4
+X3Ep nv3p con_fc5_3 0 VDD fc5
+X3Fp nv3p con_fc6_3 0 VDD fc6
+* X3Gp nv3p con_fc7 0 VDD fc7
+* *X3Hp nv3p con_fc8 0 VDD fc8
+
+* x3n node
+
+* X3An nv3n con_fc1 0 VDD fc1
+* X3Bn nv3n con_fc2 0 VDD fc2
+* X3Cn nv3n con_fc3 0 VDD fc3
+* X3Dn nv3n con_fc4 0 VDD fc4
+* X3En nv3n con_fc5 0 VDD fc5
+* X3Fn nv3n con_fc6 0 VDD fc6
+* X3Gn nv3n con_fc7 0 VDD fc7
+* X3Hn nv3n con_fc8 0 VDD fc8
+
+
+* x4p node
+
+X4Ap nv4p con_fc1_4 0 VDD fc1
+X4Bp nv4p con_fc2_4 0 VDD fc2
+X4Cp nv4p con_fc3_4 0 VDD fc3
+X4Dp nv4p con_fc4_4 0 VDD fc4
+X4Ep nv4p con_fc5_4 0 VDD fc5
+X4Fp nv4p con_fc6_4 0 VDD fc6
+* X4Gp nv4p con_fc7 0 VDD fc7
+* * X4Hp nv4p con_fc8 0 VDD fc8
+
+* * x4n node
+
+* X4An nv4n con_fc1 0 VDD fc1
+* X4Bn nv4n con_fc2 0 VDD fc2
+* X4Cn nv4n con_fc3 0 VDD fc3
+* X4Dn nv4n con_fc4 0 VDD fc4
+* X4En nv4n con_fc5 0 VDD fc5
+* X4Fn nv4n con_fc6 0 VDD fc6
+* X4Gn nv4n con_fc7 0 VDD fc7
+* X4Hn nv4n con_fc8 0 VDD fc8
+
+* x5p node
+
+X5Ap nv5p con_fc1_5 0 VDD fc1
+X5Bp nv5p con_fc2_5 0 VDD fc2
+X5Cp nv5p con_fc3_5 0 VDD fc3
+X5Dp nv5p con_fc4_5 0 VDD fc4
+X5Ep nv5p con_fc5_5 0 VDD fc5
+X5Fp nv5p con_fc6_5 0 VDD fc6
+* X5Gp nv5p con_fc7 0 VDD fc7
+* * X4Hp nv4p con_fc8 0 VDD fc8
+
+
+
+
+* Calculate the differnetial output
+
+* E1 oscout 0 nv1p nv1n 1 
+
+
+
+
+
+.tran 10e-12 400e-09 3e-09 uic
+* .pss 1e9 5e-9 nv1p 128 10 50 1e-3 uic
+
+
+.measure TRAN invdelay
++       TRIG v(nv2p)  VAL=0.9 RISE=5
++       TARG v(nv1p)  VAL=0.9 RISE=5
+
+.measure TRAN Cycle1
++       TRIG v(nv3p)  VAL=0.9 RISE=35
++       TARG v(nv3p)  VAL=0.9 RISE=36
+
+.measure TRAN Cycle2
++       TRIG v(nv3p)  VAL=0.9 RISE=36
++       TARG v(nv3p)  VAL=0.9 RISE=37
+
+.measure TRAN Cycle3
++       TRIG v(nv3p)  VAL=0.9 RISE=37
++       TARG v(nv3p)  VAL=0.9 RISE=38
+
+.measure TRAN Cycle4
++       TRIG v(nv3p)  VAL=0.9 RISE=38
++       TARG v(nv3p)  VAL=0.9 RISE=39
+
+.measure TRAN Cycle5
++       TRIG v(nv3p)  VAL=0.9 RISE=39
++       TARG v(nv3p)  VAL=0.9 RISE=40
+
+.measure TRAN Cycle6
++       TRIG v(nv3p)  VAL=0.9 RISE=40
++       TARG v(nv3p)  VAL=0.9 RISE=41
+
+.measure TRAN Cycle7
++       TRIG v(nv3p)  VAL=0.9 RISE=41
++       TARG v(nv3p)  VAL=0.9 RISE=42
+
+.measure TRAN Cycle8
++       TRIG v(nv3p)  VAL=0.9 RISE=42
++       TARG v(nv3p)  VAL=0.9 RISE=43
+
+.measure TRAN Cycle9
++       TRIG v(nv3p)  VAL=0.9 RISE=43
++       TARG v(nv3p)  VAL=0.9 RISE=44
+
+.measure TRAN Cycle10
++       TRIG v(nv3p)  VAL=0.9 RISE=44
++       TARG v(nv3p)  VAL=0.9 RISE=45
+
+* Compute the cycle average
+
+
+* ngspice control commands
+.control
+save
+run 
+write
+.endc
+
+* end of the testbench
+.end

@@ -1,0 +1,2426 @@
+* Load the device library
+.lib "~/proj/skywater-pdk/libraries/sky130_fd_pr/latest/models/sky130.lib.spice" tt
+* Adjusting bit width of the PRBS
+.parameter bitw=1e-9
+* rise/fall time
+.parameter rft=1e-10
+* Clock frequency 
+.parameter tclk=1e-9
+* Clock rise/fall
+.parameter rfclk=1e-10 
+* Supply Voltage
+.parameter VSUP=1.8V
+.parameter simtime=200e-9
+
+Vsupply VDD 0 DC 1.8V
+
+
+* PRBS-7 pattern 
+Vprbs0 din0 0 DC 0 pwl(
++    '0* bitw' 0
++    '0* bitw + (1 * rft)' VSUP
++    '1* bitw + (0 * rft)' VSUP
++    '1* bitw + (1 * rft)' 0
++    '2* bitw + (0 * rft)' 0
++    '2* bitw + (1 * rft)' 0
++    '3* bitw + (0 * rft)' 0
++    '3* bitw + (1 * rft)' 0
++    '4.0* bitw' 0
++    '4* bitw + (1 * rft)' 0
++    '5.0* bitw' 0
++    '5* bitw + (1 * rft)' 0
++    '6.0* bitw' 0
++    '6* bitw + (1 * rft)' 0
++    '7.0* bitw' 0
++    '7* bitw + (1 * rft)' VSUP
++    '8.0* bitw' VSUP
++    '8* bitw + (1 * rft)' VSUP
++    '9.0* bitw' VSUP
++    '9* bitw + (1 * rft)' VSUP
++   '10.0* bitw' VSUP
++   '10* bitw + (1 * rft)' VSUP
++   '11.0* bitw' VSUP
++   '11* bitw + (1 * rft)' VSUP
++   '12.0* bitw' VSUP
++   '12* bitw + (1 * rft)' VSUP
++   '13.0* bitw' VSUP
++   '13* bitw + (1 * rft)' VSUP
++   '14.0* bitw' VSUP
++   '14* bitw + (1 * rft)' 0
++   '15.0* bitw' 0
++   '15* bitw + (1 * rft)' VSUP
++   '16.0* bitw' VSUP
++   '16* bitw + (1 * rft)' 0
++   '17.0* bitw' 0
++   '17* bitw + (1 * rft)' VSUP
++   '18.0* bitw' VSUP
++   '18* bitw + (1 * rft)' 0
++   '19.0* bitw' 0
++   '19* bitw + (1 * rft)' VSUP
++   '20.0* bitw' VSUP
++   '20* bitw + (1 * rft)' 0
++   '21.0* bitw' 0
++   '21* bitw + (1 * rft)' 0
++   '22.0* bitw' 0
++   '22* bitw + (1 * rft)' VSUP
++   '23.0* bitw' VSUP
++   '23* bitw + (1 * rft)' VSUP
++   '24.0* bitw' VSUP
++   '24* bitw + (1 * rft)' 0
++   '25.0* bitw' 0
++   '25* bitw + (1 * rft)' 0
++   '26.0* bitw' 0
++   '26* bitw + (1 * rft)' VSUP
++   '27.0* bitw' VSUP
++   '27* bitw + (1 * rft)' VSUP
++   '28.0* bitw' VSUP
++   '28* bitw + (1 * rft)' VSUP
++   '29.0* bitw' VSUP
++   '29* bitw + (1 * rft)' 0
++   '30.0* bitw' 0
++   '30* bitw + (1 * rft)' VSUP
++   '31.0* bitw' VSUP
++   '31* bitw + (1 * rft)' VSUP
++   '32.0* bitw' VSUP
++   '32* bitw + (1 * rft)' VSUP
++   '33.0* bitw' VSUP
++   '33* bitw + (1 * rft)' 0
++   '34.0* bitw' 0
++   '34* bitw + (1 * rft)' VSUP
++   '35.0* bitw' VSUP
++   '35* bitw + (1 * rft)' 0
++   '36.0* bitw' 0
++   '36* bitw + (1 * rft)' 0
++   '37.0* bitw' 0
++   '37* bitw + (1 * rft)' VSUP
++   '38.0* bitw' VSUP
++   '38* bitw + (1 * rft)' 0
++   '39.0* bitw' 0
++   '39* bitw + (1 * rft)' VSUP
++   '40.0* bitw' VSUP
++   '40* bitw + (1 * rft)' VSUP
++   '41.0* bitw' VSUP
++   '41* bitw + (1 * rft)' 0
++   '42.0* bitw' 0
++   '42* bitw + (1 * rft)' 0
++   '43.0* bitw' 0
++   '43* bitw + (1 * rft)' 0
++   '44.0* bitw' 0
++   '44* bitw + (1 * rft)' VSUP
++   '45.0* bitw' VSUP
++   '45* bitw + (1 * rft)' VSUP
++   '46.0* bitw' VSUP
++   '46* bitw + (1 * rft)' 0
++   '47.0* bitw' 0
++   '47* bitw + (1 * rft)' VSUP
++   '48.0* bitw' VSUP
++   '48* bitw + (1 * rft)' VSUP
++   '49.0* bitw' VSUP
++   '49* bitw + (1 * rft)' VSUP
++   '50.0* bitw' VSUP
++   '50* bitw + (1 * rft)' VSUP
++   '51.0* bitw' VSUP
++   '51* bitw + (1 * rft)' 0
++   '52.0* bitw' 0
++   '52* bitw + (1 * rft)' VSUP
++   '53.0* bitw' VSUP
++   '53* bitw + (1 * rft)' VSUP
++   '54.0* bitw' VSUP
++   '54* bitw + (1 * rft)' 0
++   '55.0* bitw' 0
++   '55* bitw + (1 * rft)' VSUP
++   '56.0* bitw' VSUP
++   '56* bitw + (1 * rft)' 0
++   '57.0* bitw' 0
++   '57* bitw + (1 * rft)' VSUP
++   '58.0* bitw' VSUP
++   '58* bitw + (1 * rft)' VSUP
++   '59.0* bitw' VSUP
++   '59* bitw + (1 * rft)' 0
++   '60.0* bitw' 0
++   '60* bitw + (1 * rft)' VSUP
++   '61.0* bitw' VSUP
++   '61* bitw + (1 * rft)' VSUP
++   '62.0* bitw' VSUP
++   '62* bitw + (1 * rft)' 0
++   '63.0* bitw' 0
++   '63* bitw + (1 * rft)' 0
++   '64.0* bitw' 0
++   '64* bitw + (1 * rft)' VSUP
++   '65.0* bitw' VSUP
++   '65* bitw + (1 * rft)' 0
++   '66.0* bitw' 0
++   '66* bitw + (1 * rft)' 0
++   '67.0* bitw' 0
++   '67* bitw + (1 * rft)' VSUP
++   '68.0* bitw' VSUP
++   '68* bitw + (1 * rft)' 0
++   '69.0* bitw' 0
++   '69* bitw + (1 * rft)' 0
++   '70.0* bitw' 0
++   '70* bitw + (1 * rft)' 0
++   '71.0* bitw' 0
++   '71* bitw + (1 * rft)' VSUP
++   '72.0* bitw' VSUP
++   '72* bitw + (1 * rft)' VSUP
++   '73.0* bitw' VSUP
++   '73* bitw + (1 * rft)' VSUP
++   '74.0* bitw' VSUP
++   '74* bitw + (1 * rft)' 0
++   '75.0* bitw' 0
++   '75* bitw + (1 * rft)' 0
++   '76.0* bitw' 0
++   '76* bitw + (1 * rft)' 0
++   '77.0* bitw' 0
++   '77* bitw + (1 * rft)' 0
++   '78.0* bitw' 0
++   '78* bitw + (1 * rft)' VSUP
++   '79.0* bitw' VSUP
++   '79* bitw + (1 * rft)' 0
++   '80.0* bitw' 0
++   '80* bitw + (1 * rft)' VSUP
++   '81.0* bitw' VSUP
++   '81* bitw + (1 * rft)' VSUP
++   '82.0* bitw' VSUP
++   '82* bitw + (1 * rft)' VSUP
++   '83.0* bitw' VSUP
++   '83* bitw + (1 * rft)' VSUP
++   '84.0* bitw' VSUP
++   '84* bitw + (1 * rft)' VSUP
++   '85.0* bitw' VSUP
++   '85* bitw + (1 * rft)' 0
++   '86.0* bitw' 0
++   '86* bitw + (1 * rft)' 0
++   '87.0* bitw' 0
++   '87* bitw + (1 * rft)' VSUP
++   '88.0* bitw' VSUP
++   '88* bitw + (1 * rft)' 0
++   '89.0* bitw' 0
++   '89* bitw + (1 * rft)' VSUP
++   '90.0* bitw' VSUP
++   '90* bitw + (1 * rft)' 0
++   '91.0* bitw' 0
++   '91* bitw + (1 * rft)' VSUP
++   '92.0* bitw' VSUP
++   '92* bitw + (1 * rft)' VSUP
++   '93.0* bitw' VSUP
++   '93* bitw + (1 * rft)' VSUP
++   '94.0* bitw' VSUP
++   '94* bitw + (1 * rft)' 0
++   '95.0* bitw' 0
++   '95* bitw + (1 * rft)' 0
++   '96.0* bitw' 0
++   '96* bitw + (1 * rft)' VSUP
++   '97.0* bitw' VSUP
++   '97* bitw + (1 * rft)' VSUP
++   '98.0* bitw' VSUP
++   '98* bitw + (1 * rft)' 0
++   '99.0* bitw' 0
++   '99* bitw + (1 * rft)' VSUP
++  '100.0* bitw' VSUP
++  '100* bitw + (1 * rft)' 0
++  '101.0* bitw' 0
++  '101* bitw + (1 * rft)' 0
++  '102.0* bitw' 0
++  '102* bitw + (1 * rft)' 0
++  '103.0* bitw' 0
++  '103* bitw + (1 * rft)' VSUP
++  '104.0* bitw' VSUP
++  '104* bitw + (1 * rft)' 0
++  '105.0* bitw' 0
++  '105* bitw + (1 * rft)' 0
++  '106.0* bitw' 0
++  '106* bitw + (1 * rft)' VSUP
++  '107.0* bitw' VSUP
++  '107* bitw + (1 * rft)' VSUP
++  '108.0* bitw' VSUP
++  '108* bitw + (1 * rft)' VSUP
++  '109.0* bitw' VSUP
++  '109* bitw + (1 * rft)' VSUP
++  '110.0* bitw' VSUP
++  '110* bitw + (1 * rft)' 0
++  '111.0* bitw' 0
++  '111* bitw + (1 * rft)' 0
++  '112.0* bitw' 0
++  '112* bitw + (1 * rft)' 0
++  '113.0* bitw' 0
++  '113* bitw + (1 * rft)' VSUP
++  '114.0* bitw' VSUP
++  '114* bitw + (1 * rft)' 0
++  '115.0* bitw' 0
++  '115* bitw + (1 * rft)' VSUP
++  '116.0* bitw' VSUP
++  '116* bitw + (1 * rft)' 0
++  '117.0* bitw' 0
++  '117* bitw + (1 * rft)' 0
++  '118.0* bitw' 0
++  '118* bitw + (1 * rft)' 0
++  '119.0* bitw' 0
++  '119* bitw + (1 * rft)' 0
++  '120.0* bitw' 0
++  '120* bitw + (1 * rft)' VSUP
++  '121.0* bitw' VSUP
++  '121* bitw + (1 * rft)' VSUP
++  '122.0* bitw' VSUP
++  '122* bitw + (1 * rft)' 0
++  '123.0* bitw' 0
++  '123* bitw + (1 * rft)' 0
++  '124.0* bitw' 0
++  '124* bitw + (1 * rft)' 0
++  '125.0* bitw' 0
++  '125* bitw + (1 * rft)' 0
++  '126.0* bitw' 0
++  '126* bitw + (1 * rft)' 0
++  '127.0* bitw' 0
++) r=0 td=0
+
+* Second PRBS 
+Vprbs1 din1 0 DC 0 pwl(
++    '0* bitw' 0
++    '0* bitw + (1 * rft)' VSUP
++    '1* bitw + (0 * rft)' VSUP
++    '1* bitw + (1 * rft)' 0
++    '2* bitw + (0 * rft)' 0
++    '2* bitw + (1 * rft)' 0
++    '3* bitw + (0 * rft)' 0
++    '3* bitw + (1 * rft)' 0
++    '4.0* bitw' 0
++    '4* bitw + (1 * rft)' 0
++    '5.0* bitw' 0
++    '5* bitw + (1 * rft)' 0
++    '6.0* bitw' 0
++    '6* bitw + (1 * rft)' 0
++    '7.0* bitw' 0
++    '7* bitw + (1 * rft)' VSUP
++    '8.0* bitw' VSUP
++    '8* bitw + (1 * rft)' VSUP
++    '9.0* bitw' VSUP
++    '9* bitw + (1 * rft)' VSUP
++   '10.0* bitw' VSUP
++   '10* bitw + (1 * rft)' VSUP
++   '11.0* bitw' VSUP
++   '11* bitw + (1 * rft)' VSUP
++   '12.0* bitw' VSUP
++   '12* bitw + (1 * rft)' VSUP
++   '13.0* bitw' VSUP
++   '13* bitw + (1 * rft)' VSUP
++   '14.0* bitw' VSUP
++   '14* bitw + (1 * rft)' 0
++   '15.0* bitw' 0
++   '15* bitw + (1 * rft)' VSUP
++   '16.0* bitw' VSUP
++   '16* bitw + (1 * rft)' 0
++   '17.0* bitw' 0
++   '17* bitw + (1 * rft)' VSUP
++   '18.0* bitw' VSUP
++   '18* bitw + (1 * rft)' 0
++   '19.0* bitw' 0
++   '19* bitw + (1 * rft)' VSUP
++   '20.0* bitw' VSUP
++   '20* bitw + (1 * rft)' 0
++   '21.0* bitw' 0
++   '21* bitw + (1 * rft)' 0
++   '22.0* bitw' 0
++   '22* bitw + (1 * rft)' VSUP
++   '23.0* bitw' VSUP
++   '23* bitw + (1 * rft)' VSUP
++   '24.0* bitw' VSUP
++   '24* bitw + (1 * rft)' 0
++   '25.0* bitw' 0
++   '25* bitw + (1 * rft)' 0
++   '26.0* bitw' 0
++   '26* bitw + (1 * rft)' VSUP
++   '27.0* bitw' VSUP
++   '27* bitw + (1 * rft)' VSUP
++   '28.0* bitw' VSUP
++   '28* bitw + (1 * rft)' VSUP
++   '29.0* bitw' VSUP
++   '29* bitw + (1 * rft)' 0
++   '30.0* bitw' 0
++   '30* bitw + (1 * rft)' VSUP
++   '31.0* bitw' VSUP
++   '31* bitw + (1 * rft)' VSUP
++   '32.0* bitw' VSUP
++   '32* bitw + (1 * rft)' VSUP
++   '33.0* bitw' VSUP
++   '33* bitw + (1 * rft)' 0
++   '34.0* bitw' 0
++   '34* bitw + (1 * rft)' VSUP
++   '35.0* bitw' VSUP
++   '35* bitw + (1 * rft)' 0
++   '36.0* bitw' 0
++   '36* bitw + (1 * rft)' 0
++   '37.0* bitw' 0
++   '37* bitw + (1 * rft)' VSUP
++   '38.0* bitw' VSUP
++   '38* bitw + (1 * rft)' 0
++   '39.0* bitw' 0
++   '39* bitw + (1 * rft)' VSUP
++   '40.0* bitw' VSUP
++   '40* bitw + (1 * rft)' VSUP
++   '41.0* bitw' VSUP
++   '41* bitw + (1 * rft)' 0
++   '42.0* bitw' 0
++   '42* bitw + (1 * rft)' 0
++   '43.0* bitw' 0
++   '43* bitw + (1 * rft)' 0
++   '44.0* bitw' 0
++   '44* bitw + (1 * rft)' VSUP
++   '45.0* bitw' VSUP
++   '45* bitw + (1 * rft)' VSUP
++   '46.0* bitw' VSUP
++   '46* bitw + (1 * rft)' 0
++   '47.0* bitw' 0
++   '47* bitw + (1 * rft)' VSUP
++   '48.0* bitw' VSUP
++   '48* bitw + (1 * rft)' VSUP
++   '49.0* bitw' VSUP
++   '49* bitw + (1 * rft)' VSUP
++   '50.0* bitw' VSUP
++   '50* bitw + (1 * rft)' VSUP
++   '51.0* bitw' VSUP
++   '51* bitw + (1 * rft)' 0
++   '52.0* bitw' 0
++   '52* bitw + (1 * rft)' VSUP
++   '53.0* bitw' VSUP
++   '53* bitw + (1 * rft)' VSUP
++   '54.0* bitw' VSUP
++   '54* bitw + (1 * rft)' 0
++   '55.0* bitw' 0
++   '55* bitw + (1 * rft)' VSUP
++   '56.0* bitw' VSUP
++   '56* bitw + (1 * rft)' 0
++   '57.0* bitw' 0
++   '57* bitw + (1 * rft)' VSUP
++   '58.0* bitw' VSUP
++   '58* bitw + (1 * rft)' VSUP
++   '59.0* bitw' VSUP
++   '59* bitw + (1 * rft)' 0
++   '60.0* bitw' 0
++   '60* bitw + (1 * rft)' VSUP
++   '61.0* bitw' VSUP
++   '61* bitw + (1 * rft)' VSUP
++   '62.0* bitw' VSUP
++   '62* bitw + (1 * rft)' 0
++   '63.0* bitw' 0
++   '63* bitw + (1 * rft)' 0
++   '64.0* bitw' 0
++   '64* bitw + (1 * rft)' VSUP
++   '65.0* bitw' VSUP
++   '65* bitw + (1 * rft)' 0
++   '66.0* bitw' 0
++   '66* bitw + (1 * rft)' 0
++   '67.0* bitw' 0
++   '67* bitw + (1 * rft)' VSUP
++   '68.0* bitw' VSUP
++   '68* bitw + (1 * rft)' 0
++   '69.0* bitw' 0
++   '69* bitw + (1 * rft)' 0
++   '70.0* bitw' 0
++   '70* bitw + (1 * rft)' 0
++   '71.0* bitw' 0
++   '71* bitw + (1 * rft)' VSUP
++   '72.0* bitw' VSUP
++   '72* bitw + (1 * rft)' VSUP
++   '73.0* bitw' VSUP
++   '73* bitw + (1 * rft)' VSUP
++   '74.0* bitw' VSUP
++   '74* bitw + (1 * rft)' 0
++   '75.0* bitw' 0
++   '75* bitw + (1 * rft)' 0
++   '76.0* bitw' 0
++   '76* bitw + (1 * rft)' 0
++   '77.0* bitw' 0
++   '77* bitw + (1 * rft)' 0
++   '78.0* bitw' 0
++   '78* bitw + (1 * rft)' VSUP
++   '79.0* bitw' VSUP
++   '79* bitw + (1 * rft)' 0
++   '80.0* bitw' 0
++   '80* bitw + (1 * rft)' VSUP
++   '81.0* bitw' VSUP
++   '81* bitw + (1 * rft)' VSUP
++   '82.0* bitw' VSUP
++   '82* bitw + (1 * rft)' VSUP
++   '83.0* bitw' VSUP
++   '83* bitw + (1 * rft)' VSUP
++   '84.0* bitw' VSUP
++   '84* bitw + (1 * rft)' VSUP
++   '85.0* bitw' VSUP
++   '85* bitw + (1 * rft)' 0
++   '86.0* bitw' 0
++   '86* bitw + (1 * rft)' 0
++   '87.0* bitw' 0
++   '87* bitw + (1 * rft)' VSUP
++   '88.0* bitw' VSUP
++   '88* bitw + (1 * rft)' 0
++   '89.0* bitw' 0
++   '89* bitw + (1 * rft)' VSUP
++   '90.0* bitw' VSUP
++   '90* bitw + (1 * rft)' 0
++   '91.0* bitw' 0
++   '91* bitw + (1 * rft)' VSUP
++   '92.0* bitw' VSUP
++   '92* bitw + (1 * rft)' VSUP
++   '93.0* bitw' VSUP
++   '93* bitw + (1 * rft)' VSUP
++   '94.0* bitw' VSUP
++   '94* bitw + (1 * rft)' 0
++   '95.0* bitw' 0
++   '95* bitw + (1 * rft)' 0
++   '96.0* bitw' 0
++   '96* bitw + (1 * rft)' VSUP
++   '97.0* bitw' VSUP
++   '97* bitw + (1 * rft)' VSUP
++   '98.0* bitw' VSUP
++   '98* bitw + (1 * rft)' 0
++   '99.0* bitw' 0
++   '99* bitw + (1 * rft)' VSUP
++  '100.0* bitw' VSUP
++  '100* bitw + (1 * rft)' 0
++  '101.0* bitw' 0
++  '101* bitw + (1 * rft)' 0
++  '102.0* bitw' 0
++  '102* bitw + (1 * rft)' 0
++  '103.0* bitw' 0
++  '103* bitw + (1 * rft)' VSUP
++  '104.0* bitw' VSUP
++  '104* bitw + (1 * rft)' 0
++  '105.0* bitw' 0
++  '105* bitw + (1 * rft)' 0
++  '106.0* bitw' 0
++  '106* bitw + (1 * rft)' VSUP
++  '107.0* bitw' VSUP
++  '107* bitw + (1 * rft)' VSUP
++  '108.0* bitw' VSUP
++  '108* bitw + (1 * rft)' VSUP
++  '109.0* bitw' VSUP
++  '109* bitw + (1 * rft)' VSUP
++  '110.0* bitw' VSUP
++  '110* bitw + (1 * rft)' 0
++  '111.0* bitw' 0
++  '111* bitw + (1 * rft)' 0
++  '112.0* bitw' 0
++  '112* bitw + (1 * rft)' 0
++  '113.0* bitw' 0
++  '113* bitw + (1 * rft)' VSUP
++  '114.0* bitw' VSUP
++  '114* bitw + (1 * rft)' 0
++  '115.0* bitw' 0
++  '115* bitw + (1 * rft)' VSUP
++  '116.0* bitw' VSUP
++  '116* bitw + (1 * rft)' 0
++  '117.0* bitw' 0
++  '117* bitw + (1 * rft)' 0
++  '118.0* bitw' 0
++  '118* bitw + (1 * rft)' 0
++  '119.0* bitw' 0
++  '119* bitw + (1 * rft)' 0
++  '120.0* bitw' 0
++  '120* bitw + (1 * rft)' VSUP
++  '121.0* bitw' VSUP
++  '121* bitw + (1 * rft)' VSUP
++  '122.0* bitw' VSUP
++  '122* bitw + (1 * rft)' 0
++  '123.0* bitw' 0
++  '123* bitw + (1 * rft)' 0
++  '124.0* bitw' 0
++  '124* bitw + (1 * rft)' 0
++  '125.0* bitw' 0
++  '125* bitw + (1 * rft)' 0
++  '126.0* bitw' 0
++  '126* bitw + (1 * rft)' 0
++  '127.0* bitw' 0
++) r=0 td=0
+
+* Third PRBS
+
+Vprbs2 din2 0 DC 0 pwl(
++    '0* bitw' 0
++    '0* bitw + (1 * rft)' VSUP
++    '1* bitw + (0 * rft)' VSUP
++    '1* bitw + (1 * rft)' 0
++    '2* bitw + (0 * rft)' 0
++    '2* bitw + (1 * rft)' 0
++    '3* bitw + (0 * rft)' 0
++    '3* bitw + (1 * rft)' 0
++    '4.0* bitw' 0
++    '4* bitw + (1 * rft)' 0
++    '5.0* bitw' 0
++    '5* bitw + (1 * rft)' 0
++    '6.0* bitw' 0
++    '6* bitw + (1 * rft)' 0
++    '7.0* bitw' 0
++    '7* bitw + (1 * rft)' VSUP
++    '8.0* bitw' VSUP
++    '8* bitw + (1 * rft)' VSUP
++    '9.0* bitw' VSUP
++    '9* bitw + (1 * rft)' VSUP
++   '10.0* bitw' VSUP
++   '10* bitw + (1 * rft)' VSUP
++   '11.0* bitw' VSUP
++   '11* bitw + (1 * rft)' VSUP
++   '12.0* bitw' VSUP
++   '12* bitw + (1 * rft)' VSUP
++   '13.0* bitw' VSUP
++   '13* bitw + (1 * rft)' VSUP
++   '14.0* bitw' VSUP
++   '14* bitw + (1 * rft)' 0
++   '15.0* bitw' 0
++   '15* bitw + (1 * rft)' VSUP
++   '16.0* bitw' VSUP
++   '16* bitw + (1 * rft)' 0
++   '17.0* bitw' 0
++   '17* bitw + (1 * rft)' VSUP
++   '18.0* bitw' VSUP
++   '18* bitw + (1 * rft)' 0
++   '19.0* bitw' 0
++   '19* bitw + (1 * rft)' VSUP
++   '20.0* bitw' VSUP
++   '20* bitw + (1 * rft)' 0
++   '21.0* bitw' 0
++   '21* bitw + (1 * rft)' 0
++   '22.0* bitw' 0
++   '22* bitw + (1 * rft)' VSUP
++   '23.0* bitw' VSUP
++   '23* bitw + (1 * rft)' VSUP
++   '24.0* bitw' VSUP
++   '24* bitw + (1 * rft)' 0
++   '25.0* bitw' 0
++   '25* bitw + (1 * rft)' 0
++   '26.0* bitw' 0
++   '26* bitw + (1 * rft)' VSUP
++   '27.0* bitw' VSUP
++   '27* bitw + (1 * rft)' VSUP
++   '28.0* bitw' VSUP
++   '28* bitw + (1 * rft)' VSUP
++   '29.0* bitw' VSUP
++   '29* bitw + (1 * rft)' 0
++   '30.0* bitw' 0
++   '30* bitw + (1 * rft)' VSUP
++   '31.0* bitw' VSUP
++   '31* bitw + (1 * rft)' VSUP
++   '32.0* bitw' VSUP
++   '32* bitw + (1 * rft)' VSUP
++   '33.0* bitw' VSUP
++   '33* bitw + (1 * rft)' 0
++   '34.0* bitw' 0
++   '34* bitw + (1 * rft)' VSUP
++   '35.0* bitw' VSUP
++   '35* bitw + (1 * rft)' 0
++   '36.0* bitw' 0
++   '36* bitw + (1 * rft)' 0
++   '37.0* bitw' 0
++   '37* bitw + (1 * rft)' VSUP
++   '38.0* bitw' VSUP
++   '38* bitw + (1 * rft)' 0
++   '39.0* bitw' 0
++   '39* bitw + (1 * rft)' VSUP
++   '40.0* bitw' VSUP
++   '40* bitw + (1 * rft)' VSUP
++   '41.0* bitw' VSUP
++   '41* bitw + (1 * rft)' 0
++   '42.0* bitw' 0
++   '42* bitw + (1 * rft)' 0
++   '43.0* bitw' 0
++   '43* bitw + (1 * rft)' 0
++   '44.0* bitw' 0
++   '44* bitw + (1 * rft)' VSUP
++   '45.0* bitw' VSUP
++   '45* bitw + (1 * rft)' VSUP
++   '46.0* bitw' VSUP
++   '46* bitw + (1 * rft)' 0
++   '47.0* bitw' 0
++   '47* bitw + (1 * rft)' VSUP
++   '48.0* bitw' VSUP
++   '48* bitw + (1 * rft)' VSUP
++   '49.0* bitw' VSUP
++   '49* bitw + (1 * rft)' VSUP
++   '50.0* bitw' VSUP
++   '50* bitw + (1 * rft)' VSUP
++   '51.0* bitw' VSUP
++   '51* bitw + (1 * rft)' 0
++   '52.0* bitw' 0
++   '52* bitw + (1 * rft)' VSUP
++   '53.0* bitw' VSUP
++   '53* bitw + (1 * rft)' VSUP
++   '54.0* bitw' VSUP
++   '54* bitw + (1 * rft)' 0
++   '55.0* bitw' 0
++   '55* bitw + (1 * rft)' VSUP
++   '56.0* bitw' VSUP
++   '56* bitw + (1 * rft)' 0
++   '57.0* bitw' 0
++   '57* bitw + (1 * rft)' VSUP
++   '58.0* bitw' VSUP
++   '58* bitw + (1 * rft)' VSUP
++   '59.0* bitw' VSUP
++   '59* bitw + (1 * rft)' 0
++   '60.0* bitw' 0
++   '60* bitw + (1 * rft)' VSUP
++   '61.0* bitw' VSUP
++   '61* bitw + (1 * rft)' VSUP
++   '62.0* bitw' VSUP
++   '62* bitw + (1 * rft)' 0
++   '63.0* bitw' 0
++   '63* bitw + (1 * rft)' 0
++   '64.0* bitw' 0
++   '64* bitw + (1 * rft)' VSUP
++   '65.0* bitw' VSUP
++   '65* bitw + (1 * rft)' 0
++   '66.0* bitw' 0
++   '66* bitw + (1 * rft)' 0
++   '67.0* bitw' 0
++   '67* bitw + (1 * rft)' VSUP
++   '68.0* bitw' VSUP
++   '68* bitw + (1 * rft)' 0
++   '69.0* bitw' 0
++   '69* bitw + (1 * rft)' 0
++   '70.0* bitw' 0
++   '70* bitw + (1 * rft)' 0
++   '71.0* bitw' 0
++   '71* bitw + (1 * rft)' VSUP
++   '72.0* bitw' VSUP
++   '72* bitw + (1 * rft)' VSUP
++   '73.0* bitw' VSUP
++   '73* bitw + (1 * rft)' VSUP
++   '74.0* bitw' VSUP
++   '74* bitw + (1 * rft)' 0
++   '75.0* bitw' 0
++   '75* bitw + (1 * rft)' 0
++   '76.0* bitw' 0
++   '76* bitw + (1 * rft)' 0
++   '77.0* bitw' 0
++   '77* bitw + (1 * rft)' 0
++   '78.0* bitw' 0
++   '78* bitw + (1 * rft)' VSUP
++   '79.0* bitw' VSUP
++   '79* bitw + (1 * rft)' 0
++   '80.0* bitw' 0
++   '80* bitw + (1 * rft)' VSUP
++   '81.0* bitw' VSUP
++   '81* bitw + (1 * rft)' VSUP
++   '82.0* bitw' VSUP
++   '82* bitw + (1 * rft)' VSUP
++   '83.0* bitw' VSUP
++   '83* bitw + (1 * rft)' VSUP
++   '84.0* bitw' VSUP
++   '84* bitw + (1 * rft)' VSUP
++   '85.0* bitw' VSUP
++   '85* bitw + (1 * rft)' 0
++   '86.0* bitw' 0
++   '86* bitw + (1 * rft)' 0
++   '87.0* bitw' 0
++   '87* bitw + (1 * rft)' VSUP
++   '88.0* bitw' VSUP
++   '88* bitw + (1 * rft)' 0
++   '89.0* bitw' 0
++   '89* bitw + (1 * rft)' VSUP
++   '90.0* bitw' VSUP
++   '90* bitw + (1 * rft)' 0
++   '91.0* bitw' 0
++   '91* bitw + (1 * rft)' VSUP
++   '92.0* bitw' VSUP
++   '92* bitw + (1 * rft)' VSUP
++   '93.0* bitw' VSUP
++   '93* bitw + (1 * rft)' VSUP
++   '94.0* bitw' VSUP
++   '94* bitw + (1 * rft)' 0
++   '95.0* bitw' 0
++   '95* bitw + (1 * rft)' 0
++   '96.0* bitw' 0
++   '96* bitw + (1 * rft)' VSUP
++   '97.0* bitw' VSUP
++   '97* bitw + (1 * rft)' VSUP
++   '98.0* bitw' VSUP
++   '98* bitw + (1 * rft)' 0
++   '99.0* bitw' 0
++   '99* bitw + (1 * rft)' VSUP
++  '100.0* bitw' VSUP
++  '100* bitw + (1 * rft)' 0
++  '101.0* bitw' 0
++  '101* bitw + (1 * rft)' 0
++  '102.0* bitw' 0
++  '102* bitw + (1 * rft)' 0
++  '103.0* bitw' 0
++  '103* bitw + (1 * rft)' VSUP
++  '104.0* bitw' VSUP
++  '104* bitw + (1 * rft)' 0
++  '105.0* bitw' 0
++  '105* bitw + (1 * rft)' 0
++  '106.0* bitw' 0
++  '106* bitw + (1 * rft)' VSUP
++  '107.0* bitw' VSUP
++  '107* bitw + (1 * rft)' VSUP
++  '108.0* bitw' VSUP
++  '108* bitw + (1 * rft)' VSUP
++  '109.0* bitw' VSUP
++  '109* bitw + (1 * rft)' VSUP
++  '110.0* bitw' VSUP
++  '110* bitw + (1 * rft)' 0
++  '111.0* bitw' 0
++  '111* bitw + (1 * rft)' 0
++  '112.0* bitw' 0
++  '112* bitw + (1 * rft)' 0
++  '113.0* bitw' 0
++  '113* bitw + (1 * rft)' VSUP
++  '114.0* bitw' VSUP
++  '114* bitw + (1 * rft)' 0
++  '115.0* bitw' 0
++  '115* bitw + (1 * rft)' VSUP
++  '116.0* bitw' VSUP
++  '116* bitw + (1 * rft)' 0
++  '117.0* bitw' 0
++  '117* bitw + (1 * rft)' 0
++  '118.0* bitw' 0
++  '118* bitw + (1 * rft)' 0
++  '119.0* bitw' 0
++  '119* bitw + (1 * rft)' 0
++  '120.0* bitw' 0
++  '120* bitw + (1 * rft)' VSUP
++  '121.0* bitw' VSUP
++  '121* bitw + (1 * rft)' VSUP
++  '122.0* bitw' VSUP
++  '122* bitw + (1 * rft)' 0
++  '123.0* bitw' 0
++  '123* bitw + (1 * rft)' 0
++  '124.0* bitw' 0
++  '124* bitw + (1 * rft)' 0
++  '125.0* bitw' 0
++  '125* bitw + (1 * rft)' 0
++  '126.0* bitw' 0
++  '126* bitw + (1 * rft)' 0
++  '127.0* bitw' 0
++) r=0 td=0
+
+* Fourth PRBS
+Vprbs3 din3 0 DC 0 pwl(
++    '0* bitw' 0
++    '0* bitw + (1 * rft)' VSUP
++    '1* bitw + (0 * rft)' VSUP
++    '1* bitw + (1 * rft)' 0
++    '2* bitw + (0 * rft)' 0
++    '2* bitw + (1 * rft)' 0
++    '3* bitw + (0 * rft)' 0
++    '3* bitw + (1 * rft)' 0
++    '4.0* bitw' 0
++    '4* bitw + (1 * rft)' 0
++    '5.0* bitw' 0
++    '5* bitw + (1 * rft)' 0
++    '6.0* bitw' 0
++    '6* bitw + (1 * rft)' 0
++    '7.0* bitw' 0
++    '7* bitw + (1 * rft)' VSUP
++    '8.0* bitw' VSUP
++    '8* bitw + (1 * rft)' VSUP
++    '9.0* bitw' VSUP
++    '9* bitw + (1 * rft)' VSUP
++   '10.0* bitw' VSUP
++   '10* bitw + (1 * rft)' VSUP
++   '11.0* bitw' VSUP
++   '11* bitw + (1 * rft)' VSUP
++   '12.0* bitw' VSUP
++   '12* bitw + (1 * rft)' VSUP
++   '13.0* bitw' VSUP
++   '13* bitw + (1 * rft)' VSUP
++   '14.0* bitw' VSUP
++   '14* bitw + (1 * rft)' 0
++   '15.0* bitw' 0
++   '15* bitw + (1 * rft)' VSUP
++   '16.0* bitw' VSUP
++   '16* bitw + (1 * rft)' 0
++   '17.0* bitw' 0
++   '17* bitw + (1 * rft)' VSUP
++   '18.0* bitw' VSUP
++   '18* bitw + (1 * rft)' 0
++   '19.0* bitw' 0
++   '19* bitw + (1 * rft)' VSUP
++   '20.0* bitw' VSUP
++   '20* bitw + (1 * rft)' 0
++   '21.0* bitw' 0
++   '21* bitw + (1 * rft)' 0
++   '22.0* bitw' 0
++   '22* bitw + (1 * rft)' VSUP
++   '23.0* bitw' VSUP
++   '23* bitw + (1 * rft)' VSUP
++   '24.0* bitw' VSUP
++   '24* bitw + (1 * rft)' 0
++   '25.0* bitw' 0
++   '25* bitw + (1 * rft)' 0
++   '26.0* bitw' 0
++   '26* bitw + (1 * rft)' VSUP
++   '27.0* bitw' VSUP
++   '27* bitw + (1 * rft)' VSUP
++   '28.0* bitw' VSUP
++   '28* bitw + (1 * rft)' VSUP
++   '29.0* bitw' VSUP
++   '29* bitw + (1 * rft)' 0
++   '30.0* bitw' 0
++   '30* bitw + (1 * rft)' VSUP
++   '31.0* bitw' VSUP
++   '31* bitw + (1 * rft)' VSUP
++   '32.0* bitw' VSUP
++   '32* bitw + (1 * rft)' VSUP
++   '33.0* bitw' VSUP
++   '33* bitw + (1 * rft)' 0
++   '34.0* bitw' 0
++   '34* bitw + (1 * rft)' VSUP
++   '35.0* bitw' VSUP
++   '35* bitw + (1 * rft)' 0
++   '36.0* bitw' 0
++   '36* bitw + (1 * rft)' 0
++   '37.0* bitw' 0
++   '37* bitw + (1 * rft)' VSUP
++   '38.0* bitw' VSUP
++   '38* bitw + (1 * rft)' 0
++   '39.0* bitw' 0
++   '39* bitw + (1 * rft)' VSUP
++   '40.0* bitw' VSUP
++   '40* bitw + (1 * rft)' VSUP
++   '41.0* bitw' VSUP
++   '41* bitw + (1 * rft)' 0
++   '42.0* bitw' 0
++   '42* bitw + (1 * rft)' 0
++   '43.0* bitw' 0
++   '43* bitw + (1 * rft)' 0
++   '44.0* bitw' 0
++   '44* bitw + (1 * rft)' VSUP
++   '45.0* bitw' VSUP
++   '45* bitw + (1 * rft)' VSUP
++   '46.0* bitw' VSUP
++   '46* bitw + (1 * rft)' 0
++   '47.0* bitw' 0
++   '47* bitw + (1 * rft)' VSUP
++   '48.0* bitw' VSUP
++   '48* bitw + (1 * rft)' VSUP
++   '49.0* bitw' VSUP
++   '49* bitw + (1 * rft)' VSUP
++   '50.0* bitw' VSUP
++   '50* bitw + (1 * rft)' VSUP
++   '51.0* bitw' VSUP
++   '51* bitw + (1 * rft)' 0
++   '52.0* bitw' 0
++   '52* bitw + (1 * rft)' VSUP
++   '53.0* bitw' VSUP
++   '53* bitw + (1 * rft)' VSUP
++   '54.0* bitw' VSUP
++   '54* bitw + (1 * rft)' 0
++   '55.0* bitw' 0
++   '55* bitw + (1 * rft)' VSUP
++   '56.0* bitw' VSUP
++   '56* bitw + (1 * rft)' 0
++   '57.0* bitw' 0
++   '57* bitw + (1 * rft)' VSUP
++   '58.0* bitw' VSUP
++   '58* bitw + (1 * rft)' VSUP
++   '59.0* bitw' VSUP
++   '59* bitw + (1 * rft)' 0
++   '60.0* bitw' 0
++   '60* bitw + (1 * rft)' VSUP
++   '61.0* bitw' VSUP
++   '61* bitw + (1 * rft)' VSUP
++   '62.0* bitw' VSUP
++   '62* bitw + (1 * rft)' 0
++   '63.0* bitw' 0
++   '63* bitw + (1 * rft)' 0
++   '64.0* bitw' 0
++   '64* bitw + (1 * rft)' VSUP
++   '65.0* bitw' VSUP
++   '65* bitw + (1 * rft)' 0
++   '66.0* bitw' 0
++   '66* bitw + (1 * rft)' 0
++   '67.0* bitw' 0
++   '67* bitw + (1 * rft)' VSUP
++   '68.0* bitw' VSUP
++   '68* bitw + (1 * rft)' 0
++   '69.0* bitw' 0
++   '69* bitw + (1 * rft)' 0
++   '70.0* bitw' 0
++   '70* bitw + (1 * rft)' 0
++   '71.0* bitw' 0
++   '71* bitw + (1 * rft)' VSUP
++   '72.0* bitw' VSUP
++   '72* bitw + (1 * rft)' VSUP
++   '73.0* bitw' VSUP
++   '73* bitw + (1 * rft)' VSUP
++   '74.0* bitw' VSUP
++   '74* bitw + (1 * rft)' 0
++   '75.0* bitw' 0
++   '75* bitw + (1 * rft)' 0
++   '76.0* bitw' 0
++   '76* bitw + (1 * rft)' 0
++   '77.0* bitw' 0
++   '77* bitw + (1 * rft)' 0
++   '78.0* bitw' 0
++   '78* bitw + (1 * rft)' VSUP
++   '79.0* bitw' VSUP
++   '79* bitw + (1 * rft)' 0
++   '80.0* bitw' 0
++   '80* bitw + (1 * rft)' VSUP
++   '81.0* bitw' VSUP
++   '81* bitw + (1 * rft)' VSUP
++   '82.0* bitw' VSUP
++   '82* bitw + (1 * rft)' VSUP
++   '83.0* bitw' VSUP
++   '83* bitw + (1 * rft)' VSUP
++   '84.0* bitw' VSUP
++   '84* bitw + (1 * rft)' VSUP
++   '85.0* bitw' VSUP
++   '85* bitw + (1 * rft)' 0
++   '86.0* bitw' 0
++   '86* bitw + (1 * rft)' 0
++   '87.0* bitw' 0
++   '87* bitw + (1 * rft)' VSUP
++   '88.0* bitw' VSUP
++   '88* bitw + (1 * rft)' 0
++   '89.0* bitw' 0
++   '89* bitw + (1 * rft)' VSUP
++   '90.0* bitw' VSUP
++   '90* bitw + (1 * rft)' 0
++   '91.0* bitw' 0
++   '91* bitw + (1 * rft)' VSUP
++   '92.0* bitw' VSUP
++   '92* bitw + (1 * rft)' VSUP
++   '93.0* bitw' VSUP
++   '93* bitw + (1 * rft)' VSUP
++   '94.0* bitw' VSUP
++   '94* bitw + (1 * rft)' 0
++   '95.0* bitw' 0
++   '95* bitw + (1 * rft)' 0
++   '96.0* bitw' 0
++   '96* bitw + (1 * rft)' VSUP
++   '97.0* bitw' VSUP
++   '97* bitw + (1 * rft)' VSUP
++   '98.0* bitw' VSUP
++   '98* bitw + (1 * rft)' 0
++   '99.0* bitw' 0
++   '99* bitw + (1 * rft)' VSUP
++  '100.0* bitw' VSUP
++  '100* bitw + (1 * rft)' 0
++  '101.0* bitw' 0
++  '101* bitw + (1 * rft)' 0
++  '102.0* bitw' 0
++  '102* bitw + (1 * rft)' 0
++  '103.0* bitw' 0
++  '103* bitw + (1 * rft)' VSUP
++  '104.0* bitw' VSUP
++  '104* bitw + (1 * rft)' 0
++  '105.0* bitw' 0
++  '105* bitw + (1 * rft)' 0
++  '106.0* bitw' 0
++  '106* bitw + (1 * rft)' VSUP
++  '107.0* bitw' VSUP
++  '107* bitw + (1 * rft)' VSUP
++  '108.0* bitw' VSUP
++  '108* bitw + (1 * rft)' VSUP
++  '109.0* bitw' VSUP
++  '109* bitw + (1 * rft)' VSUP
++  '110.0* bitw' VSUP
++  '110* bitw + (1 * rft)' 0
++  '111.0* bitw' 0
++  '111* bitw + (1 * rft)' 0
++  '112.0* bitw' 0
++  '112* bitw + (1 * rft)' 0
++  '113.0* bitw' 0
++  '113* bitw + (1 * rft)' VSUP
++  '114.0* bitw' VSUP
++  '114* bitw + (1 * rft)' 0
++  '115.0* bitw' 0
++  '115* bitw + (1 * rft)' VSUP
++  '116.0* bitw' VSUP
++  '116* bitw + (1 * rft)' 0
++  '117.0* bitw' 0
++  '117* bitw + (1 * rft)' 0
++  '118.0* bitw' 0
++  '118* bitw + (1 * rft)' 0
++  '119.0* bitw' 0
++  '119* bitw + (1 * rft)' 0
++  '120.0* bitw' 0
++  '120* bitw + (1 * rft)' VSUP
++  '121.0* bitw' VSUP
++  '121* bitw + (1 * rft)' VSUP
++  '122.0* bitw' VSUP
++  '122* bitw + (1 * rft)' 0
++  '123.0* bitw' 0
++  '123* bitw + (1 * rft)' 0
++  '124.0* bitw' 0
++  '124* bitw + (1 * rft)' 0
++  '125.0* bitw' 0
++  '125* bitw + (1 * rft)' 0
++  '126.0* bitw' 0
++  '126* bitw + (1 * rft)' 0
++  '127.0* bitw' 0
++) r=0 td=0
+
+
+ * End of PRBS  
+
+* Instantiate the DUT 
+* SPICE3 file created from qr_4t1_mux_top.ext - technology: sky130A
+
+.subckt qr_4t1_mux_top clk_I clk_IB clk_Q clk_QB data din[0] din[1] din[2] din[3]
++ rst VPWR VGND
+X0 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=3.26728e+13p pd=3.1728e+08u as=0p ps=0u w=870000u l=4.73e+06u
+X1 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=2.02512e+13p pd=2.2754e+08u as=0p ps=0u w=550000u l=4.73e+06u
+X2 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=590000u
+X3 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=590000u
+X4 clkbuf_1_1_0_clk_I/a_75_212# clkbuf_0_clk_I/X VGND VGND sky130_fd_pr__nfet_01v8 ad=1.352e+11p pd=1.56e+06u as=0p ps=0u w=520000u l=150000u
+X5 VPWR clkbuf_1_1_0_clk_I/a_75_212# _08_/S1 VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=2.054e+11p ps=2.1e+06u w=790000u l=150000u
+X6 VGND clkbuf_1_1_0_clk_I/a_75_212# _08_/S1 VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.352e+11p ps=1.56e+06u w=520000u l=150000u
+X7 clkbuf_1_1_0_clk_I/a_75_212# clkbuf_0_clk_I/X VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=2.054e+11p pd=2.1e+06u as=0p ps=0u w=790000u l=150000u
+X8 _08_/a_1478_413# _08_/S1 _08_/a_277_47# VPWR sky130_fd_pr__pfet_01v8_hvt ad=1.84175e+11p pd=1.98e+06u as=2.226e+11p ps=2.74e+06u w=420000u l=150000u
+X9 _08_/a_750_97# _08_/S0 _08_/a_757_363# VPWR sky130_fd_pr__pfet_01v8_hvt ad=3.822e+11p pd=3.5e+06u as=2.171e+11p ps=2.72e+06u w=420000u l=150000u
+X10 _08_/a_750_97# _08_/S0 _08_/a_668_97# VGND sky130_fd_pr__nfet_01v8 ad=2.226e+11p pd=2.74e+06u as=2.171e+11p ps=2.72e+06u w=420000u l=150000u
+X11 _08_/a_1478_413# _08_/S1 _08_/a_750_97# VGND sky130_fd_pr__nfet_01v8 ad=3.0205e+11p pd=2.57e+06u as=0p ps=0u w=420000u l=150000u
+X12 _08_/a_757_363# _04_/Y VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X13 _08_/a_27_47# _08_/S0 _08_/a_277_47# VGND sky130_fd_pr__nfet_01v8 ad=2.184e+11p pd=2.72e+06u as=2.7965e+11p ps=3.21e+06u w=420000u l=150000u
+X14 _08_/a_277_47# _08_/a_1290_413# _08_/a_1478_413# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X15 _08_/a_193_413# _08_/S0 _08_/a_277_47# VPWR sky130_fd_pr__pfet_01v8_hvt ad=2.171e+11p pd=2.72e+06u as=0p ps=0u w=420000u l=150000u
+X16 VPWR _05_/Y _08_/a_923_363# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=1.8025e+11p ps=1.99e+06u w=420000u l=150000u
+X17 _08_/X _08_/a_1478_413# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=2.6e+11p pd=2.52e+06u as=0p ps=0u w=1e+06u l=150000u
+X18 _08_/a_277_47# _08_/a_247_21# _08_/a_27_413# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=2.184e+11p ps=2.72e+06u w=420000u l=150000u
+X19 VGND _05_/Y _08_/a_668_97# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X20 _08_/X _08_/a_1478_413# VGND VGND sky130_fd_pr__nfet_01v8 ad=1.69e+11p pd=1.82e+06u as=0p ps=0u w=650000u l=150000u
+X21 _08_/a_277_47# _08_/a_247_21# _08_/a_193_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.134e+11p ps=1.38e+06u w=420000u l=150000u
+X22 VGND _08_/S0 _08_/a_247_21# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.092e+11p ps=1.36e+06u w=420000u l=150000u
+X23 VPWR _07_/Y _08_/a_27_413# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X24 _08_/a_193_413# _06_/Y VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X25 _08_/a_750_97# _08_/a_1290_413# _08_/a_1478_413# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X26 VPWR _08_/S0 _08_/a_247_21# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=1.083e+11p ps=1.36e+06u w=420000u l=150000u
+X27 _08_/a_923_363# _08_/a_247_21# _08_/a_750_97# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X28 _08_/a_1290_413# _08_/S1 VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=1.092e+11p pd=1.36e+06u as=0p ps=0u w=420000u l=150000u
+X29 _08_/a_193_47# _06_/Y VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X30 VGND _07_/Y _08_/a_27_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X31 _08_/a_834_97# _04_/Y VGND VGND sky130_fd_pr__nfet_01v8 ad=2.1715e+11p pd=2.72e+06u as=0p ps=0u w=420000u l=150000u
+X32 _08_/a_834_97# _08_/a_247_21# _08_/a_750_97# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X33 _08_/a_1290_413# _08_/S1 VGND VGND sky130_fd_pr__nfet_01v8 ad=1.092e+11p pd=1.36e+06u as=0p ps=0u w=420000u l=150000u
+X34 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=1.05e+06u
+X35 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=1.05e+06u
+X36 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=590000u
+X37 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=590000u
+X38 _09_/a_975_413# _09_/a_193_47# _09_/a_891_413# VPWR sky130_fd_pr__pfet_01v8_hvt ad=1.764e+11p pd=1.68e+06u as=1.134e+11p ps=1.38e+06u w=420000u l=150000u
+X39 VGND _09_/a_891_413# _09_/a_1059_315# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.69e+11p ps=1.82e+06u w=650000u l=150000u
+X40 _09_/a_561_413# _09_/a_27_47# _09_/a_466_413# VPWR sky130_fd_pr__pfet_01v8_hvt ad=1.533e+11p pd=1.57e+06u as=1.365e+11p ps=1.49e+06u w=420000u l=150000u
+X41 _09_/a_891_413# _09_/a_27_47# _09_/a_634_159# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=2.19e+11p ps=2.15e+06u w=420000u l=150000u
+X42 _09_/a_466_413# _09_/a_193_47# _09_/a_381_47# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=1.155e+11p ps=1.39e+06u w=420000u l=150000u
+X43 _09_/a_381_47# _09_/D VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X44 _09_/a_634_159# _09_/a_466_413# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=750000u l=150000u
+X45 _09_/a_634_159# _09_/a_466_413# VGND VGND sky130_fd_pr__nfet_01v8 ad=1.978e+11p pd=1.99e+06u as=0p ps=0u w=640000u l=150000u
+X46 VGND _09_/a_1059_315# _09_/a_1017_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.32e+11p ps=1.49e+06u w=420000u l=150000u
+X47 VPWR _09_/a_891_413# _09_/a_1059_315# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=2.7e+11p ps=2.54e+06u w=1e+06u l=150000u
+X48 VPWR _09_/a_634_159# _09_/a_561_413# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X49 _09_/Q _09_/a_1059_315# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=2.6e+11p pd=2.52e+06u as=0p ps=0u w=1e+06u l=150000u
+X50 _09_/a_1017_47# _09_/a_27_47# _09_/a_891_413# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.368e+11p ps=1.48e+06u w=360000u l=150000u
+X51 _09_/a_891_413# _09_/a_193_47# _09_/a_634_159# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=360000u l=150000u
+X52 VGND _09_/a_634_159# _09_/a_592_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.392e+11p ps=1.53e+06u w=420000u l=150000u
+X53 _09_/a_592_47# _09_/a_193_47# _09_/a_466_413# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.242e+11p ps=1.41e+06u w=360000u l=150000u
+X54 _09_/a_193_47# _09_/a_27_47# VGND VGND sky130_fd_pr__nfet_01v8 ad=1.092e+11p pd=1.36e+06u as=0p ps=0u w=420000u l=150000u
+X55 _09_/a_466_413# _09_/a_27_47# _09_/a_381_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.626e+11p ps=1.66e+06u w=360000u l=150000u
+X56 VGND _11_/CLK _09_/a_27_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.092e+11p ps=1.36e+06u w=420000u l=150000u
+X57 VPWR _11_/CLK _09_/a_27_47# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=1.664e+11p ps=1.8e+06u w=640000u l=150000u
+X58 _09_/a_193_47# _09_/a_27_47# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=1.664e+11p pd=1.8e+06u as=0p ps=0u w=640000u l=150000u
+X59 _09_/a_381_47# _09_/D VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X60 VPWR _09_/a_1059_315# _09_/a_975_413# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X61 _09_/Q _09_/a_1059_315# VGND VGND sky130_fd_pr__nfet_01v8 ad=1.69e+11p pd=1.82e+06u as=0p ps=0u w=650000u l=150000u
+X62 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=1.05e+06u
+X63 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=1.05e+06u
+X64 VGND _12_/Q _07_/Y VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.755e+11p ps=1.84e+06u w=650000u l=150000u
+X65 _07_/Y _12_/Q VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=2.7e+11p pd=2.54e+06u as=0p ps=0u w=1e+06u l=150000u
+X66 _07_/Y _12_/Q VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=650000u l=150000u
+X67 VPWR _12_/Q _07_/Y VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X68 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=590000u
+X69 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=590000u
+X70 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=2.89e+06u
+X71 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=2.89e+06u
+X72 VGND _10_/Q _06_/Y VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.755e+11p ps=1.84e+06u w=650000u l=150000u
+X73 _06_/Y _10_/Q VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=2.7e+11p pd=2.54e+06u as=0p ps=0u w=1e+06u l=150000u
+X74 _06_/Y _10_/Q VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=650000u l=150000u
+X75 VPWR _10_/Q _06_/Y VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X76 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=590000u
+X77 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=590000u
+X78 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=590000u
+X79 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=590000u
+X80 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=590000u
+X81 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=590000u
+X82 VGND _14_/Q _05_/Y VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.755e+11p ps=1.84e+06u w=650000u l=150000u
+X83 _05_/Y _14_/Q VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=2.7e+11p pd=2.54e+06u as=0p ps=0u w=1e+06u l=150000u
+X84 _05_/Y _14_/Q VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=650000u l=150000u
+X85 VPWR _14_/Q _05_/Y VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X86 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=1.97e+06u
+X87 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=1.97e+06u
+X88 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=590000u
+X89 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=590000u
+X90 VGND _09_/Q _04_/Y VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.755e+11p ps=1.84e+06u w=650000u l=150000u
+X91 _04_/Y _09_/Q VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=2.7e+11p pd=2.54e+06u as=0p ps=0u w=1e+06u l=150000u
+X92 _04_/Y _09_/Q VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=650000u l=150000u
+X93 VPWR _09_/Q _04_/Y VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X94 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=590000u
+X95 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=590000u
+X96 input1/a_75_212# din[0] VGND VGND sky130_fd_pr__nfet_01v8 ad=1.352e+11p pd=1.56e+06u as=0p ps=0u w=520000u l=150000u
+X97 VPWR input1/a_75_212# _13_/D VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=2.054e+11p ps=2.1e+06u w=790000u l=150000u
+X98 VGND input1/a_75_212# _13_/D VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.352e+11p ps=1.56e+06u w=520000u l=150000u
+X99 input1/a_75_212# din[0] VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=2.054e+11p pd=2.1e+06u as=0p ps=0u w=790000u l=150000u
+X100 input2/a_75_212# din[1] VGND VGND sky130_fd_pr__nfet_01v8 ad=1.352e+11p pd=1.56e+06u as=0p ps=0u w=520000u l=150000u
+X101 VPWR input2/a_75_212# _11_/D VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=2.054e+11p ps=2.1e+06u w=790000u l=150000u
+X102 VGND input2/a_75_212# _11_/D VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.352e+11p ps=1.56e+06u w=520000u l=150000u
+X103 input2/a_75_212# din[1] VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=2.054e+11p pd=2.1e+06u as=0p ps=0u w=790000u l=150000u
+X104 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=590000u
+X105 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=590000u
+X106 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=4.73e+06u
+X107 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=4.73e+06u
+X108 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=590000u
+X109 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=590000u
+X110 clkbuf_1_1_0_clk_Q/a_75_212# clkbuf_0_clk_Q/X VGND VGND sky130_fd_pr__nfet_01v8 ad=1.352e+11p pd=1.56e+06u as=0p ps=0u w=520000u l=150000u
+X111 VPWR clkbuf_1_1_0_clk_Q/a_75_212# _08_/S0 VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=2.054e+11p ps=2.1e+06u w=790000u l=150000u
+X112 VGND clkbuf_1_1_0_clk_Q/a_75_212# _08_/S0 VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.352e+11p ps=1.56e+06u w=520000u l=150000u
+X113 clkbuf_1_1_0_clk_Q/a_75_212# clkbuf_0_clk_Q/X VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=2.054e+11p pd=2.1e+06u as=0p ps=0u w=790000u l=150000u
+X114 input4/a_75_212# din[3] VGND VGND sky130_fd_pr__nfet_01v8 ad=1.352e+11p pd=1.56e+06u as=0p ps=0u w=520000u l=150000u
+X115 VPWR input4/a_75_212# _09_/D VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=2.054e+11p ps=2.1e+06u w=790000u l=150000u
+X116 VGND input4/a_75_212# _09_/D VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.352e+11p ps=1.56e+06u w=520000u l=150000u
+X117 input4/a_75_212# din[3] VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=2.054e+11p pd=2.1e+06u as=0p ps=0u w=790000u l=150000u
+X118 input3/a_75_212# din[2] VGND VGND sky130_fd_pr__nfet_01v8 ad=1.352e+11p pd=1.56e+06u as=0p ps=0u w=520000u l=150000u
+X119 VPWR input3/a_75_212# _10_/D VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=2.054e+11p ps=2.1e+06u w=790000u l=150000u
+X120 VGND input3/a_75_212# _10_/D VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.352e+11p ps=1.56e+06u w=520000u l=150000u
+X121 input3/a_75_212# din[2] VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=2.054e+11p pd=2.1e+06u as=0p ps=0u w=790000u l=150000u
+X122 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=590000u
+X123 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=590000u
+X124 input5/X input5/a_27_47# VGND VGND sky130_fd_pr__nfet_01v8 ad=1.352e+11p pd=1.56e+06u as=0p ps=0u w=520000u l=150000u
+X125 VPWR rst input5/a_27_47# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=2.054e+11p ps=2.1e+06u w=790000u l=150000u
+X126 VGND rst input5/a_27_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.352e+11p ps=1.56e+06u w=520000u l=150000u
+X127 input5/X input5/a_27_47# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=2.054e+11p pd=2.1e+06u as=0p ps=0u w=790000u l=150000u
+X128 clkbuf_0_clk_I/X clkbuf_0_clk_I/a_110_47# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=2.24e+12p pd=2.048e+07u as=0p ps=0u w=1e+06u l=150000u
+X129 VGND clkbuf_0_clk_I/a_110_47# clkbuf_0_clk_I/X VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=9.408e+11p ps=1.12e+07u w=420000u l=150000u
+X130 VGND clkbuf_0_clk_I/a_110_47# clkbuf_0_clk_I/X VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X131 VPWR clk_I clkbuf_0_clk_I/a_110_47# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=5.6e+11p ps=5.12e+06u w=1e+06u l=150000u
+X132 clkbuf_0_clk_I/X clkbuf_0_clk_I/a_110_47# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X133 VPWR clkbuf_0_clk_I/a_110_47# clkbuf_0_clk_I/X VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X134 VGND clk_I clkbuf_0_clk_I/a_110_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=2.352e+11p ps=2.8e+06u w=420000u l=150000u
+X135 clkbuf_0_clk_I/a_110_47# clk_I VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X136 clkbuf_0_clk_I/X clkbuf_0_clk_I/a_110_47# VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X137 clkbuf_0_clk_I/a_110_47# clk_I VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X138 VGND clkbuf_0_clk_I/a_110_47# clkbuf_0_clk_I/X VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X139 VGND clkbuf_0_clk_I/a_110_47# clkbuf_0_clk_I/X VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X140 VPWR clk_I clkbuf_0_clk_I/a_110_47# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X141 clkbuf_0_clk_I/X clkbuf_0_clk_I/a_110_47# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X142 VGND clkbuf_0_clk_I/a_110_47# clkbuf_0_clk_I/X VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X143 clkbuf_0_clk_I/a_110_47# clk_I VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X144 clkbuf_0_clk_I/X clkbuf_0_clk_I/a_110_47# VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X145 VGND clkbuf_0_clk_I/a_110_47# clkbuf_0_clk_I/X VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X146 clkbuf_0_clk_I/X clkbuf_0_clk_I/a_110_47# VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X147 clkbuf_0_clk_I/X clkbuf_0_clk_I/a_110_47# VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X148 VPWR clkbuf_0_clk_I/a_110_47# clkbuf_0_clk_I/X VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X149 VPWR clkbuf_0_clk_I/a_110_47# clkbuf_0_clk_I/X VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X150 VPWR clkbuf_0_clk_I/a_110_47# clkbuf_0_clk_I/X VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X151 clkbuf_0_clk_I/X clkbuf_0_clk_I/a_110_47# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X152 clkbuf_0_clk_I/X clkbuf_0_clk_I/a_110_47# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X153 clkbuf_0_clk_I/X clkbuf_0_clk_I/a_110_47# VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X154 VPWR clkbuf_0_clk_I/a_110_47# clkbuf_0_clk_I/X VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X155 VGND clkbuf_0_clk_I/a_110_47# clkbuf_0_clk_I/X VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X156 clkbuf_0_clk_I/X clkbuf_0_clk_I/a_110_47# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X157 clkbuf_0_clk_I/X clkbuf_0_clk_I/a_110_47# VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X158 VGND clkbuf_0_clk_I/a_110_47# clkbuf_0_clk_I/X VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X159 VPWR clkbuf_0_clk_I/a_110_47# clkbuf_0_clk_I/X VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X160 VPWR clkbuf_0_clk_I/a_110_47# clkbuf_0_clk_I/X VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X161 VPWR clkbuf_0_clk_I/a_110_47# clkbuf_0_clk_I/X VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X162 VGND clk_I clkbuf_0_clk_I/a_110_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X163 clkbuf_0_clk_I/X clkbuf_0_clk_I/a_110_47# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X164 clkbuf_0_clk_I/a_110_47# clk_I VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X165 clkbuf_0_clk_I/X clkbuf_0_clk_I/a_110_47# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X166 clkbuf_0_clk_I/X clkbuf_0_clk_I/a_110_47# VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X167 clkbuf_0_clk_I/X clkbuf_0_clk_I/a_110_47# VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X168 clkbuf_1_0_0_clk_I/a_75_212# clkbuf_0_clk_I/X VGND VGND sky130_fd_pr__nfet_01v8 ad=1.352e+11p pd=1.56e+06u as=0p ps=0u w=520000u l=150000u
+X169 VPWR clkbuf_1_0_0_clk_I/a_75_212# _13_/CLK VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=2.054e+11p ps=2.1e+06u w=790000u l=150000u
+X170 VGND clkbuf_1_0_0_clk_I/a_75_212# _13_/CLK VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.352e+11p ps=1.56e+06u w=520000u l=150000u
+X171 clkbuf_1_0_0_clk_I/a_75_212# clkbuf_0_clk_I/X VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=2.054e+11p pd=2.1e+06u as=0p ps=0u w=790000u l=150000u
+X172 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=590000u
+X173 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=590000u
+X174 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=2.89e+06u
+X175 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=2.89e+06u
+X176 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=590000u
+X177 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=590000u
+X178 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=590000u
+X179 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=590000u
+X180 clkbuf_0_clk_Q/X clkbuf_0_clk_Q/a_110_47# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=2.24e+12p pd=2.048e+07u as=0p ps=0u w=1e+06u l=150000u
+X181 VGND clkbuf_0_clk_Q/a_110_47# clkbuf_0_clk_Q/X VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=9.408e+11p ps=1.12e+07u w=420000u l=150000u
+X182 VGND clkbuf_0_clk_Q/a_110_47# clkbuf_0_clk_Q/X VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X183 VPWR clk_Q clkbuf_0_clk_Q/a_110_47# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=5.6e+11p ps=5.12e+06u w=1e+06u l=150000u
+X184 clkbuf_0_clk_Q/X clkbuf_0_clk_Q/a_110_47# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X185 VPWR clkbuf_0_clk_Q/a_110_47# clkbuf_0_clk_Q/X VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X186 VGND clk_Q clkbuf_0_clk_Q/a_110_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=2.352e+11p ps=2.8e+06u w=420000u l=150000u
+X187 clkbuf_0_clk_Q/a_110_47# clk_Q VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X188 clkbuf_0_clk_Q/X clkbuf_0_clk_Q/a_110_47# VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X189 clkbuf_0_clk_Q/a_110_47# clk_Q VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X190 VGND clkbuf_0_clk_Q/a_110_47# clkbuf_0_clk_Q/X VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X191 VGND clkbuf_0_clk_Q/a_110_47# clkbuf_0_clk_Q/X VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X192 VPWR clk_Q clkbuf_0_clk_Q/a_110_47# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X193 clkbuf_0_clk_Q/X clkbuf_0_clk_Q/a_110_47# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X194 VGND clkbuf_0_clk_Q/a_110_47# clkbuf_0_clk_Q/X VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X195 clkbuf_0_clk_Q/a_110_47# clk_Q VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X196 clkbuf_0_clk_Q/X clkbuf_0_clk_Q/a_110_47# VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X197 VGND clkbuf_0_clk_Q/a_110_47# clkbuf_0_clk_Q/X VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X198 clkbuf_0_clk_Q/X clkbuf_0_clk_Q/a_110_47# VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X199 clkbuf_0_clk_Q/X clkbuf_0_clk_Q/a_110_47# VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X200 VPWR clkbuf_0_clk_Q/a_110_47# clkbuf_0_clk_Q/X VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X201 VPWR clkbuf_0_clk_Q/a_110_47# clkbuf_0_clk_Q/X VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X202 VPWR clkbuf_0_clk_Q/a_110_47# clkbuf_0_clk_Q/X VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X203 clkbuf_0_clk_Q/X clkbuf_0_clk_Q/a_110_47# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X204 clkbuf_0_clk_Q/X clkbuf_0_clk_Q/a_110_47# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X205 clkbuf_0_clk_Q/X clkbuf_0_clk_Q/a_110_47# VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X206 VPWR clkbuf_0_clk_Q/a_110_47# clkbuf_0_clk_Q/X VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X207 VGND clkbuf_0_clk_Q/a_110_47# clkbuf_0_clk_Q/X VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X208 clkbuf_0_clk_Q/X clkbuf_0_clk_Q/a_110_47# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X209 clkbuf_0_clk_Q/X clkbuf_0_clk_Q/a_110_47# VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X210 VGND clkbuf_0_clk_Q/a_110_47# clkbuf_0_clk_Q/X VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X211 VPWR clkbuf_0_clk_Q/a_110_47# clkbuf_0_clk_Q/X VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X212 VPWR clkbuf_0_clk_Q/a_110_47# clkbuf_0_clk_Q/X VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X213 VPWR clkbuf_0_clk_Q/a_110_47# clkbuf_0_clk_Q/X VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X214 VGND clk_Q clkbuf_0_clk_Q/a_110_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X215 clkbuf_0_clk_Q/X clkbuf_0_clk_Q/a_110_47# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X216 clkbuf_0_clk_Q/a_110_47# clk_Q VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X217 clkbuf_0_clk_Q/X clkbuf_0_clk_Q/a_110_47# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1e+06u l=150000u
+X218 clkbuf_0_clk_Q/X clkbuf_0_clk_Q/a_110_47# VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X219 clkbuf_0_clk_Q/X clkbuf_0_clk_Q/a_110_47# VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X220 clkbuf_1_0_0_clk_Q/a_75_212# clkbuf_0_clk_Q/X VGND VGND sky130_fd_pr__nfet_01v8 ad=1.352e+11p pd=1.56e+06u as=0p ps=0u w=520000u l=150000u
+X221 VPWR clkbuf_1_0_0_clk_Q/a_75_212# _11_/CLK VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=2.054e+11p ps=2.1e+06u w=790000u l=150000u
+X222 VGND clkbuf_1_0_0_clk_Q/a_75_212# _11_/CLK VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.352e+11p ps=1.56e+06u w=520000u l=150000u
+X223 clkbuf_1_0_0_clk_Q/a_75_212# clkbuf_0_clk_Q/X VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=2.054e+11p pd=2.1e+06u as=0p ps=0u w=790000u l=150000u
+X224 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=590000u
+X225 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=590000u
+X226 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=590000u
+X227 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=590000u
+X228 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=1.05e+06u
+X229 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=1.05e+06u
+X230 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=590000u
+X231 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=590000u
+X232 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=590000u
+X233 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=590000u
+X234 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=590000u
+X235 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=590000u
+X236 _14_/a_975_413# _14_/a_193_47# _14_/a_891_413# VPWR sky130_fd_pr__pfet_01v8_hvt ad=1.764e+11p pd=1.68e+06u as=1.134e+11p ps=1.38e+06u w=420000u l=150000u
+X237 VGND _14_/a_891_413# _14_/a_1059_315# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.69e+11p ps=1.82e+06u w=650000u l=150000u
+X238 _14_/a_561_413# _14_/a_27_47# _14_/a_466_413# VPWR sky130_fd_pr__pfet_01v8_hvt ad=1.533e+11p pd=1.57e+06u as=1.365e+11p ps=1.49e+06u w=420000u l=150000u
+X239 _14_/a_891_413# _14_/a_27_47# _14_/a_634_159# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=2.19e+11p ps=2.15e+06u w=420000u l=150000u
+X240 _14_/a_466_413# _14_/a_193_47# _14_/a_381_47# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=1.155e+11p ps=1.39e+06u w=420000u l=150000u
+X241 _14_/a_381_47# _14_/D VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X242 _14_/a_634_159# _14_/a_466_413# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=750000u l=150000u
+X243 _14_/a_634_159# _14_/a_466_413# VGND VGND sky130_fd_pr__nfet_01v8 ad=1.978e+11p pd=1.99e+06u as=0p ps=0u w=640000u l=150000u
+X244 VGND _14_/a_1059_315# _14_/a_1017_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.32e+11p ps=1.49e+06u w=420000u l=150000u
+X245 VPWR _14_/a_891_413# _14_/a_1059_315# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=2.7e+11p ps=2.54e+06u w=1e+06u l=150000u
+X246 VPWR _14_/a_634_159# _14_/a_561_413# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X247 _14_/Q _14_/a_1059_315# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=2.6e+11p pd=2.52e+06u as=0p ps=0u w=1e+06u l=150000u
+X248 _14_/a_1017_47# _14_/a_27_47# _14_/a_891_413# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.368e+11p ps=1.48e+06u w=360000u l=150000u
+X249 _14_/a_891_413# _14_/a_193_47# _14_/a_634_159# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=360000u l=150000u
+X250 VGND _14_/a_634_159# _14_/a_592_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.392e+11p ps=1.53e+06u w=420000u l=150000u
+X251 _14_/a_592_47# _14_/a_193_47# _14_/a_466_413# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.242e+11p ps=1.41e+06u w=360000u l=150000u
+X252 _14_/a_193_47# _14_/a_27_47# VGND VGND sky130_fd_pr__nfet_01v8 ad=1.092e+11p pd=1.36e+06u as=0p ps=0u w=420000u l=150000u
+X253 _14_/a_466_413# _14_/a_27_47# _14_/a_381_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.626e+11p ps=1.66e+06u w=360000u l=150000u
+X254 VGND clk_IB _14_/a_27_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.092e+11p ps=1.36e+06u w=420000u l=150000u
+X255 VPWR clk_IB _14_/a_27_47# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=1.664e+11p ps=1.8e+06u w=640000u l=150000u
+X256 _14_/a_193_47# _14_/a_27_47# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=1.664e+11p pd=1.8e+06u as=0p ps=0u w=640000u l=150000u
+X257 _14_/a_381_47# _14_/D VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X258 VPWR _14_/a_1059_315# _14_/a_975_413# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X259 _14_/Q _14_/a_1059_315# VGND VGND sky130_fd_pr__nfet_01v8 ad=1.69e+11p pd=1.82e+06u as=0p ps=0u w=650000u l=150000u
+X260 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=590000u
+X261 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=590000u
+X262 _13_/a_975_413# _13_/a_193_47# _13_/a_891_413# VPWR sky130_fd_pr__pfet_01v8_hvt ad=1.764e+11p pd=1.68e+06u as=1.134e+11p ps=1.38e+06u w=420000u l=150000u
+X263 VGND _13_/a_891_413# _13_/a_1059_315# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.69e+11p ps=1.82e+06u w=650000u l=150000u
+X264 _13_/a_561_413# _13_/a_27_47# _13_/a_466_413# VPWR sky130_fd_pr__pfet_01v8_hvt ad=1.533e+11p pd=1.57e+06u as=1.365e+11p ps=1.49e+06u w=420000u l=150000u
+X265 _13_/a_891_413# _13_/a_27_47# _13_/a_634_159# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=2.19e+11p ps=2.15e+06u w=420000u l=150000u
+X266 _13_/a_466_413# _13_/a_193_47# _13_/a_381_47# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=1.155e+11p ps=1.39e+06u w=420000u l=150000u
+X267 _13_/a_381_47# _13_/D VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X268 _13_/a_634_159# _13_/a_466_413# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=750000u l=150000u
+X269 _13_/a_634_159# _13_/a_466_413# VGND VGND sky130_fd_pr__nfet_01v8 ad=1.978e+11p pd=1.99e+06u as=0p ps=0u w=640000u l=150000u
+X270 VGND _13_/a_1059_315# _13_/a_1017_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.32e+11p ps=1.49e+06u w=420000u l=150000u
+X271 VPWR _13_/a_891_413# _13_/a_1059_315# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=2.7e+11p ps=2.54e+06u w=1e+06u l=150000u
+X272 VPWR _13_/a_634_159# _13_/a_561_413# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X273 _14_/D _13_/a_1059_315# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=2.6e+11p pd=2.52e+06u as=0p ps=0u w=1e+06u l=150000u
+X274 _13_/a_1017_47# _13_/a_27_47# _13_/a_891_413# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.368e+11p ps=1.48e+06u w=360000u l=150000u
+X275 _13_/a_891_413# _13_/a_193_47# _13_/a_634_159# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=360000u l=150000u
+X276 VGND _13_/a_634_159# _13_/a_592_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.392e+11p ps=1.53e+06u w=420000u l=150000u
+X277 _13_/a_592_47# _13_/a_193_47# _13_/a_466_413# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.242e+11p ps=1.41e+06u w=360000u l=150000u
+X278 _13_/a_193_47# _13_/a_27_47# VGND VGND sky130_fd_pr__nfet_01v8 ad=1.092e+11p pd=1.36e+06u as=0p ps=0u w=420000u l=150000u
+X279 _13_/a_466_413# _13_/a_27_47# _13_/a_381_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.626e+11p ps=1.66e+06u w=360000u l=150000u
+X280 VGND _13_/CLK _13_/a_27_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.092e+11p ps=1.36e+06u w=420000u l=150000u
+X281 VPWR _13_/CLK _13_/a_27_47# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=1.664e+11p ps=1.8e+06u w=640000u l=150000u
+X282 _13_/a_193_47# _13_/a_27_47# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=1.664e+11p pd=1.8e+06u as=0p ps=0u w=640000u l=150000u
+X283 _13_/a_381_47# _13_/D VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X284 VPWR _13_/a_1059_315# _13_/a_975_413# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X285 _14_/D _13_/a_1059_315# VGND VGND sky130_fd_pr__nfet_01v8 ad=1.69e+11p pd=1.82e+06u as=0p ps=0u w=650000u l=150000u
+X286 _12_/a_975_413# _12_/a_193_47# _12_/a_891_413# VPWR sky130_fd_pr__pfet_01v8_hvt ad=1.764e+11p pd=1.68e+06u as=1.134e+11p ps=1.38e+06u w=420000u l=150000u
+X287 VGND _12_/a_891_413# _12_/a_1059_315# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.69e+11p ps=1.82e+06u w=650000u l=150000u
+X288 _12_/a_561_413# _12_/a_27_47# _12_/a_466_413# VPWR sky130_fd_pr__pfet_01v8_hvt ad=1.533e+11p pd=1.57e+06u as=1.365e+11p ps=1.49e+06u w=420000u l=150000u
+X289 _12_/a_891_413# _12_/a_27_47# _12_/a_634_159# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=2.19e+11p ps=2.15e+06u w=420000u l=150000u
+X290 _12_/a_466_413# _12_/a_193_47# _12_/a_381_47# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=1.155e+11p ps=1.39e+06u w=420000u l=150000u
+X291 _12_/a_381_47# _12_/D VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X292 _12_/a_634_159# _12_/a_466_413# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=750000u l=150000u
+X293 _12_/a_634_159# _12_/a_466_413# VGND VGND sky130_fd_pr__nfet_01v8 ad=1.978e+11p pd=1.99e+06u as=0p ps=0u w=640000u l=150000u
+X294 VGND _12_/a_1059_315# _12_/a_1017_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.32e+11p ps=1.49e+06u w=420000u l=150000u
+X295 VPWR _12_/a_891_413# _12_/a_1059_315# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=2.7e+11p ps=2.54e+06u w=1e+06u l=150000u
+X296 VPWR _12_/a_634_159# _12_/a_561_413# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X297 _12_/Q _12_/a_1059_315# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=2.6e+11p pd=2.52e+06u as=0p ps=0u w=1e+06u l=150000u
+X298 _12_/a_1017_47# _12_/a_27_47# _12_/a_891_413# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.368e+11p ps=1.48e+06u w=360000u l=150000u
+X299 _12_/a_891_413# _12_/a_193_47# _12_/a_634_159# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=360000u l=150000u
+X300 VGND _12_/a_634_159# _12_/a_592_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.392e+11p ps=1.53e+06u w=420000u l=150000u
+X301 _12_/a_592_47# _12_/a_193_47# _12_/a_466_413# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.242e+11p ps=1.41e+06u w=360000u l=150000u
+X302 _12_/a_193_47# _12_/a_27_47# VGND VGND sky130_fd_pr__nfet_01v8 ad=1.092e+11p pd=1.36e+06u as=0p ps=0u w=420000u l=150000u
+X303 _12_/a_466_413# _12_/a_27_47# _12_/a_381_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.626e+11p ps=1.66e+06u w=360000u l=150000u
+X304 VGND clk_QB _12_/a_27_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.092e+11p ps=1.36e+06u w=420000u l=150000u
+X305 VPWR clk_QB _12_/a_27_47# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=1.664e+11p ps=1.8e+06u w=640000u l=150000u
+X306 _12_/a_193_47# _12_/a_27_47# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=1.664e+11p pd=1.8e+06u as=0p ps=0u w=640000u l=150000u
+X307 _12_/a_381_47# _12_/D VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X308 VPWR _12_/a_1059_315# _12_/a_975_413# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X309 _12_/Q _12_/a_1059_315# VGND VGND sky130_fd_pr__nfet_01v8 ad=1.69e+11p pd=1.82e+06u as=0p ps=0u w=650000u l=150000u
+X310 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=590000u
+X311 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=590000u
+X312 _11_/a_975_413# _11_/a_193_47# _11_/a_891_413# VPWR sky130_fd_pr__pfet_01v8_hvt ad=1.764e+11p pd=1.68e+06u as=1.134e+11p ps=1.38e+06u w=420000u l=150000u
+X313 VGND _11_/a_891_413# _11_/a_1059_315# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.69e+11p ps=1.82e+06u w=650000u l=150000u
+X314 _11_/a_561_413# _11_/a_27_47# _11_/a_466_413# VPWR sky130_fd_pr__pfet_01v8_hvt ad=1.533e+11p pd=1.57e+06u as=1.365e+11p ps=1.49e+06u w=420000u l=150000u
+X315 _11_/a_891_413# _11_/a_27_47# _11_/a_634_159# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=2.19e+11p ps=2.15e+06u w=420000u l=150000u
+X316 _11_/a_466_413# _11_/a_193_47# _11_/a_381_47# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=1.155e+11p ps=1.39e+06u w=420000u l=150000u
+X317 _11_/a_381_47# _11_/D VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X318 _11_/a_634_159# _11_/a_466_413# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=750000u l=150000u
+X319 _11_/a_634_159# _11_/a_466_413# VGND VGND sky130_fd_pr__nfet_01v8 ad=1.978e+11p pd=1.99e+06u as=0p ps=0u w=640000u l=150000u
+X320 VGND _11_/a_1059_315# _11_/a_1017_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.32e+11p ps=1.49e+06u w=420000u l=150000u
+X321 VPWR _11_/a_891_413# _11_/a_1059_315# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=2.7e+11p ps=2.54e+06u w=1e+06u l=150000u
+X322 VPWR _11_/a_634_159# _11_/a_561_413# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X323 _12_/D _11_/a_1059_315# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=2.6e+11p pd=2.52e+06u as=0p ps=0u w=1e+06u l=150000u
+X324 _11_/a_1017_47# _11_/a_27_47# _11_/a_891_413# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.368e+11p ps=1.48e+06u w=360000u l=150000u
+X325 _11_/a_891_413# _11_/a_193_47# _11_/a_634_159# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=360000u l=150000u
+X326 VGND _11_/a_634_159# _11_/a_592_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.392e+11p ps=1.53e+06u w=420000u l=150000u
+X327 _11_/a_592_47# _11_/a_193_47# _11_/a_466_413# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.242e+11p ps=1.41e+06u w=360000u l=150000u
+X328 _11_/a_193_47# _11_/a_27_47# VGND VGND sky130_fd_pr__nfet_01v8 ad=1.092e+11p pd=1.36e+06u as=0p ps=0u w=420000u l=150000u
+X329 _11_/a_466_413# _11_/a_27_47# _11_/a_381_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.626e+11p ps=1.66e+06u w=360000u l=150000u
+X330 VGND _11_/CLK _11_/a_27_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.092e+11p ps=1.36e+06u w=420000u l=150000u
+X331 VPWR _11_/CLK _11_/a_27_47# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=1.664e+11p ps=1.8e+06u w=640000u l=150000u
+X332 _11_/a_193_47# _11_/a_27_47# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=1.664e+11p pd=1.8e+06u as=0p ps=0u w=640000u l=150000u
+X333 _11_/a_381_47# _11_/D VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X334 VPWR _11_/a_1059_315# _11_/a_975_413# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X335 _12_/D _11_/a_1059_315# VGND VGND sky130_fd_pr__nfet_01v8 ad=1.69e+11p pd=1.82e+06u as=0p ps=0u w=650000u l=150000u
+X336 _10_/a_975_413# _10_/a_193_47# _10_/a_891_413# VPWR sky130_fd_pr__pfet_01v8_hvt ad=1.764e+11p pd=1.68e+06u as=1.134e+11p ps=1.38e+06u w=420000u l=150000u
+X337 VGND _10_/a_891_413# _10_/a_1059_315# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.69e+11p ps=1.82e+06u w=650000u l=150000u
+X338 _10_/a_561_413# _10_/a_27_47# _10_/a_466_413# VPWR sky130_fd_pr__pfet_01v8_hvt ad=1.533e+11p pd=1.57e+06u as=1.365e+11p ps=1.49e+06u w=420000u l=150000u
+X339 _10_/a_891_413# _10_/a_27_47# _10_/a_634_159# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=2.19e+11p ps=2.15e+06u w=420000u l=150000u
+X340 _10_/a_466_413# _10_/a_193_47# _10_/a_381_47# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=1.155e+11p ps=1.39e+06u w=420000u l=150000u
+X341 _10_/a_381_47# _10_/D VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X342 _10_/a_634_159# _10_/a_466_413# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=750000u l=150000u
+X343 _10_/a_634_159# _10_/a_466_413# VGND VGND sky130_fd_pr__nfet_01v8 ad=1.978e+11p pd=1.99e+06u as=0p ps=0u w=640000u l=150000u
+X344 VGND _10_/a_1059_315# _10_/a_1017_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.32e+11p ps=1.49e+06u w=420000u l=150000u
+X345 VPWR _10_/a_891_413# _10_/a_1059_315# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=2.7e+11p ps=2.54e+06u w=1e+06u l=150000u
+X346 VPWR _10_/a_634_159# _10_/a_561_413# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X347 _10_/Q _10_/a_1059_315# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=2.6e+11p pd=2.52e+06u as=0p ps=0u w=1e+06u l=150000u
+X348 _10_/a_1017_47# _10_/a_27_47# _10_/a_891_413# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.368e+11p ps=1.48e+06u w=360000u l=150000u
+X349 _10_/a_891_413# _10_/a_193_47# _10_/a_634_159# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=360000u l=150000u
+X350 VGND _10_/a_634_159# _10_/a_592_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.392e+11p ps=1.53e+06u w=420000u l=150000u
+X351 _10_/a_592_47# _10_/a_193_47# _10_/a_466_413# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.242e+11p ps=1.41e+06u w=360000u l=150000u
+X352 _10_/a_193_47# _10_/a_27_47# VGND VGND sky130_fd_pr__nfet_01v8 ad=1.092e+11p pd=1.36e+06u as=0p ps=0u w=420000u l=150000u
+X353 _10_/a_466_413# _10_/a_27_47# _10_/a_381_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.626e+11p ps=1.66e+06u w=360000u l=150000u
+X354 VGND _13_/CLK _10_/a_27_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.092e+11p ps=1.36e+06u w=420000u l=150000u
+X355 VPWR _13_/CLK _10_/a_27_47# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=1.664e+11p ps=1.8e+06u w=640000u l=150000u
+X356 _10_/a_193_47# _10_/a_27_47# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=1.664e+11p pd=1.8e+06u as=0p ps=0u w=640000u l=150000u
+X357 _10_/a_381_47# _10_/D VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X358 VPWR _10_/a_1059_315# _10_/a_975_413# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=420000u l=150000u
+X359 _10_/Q _10_/a_1059_315# VGND VGND sky130_fd_pr__nfet_01v8 ad=1.69e+11p pd=1.82e+06u as=0p ps=0u w=650000u l=150000u
+X360 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=4.73e+06u
+X361 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=4.73e+06u
+X362 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=590000u
+X363 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=590000u
+X364 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=1.05e+06u
+X365 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=1.05e+06u
+X366 data output6/a_27_47# VGND VGND sky130_fd_pr__nfet_01v8 ad=1.352e+11p pd=1.56e+06u as=0p ps=0u w=520000u l=150000u
+X367 VPWR _08_/X output6/a_27_47# VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=2.054e+11p ps=2.1e+06u w=790000u l=150000u
+X368 VGND _08_/X output6/a_27_47# VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=1.352e+11p ps=1.56e+06u w=520000u l=150000u
+X369 data output6/a_27_47# VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=2.054e+11p pd=2.1e+06u as=0p ps=0u w=790000u l=150000u
+X370 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=4.73e+06u
+X371 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=4.73e+06u
+X372 VPWR VGND VPWR VPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=870000u l=1.05e+06u
+X373 VGND VPWR VGND VGND sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=550000u l=1.05e+06u
+C0 _10_/a_634_159# _10_/a_381_47# 0.04fF
+C1 _12_/Q _09_/a_891_413# 0.12fF
+C2 _12_/a_634_159# _12_/a_891_413# 0.11fF
+C3 _12_/a_1017_47# _12_/a_891_413# 0.04fF
+C4 _09_/a_27_47# _10_/a_466_413# 0.01fF
+C5 _11_/a_381_47# _11_/D 0.35fF
+C6 _13_/a_27_47# _13_/D 0.30fF
+C7 _14_/a_561_413# _14_/a_466_413# 0.04fF
+C8 clk_IB _14_/a_27_47# 0.86fF
+C9 _04_/Y _14_/Q 0.01fF
+C10 _09_/Q clkbuf_0_clk_I/a_110_47# 0.20fF
+C11 _13_/a_193_47# _13_/a_27_47# 2.23fF
+C12 _05_/Y _14_/Q 0.64fF
+C13 _09_/a_1017_47# _09_/a_891_413# 0.04fF
+C14 clk_IB _13_/a_891_413# 0.00fF
+C15 clkbuf_0_clk_Q/a_110_47# _11_/CLK 0.17fF
+C16 input5/X _08_/a_1478_413# 0.02fF
+C17 _14_/Q clkbuf_1_1_0_clk_I/a_75_212# 0.02fF
+C18 _09_/a_975_413# _09_/a_891_413# 0.05fF
+C19 _08_/a_750_97# _08_/a_1290_413# 0.32fF
+C20 _13_/a_466_413# _13_/a_27_47# 0.63fF
+C21 _11_/a_27_47# clk_Q 0.04fF
+C22 _12_/a_466_413# _13_/a_634_159# 0.01fF
+C23 _07_/Y _09_/a_1059_315# 0.07fF
+C24 _11_/a_634_159# VPWR 0.26fF
+C25 VPWR _08_/a_668_97# 0.01fF
+C26 clkbuf_0_clk_Q/a_110_47# _08_/a_247_21# 0.02fF
+C27 _12_/a_634_159# _13_/a_27_47# 0.00fF
+C28 _08_/a_750_97# _08_/a_277_47# 0.56fF
+C29 _12_/a_193_47# clk_Q 0.05fF
+C30 _14_/a_891_413# _14_/a_466_413# 0.03fF
+C31 _10_/a_975_413# VPWR 0.02fF
+C32 _14_/a_193_47# _14_/a_466_413# 0.38fF
+C33 clkbuf_0_clk_I/a_110_47# clk_I 0.54fF
+C34 VPWR din[3] 0.31fF
+C35 _09_/a_27_47# _09_/a_891_413# 0.09fF
+C36 _08_/a_27_413# _08_/a_247_21# 0.01fF
+C37 _10_/D clk_Q 0.01fF
+C38 _10_/a_193_47# _10_/a_891_413# 0.44fF
+C39 _14_/a_381_47# _14_/a_466_413# 0.11fF
+C40 _11_/a_466_413# clk_Q 0.10fF
+C41 _05_/Y VPWR 1.31fF
+C42 _04_/Y VPWR 0.78fF
+C43 _09_/a_27_47# _09_/a_634_159# 0.37fF
+C44 _08_/a_1478_413# _08_/a_750_97# 0.33fF
+C45 _08_/S1 clkbuf_0_clk_I/X 0.02fF
+C46 _13_/a_466_413# _13_/a_592_47# 0.02fF
+C47 _06_/Y clkbuf_0_clk_I/X 0.01fF
+C48 input5/a_27_47# clkbuf_1_1_0_clk_I/a_75_212# 0.09fF
+C49 rst _14_/Q 0.08fF
+C50 _08_/a_27_47# _08_/a_193_47# 0.05fF
+C51 clkbuf_0_clk_Q/a_110_47# clk_I 0.06fF
+C52 _12_/a_466_413# _11_/a_1059_315# 0.01fF
+C53 _12_/a_27_47# clk_Q 0.03fF
+C54 _12_/a_466_413# _12_/a_1059_315# 0.02fF
+C55 clkbuf_1_1_0_clk_Q/a_75_212# VPWR 0.58fF
+C56 VPWR clkbuf_1_1_0_clk_I/a_75_212# 0.53fF
+C57 clkbuf_0_clk_Q/X clk_Q 0.00fF
+C58 _11_/D clk_QB 0.05fF
+C59 _13_/a_975_413# VPWR 0.02fF
+C60 _09_/a_27_47# _10_/a_891_413# 0.01fF
+C61 _12_/a_466_413# _12_/a_891_413# 0.03fF
+C62 VPWR _07_/Y 1.27fF
+C63 _08_/a_27_47# _08_/a_750_97# 0.00fF
+C64 _12_/a_381_47# _12_/a_193_47# 0.26fF
+C65 _13_/a_466_413# _13_/a_561_413# 0.04fF
+C66 _10_/D _10_/a_381_47# 0.38fF
+C67 _11_/a_381_47# _11_/a_27_47# 0.21fF
+C68 input5/a_27_47# rst 0.41fF
+C69 _09_/a_1059_315# _12_/Q 0.34fF
+C70 _11_/a_466_413# _12_/a_381_47# 0.01fF
+C71 VPWR rst 0.28fF
+C72 _11_/CLK clk_I 0.26fF
+C73 _11_/a_193_47# clk_Q 0.05fF
+C74 clkbuf_0_clk_Q/a_110_47# _10_/a_466_413# 0.04fF
+C75 _12_/a_27_47# _12_/a_381_47# 0.21fF
+C76 _10_/Q VPWR 2.58fF
+C77 _10_/a_27_47# clkbuf_1_0_0_clk_I/a_75_212# 0.09fF
+C78 _11_/a_466_413# _11_/a_381_47# 0.11fF
+C79 _08_/a_27_413# _08_/a_277_47# 0.13fF
+C80 _12_/a_466_413# _13_/a_27_47# 0.01fF
+C81 _12_/D _11_/a_1059_315# 0.29fF
+C82 _12_/D _12_/a_1059_315# 0.03fF
+C83 clkbuf_0_clk_Q/a_110_47# _11_/a_1059_315# 0.02fF
+C84 _12_/a_27_47# _11_/a_381_47# 0.01fF
+C85 VPWR clkbuf_1_0_0_clk_I/a_75_212# 0.56fF
+C86 clk_QB din[0] 0.08fF
+C87 _12_/D _12_/a_891_413# 0.02fF
+C88 VPWR _13_/D 0.91fF
+C89 _08_/S0 _08_/S1 0.41fF
+C90 _13_/a_193_47# VPWR 0.65fF
+C91 _08_/X _08_/a_1290_413# 0.01fF
+C92 _09_/a_381_47# _11_/CLK 0.02fF
+C93 _09_/Q _08_/a_1290_413# 0.00fF
+C94 _08_/S0 _14_/a_891_413# 0.02fF
+C95 _08_/S0 _06_/Y 0.04fF
+C96 _08_/S0 _14_/a_193_47# 0.01fF
+C97 VPWR _12_/Q 2.60fF
+C98 clkbuf_0_clk_I/a_110_47# _09_/a_891_413# 0.04fF
+C99 _13_/a_27_47# _13_/CLK 0.41fF
+C100 _08_/a_27_47# clkbuf_0_clk_Q/a_110_47# 0.02fF
+C101 _08_/a_757_363# _08_/a_750_97# 0.32fF
+C102 _08_/X _08_/a_277_47# 0.01fF
+C103 _10_/a_466_413# _11_/CLK 0.00fF
+C104 _11_/a_634_159# _11_/D 0.04fF
+C105 _13_/a_466_413# VPWR 0.36fF
+C106 _09_/a_27_47# _09_/a_1059_315# 0.11fF
+C107 _09_/Q _08_/a_277_47# 0.01fF
+C108 _08_/a_27_47# _08_/a_27_413# 0.05fF
+C109 _09_/a_1017_47# VPWR 0.00fF
+C110 _10_/a_193_47# _10_/a_27_47# 2.23fF
+C111 VPWR input3/a_75_212# 0.55fF
+C112 VPWR _12_/a_634_159# 0.27fF
+C113 _14_/a_1059_315# _14_/a_634_159# 0.04fF
+C114 _11_/a_27_47# clk_QB 0.03fF
+C115 input5/X _14_/Q 0.31fF
+C116 _08_/a_247_21# _08_/a_277_47# 0.80fF
+C117 _11_/a_381_47# _11_/a_193_47# 0.26fF
+C118 _10_/a_891_413# clkbuf_0_clk_I/a_110_47# 0.01fF
+C119 _08_/X _08_/a_1478_413# 0.38fF
+C120 din[3] clkbuf_0_clk_I/X 0.03fF
+C121 _09_/a_975_413# VPWR 0.04fF
+C122 _10_/a_193_47# VPWR 0.89fF
+C131 _10_/D input4/a_75_212# 0.02fF
+C132 clkbuf_1_1_0_clk_Q/a_75_212# clkbuf_0_clk_I/X 0.02fF
+C133 clkbuf_0_clk_I/X clkbuf_1_1_0_clk_I/a_75_212# 0.32fF
+C134 _10_/a_466_413# clk_I 0.02fF
+C135 _14_/a_634_159# _14_/D 0.04fF
+C136 _12_/a_27_47# clk_QB 0.41fF
+C137 _14_/a_27_47# _14_/a_891_413# 0.09fF
+C138 input4/a_75_212# din[2] 0.08fF
+C139 _14_/a_27_47# _14_/a_193_47# 2.23fF
+C140 _09_/a_27_47# VPWR 1.03fF
+C141 clkbuf_0_clk_I/X _07_/Y 0.36fF
+C142 _14_/Q _08_/a_750_97# 0.02fF
+C143 _14_/a_1059_315# _14_/Q 0.28fF
+C144 input5/X input5/a_27_47# 0.22fF
+C145 _06_/Y _08_/a_834_97# 0.01fF
+C146 input1/a_75_212# clkbuf_1_0_0_clk_I/a_75_212# 0.03fF
+C147 _08_/a_27_47# _08_/a_247_21# 0.10fF
+C148 _14_/a_381_47# _14_/a_27_47# 0.21fF
+C149 VPWR input5/X 0.30fF
+C150 _09_/Q _09_/a_891_413# 0.04fF
+C151 input1/a_75_212# _13_/D 0.22fF
+C152 _08_/a_1290_413# _08_/a_277_47# 0.78fF
+C153 _13_/a_193_47# _13_/a_1059_315# 0.11fF
+C154 _08_/a_193_47# VPWR 0.02fF
+C155 _08_/a_923_363# _08_/a_750_97# 0.01fF
+C156 _13_/a_1059_315# _12_/Q 0.01fF
+C157 clkbuf_0_clk_I/X rst 0.25fF
+C158 input4/a_75_212# _09_/D 0.22fF
+C159 _11_/a_592_47# _11_/CLK 0.02fF
+C160 _10_/Q clkbuf_0_clk_I/X 0.56fF
+C161 _08_/a_1478_413# _08_/a_1290_413# 0.19fF
+C162 clk_IB _14_/a_193_47# 0.99fF
+C163 _12_/a_381_47# clk_Q 0.16fF
+C164 _13_/a_466_413# _13_/a_1059_315# 0.02fF
+C165 _11_/a_634_159# _11_/a_891_413# 0.11fF
+C166 _08_/S0 _08_/a_668_97# 0.06fF
+C167 VPWR _08_/a_750_97# 0.54fF
+C168 _14_/a_381_47# clk_IB 0.05fF
+C169 _14_/a_1059_315# VPWR 0.62fF
+C170 clk_I _09_/a_891_413# 0.00fF
+C171 clkbuf_0_clk_I/a_110_47# _09_/a_1059_315# 0.02fF
+C172 _12_/a_466_413# VPWR 0.41fF
+C173 clkbuf_0_clk_I/a_110_47# _14_/Q 0.01fF
+C174 _11_/a_634_159# _11_/a_27_47# 0.37fF
+C175 clkbuf_1_0_0_clk_I/a_75_212# clkbuf_0_clk_I/X 0.40fF
+C176 _08_/a_1478_413# _08_/a_277_47# 0.22fF
+C177 _10_/Q _09_/a_466_413# 0.00fF
+C178 _09_/a_634_159# clk_I 0.00fF
+C179 _11_/D _13_/D 0.02fF
+C180 _13_/a_634_159# _12_/a_891_413# 0.01fF
+C181 _10_/a_27_47# _13_/CLK 0.61fF
+C182 _08_/S0 _05_/Y 0.09fF
+C183 _08_/a_193_413# _06_/Y 0.01fF
+C184 _08_/S0 _04_/Y 0.11fF
+C185 clkbuf_0_clk_I/X _12_/Q 0.10fF
+C186 _11_/a_634_159# _11_/a_466_413# 0.59fF
+C187 _08_/S0 clkbuf_1_1_0_clk_I/a_75_212# 0.02fF
+C188 clkbuf_1_1_0_clk_Q/a_75_212# _08_/S0 0.22fF
+C189 _10_/a_891_413# clk_I 0.08fF
+C190 VPWR _13_/CLK 2.42fF
+C191 VPWR _14_/D 0.50fF
+C192 _08_/a_757_363# _08_/a_247_21# 0.08fF
+C193 _08_/a_27_47# _08_/a_277_47# 0.19fF
+C194 _11_/a_1059_315# _12_/a_1059_315# 0.01fF
+C195 _12_/a_27_47# _11_/a_634_159# 0.01fF
+C196 _09_/a_381_47# _09_/a_634_159# 0.04fF
+C197 _08_/S0 _07_/Y 0.05fF
+C198 clkbuf_0_clk_I/X input3/a_75_212# 0.03fF
+C199 _10_/Q _10_/a_1059_315# 0.28fF
+C200 din[1] input2/a_75_212# 0.44fF
+C201 _11_/a_1059_315# _12_/a_891_413# 0.03fF
+C202 din[3] din[2] 0.43fF
+C203 _12_/a_1059_315# _12_/a_891_413# 0.66fF
+C204 VPWR clkbuf_0_clk_I/a_110_47# 1.57fF
+C205 clkbuf_0_clk_Q/a_110_47# _10_/a_27_47# 0.02fF
+C206 input2/a_75_212# _11_/D 0.24fF
+C207 _10_/a_193_47# clkbuf_0_clk_I/X 0.30fF
+C208 _13_/a_634_159# _13_/a_27_47# 0.37fF
+C209 clkbuf_1_0_0_clk_I/a_75_212# din[0] 0.00fF
+C210 clkbuf_0_clk_Q/X _05_/Y 0.48fF
+C211 clkbuf_0_clk_Q/X _04_/Y 0.47fF
+C212 _09_/a_381_47# _10_/a_891_413# 0.02fF
+C213 _08_/a_834_97# _08_/a_668_97# 0.13fF
+C214 VPWR _11_/a_975_413# 0.02fF
+C215 _10_/a_193_47# _10_/a_634_159# 0.28fF
+C216 clkbuf_0_clk_Q/a_110_47# VPWR 1.44fF
+C217 _13_/D din[0] 0.02fF
+C218 _10_/D _07_/Y 0.10fF
+C219 _12_/a_975_413# _12_/a_891_413# 0.05fF
+C220 _14_/a_891_413# _14_/a_1017_47# 0.04fF
+C221 _08_/X _14_/Q 0.76fF
+C222 clkbuf_0_clk_Q/X clkbuf_1_1_0_clk_I/a_75_212# 0.06fF
+C223 _10_/a_466_413# _10_/a_561_413# 0.04fF
+C224 clkbuf_1_1_0_clk_Q/a_75_212# clkbuf_0_clk_Q/X 0.38fF
+C225 _09_/Q _14_/Q 0.08fF
+C226 _09_/Q _09_/a_1059_315# 0.30fF
+C227 _10_/a_466_413# _10_/a_891_413# 0.03fF
+C228 _11_/a_634_159# _11_/a_193_47# 0.28fF
+C229 _08_/a_27_413# VPWR 0.38fF
+C230 din[3] _09_/D 0.02fF
+C231 _08_/a_834_97# _05_/Y 0.09fF
+C232 _04_/Y _08_/a_834_97# 0.14fF
+C233 _08_/a_757_363# _08_/a_1290_413# 0.03fF
+C234 clkbuf_0_clk_Q/X _07_/Y 0.31fF
+C235 clkbuf_1_1_0_clk_Q/a_75_212# _14_/a_27_47# 0.01fF
+C236 _13_/a_27_47# _12_/a_1059_315# 0.01fF
+C237 _09_/a_27_47# _10_/a_634_159# 0.02fF
+C238 clkbuf_0_clk_I/X input5/X 0.11fF
+C239 _10_/a_27_47# _11_/CLK 0.04fF
+C240 _13_/a_975_413# _13_/a_891_413# 0.05fF
+C241 _09_/a_27_47# _09_/a_466_413# 0.63fF
+C242 _10_/D _10_/Q 0.31fF
+C243 _08_/a_757_363# _08_/a_277_47# 0.02fF
+C244 _13_/a_27_47# _12_/a_891_413# 0.00fF
+C245 _13_/a_381_47# _13_/D 0.50fF
+C246 _11_/a_27_47# _13_/D 0.03fF
+C247 _09_/a_634_159# _09_/a_891_413# 0.11fF
+C248 _08_/X input5/a_27_47# 0.12fF
+C249 _13_/a_193_47# _13_/a_381_47# 0.26fF
+C250 clk_I _09_/a_1059_315# 0.02fF
+C251 _10_/a_193_47# _10_/a_1059_315# 0.11fF
+C252 _14_/a_1059_315# _14_/a_466_413# 0.02fF
+C253 _07_/Y _09_/D 0.60fF
+C254 VPWR _11_/CLK 2.00fF
+C255 input1/a_75_212# _13_/CLK 0.11fF
+C256 _12_/a_193_47# _13_/D 0.05fF
+C257 _12_/a_466_413# _12_/a_592_47# 0.02fF
+C258 _08_/X VPWR 1.56fF
+C259 _08_/a_757_363# _08_/a_1478_413# 0.00fF
+C260 _10_/D clkbuf_1_0_0_clk_I/a_75_212# 0.02fF
+C261 _13_/a_1059_315# _14_/D 0.28fF
+C262 _13_/a_193_47# _12_/a_193_47# 0.00fF
+C263 clkbuf_0_clk_Q/X _10_/Q 0.20fF
+C264 _09_/Q VPWR 1.14fF
+C265 _12_/a_193_47# _12_/Q 0.01fF
+C266 clkbuf_0_clk_I/X _08_/a_750_97# 0.01fF
+C267 _11_/a_466_413# _13_/D 0.12fF
+C268 _14_/a_1059_315# clkbuf_0_clk_I/X 0.01fF
+C269 _13_/a_466_413# _13_/a_381_47# 0.11fF
+C270 VPWR _08_/a_247_21# 0.35fF
+C271 _11_/a_891_413# _12_/a_634_159# 0.01fF
+C272 _12_/a_381_47# clk_QB 0.02fF
+C273 _10_/D _12_/Q 0.03fF
+C274 _09_/a_634_159# _10_/a_891_413# 0.00fF
+C275 _09_/a_27_47# _10_/a_1059_315# 0.01fF
+C276 _13_/a_466_413# _12_/a_193_47# 0.01fF
+C277 _12_/a_27_47# _13_/D 0.19fF
+C278 _11_/a_27_47# _12_/a_634_159# 0.00fF
+C279 _14_/Q _08_/a_1290_413# 0.09fF
+C280 _09_/a_193_47# _09_/a_27_47# 2.23fF
+C281 _10_/a_27_47# clk_I 0.08fF
+C282 _10_/Q _08_/a_834_97# 0.01fF
+C283 _13_/a_193_47# _12_/a_27_47# 0.01fF
+C284 _14_/a_466_413# _14_/D 0.04fF
+C285 _12_/a_193_47# _12_/a_634_159# 0.28fF
+C286 _11_/D _13_/CLK 1.01fF
+C287 clkbuf_0_clk_Q/X _12_/Q 0.14fF
+C288 _10_/D input3/a_75_212# 0.22fF
+C289 _14_/Q _08_/a_277_47# 0.01fF
+C290 VPWR clk_I 0.76fF
+C291 clkbuf_0_clk_I/X _13_/CLK 0.20fF
+C292 _13_/a_466_413# _12_/a_27_47# 0.00fF
+C293 input3/a_75_212# din[2] 0.30fF
+C294 _13_/a_193_47# _13_/a_891_413# 0.44fF
+C295 _10_/D _10_/a_193_47# 1.43fF
+C296 _11_/a_634_159# clk_Q 0.10fF
+C297 _12_/a_27_47# _12_/a_634_159# 0.37fF
+C298 _14_/Q _08_/a_1478_413# 0.13fF
+C299 clkbuf_0_clk_I/a_110_47# clkbuf_0_clk_I/X 3.70fF
+C300 _09_/D _12_/Q 0.60fF
+C301 _11_/a_193_47# _13_/D 0.12fF
+C302 _08_/X data 0.02fF
+C303 _10_/a_466_413# _10_/a_592_47# 0.02fF
+C304 VPWR _08_/a_1290_413# 0.54fF
+C305 _13_/a_466_413# _13_/a_891_413# 0.03fF
+C306 clkbuf_0_clk_Q/X _10_/a_193_47# 0.01fF
+C307 _14_/a_193_47# _14_/a_891_413# 0.44fF
+C308 _10_/a_466_413# _10_/a_27_47# 0.63fF
+C309 _13_/a_634_159# VPWR 0.23fF
+C310 _09_/a_381_47# VPWR 0.17fF
+C311 _14_/a_381_47# _14_/a_193_47# 0.26fF
+C312 input1/a_75_212# _11_/CLK 0.01fF
+C313 input3/a_75_212# _09_/D 0.32fF
+C314 _08_/X output6/a_27_47# 0.47fF
+C315 VPWR _08_/a_277_47# 0.55fF
+C316 _10_/a_466_413# VPWR 0.49fF
+C317 clkbuf_0_clk_Q/a_110_47# _10_/a_634_159# 0.01fF
+C318 input5/a_27_47# _08_/a_1478_413# 0.01fF
+C319 din[0] _13_/CLK 0.16fF
+C320 clkbuf_0_clk_Q/X _09_/a_27_47# 0.43fF
+C321 _09_/a_1059_315# _09_/a_891_413# 0.66fF
+C322 _08_/S0 _08_/a_750_97# 0.84fF
+C323 _10_/a_193_47# _09_/D 0.01fF
+C324 _11_/a_193_47# _12_/a_634_159# 0.00fF
+C325 _12_/a_466_413# _11_/a_891_413# 0.03fF
+C326 _11_/a_634_159# _12_/a_381_47# 0.00fF
+C327 VPWR _11_/a_561_413# 0.04fF
+C328 _09_/a_634_159# _09_/a_1059_315# 0.04fF
+C329 VPWR _08_/a_1478_413# 0.66fF
+C330 _12_/a_466_413# _13_/a_381_47# 0.01fF
+C331 _11_/a_1059_315# VPWR 0.56fF
+C332 _12_/a_466_413# _11_/a_27_47# 0.01fF
+C333 clkbuf_0_clk_Q/X input5/X 0.01fF
+C334 VPWR _12_/a_1059_315# 0.51fF
+C335 _10_/a_193_47# clkbuf_1_0_0_clk_Q/a_75_212# 0.01fF
+C336 _08_/a_193_413# _12_/Q 0.02fF
+C337 _10_/a_1059_315# clkbuf_0_clk_I/a_110_47# 0.05fF
+C338 _12_/a_466_413# _12_/a_193_47# 0.38fF
+C339 _11_/a_634_159# _11_/a_381_47# 0.04fF
+C340 _09_/a_193_47# clkbuf_0_clk_I/a_110_47# 0.01fF
+C341 VPWR _12_/a_891_413# 0.27fF
+C342 _11_/D _11_/CLK 0.36fF
+C343 _09_/a_27_47# _09_/D 0.48fF
+C344 _11_/CLK clkbuf_0_clk_I/X 0.17fF
+C345 _08_/a_27_47# VPWR 0.08fF
+C346 _12_/a_466_413# _11_/a_466_413# 0.00fF
+C347 _08_/X clkbuf_0_clk_I/X 0.84fF
+C348 _12_/a_975_413# VPWR 0.03fF
+C349 _09_/Q clkbuf_0_clk_I/X 0.10fF
+C350 _13_/a_381_47# _13_/CLK 0.02fF
+C351 clkbuf_0_clk_Q/a_110_47# _10_/a_1059_315# 0.02fF
+C352 _11_/a_27_47# _13_/CLK 0.22fF
+C353 _09_/a_27_47# clkbuf_1_0_0_clk_Q/a_75_212# 0.02fF
+C354 _10_/a_634_159# _11_/CLK 0.01fF
+C355 _12_/a_466_413# _12_/a_27_47# 0.63fF
+C356 clkbuf_0_clk_Q/X _08_/a_750_97# 0.03fF
+C357 VPWR _09_/a_891_413# 0.34fF
+C358 clkbuf_0_clk_Q/X _14_/a_1059_315# 0.01fF
+C359 VPWR _09_/a_634_159# 0.39fF
+C360 _10_/a_27_47# _10_/a_891_413# 0.09fF
+C361 _10_/D _13_/CLK 0.07fF
+C362 _13_/D clk_Q 1.62fF
+C363 _10_/a_1017_47# _10_/a_891_413# 0.04fF
+C364 _14_/a_27_47# _14_/a_1059_315# 0.11fF
+C365 _12_/D _11_/a_891_413# 0.04fF
+C366 _13_/a_193_47# clk_Q 0.03fF
+C367 _13_/a_634_159# _13_/a_1059_315# 0.04fF
+C368 _08_/a_834_97# _08_/a_750_97# 0.10fF
+C369 clkbuf_0_clk_Q/a_110_47# _11_/a_891_413# 0.03fF
+C370 clkbuf_0_clk_Q/a_110_47# _08_/S0 0.04fF
+C371 _12_/D _11_/a_27_47# 0.01fF
+C372 _11_/a_891_413# _11_/a_975_413# 0.05fF
+C373 VPWR _13_/a_27_47# 1.06fF
+C374 _12_/a_27_47# _13_/CLK 0.02fF
+C375 _10_/a_561_413# VPWR 0.02fF
+C376 clkbuf_0_clk_I/X clk_I 1.15fF
+C377 _11_/a_592_47# VPWR 0.01fF
+C378 clkbuf_0_clk_Q/a_110_47# _11_/a_27_47# 0.02fF
+C379 _10_/D clkbuf_0_clk_I/a_110_47# 1.07fF
+C380 _06_/Y _08_/a_668_97# 0.02fF
+C381 _12_/D _12_/a_193_47# 1.43fF
+C382 _08_/a_923_363# _08_/a_757_363# 0.07fF
+C383 _08_/S0 _08_/a_27_413# 0.00fF
+C384 _11_/CLK din[0] 0.03fF
+C385 _10_/a_634_159# clk_I 0.26fF
+C386 _12_/a_466_413# _11_/a_193_47# 0.01fF
+C387 clkbuf_0_clk_I/a_110_47# din[2] 0.02fF
+C388 _09_/a_193_47# _11_/CLK 0.06fF
+C389 _12_/D _11_/a_466_413# 0.01fF
+C390 _05_/Y _08_/S1 0.05fF
+C391 _14_/a_27_47# _14_/D 0.42fF
+C392 _04_/Y _08_/S1 0.15fF
+C393 _04_/Y _06_/Y 0.04fF
+C394 _06_/Y _05_/Y 0.31fF
+C395 _09_/Q _09_/a_193_47# 0.01fF
+C396 clkbuf_0_clk_Q/a_110_47# _11_/a_466_413# 0.01fF
+C397 clkbuf_0_clk_Q/X clkbuf_0_clk_I/a_110_47# 0.04fF
+C398 _13_/a_891_413# _14_/D 0.04fF
+C399 _13_/a_1059_315# _12_/a_1059_315# 0.02fF
+C400 _11_/a_891_413# _11_/a_1017_47# 0.04fF
+C401 clkbuf_0_clk_I/X _08_/a_1290_413# 0.02fF
+C402 _12_/D _12_/a_27_47# 0.60fF
+C403 VPWR _08_/a_757_363# 0.38fF
+C404 _10_/a_193_47# clk_Q 0.02fF
+C405 _13_/a_891_413# _13_/a_1017_47# 0.04fF
+C406 clkbuf_1_1_0_clk_Q/a_75_212# _08_/S1 0.29fF
+C407 _08_/S1 clkbuf_1_1_0_clk_I/a_75_212# 0.23fF
+C408 _12_/a_381_47# _13_/D 0.01fF
+C409 clkbuf_0_clk_Q/X _12_/D 0.02fF
+C410 _14_/a_891_413# clkbuf_1_1_0_clk_I/a_75_212# 0.01fF
+C411 clkbuf_1_1_0_clk_Q/a_75_212# _14_/a_891_413# 0.02fF
+C412 _13_/a_1059_315# _12_/a_891_413# 0.00fF
+C413 clkbuf_1_1_0_clk_Q/a_75_212# _14_/a_193_47# 0.00fF
+C414 din[3] input4/a_75_212# 0.44fF
+C415 clkbuf_0_clk_Q/a_110_47# clkbuf_0_clk_Q/X 3.56fF
+C416 _14_/a_634_159# VPWR 0.27fF
+C417 _10_/a_466_413# clkbuf_0_clk_I/X 0.13fF
+C418 _11_/a_27_47# _11_/CLK 0.74fF
+C419 _06_/Y _07_/Y 0.65fF
+C420 _08_/a_193_413# _08_/a_750_97# 0.01fF
+C421 _09_/a_381_47# _09_/a_466_413# 0.11fF
+C422 _10_/a_1059_315# clk_I 0.17fF
+C423 clk_IB _14_/D 0.55fF
+C424 _09_/a_193_47# clk_I 0.01fF
+C425 _10_/a_466_413# _10_/a_634_159# 0.59fF
+C426 VPWR _13_/a_561_413# 0.02fF
+C427 VPWR _14_/a_975_413# 0.02fF
+C428 _08_/S0 _08_/a_247_21# 0.94fF
+C429 clkbuf_0_clk_I/X _08_/a_1478_413# 0.01fF
+C430 _12_/a_381_47# _12_/a_634_159# 0.04fF
+C431 _10_/D _11_/CLK 0.06fF
+C432 _10_/a_193_47# _10_/a_381_47# 0.26fF
+C433 _11_/a_466_413# _11_/CLK 0.15fF
+C434 _12_/D _11_/a_193_47# 0.01fF
+C435 _10_/D _09_/Q 0.03fF
+C436 clkbuf_0_clk_Q/a_110_47# _11_/a_193_47# 0.01fF
+C437 _13_/a_27_47# _13_/a_1059_315# 0.11fF
+C438 _10_/Q _06_/Y 0.38fF
+C439 VPWR _14_/Q 1.07fF
+C440 VPWR _09_/a_1059_315# 0.56fF
+C441 clkbuf_0_clk_Q/X _11_/CLK 0.63fF
+C442 _09_/a_381_47# _09_/a_193_47# 0.26fF
+C443 clkbuf_0_clk_Q/X _09_/Q 0.36fF
+C444 _10_/a_466_413# _10_/a_1059_315# 0.02fF
+C445 clkbuf_0_clk_Q/X _08_/a_247_21# 0.06fF
+C446 _10_/a_592_47# VPWR 0.00fF
+C447 _10_/D clk_I 1.27fF
+C448 VPWR _10_/a_27_47# 1.15fF
+C449 _11_/CLK _09_/D 0.05fF
+C450 _06_/Y _12_/Q 0.39fF
+C451 _10_/a_1017_47# VPWR 0.00fF
+C452 _09_/a_466_413# _09_/a_891_413# 0.03fF
+C453 _09_/Q _09_/D 0.13fF
+C454 VPWR input5/a_27_47# 0.55fF
+C455 _11_/a_193_47# _11_/CLK 0.83fF
+C456 _13_/a_634_159# _13_/a_381_47# 0.04fF
+C457 _09_/a_466_413# _09_/a_634_159# 0.59fF
+C458 _11_/CLK clkbuf_1_0_0_clk_Q/a_75_212# 0.29fF
+C459 _05_/Y _08_/a_668_97# 0.06fF
+C460 _08_/a_834_97# _08_/a_247_21# 0.05fF
+C461 _10_/a_891_413# clkbuf_0_clk_I/X 0.14fF
+C462 _08_/S0 _08_/a_277_47# 0.23fF
+C463 clkbuf_0_clk_Q/X clk_I 0.13fF
+C464 _08_/a_193_413# _08_/a_27_413# 0.13fF
+C465 _13_/a_634_159# _12_/a_193_47# 0.01fF
+C466 _10_/a_634_159# _10_/a_891_413# 0.11fF
+C467 _04_/Y _05_/Y 0.63fF
+C468 _09_/a_466_413# _10_/a_891_413# 0.01fF
+C469 _11_/a_1059_315# _11_/a_891_413# 0.66fF
+C470 _12_/a_466_413# _12_/a_381_47# 0.11fF
+C471 input4/a_75_212# input3/a_75_212# 0.09fF
+C472 clk_I _09_/D 0.09fF
+C473 _11_/a_1059_315# _11_/a_27_47# 0.11fF
+C474 _14_/a_634_159# _14_/a_466_413# 0.59fF
+C475 _12_/a_27_47# _13_/a_634_159# 0.00fF
+C476 clkbuf_0_clk_Q/X _08_/a_1290_413# 0.00fF
+C477 _09_/a_193_47# _09_/a_891_413# 0.44fF
+C478 _09_/a_634_159# _10_/a_1059_315# 0.01fF
+C479 _10_/D _10_/a_466_413# 0.11fF
+C480 _12_/D clk_Q 0.03fF
+C481 _11_/a_891_413# _12_/a_891_413# 0.00fF
+C482 _09_/a_193_47# _09_/a_634_159# 0.28fF
+C483 clkbuf_0_clk_Q/X _09_/a_381_47# 0.03fF
+C484 _11_/a_1059_315# _12_/a_193_47# 0.01fF
+C485 clkbuf_0_clk_Q/a_110_47# clk_Q 0.70fF
+C486 _12_/a_193_47# _12_/a_1059_315# 0.11fF
+C487 clkbuf_1_1_0_clk_Q/a_75_212# clkbuf_1_1_0_clk_I/a_75_212# 0.09fF
+C488 _13_/CLK _10_/a_381_47# 0.05fF
+C489 _09_/a_466_413# _09_/a_592_47# 0.02fF
+C490 _08_/a_27_47# _08_/S0 0.04fF
+C491 _11_/a_466_413# _11_/a_561_413# 0.04fF
+C492 clkbuf_0_clk_Q/X _08_/a_277_47# 0.16fF
+C493 clkbuf_0_clk_Q/X _10_/a_466_413# 0.00fF
+C494 _11_/a_466_413# _11_/a_1059_315# 0.02fF
+C495 _12_/a_193_47# _12_/a_891_413# 0.44fF
+C496 _08_/a_834_97# _08_/a_1290_413# 0.02fF
+C497 _08_/S1 input5/X 0.06fF
+C498 _08_/a_193_413# _08_/a_247_21# 0.20fF
+C499 _13_/a_634_159# _13_/a_891_413# 0.11fF
+C500 _10_/a_1059_315# _10_/a_891_413# 0.66fF
+C501 _10_/Q _08_/a_668_97# 0.01fF
+C502 _09_/a_193_47# _10_/a_891_413# 0.00fF
+C503 _12_/a_27_47# _11_/a_1059_315# 0.01fF
+C504 _09_/a_381_47# _09_/D 0.39fF
+C505 _12_/a_27_47# _12_/a_1059_315# 0.11fF
+C506 VPWR data 1.14fF
+C507 _08_/a_834_97# _08_/a_277_47# 0.19fF
+C508 clkbuf_0_clk_Q/X _11_/a_1059_315# 0.04fF
+C509 _06_/Y _08_/a_193_47# 0.03fF
+C510 _10_/Q _05_/Y 0.25fF
+C511 _12_/a_27_47# _12_/a_891_413# 0.09fF
+C512 _12_/a_466_413# _12_/a_561_413# 0.04fF
+C513 clkbuf_0_clk_Q/a_110_47# _10_/a_381_47# 0.01fF
+C514 rst clkbuf_1_1_0_clk_I/a_75_212# 0.02fF
+C515 _12_/D _12_/a_381_47# 0.38fF
+C516 clkbuf_0_clk_I/X _09_/a_1059_315# 0.01fF
+C517 _11_/a_634_159# _13_/D 0.19fF
+C518 clkbuf_0_clk_I/X _14_/Q 0.40fF
+C519 VPWR output6/a_27_47# 0.58fF
+C520 input1/a_75_212# VPWR 0.53fF
+C521 VPWR _13_/a_1059_315# 0.57fF
+C522 _08_/a_834_97# _08_/a_1478_413# 0.00fF
+C523 _13_/a_381_47# _13_/a_27_47# 0.21fF
+C524 _11_/CLK clk_Q 0.58fF
+C525 _08_/S1 _08_/a_750_97# 0.42fF
+C526 _13_/a_891_413# _12_/a_1059_315# 0.03fF
+C527 _14_/a_1059_315# _08_/S1 0.02fF
+C528 _08_/a_27_47# clkbuf_0_clk_Q/X 0.09fF
+C529 _14_/a_1059_315# _14_/a_891_413# 0.66fF
+C530 _14_/a_1059_315# _14_/a_193_47# 0.11fF
+C531 _12_/a_193_47# _13_/a_27_47# 0.03fF
+C532 _10_/Q _07_/Y 0.03fF
+C533 _13_/a_891_413# _12_/a_891_413# 0.03fF
+C534 _09_/a_466_413# _09_/a_1059_315# 0.02fF
+C535 _11_/a_1059_315# _11_/a_193_47# 0.11fF
+C536 _10_/a_592_47# clkbuf_0_clk_I/X 0.03fF
+C537 VPWR _14_/a_466_413# 0.29fF
+C538 _10_/a_27_47# clkbuf_0_clk_I/X 0.27fF
+C539 din[1] VPWR 0.34fF
+C540 _08_/S0 _08_/a_757_363# 0.27fF
+C541 _10_/a_1017_47# clkbuf_0_clk_I/X 0.03fF
+C542 _11_/a_466_413# _11_/a_592_47# 0.02fF
+C543 _12_/a_27_47# _13_/a_27_47# 0.01fF
+C544 clkbuf_0_clk_I/X input5/a_27_47# 0.36fF
+C545 din[3] input3/a_75_212# 0.02fF
+C546 _10_/a_634_159# _10_/a_27_47# 0.37fF
+C547 VPWR _11_/D 1.85fF
+C548 _08_/a_193_413# _08_/a_277_47# 0.14fF
+C549 _14_/a_193_47# _14_/D 0.52fF
+C550 _11_/CLK _10_/a_381_47# 0.16fF
+C551 VPWR clkbuf_0_clk_I/X 5.89fF
+C552 _09_/D _09_/a_891_413# 0.05fF
+C553 clkbuf_0_clk_Q/X _10_/a_891_413# 0.06fF
+C554 _14_/a_381_47# _14_/D 0.35fF
+C555 _07_/Y _12_/Q 1.81fF
+C556 _09_/a_634_159# _09_/D 0.20fF
+C557 _10_/a_634_159# VPWR 0.29fF
+C558 _09_/a_193_47# _09_/a_1059_315# 0.11fF
+C559 clk_QB _13_/CLK 0.03fF
+C560 _06_/Y clkbuf_0_clk_I/a_110_47# 0.01fF
+C561 _13_/a_891_413# _13_/a_27_47# 0.09fF
+C562 VPWR _09_/a_466_413# 0.41fF
+C563 output6/a_27_47# data 0.22fF
+C564 _11_/a_381_47# _11_/CLK 0.05fF
+C565 clkbuf_0_clk_Q/X _09_/a_592_47# 0.02fF
+C566 _10_/a_891_413# _09_/D 0.01fF
+C567 clkbuf_0_clk_Q/X _08_/a_757_363# 0.03fF
+C568 clkbuf_0_clk_Q/a_110_47# _06_/Y 0.08fF
+C569 _08_/a_193_413# _08_/a_27_47# 0.02fF
+C570 _10_/Q _12_/Q 0.03fF
+C571 _10_/a_27_47# _10_/a_1059_315# 0.11fF
+C572 _09_/a_193_47# _10_/a_27_47# 0.00fF
+C573 _12_/D clk_QB 0.05fF
+C574 _08_/a_27_413# _06_/Y 0.11fF
+C575 _08_/a_834_97# _08_/a_757_363# 0.04fF
+C576 VPWR din[0] 0.36fF
+C577 VPWR _10_/a_1059_315# 0.52fF
+C578 _09_/a_193_47# VPWR 0.62fF
+C579 _13_/a_193_47# _13_/D 0.50fF
+C580 clkbuf_1_1_0_clk_Q/a_75_212# input5/X 0.03fF
+C581 _14_/a_27_47# _14_/a_634_159# 0.37fF
+C582 input5/X clkbuf_1_1_0_clk_I/a_75_212# 0.22fF
+C583 _08_/a_750_97# _08_/a_668_97# 0.12fF
+C584 _12_/a_466_413# _11_/a_634_159# 0.01fF
+C585 _10_/Q _10_/a_193_47# 0.01fF
+C586 _13_/a_466_413# _13_/D 0.04fF
+C587 _09_/Q _08_/S1 0.02fF
+C588 _13_/a_193_47# _13_/a_466_413# 0.38fF
+C589 input1/a_75_212# clkbuf_0_clk_I/X 0.00fF
+C590 _11_/a_891_413# VPWR 0.27fF
+C591 _08_/S0 VPWR 1.62fF
+C592 _05_/Y _08_/a_750_97# 0.11fF
+C593 _04_/Y _08_/a_750_97# 0.12fF
+C594 _10_/a_193_47# clkbuf_1_0_0_clk_I/a_75_212# 0.02fF
+C595 _10_/a_466_413# _10_/a_381_47# 0.11fF
+C596 _11_/a_27_47# VPWR 1.36fF
+C597 VPWR _13_/a_381_47# 0.17fF
+C598 _08_/S1 _08_/a_247_21# 0.02fF
+C599 _13_/a_193_47# _12_/a_634_159# 0.01fF
+C600 _06_/Y _08_/a_247_21# 0.26fF
+C601 _10_/D _10_/a_27_47# 0.60fF
+C602 _08_/a_750_97# clkbuf_1_1_0_clk_I/a_75_212# 0.02fF
+C603 clkbuf_1_1_0_clk_Q/a_75_212# _14_/a_1059_315# 0.00fF
+C604 _14_/a_1059_315# clkbuf_1_1_0_clk_I/a_75_212# 0.01fF
+C605 clk_IB _14_/a_634_159# 0.12fF
+C606 VPWR _12_/a_193_47# 0.60fF
+C607 input5/X rst 0.02fF
+C608 _08_/a_193_413# _08_/a_757_363# 0.02fF
+C609 din[1] _11_/D 0.02fF
+C610 _09_/a_1059_315# _09_/D 0.10fF
+C611 _13_/a_466_413# _12_/a_634_159# 0.01fF
+C612 _10_/D VPWR 1.71fF
+C613 _11_/a_466_413# VPWR 0.52fF
+C614 clkbuf_0_clk_Q/X _10_/a_27_47# 0.00fF
+C615 VPWR din[2] 0.41fF
+C616 clkbuf_0_clk_Q/X input5/a_27_47# 0.01fF
+C617 _12_/a_27_47# VPWR 1.14fF
+C618 _13_/a_27_47# clk_Q 0.03fF
+C619 _12_/D _11_/a_634_159# 0.01fF
+C620 clkbuf_0_clk_Q/X VPWR 5.52fF
+C621 clkbuf_0_clk_Q/a_110_47# _11_/a_634_159# 0.03fF
+C622 _04_/Y clkbuf_0_clk_I/a_110_47# 0.01fF
+C623 input1/a_75_212# din[0] 0.30fF
+C624 _10_/a_634_159# clkbuf_0_clk_I/X 0.10fF
+C625 _10_/a_27_47# _09_/D 0.01fF
+C626 _14_/a_27_47# VPWR 0.82fF
+C627 _08_/S1 _08_/a_1290_413# 0.40fF
+C628 _13_/a_891_413# VPWR 0.22fF
+C629 _08_/a_834_97# VPWR 0.03fF
+C630 _10_/a_27_47# clkbuf_1_0_0_clk_Q/a_75_212# 0.01fF
+C631 VPWR _09_/D 0.87fF
+C632 clkbuf_0_clk_I/a_110_47# _07_/Y 0.17fF
+C633 _08_/S1 _08_/a_277_47# 0.19fF
+C634 _06_/Y _08_/a_277_47# 0.25fF
+C635 _11_/a_193_47# VPWR 0.71fF
+C636 VPWR clkbuf_1_0_0_clk_Q/a_75_212# 0.76fF
+C637 _12_/a_466_413# _13_/D 0.10fF
+C638 input1/a_75_212# _11_/a_27_47# 0.04fF
+C639 _13_/a_193_47# _12_/a_466_413# 0.01fF
+C640 _08_/S1 _08_/a_1478_413# 0.03fF
+C641 clkbuf_0_clk_Q/a_110_47# _07_/Y 0.15fF
+C642 clkbuf_0_clk_I/X din[0] 0.02fF
+C643 clk_IB VPWR 0.43fF
+C644 _10_/a_1059_315# clkbuf_0_clk_I/X 0.11fF
+C645 _09_/a_193_47# clkbuf_0_clk_I/X 0.10fF
+C646 clkbuf_1_0_0_clk_I/a_75_212# _13_/CLK 0.32fF
+C647 _08_/a_27_413# _07_/Y 0.09fF
+C648 _10_/a_634_159# _10_/a_1059_315# 0.04fF
+C649 _10_/Q clkbuf_0_clk_I/a_110_47# 0.41fF
+C650 _13_/a_466_413# _12_/a_466_413# 0.02fF
+C651 _09_/a_193_47# _10_/a_634_159# 0.01fF
+C652 _13_/D _13_/CLK 0.07fF
+C653 _08_/a_247_21# _08_/a_668_97# 0.06fF
+C654 _09_/a_466_413# _10_/a_1059_315# 0.03fF
+C655 _13_/a_193_47# _13_/CLK 0.06fF
+C656 _09_/a_193_47# _09_/a_466_413# 0.38fF
+C657 _13_/a_193_47# _14_/D 0.01fF
+C658 _09_/Q _05_/Y 0.58fF
+C659 _12_/a_466_413# _12_/a_634_159# 0.59fF
+C660 _08_/a_193_413# VPWR 0.45fF
+C661 _04_/Y _09_/Q 0.42fF
+C662 _08_/a_27_47# _06_/Y 0.14fF
+C663 clkbuf_0_clk_Q/a_110_47# _10_/Q 0.01fF
+C664 _11_/a_27_47# _11_/D 0.28fF
+C665 _05_/Y _08_/a_247_21# 0.17fF
+C666 _04_/Y _08_/a_247_21# 0.05fF
+C667 _14_/a_466_413# _14_/a_592_47# 0.02fF
+C668 clkbuf_0_clk_I/a_110_47# _12_/Q 0.16fF
+C669 _14_/a_27_47# _13_/a_1059_315# 0.01fF
+C670 _12_/D _13_/D 0.05fF
+C671 _09_/Q _07_/Y 0.96fF
+C672 _13_/a_193_47# _12_/D 0.01fF
+C673 _13_/a_891_413# _13_/a_1059_315# 0.66fF
+C674 clkbuf_0_clk_Q/a_110_47# _13_/D 0.07fF
+C675 _11_/a_466_413# _11_/D 0.04fF
+C676 _10_/D clkbuf_0_clk_I/X 1.35fF
+C677 _09_/a_193_47# _10_/a_1059_315# 0.00fF
+C678 _10_/a_27_47# clk_Q 0.02fF
+C679 _10_/a_193_47# _13_/CLK 0.14fF
+C680 _08_/a_247_21# _07_/Y 0.11fF
+C681 clkbuf_0_clk_Q/a_110_47# _12_/Q 0.03fF
+C682 _12_/a_27_47# _11_/D 0.00fF
+C683 clkbuf_0_clk_I/a_110_47# input3/a_75_212# 0.01fF
+C684 clkbuf_0_clk_I/X din[2] 0.03fF
+C685 _10_/D _10_/a_634_159# 0.09fF
+C686 _08_/a_668_97# _08_/a_1290_413# 0.00fF
+C687 _08_/X rst 0.22fF
+C688 _14_/a_27_47# _14_/a_466_413# 0.63fF
+C689 VPWR clk_Q 1.49fF
+C690 _09_/a_561_413# VPWR 0.02fF
+C691 _08_/a_27_413# _12_/Q 0.07fF
+C692 clkbuf_0_clk_Q/X clkbuf_0_clk_I/X 0.24fF
+C693 _12_/D _12_/a_634_159# 0.09fF
+C694 _10_/Q _09_/Q 0.40fF
+C695 clk_IB _13_/a_1059_315# 0.03fF
+C696 _08_/a_668_97# _08_/a_277_47# 0.03fF
+C697 clkbuf_0_clk_Q/X _10_/a_634_159# 0.01fF
+C698 _05_/Y _08_/a_1290_413# 0.03fF
+C699 _04_/Y _08_/a_1290_413# 0.06fF
+C700 _11_/a_27_47# din[0] 0.01fF
+C701 _10_/Q _08_/a_247_21# 0.00fF
+C702 clkbuf_0_clk_Q/X _09_/a_466_413# 0.14fF
+C703 clkbuf_0_clk_Q/a_110_47# _10_/a_193_47# 0.01fF
+C704 _10_/a_27_47# _10_/a_381_47# 0.21fF
+C705 _11_/CLK _13_/D 0.23fF
+C706 clkbuf_0_clk_I/X _09_/D 0.45fF
+C707 clkbuf_1_1_0_clk_Q/a_75_212# _08_/a_1290_413# 0.01fF
+C708 _05_/Y _08_/a_277_47# 0.12fF
+C709 _04_/Y _08_/a_277_47# 0.31fF
+C710 clk_IB _14_/a_466_413# 0.11fF
+C711 _11_/a_634_159# _11_/a_1059_315# 0.04fF
+C712 _11_/a_193_47# _11_/D 0.77fF
+C713 _10_/D _10_/a_1059_315# 0.16fF
+C714 _14_/a_634_159# _14_/a_891_413# 0.11fF
+C715 _14_/a_193_47# _14_/a_634_159# 0.28fF
+C716 VPWR _10_/a_381_47# 0.19fF
+C717 _09_/Q _12_/Q 0.48fF
+C718 _10_/Q clk_I 0.26fF
+C719 _05_/Y _08_/a_1478_413# 0.03fF
+C720 _09_/a_466_413# _09_/D 0.09fF
+C721 _11_/a_891_413# _11_/a_27_47# 0.09fF
+C722 _12_/a_381_47# VPWR 0.20fF
+C723 _14_/a_381_47# _14_/a_634_159# 0.04fF
+C724 _14_/a_891_413# _14_/a_975_413# 0.05fF
+C725 _08_/a_247_21# _12_/Q 0.02fF
+C726 _08_/a_27_47# _08_/a_668_97# 0.01fF
+C727 _11_/a_891_413# _12_/a_193_47# 0.00fF
+C728 _07_/Y _08_/a_277_47# 0.25fF
+C729 clkbuf_0_clk_Q/X _10_/a_1059_315# 0.37fF
+C730 clkbuf_0_clk_Q/X _09_/a_193_47# 0.69fF
+C731 _08_/a_1478_413# clkbuf_1_1_0_clk_I/a_75_212# 0.03fF
+C732 _12_/a_193_47# _13_/a_381_47# 0.00fF
+C733 _11_/a_27_47# _12_/a_193_47# 0.06fF
+C734 _11_/a_381_47# VPWR 0.27fF
+C735 _10_/a_193_47# _11_/CLK 0.08fF
+C736 _11_/a_466_413# _11_/a_891_413# 0.03fF
+C737 _14_/a_891_413# _14_/Q 0.04fF
+C738 _11_/a_466_413# _11_/a_27_47# 0.63fF
+C739 _14_/a_193_47# _14_/Q 0.01fF
+C740 _12_/a_27_47# _11_/a_891_413# 0.00fF
+C741 VPWR _14_/a_561_413# 0.02fF
+C742 input1/a_75_212# clk_Q 0.01fF
+C743 _12_/a_27_47# _11_/a_27_47# 0.09fF
+C744 _11_/a_466_413# _12_/a_193_47# 0.01fF
+C745 _12_/a_27_47# _13_/a_381_47# 0.01fF
+C746 _09_/a_193_47# _09_/D 0.85fF
+C747 clkbuf_0_clk_Q/X _11_/a_891_413# 0.03fF
+C748 clkbuf_0_clk_Q/X _08_/S0 0.36fF
+C749 _10_/Q _08_/a_277_47# 0.01fF
+C750 _12_/D _12_/a_466_413# 0.11fF
+C751 _09_/a_27_47# _11_/CLK 0.41fF
+C752 _12_/a_27_47# _12_/a_193_47# 2.23fF
+C753 rst _08_/a_1478_413# 0.02fF
+C754 _08_/a_27_47# _07_/Y 0.14fF
+C755 VPWR _12_/a_561_413# 0.03fF
+C756 _13_/a_634_159# _13_/D 0.04fF
+C757 _10_/a_975_413# _10_/a_891_413# 0.05fF
+C758 _10_/D din[2] 0.02fF
+C759 _08_/S1 input5/a_27_47# 0.02fF
+C760 _13_/a_193_47# _13_/a_634_159# 0.28fF
+C761 _12_/a_27_47# _11_/a_466_413# 0.00fF
+C762 _10_/a_193_47# clk_I 0.25fF
+C763 _10_/D clkbuf_0_clk_Q/X 0.04fF
+C764 VPWR _08_/S1 1.49fF
+C765 VPWR _14_/a_891_413# 0.30fF
+C766 _06_/Y VPWR 0.84fF
+C767 _14_/a_193_47# VPWR 0.46fF
+C768 _12_/Q _08_/a_277_47# 0.18fF
+C769 _11_/a_193_47# _11_/a_891_413# 0.44fF
+C770 _08_/a_757_363# _08_/a_668_97# 0.02fF
+C771 _13_/a_466_413# _13_/a_634_159# 0.59fF
+C772 _14_/a_381_47# VPWR 0.15fF
+C773 _11_/a_193_47# _11_/a_27_47# 2.23fF
+C774 _09_/a_27_47# clk_I 0.20fF
+C775 _13_/a_634_159# _12_/a_634_159# 0.02fF
+C776 _10_/D _09_/D 0.50fF
+C777 _10_/a_634_159# clk_Q 0.01fF
+C778 _11_/a_193_47# _12_/a_193_47# 0.00fF
+C779 VPWR clk_QB 0.62fF
+C780 _13_/a_193_47# _12_/a_1059_315# 0.00fF
+C781 VPWR input4/a_75_212# 0.49fF
+C782 _05_/Y _08_/a_757_363# 0.06fF
+C783 _04_/Y _08_/a_757_363# 0.07fF
+C784 clkbuf_0_clk_Q/a_110_47# clkbuf_0_clk_I/a_110_47# 0.04fF
+C785 _08_/X _08_/a_750_97# 0.04fF
+C786 _12_/Q _12_/a_1059_315# 0.28fF
+C787 _09_/a_561_413# _09_/a_466_413# 0.04fF
+C788 _09_/D din[2] 0.54fF
+C789 _10_/Q _09_/a_634_159# 0.01fF
+C790 _10_/D clkbuf_1_0_0_clk_Q/a_75_212# 0.01fF
+C791 _13_/a_193_47# _12_/a_891_413# 0.01fF
+C792 _11_/a_466_413# _11_/a_193_47# 0.38fF
+C793 clkbuf_0_clk_Q/X _08_/a_834_97# 0.02fF
+C794 clkbuf_0_clk_Q/a_110_47# _12_/D 0.01fF
+C795 _12_/Q _12_/a_891_413# 0.04fF
+C796 _08_/a_247_21# _08_/a_750_97# 0.31fF
+C797 clkbuf_0_clk_Q/X _09_/D 0.54fF
+C798 _10_/a_193_47# _10_/a_466_413# 0.38fF
+C799 _12_/a_27_47# _11_/a_193_47# 0.09fF
+C800 _08_/a_193_413# _08_/S0 0.04fF
+C801 _08_/a_27_47# _12_/Q 0.02fF
+C802 clkbuf_0_clk_I/X _10_/a_381_47# 0.08fF
+C803 _11_/a_1059_315# _12_/a_634_159# 0.00fF
+C804 _11_/CLK _13_/CLK 0.03fF
+C805 _12_/a_634_159# _12_/a_1059_315# 0.04fF
+C806 _09_/a_381_47# _09_/a_27_47# 0.21fF
+C807 clkbuf_0_clk_Q/X clkbuf_1_0_0_clk_Q/a_75_212# 0.32fF
+C808 _10_/Q _10_/a_891_413# 0.04fF
+C809 input5/X _08_/a_1290_413# 0.01fF
+C810 data VGND 1.15fF
+C811 output6/a_27_47# VGND 0.66fF
+C812 _10_/a_1017_47# VGND 0.03fF
+C813 _10_/a_592_47# VGND 0.01fF
+C814 _10_/a_975_413# VGND 0.02fF
+C815 _10_/a_381_47# VGND 0.20fF
+C816 _10_/a_891_413# VGND 0.76fF
+C817 _10_/a_1059_315# VGND 0.85fF
+C818 _10_/a_466_413# VGND 0.56fF
+C819 _10_/a_634_159# VGND 0.70fF
+C820 _10_/a_193_47# VGND 0.59fF
+C821 _10_/D VGND 0.37fF
+C822 _10_/a_27_47# VGND 0.88fF
+C823 _11_/a_1017_47# VGND 0.03fF
+C824 _12_/D VGND 1.54fF
+C825 _11_/a_592_47# VGND 0.01fF
+C826 _11_/a_975_413# VGND 0.02fF
+C827 _11_/a_381_47# VGND 0.20fF
+C828 _11_/a_891_413# VGND 0.73fF
+C829 _11_/a_1059_315# VGND 1.06fF
+C830 _11_/a_466_413# VGND 0.49fF
+C831 _11_/a_634_159# VGND 0.61fF
+C832 _11_/a_193_47# VGND 0.49fF
+C833 _11_/D VGND 0.73fF
+C834 _11_/a_27_47# VGND 0.90fF
+C835 _12_/a_1017_47# VGND 0.03fF
+C836 _12_/a_592_47# VGND 0.01fF
+C837 _12_/a_975_413# VGND 0.02fF
+C838 _12_/a_381_47# VGND 0.20fF
+C839 _12_/a_891_413# VGND 0.78fF
+C840 _12_/a_1059_315# VGND 0.94fF
+C841 _12_/a_466_413# VGND 0.57fF
+C842 _12_/a_634_159# VGND 0.70fF
+C843 _12_/a_193_47# VGND 0.63fF
+C844 _12_/a_27_47# VGND 0.96fF
+C845 clk_QB VGND 1.27fF
+C846 _13_/a_1017_47# VGND 0.01fF
+C847 _14_/D VGND 0.76fF
+C848 _13_/a_592_47# VGND 0.03fF
+C849 _13_/a_381_47# VGND 0.24fF
+C850 _13_/a_891_413# VGND 0.57fF
+C851 _13_/a_1059_315# VGND 0.97fF
+C852 _13_/a_466_413# VGND 0.69fF
+C853 _13_/a_634_159# VGND 0.88fF
+C854 _13_/a_193_47# VGND 1.08fF
+C855 _13_/a_27_47# VGND 1.12fF
+C856 _14_/a_1017_47# VGND 0.01fF
+C857 _14_/a_592_47# VGND 0.03fF
+C858 _14_/a_561_413# VGND 0.00fF
+C859 _14_/a_381_47# VGND 0.30fF
+C860 _14_/a_891_413# VGND 0.72fF
+C861 _14_/a_1059_315# VGND 1.02fF
+C862 _14_/a_466_413# VGND 0.52fF
+C863 _14_/a_634_159# VGND 0.66fF
+C864 _14_/a_193_47# VGND 0.88fF
+C865 _14_/a_27_47# VGND 1.08fF
+C866 clk_IB VGND 0.14fF
+C867 clkbuf_0_clk_Q/X VGND 3.74fF
+C868 clkbuf_1_0_0_clk_Q/a_75_212# VGND 0.66fF
+C869 clkbuf_0_clk_Q/a_110_47# VGND 4.55fF
+C870 clk_Q VGND 2.16fF
+C871 clkbuf_0_clk_I/X VGND 0.69fF
+C872 clkbuf_1_0_0_clk_I/a_75_212# VGND 0.60fF
+C873 clkbuf_0_clk_I/a_110_47# VGND 4.04fF
+C874 clk_I VGND 1.66fF
+C875 input5/X VGND 0.33fF
+C876 input5/a_27_47# VGND 0.61fF
+C877 rst VGND 0.57fF
+C878 din[2] VGND 1.08fF
+C879 input3/a_75_212# VGND 0.55fF
+C880 VPWR VGND 102.53fF
+C881 input4/a_75_212# VGND 0.60fF
+C882 clkbuf_1_1_0_clk_Q/a_75_212# VGND 0.56fF
+C883 din[1] VGND 1.04fF
+C884 input2/a_75_212# VGND 0.67fF
+C885 _13_/D VGND 1.55fF
+C886 din[0] VGND 1.34fF
+C887 input1/a_75_212# VGND 0.78fF
+C888 _14_/Q VGND 1.98fF
+C889 _06_/Y VGND 0.98fF
+C890 _07_/Y VGND 0.91fF
+C891 _09_/a_1017_47# VGND 0.01fF
+C892 _09_/Q VGND 1.47fF
+C893 _09_/a_592_47# VGND 0.01fF
+C894 _09_/a_381_47# VGND 0.32fF
+C895 _09_/a_891_413# VGND 0.59fF
+C896 _09_/a_1059_315# VGND 0.87fF
+C897 _09_/a_466_413# VGND 0.49fF
+C898 _09_/a_634_159# VGND 0.61fF
+C899 _09_/a_193_47# VGND 0.58fF
+C900 _09_/a_27_47# VGND 0.96fF
+C901 _08_/a_834_97# VGND 0.37fF
+C902 _08_/a_668_97# VGND 0.61fF
+C903 _08_/a_193_47# VGND 0.01fF
+C904 _08_/a_27_47# VGND 0.62fF
+C905 _08_/X VGND 1.76fF
+C906 _08_/a_1478_413# VGND 0.90fF
+C907 _08_/a_1290_413# VGND 0.67fF
+C908 _08_/a_750_97# VGND 0.48fF
+C909 _08_/a_757_363# VGND 0.19fF
+C910 _08_/a_923_363# VGND 0.02fF
+C911 _04_/Y VGND 0.78fF
+C912 _08_/a_277_47# VGND 1.02fF
+C913 _08_/S0 VGND 0.19fF
+C914 _08_/a_247_21# VGND 1.34fF
+C915 _08_/a_193_413# VGND 0.13fF
+C916 _08_/a_27_413# VGND 0.17fF
+C917 clkbuf_1_1_0_clk_I/a_75_212# VGND 0.54fF
+.ends
+
+
+* End of instantiation
+
+
+
+* Four-phase clock source
+VclkI clk_Q 0 DC 0 pwl( 
++ 0 'VSUP/2'
++ '(rfclk/2)' 0
++ '(tclk/2) - (rfclk/2)' 0
++ '(tclk/2) + (rfclk/2)' VSUP
++ 'tclk - (rfclk/2)' VSUP
++ 'tclk' 'VSUP/2'
++)r=0 td=0
+
+VclkIB clk_QB 0 DC 0 pwl( 
++ 0 'VSUP/2'
++ '(rfclk/2)' 0
++ '(tclk/2) - (rfclk/2)' 0
++ '(tclk/2) + (rfclk/2)' VSUP
++ 'tclk - (rfclk/2)' VSUP
++ 'tclk' 'VSUP/2'
++)r=0 td='tclk/2'
+
+VclkQ clk_I 0 DC 0 pwl( 
++ 0 'VSUP/2'
++ '(rfclk/2)' 0
++ '(tclk/2) - (rfclk/2)' 0
++ '(tclk/2) + (rfclk/2)' VSUP
++ 'tclk - (rfclk/2)' VSUP
++ 'tclk' 'VSUP/2'
++)r=0 td='tclk/4'
+
+VclkQB clk_IB 0 DC 0 pwl( 
++ 0 'VSUP/2'
++ '(rfclk/2)' 0
++ '(tclk/2) - (rfclk/2)' 0
++ '(tclk/2) + (rfclk/2)' VSUP
++ 'tclk - (rfclk/2)' VSUP
++ 'tclk' 'VSUP/2'
++)r=0 td='3 * tclk/4'
+
+
+
+Xmux clk_I clk_IB clk_Q clk_QB dout din0 din1 din2 din3 0 VDD 0 qr_4t1_mux_top
+
+
+
+.tran 10ps 'simtime'
+.op
+
+
+
+.control
+save
+run
+write
+
+
+*linearize
+*let eye = v(dout)
+*let eye = v(din0)
+*let eye1 = v(din1)
+*let eye2 = v(din2)
+*let eye3 = v(din3)
+*reshape eye [125][40]
+*plot eye xlimit 0 0.2ns
+*reshape eye1 [125][40]
+*reshape eye2 [125][40]
+*reshape eye3 [125][40]
+plot v(Xmux._04_/Y)
+*plot eye1 xlimit 0 1.6ns
+*plot eye2 xlimit 0 1.6ns
+*plot eye3 xlimit 0 1.6ns
+plot v(din0) v(din1) v(din2) v(din3) 
+plot v(clk_I) v(clk_IB) v(clk_Q) v(clk_QB)
+plot v(dout)
+.endc

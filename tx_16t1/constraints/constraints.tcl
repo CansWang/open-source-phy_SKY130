@@ -7,7 +7,9 @@ set_driving_cell -no_design_rule \
 
 set_max_fanout 20 $dc_design_name
 
-set T 0.5
+set T 0.6
+
+set time_scale 1.0
 
 set T0 [expr {0.00*$T}]
 set T1 [expr {0.25*$T}]
@@ -41,5 +43,16 @@ create_clock -name clk_tx_pi_3 \
     -waveform "$T3 $T5" \
     [get_ports clk_IB]
 
+set_max_transition [expr {0.025*$time_scale}] [get_ports clk_Q]
+set_max_transition [expr {0.025*$time_scale}] [get_ports clk_I]
+set_max_transition [expr {0.025*$time_scale}] [get_ports clk_QB]
+set_max_transition [expr {0.025*$time_scale}] [get_ports clk_IB]
 # Internal nets
 
+set_dont_touch [get_cells {dff_Q0}]
+set_dont_touch [get_cells {dff_I0}]
+set_dont_touch [get_cells {dff_QB0}]
+set_dont_touch [get_cells {dff_QB1}]
+set_dont_touch [get_cells {dff_IB0}]
+set_dont_touch [get_cells {dff_IB1}]
+set_dont_touch [get_cells {mux_4/mux}]
