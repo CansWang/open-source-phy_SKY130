@@ -25,7 +25,7 @@ create_rc_corner -name typical -cap_table inputs/adk/rtk-typical.captable -T 25
 # <FF> CREATING LIBRARY SETS ...
 #
 # <BEGIN TAG> init,create_library_set
-create_library_set -name libs_typical -timing [list inputs/adk/stdcells.lib inputs/adk/stdcells-hs.lib]
+create_library_set -name libs_typical -timing [list inputs/adk/stdcells.lib]
 
 # <END TAG> init,create_library_set
 #
