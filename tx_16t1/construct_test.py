@@ -37,7 +37,7 @@ def construct():
   adk = g.get_adk_step()
 
   # Custom steps
-  
+
   rtl = Step( this_dir + '/rtl' )
   custom_init = Step(this_dir + '/custom-init')
   custom_power = Step( this_dir + '/custom-power')
@@ -55,12 +55,13 @@ def construct():
 
   init = Step(this_dir + '/cadence-innovus-init')
   cts  = Step(this_dir + '/cadence-innovus-cts')
-  place = Step(this_dir + '/cadence-innovus-place') 
+  place = Step(this_dir + '/cadence-innovus-place')
   gdsmerge = Step(this_dir + '/mentor-calibre-gdsmerge')
   magic_def2spice = Step(this_dir + '/open-magic-def2spice')
   magic_drc = Step(this_dir + '/open-magic-drc')
   lvs = Step(this_dir + '/open-netgen-lvs')
   pex = Step(this_dir + '/open-magic-ext2spice')
+  dt = Step(this_dir + '/inject_dont_touch')
 
 # Default steps
 
@@ -88,7 +89,7 @@ def construct():
   power.extend_inputs(custom_geom.all_outputs())
   place.extend_inputs(custom_place.all_outputs())
 
-   
+
   lib_lef_steps = \
       [iflow, init, power, place, cts, postcts_hold, route, postroute, signoff]
 #  for step in lib_lef_steps:
@@ -107,6 +108,7 @@ def construct():
   g.add_step( rtl            )
   g.add_step( constraints    )
   g.add_step( dc             )
+  g.add_step( dt             )
   g.add_step( iflow          )
   g.add_step( init           )
   g.add_step( power          )
@@ -177,7 +179,7 @@ def construct():
 #    g.connect_by_name(block, signoff)
 #    g.connect_by_name(block, gdsmerge)
 #    g.connect_by_name(block, lvs)
-  
+
 
   g.connect_by_name( custom_place,   place          )
   g.connect_by_name( custom_init,    init           )
@@ -190,11 +192,17 @@ def construct():
   g.connect_by_name( rtl,            dc             )
   g.connect_by_name( constraints,    dc             )
 
+  g.connect_by_name( dc,             dt             )
   g.connect_by_name( dc,             iflow          )
   g.connect_by_name( dc,             init           )
   g.connect_by_name( dc,             power          )
   g.connect_by_name( dc,             place          )
   g.connect_by_name( dc,             cts            )
+  g.connect_by_name( dt,             iflow          )
+  g.connect_by_name( dt,             init           )
+  g.connect_by_name( dt,             power          )
+  g.connect_by_name( dt,             place          )
+  g.connect_by_name( dt,             cts            )
 
   g.connect_by_name( iflow,          init           )
   g.connect_by_name( iflow,          power          )
@@ -239,7 +247,7 @@ def construct():
   # Order definition
   #-----------------------------------------------------------------------
 
-  
+
   order = init.get_param('order')  # get the default script run order
 
   # Add 'set-geom-vars.tcl' at the beginning
@@ -272,4 +280,3 @@ def construct():
 if __name__ == '__main__':
   g = construct()
 #  g.plot()
-

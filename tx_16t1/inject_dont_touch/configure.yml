@@ -1,0 +1,11 @@
+name: inject_dont_touch
+
+commands:
+  - |
+    mkdir -p outputs
+    cat inputs/design.sdc dont_touch.tcl > outputs/design.sdc
+inputs:
+  - design.sdc
+
+outputs:
+  - design.sdc
