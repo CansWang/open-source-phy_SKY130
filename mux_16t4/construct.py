@@ -14,7 +14,7 @@ def construct():
   #-----------------------------------------------------------------------
 
   adk_name = 'skywater-130nm-adk'
-  adk_view = 'view-standard'
+  adk_view = 'view-hs'
 
   parameters = {
     'construct_path' : __file__,
@@ -56,10 +56,11 @@ def construct():
   init = Step(this_dir + '/cadence-innovus-init')
   cts  = Step(this_dir + '/cadence-innovus-cts')
   place = Step(this_dir + '/cadence-innovus-place')
-  prelvs = Step(this_dir + '/prelvs_fix')
-  lvs  = Step(this_dir + '/mentor-calibre-lvs')
   gdsmerge = Step(this_dir + '/mentor-calibre-gdsmerge')
-
+  magic_def2spice = Step(this_dir + '/open-magic-def2spice')
+  magic_drc = Step(this_dir + '/open-magic-drc')
+  lvs = Step(this_dir + '/open-netgen-lvs')
+  pex = Step(this_dir + '/open-magic-ext2spice')
 
 # Default steps
 
@@ -76,9 +77,9 @@ def construct():
   signoff        = Step( 'cadence-innovus-signoff',        default=True )
   genlibdb       = Step( 'synopsys-ptpx-genlibdb',         default=True )
 #  gdsmerge       = Step( 'mentor-calibre-gdsmerge',        default=True )
-  drc            = Step( 'mentor-calibre-drc',             default=True )
+  # drc            = Step( 'mentor-calibre-drc',             default=True )
 #  lvs            = Step( 'mentor-calibre-lvs',             default=True )
-  debugcalibre   = Step( 'cadence-innovus-debug-calibre',  default=True )
+  # debugcalibre   = Step( 'cadence-innovus-debug-calibre',  default=True )
 
   # Add extra inputs to innovus init and power steps
   init.extend_inputs(custom_init.all_outputs())
@@ -118,14 +119,16 @@ def construct():
   g.add_step( signoff        )
   g.add_step( genlibdb       )
   g.add_step( gdsmerge       )
-  g.add_step( drc            )
+  # g.add_step( drc            )
   g.add_step( lvs            )
-  g.add_step( debugcalibre   )
+  # g.add_step( debugcalibre   )
   g.add_step( custom_geom    )
   g.add_step( custom_init    )
   g.add_step( custom_power   )
   g.add_step( custom_place   )
-  g.add_step( prelvs         )
+  g.add_step( magic_def2spice)
+  g.add_step( magic_drc      )
+  g.add_step( pex            )
 
   for block in blocks:
     g.add_step ( block )
@@ -151,8 +154,18 @@ def construct():
   g.connect_by_name( adk,            postroute_hold )
   g.connect_by_name( adk,            signoff        )
   g.connect_by_name( adk,            gdsmerge       )
-  g.connect_by_name( adk,            drc            )
+  g.connect_by_name( adk,            magic_drc      )
   g.connect_by_name( adk,            lvs            )
+  g.connect_by_name( adk, 	         magic_def2spice)
+  g.connect_by_name( adk, 	         pex            )
+  g.connect_by_name( gdsmerge,       magic_drc      )
+  g.connect_by_name( signoff,        magic_def2spice)
+  g.connect_by_name( signoff,        lvs            )
+  g.connect_by_name( magic_def2spice,lvs            )
+  g.connect_by_name( signoff,        pex            )
+  g.connect_by_name( magic_def2spice,pex            )
+  g.connect_by_name( lvs,            pex            )
+
 #  g.connect_by_name( adk, 	     qtm            )
 
 #  for block in blocks + [qtm]:
@@ -211,21 +224,21 @@ def construct():
 
   g.connect_by_name( signoff,        gdsmerge       )
 
-  g.connect_by_name( signoff,        prelvs         )
-  g.connect_by_name( prelvs,         lvs            )
-
-
-  g.connect_by_name( signoff,        drc            )
-  g.connect_by_name( gdsmerge,       drc            )
+  # g.connect_by_name( signoff,        prelvs         )
+  # g.connect_by_name( prelvs,         lvs            )
+  #
+  #
+  # g.connect_by_name( signoff,        drc            )
+  # g.connect_by_name( gdsmerge,       drc            )
   g.connect_by_name( signoff,        lvs            )
   g.connect_by_name( gdsmerge,       lvs            )
 
-  g.connect_by_name( adk,            debugcalibre   )
-  g.connect_by_name( dc,             debugcalibre   )
-  g.connect_by_name( iflow,          debugcalibre   )
-  g.connect_by_name( signoff,        debugcalibre   )
-  g.connect_by_name( drc,            debugcalibre   )
-  g.connect_by_name( lvs,            debugcalibre   )
+  # g.connect_by_name( adk,            debugcalibre   )
+  # g.connect_by_name( dc,             debugcalibre   )
+  # g.connect_by_name( iflow,          debugcalibre   )
+  # g.connect_by_name( signoff,        debugcalibre   )
+  # g.connect_by_name( drc,            debugcalibre   )
+  # g.connect_by_name( lvs,            debugcalibre   )
 
   #-----------------------------------------------------------------------
   # Parameterize
