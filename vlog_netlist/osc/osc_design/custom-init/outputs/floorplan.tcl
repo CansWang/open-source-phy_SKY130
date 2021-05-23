@@ -81,13 +81,13 @@
     #             $core_margin_l $core_margin_b $core_margin_r $core_margin_t
 
 
-    set FP_width [snap_to_grid [expr 20 + 0] $horiz_pitch ]
-    set FP_height [snap_to_grid 20 $vert_pitch ]
+    set FP_width [snap_to_grid [expr 80 + 0] $horiz_pitch ]
+    set FP_height [snap_to_grid 80 $vert_pitch ]
 
 
     #floorPlan -site unithd -s $FP_width $FP_height \
                             $core_margin_l $core_margin_b $core_margin_r $core_margin_t
-    floorPlan -site unithd -s $FP_width $FP_height 0 0 0 0
+    floorPlan -site unit -s $FP_width $FP_height 0 0 0 0
 
     setFlipping s
 
@@ -240,23 +240,3 @@
         [expr $origin_txindiv_y -$blockage_height] \
         [expr $origin_txindiv_x + $indiv_width + $blockage_width] \
         [expr $origin_txindiv_y + $indiv_height + $blockage_height]
-
-	#PI Blockages
-   for {set k 0} {$k<4} {incr k} {
-    	createPlaceBlockage -box \
-        	[expr $origin_txpi_x - $blockage_width]   \
-        	[expr $origin_txpi_y - $blockage_height + ($pi_neighbor_spacing)*($k-1)]\
-        	[expr $origin_txpi_x + $pi_width + $blockage_width]  \
-        	[expr $origin_txpi_y + ($pi_height)*(1) + ($pi_neighbor_spacing)*($k-1) + $blockage_height]
-    }
-
-
-   #createPlaceBlockage -box \
-        [expr $origin_out_x - $blockage_width] \
-        [expr $origin_out_y - $blockage_height] \
-        [expr $origin_out_x + $output_buffer_width  + $blockage_width] \
-        [expr $origin_out_y + $output_buffer_height + $blockage_height]
-
-    #createInstGroup test -region
-    #addInstToInstGroup test {qr_mux_4t1_0 qr_mux_4t1_1}
-    #createRegion test 35 107 72 145
