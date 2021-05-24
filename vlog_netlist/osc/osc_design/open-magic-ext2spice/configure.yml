@@ -1,0 +1,44 @@
+#=========================================================================
+# PEX Extraction spice from GDS using magic
+#=========================================================================
+# Author : Can WANG
+# Date   : May 16, 2021
+#
+
+name: open-magic-ext2spice
+
+#-------------------------------------------------------------------------
+# Inputs and Outputs
+#-------------------------------------------------------------------------
+inputs:
+  - adk
+  - design.def.gz
+  - lvs_results.log
+
+outputs:
+  - design_pex.spice
+
+#-------------------------------------------------------------------------
+# Parameters
+#-------------------------------------------------------------------------
+
+parameters:
+  design_name: undefined
+
+commands:
+  - cp inputs/adk/magicrc .magicrc
+  - cp inputs/adk/rtk-tech.lef rtk-tech-nolicon.lef
+  - cp inputs/adk/rtk-tech.lef rtk-tech.lef
+  - cp inputs/adk/stdcells.lef stdcells.lef
+  - sed -i '/LAYER licon/,/END licon/d' rtk-tech-nolicon.lef
+  - cp -L inputs/design.def.gz design.def.gz 
+  - gunzip design.def.gz 
+  - magic -noconsole -dnull pex.tcl | tee ext2spice.log
+
+preconditions:
+  - assert 'Circuits match uniquely' in File( 'inputs/lvs_results.log' )
+  - assert File( 'inputs/adk' )
+  - assert File( 'inputs/design.def.gz' )
+
+postcondition:
+  - assert File( 'outputs/pex_design.spice' )

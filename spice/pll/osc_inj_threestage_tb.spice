@@ -36,8 +36,8 @@ VFC1_1 con_fc1_1 0 DC 1.8V
 VFC2_1 con_fc2_1 0 DC 0V
 VFC3_1 con_fc3_1 0 DC 1.8V
 VFC4_1 con_fc4_1 0 DC 1.8V
-VFC5_1 con_fc5_1 0 DC 1.8V
-VFC6_1 con_fc6_1 0 DC 1.8V
+VFC5_1 con_fc5_1 0 DC 0V
+VFC6_1 con_fc6_1 0 DC 0V
 VFC7_1 con_fc7_1 0 DC 0V
 
 Vcen1_1 cen1_1 0 DC 1.8V
@@ -55,38 +55,38 @@ Xcon_1 con_fc1_1 ref_buf cen1_1 con1_1 VDD GND con_mod
 
 * Stage 2 
 VFC1_2 con_fc1_2 0 DC 0V
-VFC2_2 con_fc2_2 0 DC 1.8V
+VFC2_2 con_fc2_2 0 DC 0V
 VFC3_2 con_fc3_2 0 DC 1.8V
 VFC4_2 con_fc4_2 0 DC 1.8V
-VFC5_2 con_fc5_2 0 DC 1.8V
-VFC6_2 con_fc6_2 0 DC 1.8V
+VFC5_2 con_fc5_2 0 DC 0V
+VFC6_2 con_fc6_2 0 DC 0V
 VFC7_2 con_fc7_2 0 DC 0V
 
 * Stage 3
 VFC1_3 con_fc1_3 0 DC 0V
-VFC2_3 con_fc2_3 0 DC 1.8V
+VFC2_3 con_fc2_3 0 DC 0V
 VFC3_3 con_fc3_3 0 DC 1.8V
 VFC4_3 con_fc4_3 0 DC 1.8V
-VFC5_3 con_fc5_3 0 DC 1.8V
-VFC6_3 con_fc6_3 0 DC 1.8V
+VFC5_3 con_fc5_3 0 DC 0V
+VFC6_3 con_fc6_3 0 DC 0V
 VFC7_3 con_fc7_3 0 DC 0V
 
 * Stage 4
 VFC1_4 con_fc1_4 0 DC 0V
-VFC2_4 con_fc2_4 0 DC 1.8V
+VFC2_4 con_fc2_4 0 DC 0V
 VFC3_4 con_fc3_4 0 DC 1.8V
 VFC4_4 con_fc4_4 0 DC 1.8V
-VFC5_4 con_fc5_4 0 DC 1.8V
-VFC6_4 con_fc6_4 0 DC 1.8V
+VFC5_4 con_fc5_4 0 DC 0V
+VFC6_4 con_fc6_4 0 DC 0V
 VFC7_4 con_fc7_4 0 DC 0V
 
 * Stage 5
 VFC1_5 con_fc1_5 0 DC 0V
-VFC2_5 con_fc2_5 0 DC 1.8V
+VFC2_5 con_fc2_5 0 DC 0V
 VFC3_5 con_fc3_5 0 DC 1.8V
 VFC4_5 con_fc4_5 0 DC 1.8V
-VFC5_5 con_fc5_5 0 DC 1.8V
-VFC6_5 con_fc6_5 0 DC 1.8V
+VFC5_5 con_fc5_5 0 DC 0V
+VFC6_5 con_fc6_5 0 DC 0V
 VFC7_5 con_fc7_5 0 DC 0V
 
 * Ref select for control bits
