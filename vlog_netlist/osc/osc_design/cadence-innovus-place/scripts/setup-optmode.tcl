@@ -25,9 +25,9 @@
 
     # Create a group and specify its placement region
     createInstGroup DEL_STAGE_5 \
-        -fence 0 16 4 25
+        -fence 30 60 34 80
     
-    
+
     # Add instances into the group
     addInstToInstGroup DEL_STAGE_5 \
         {del5}
@@ -35,7 +35,7 @@
 
     # Create a group and specify its placement region
     createInstGroup DEL_STAGE_1 \
-        -fence 4 16 8 25
+        -fence 34 60 38 80
     
     
     # Add instances into the group
@@ -45,7 +45,7 @@
 
     # Create a group and specify its placement region
     createInstGroup DEL_STAGE_4 \
-        -fence 8 16 12 25
+        -fence 38 60 42 80
     
     
     # Add instances into the group
@@ -55,7 +55,7 @@
 
     # Create a group and specify its placement region
     createInstGroup DEL_STAGE_2 \
-        -fence 12 16 16 25
+        -fence 42 60 46 80
     
     
     # Add instances into the group
@@ -65,12 +65,14 @@
 
     # Create a group and specify its placement region
     createInstGroup DEL_STAGE_3 \
-        -fence 16 16 20 25
+        -fence 46 60 50 80
     
     
     # Add instances into the group
     addInstToInstGroup DEL_STAGE_3 \
         {del3}
+
+
 
 
 #########################################
