@@ -15,6 +15,7 @@ e = os.environ
 file_list = []
 file_list += ['/tmp/canw/open-source-phy_SKY130/vlog_netlist/osc/osc_core.sv']
 file_list += ['/tmp/canw/open-source-phy_SKY130/vlog_netlist/osc/delay_cell_osc.sv']
+file_list += ['/tmp/canw/open-source-phy_SKY130/vlog_netlist/osc/digital_varactor_bank.sv']
 
 print('loaded verilog source file list:', file_list)
 

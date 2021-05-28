@@ -86,3 +86,4 @@ comp.out
 sim.report
 *.ext
 venv/
+!layout_gds_submission/*

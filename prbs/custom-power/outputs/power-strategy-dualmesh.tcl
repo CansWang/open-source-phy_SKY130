@@ -54,8 +54,8 @@
 
 
 
-    set FP_width [snap_to_grid [expr 80  + 0] $horiz_pitch ]
-    set FP_height [snap_to_grid 80 $vert_pitch ]
+    set FP_width [snap_to_grid [expr 70  + 0] $horiz_pitch ]
+    set FP_height [snap_to_grid 70 $vert_pitch ]
 
     set sram_to_acore_spacing_x [snap_to_grid 40 $horiz_pitch]
     set sram_to_acore_spacing_y [snap_to_grid 40 $vert_pitch]

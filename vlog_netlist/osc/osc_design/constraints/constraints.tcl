@@ -62,3 +62,31 @@ set_dont_touch [get_cells {del2}]
 set_dont_touch [get_cells {del3}]
 set_dont_touch [get_cells {del4}]
 set_dont_touch [get_cells {del5}]
+
+# Five stages of capbank
+for {set i 1} {$i < 6} {incr i} {
+    set_dont_touch [get_cells "capbank$i/fc1"]
+    set_dont_touch [get_cells "capbank$i/fc2"]
+    set_dont_touch [get_cells "capbank$i/fc3_0"]
+    set_dont_touch [get_cells "capbank$i/fc3_1"]
+
+    for {set l 0} {$l < 4} {incr l} {
+        set_dont_touch [get_cells "capbank$i/fc44_$l"]
+    }
+
+    for {set j 4} {$j < 9} {incr j} {
+        for {set k 0} {$k < 4} {incr k} {
+            set_dont_touch [get_cells "capbank$i/fc$j\_$k"]
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+

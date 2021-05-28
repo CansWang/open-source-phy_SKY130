@@ -14,7 +14,7 @@
     set vert_pitch  [dbGet top.fPlan.coreSite.size_y]
     set horiz_pitch [dbGet top.fPlan.coreSite.size_x]
 
-	set sram_FP_adjust [snap_to_grid 350 $horiz_pitch]
+	  set sram_FP_adjust [snap_to_grid 350 $horiz_pitch]
     set bottom_y [snap_to_grid 100 $vert_pitch]
 
     set output_buffer_width 13.05;# [dbGet [dbGet -p top.insts.name *out_buff_i*].cell.size_x]
@@ -67,7 +67,7 @@
     set sram_pair_spacing [expr 2*$sram_width + $sram_to_sram_spacing]
     set sram_vert_spacing [snap_to_grid 200 $vert_pitch]
 
-	set pi_to_pi_spacing    [snap_to_grid 25 $horiz_pitch]
+	  set pi_to_pi_spacing    [snap_to_grid 25 $horiz_pitch]
     set pi_neighbor_spacing [expr $pi_width + $pi_to_pi_spacing]
 
 
@@ -119,8 +119,61 @@
     set origin_term_p_y [snap_to_grid 161 $vert_pitch]
 
 
+
+
 #    add_ndr -name tx_out_buf -spacing {M1:M7 0.12} -width {M1:M3 0.12 M4:M7 0.4}
 #    setAttribute -net {buf1/BTN buf1/BTP dout_p dout_n} -non_default_rule tx_out_buf
+
+
+
+puts [snap_to_grid 30 $horiz_pitch]
+
+    for {set j 0} {$j < 5} {incr j} {
+    
+    placeInstance \
+      del5/genblk1_$j\__inand \
+      [snap_to_grid 15 $horiz_pitch] \
+      [expr (19 + $j) * $vert_pitch] \
+      MX
+    }
+
+    for {set j 0} {$j < 5} {incr j} {
+    
+    placeInstance \
+      del1/genblk1_$j\__inand \
+      [snap_to_grid 27 $horiz_pitch] \
+      [expr (19 + $j) * $vert_pitch] \
+      MX
+    }
+
+    for {set j 0} {$j < 5} {incr j} {
+
+    placeInstance \
+      del4/genblk1_$j\__inand \
+      [snap_to_grid 40 $horiz_pitch] \
+      [expr (19 + $j) * $vert_pitch] \
+      MX
+    }
+
+    for {set j 0} {$j < 5} {incr j} {
+
+    placeInstance \
+      del2/genblk1_$j\__inand \
+      [snap_to_grid 53 $horiz_pitch] \
+      [expr (19 + $j) * $vert_pitch] \
+      MX
+    }
+
+
+    for {set j 0} {$j < 5} {incr j} {
+    
+    placeInstance \
+      del3/genblk1_$j\__inand \
+      [snap_to_grid 64 $horiz_pitch] \
+      [expr (19 + $j) * $vert_pitch] \
+      MX
+    }
+
 
 
 #	placeInstance \
@@ -559,7 +612,7 @@ deleteRouteBlk -name {*out_M7_blk *pre_routed}
 
 
 addStripe -nets {DVDD DVSS} \
-  -layer M4 -direction vertical -width 1 -spacing 2 -start_offset 2 -set_to_set_distance 6 -start_from left -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit M4 -padcore_ring_bottom_layer_limit M4 -block_ring_top_layer_limit M4 -block_ring_bottom_layer_limit M4 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
+  -layer M4 -direction vertical -width 1 -spacing 6 -start_offset 2 -set_to_set_distance 14 -start_from left -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit M4 -padcore_ring_bottom_layer_limit M4 -block_ring_top_layer_limit M4 -block_ring_bottom_layer_limit M4 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
 #  -layer M4 -direction vertical -width 1 -spacing 2 -start_offset [expr $boundary_width] -set_to_set_distance 2 -start_from left -switch_layer_over_obs false -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit M5 -padcore_ring_bottom_layer_limit M5 -block_ring_top_layer_limit M5 -block_ring_bottom_layer_limit M5 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
 
 
