@@ -87,7 +87,7 @@
 
     #floorPlan -site unithd -s $FP_width $FP_height \
                             $core_margin_l $core_margin_b $core_margin_r $core_margin_t
-    floorPlan -site unithd -s $FP_width $FP_height 0 0 0 0
+    floorPlan -site unit -s $FP_width $FP_height 0 0 0 0
 
     setFlipping s
 

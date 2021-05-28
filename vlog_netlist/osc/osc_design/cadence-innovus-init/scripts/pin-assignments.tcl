@@ -39,8 +39,8 @@ if { $clock_ports != 0 } {
 
 set ports_layer M4
 
-#editPin -layer $ports_layer -pin $pins_left_half  -side LEFT  -spreadType SIDE
-#editPin -layer $ports_layer -pin $pins_right_half -side RIGHT -spreadType SIDE
+editPin -layer $ports_layer -pin $pins_left_half  -side LEFT  -spreadType SIDE
+editPin -layer $ports_layer -pin $pins_right_half -side RIGHT -spreadType SIDE
 
 set pins_top {{osc_000} {osc_036} {osc_072} {osc_108} {osc_144}}
 

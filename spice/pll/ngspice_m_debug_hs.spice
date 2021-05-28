@@ -1,0 +1,149 @@
+.lib "~/proj/skywater-pdk/libraries/sky130_fd_pr/latest/models/sky130.lib.spice" tt
+.include /home/semisamw/proj/open-source-phy_SKY130/spice/pll/osc_std_hs.spice
+.param freq_ref=1.25e9
+
+* Supply
+VSUP VDD 0 DC 1.8V
+* Ref
+Vref ref 0 PULSE(0 1.8 '0.4/freq_ref' '0.1/freq_ref' '0.1/freq_ref' '0.4/freq_ref' '1/freq_ref' 0)
+
+Xref ref VDD 0 0 VDD VDD vref sky130_fd_sc_hs__nand2_8
+Xref1 ref VDD 0 0 VDD VDD vref sky130_fd_sc_hs__nand2_8
+Xref2 ref VDD 0 0 VDD VDD vref sky130_fd_sc_hs__nand2_8
+
+
+
+* Multiplier debug
+
+.subckt m1 cin en VGND VDD
+X0 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8 m=1
+.ends
+
+.subckt m4 cin en VGND VDD
+X0 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8 m=4
+.ends
+
+.subckt m8 cin en VGND VDD
+X0 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8 m=8
+.ends
+
+* Manual parallel instantiation
+
+.subckt m1_m cin en VGND VDD
+X0 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+.ends
+
+.subckt m4_m cin en VGND VDD
+X0 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+X1 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+X2 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+X3 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+.ends
+
+.subckt m8_m cin en VGND VDD
+X0 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+X1 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+X2 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+X3 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+X4 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+X5 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+X6 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+X7 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+.ends
+
+.subckt m16_m cin en VGND VDD
+X0 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+X1 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+X2 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+X3 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+X4 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+X5 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+X6 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+X7 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+X8 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+X9 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+X10 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+X11 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+X12 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+X13 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+X14 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+X15 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8
+.ends
+
+
+
+
+* clock reference buffer
+
+X1 vref VDD 0 0 VDD VDD 1 sky130_fd_sc_hs__nand2_8
+* X11 vref VDD 0 0 VDD VDD 1 sky130_fd_sc_hs__nand2_8
+X1_1 1 VDD 0 VDD m1_m
+
+X4 vref VDD 0 0 VDD VDD 4 sky130_fd_sc_hs__nand2_8
+
+X1_4 4 VDD 0 VDD m4_m
+
+X81 vref VDD 0 0 VDD VDD 8 sky130_fd_sc_hs__nand2_8
+* X82 vref VDD 0 0 VDD VDD 8 sky130_fd_sc_hs__nand2_8
+* X83 vref VDD 0 0 VDD VDD 8 sky130_fd_sc_hs__nand2_8
+* X84 vref VDD 0 0 VDD VDD 8 sky130_fd_sc_hs__nand2_8
+X1_8 8 VDD 0 VDD m8_m
+
+
+
+
+
+* * * * * * * * * * * * * * *
+* LSB resolution sim
+
+* Xlsbon vref VDD 0 0 VDD VDD lsbon sky130_fd_sc_hs__nand2_8
+
+* Xlsboff vref VDD 0 0 VDD VDD lsboff sky130_fd_sc_hs__nand2_8
+
+* * Xcapon lsbon VDD 0 0 VDD VDD lsbon_float sky130_fd_sc_hs__nand2_1
+
+* * Xcapoff lsboff 0 0 0 VDD VDD lsboff_float sky130_fd_sc_hs__nand2_1
+
+* Xcapon lsbon VDD 0 VDD m4_m
+
+* Xcapoff lsboff 0 0 VDD m4_m
+
+
+
+* Simulation Control
+.tran 10e-12 100e-09 3e-09 uic
+
+* Measurement
+.measure TRAN FO1_delay
++       TRIG v(vref)  VAL=0.9 RISE=10
++       TARG v(1)  VAL=0.9 FALL=10
+
+.measure TRAN FO4_delay
++       TRIG v(vref)  VAL=0.9 RISE=10
++       TARG v(4)  VAL=0.9 FALL=10
+
+.measure TRAN FO8_delay
++       TRIG v(vref)  VAL=0.9 RISE=10
++       TARG v(8)  VAL=0.9 FALL=10
+
+* .measure TRAN FO1/8_delay_on
+* +       TRIG v(vref)  VAL=0.9 RISE=10
+* +       TARG v(lsbon)  VAL=0.9 FALL=10
+
+* .measure TRAN FO1/8_delay_off
+* +       TRIG v(vref)  VAL=0.9 RISE=10
+* +       TARG v(lsboff)  VAL=0.9 FALL=10
+
+
+* ngspice control commands
+.control
+save
+run 
+write
+.endc
+
+* end of the testbench
+.end
+
+
+
