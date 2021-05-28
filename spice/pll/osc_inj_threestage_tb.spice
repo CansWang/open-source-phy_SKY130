@@ -1,6 +1,7 @@
 .lib "~/proj/skywater-pdk/libraries/sky130_fd_pr/latest/models/sky130.lib.spice" tt
 .include /home/semisamw/proj/open-source-phy_SKY130/spice/pll/osc_inj.spice
 .include /home/semisamw/proj/open-source-phy_SKY130/spice/pll/osc_std.spice
+.include /home/semisamw/proj/open-source-phy_SKY130/spice/pll/osc_std_hs.spice
 .param freq_ref=1.25e8
 
 
@@ -122,6 +123,7 @@ X5 nv5p VDD 0 0 VDD VDD nv1p sky130_fd_sc_hd__nand2_8
 * x1p node
 
 X1Ap nv1p con1_1 0 VDD fc1
+
 X1Bp nv1p con_fc2_1 0 VDD fc2
 X1Cp nv1p con_fc3_1 0 VDD fc3
 X1Dp nv1p con_fc4_1 0 VDD fc4
