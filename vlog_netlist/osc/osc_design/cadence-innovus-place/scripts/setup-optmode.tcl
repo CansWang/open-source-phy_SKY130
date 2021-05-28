@@ -23,54 +23,54 @@
 #########################################
 
 
-    # Create a group and specify its placement region
-    createInstGroup DEL_STAGE_5 \
-        -fence 30 60 34 80
+    # # Create a group and specify its placement region
+    # createInstGroup DEL_STAGE_5 \
+    #     -fence 30 60 34 80
     
 
-    # Add instances into the group
-    addInstToInstGroup DEL_STAGE_5 \
-        {del5}
+    # # Add instances into the group
+    # addInstToInstGroup DEL_STAGE_5 \
+    #     {del5}
 
 
-    # Create a group and specify its placement region
-    createInstGroup DEL_STAGE_1 \
-        -fence 34 60 38 80
+    # # Create a group and specify its placement region
+    # createInstGroup DEL_STAGE_1 \
+    #     -fence 34 60 38 80
     
     
-    # Add instances into the group
-    addInstToInstGroup DEL_STAGE_1 \
-        {del1}
+    # # Add instances into the group
+    # addInstToInstGroup DEL_STAGE_1 \
+    #     {del1}
 
 
-    # Create a group and specify its placement region
-    createInstGroup DEL_STAGE_4 \
-        -fence 38 60 42 80
+    # # Create a group and specify its placement region
+    # createInstGroup DEL_STAGE_4 \
+    #     -fence 38 60 42 80
     
     
-    # Add instances into the group
-    addInstToInstGroup DEL_STAGE_4 \
-        {del4}
+    # # Add instances into the group
+    # addInstToInstGroup DEL_STAGE_4 \
+    #     {del4}
     
 
-    # Create a group and specify its placement region
-    createInstGroup DEL_STAGE_2 \
-        -fence 42 60 46 80
+    # # Create a group and specify its placement region
+    # createInstGroup DEL_STAGE_2 \
+    #     -fence 42 60 46 80
     
     
-    # Add instances into the group
-    addInstToInstGroup DEL_STAGE_2 \
-        {del2}
+    # # Add instances into the group
+    # addInstToInstGroup DEL_STAGE_2 \
+    #     {del2}
 
 
-    # Create a group and specify its placement region
-    createInstGroup DEL_STAGE_3 \
-        -fence 46 60 50 80
+    # # Create a group and specify its placement region
+    # createInstGroup DEL_STAGE_3 \
+    #     -fence 46 60 50 80
     
     
-    # Add instances into the group
-    addInstToInstGroup DEL_STAGE_3 \
-        {del3}
+    # # Add instances into the group
+    # addInstToInstGroup DEL_STAGE_3 \
+    #     {del3}
 
 
 

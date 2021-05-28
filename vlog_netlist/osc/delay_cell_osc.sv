@@ -12,7 +12,7 @@ module delay_cell_osc (
 // 6 stdcells per stage, matching and lower flickr noise
 
 generate
-    for (genvar i=0; i<2; i=i+1)
+    for (genvar i=0; i<5; i=i+1)
     sky130_fd_sc_hs__nand2_8 inand (
         .A(in),
         .B(en),

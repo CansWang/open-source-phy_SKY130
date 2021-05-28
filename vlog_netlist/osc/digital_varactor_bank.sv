@@ -72,27 +72,4 @@ sky130_fd_sc_hs__nand2_4 fc8_1 (.A(var_out), .B(delay_con_msb[3]), .Y(Z));
 sky130_fd_sc_hs__nand2_4 fc8_2 (.A(var_out), .B(delay_con_msb[3]), .Y(Z));
 sky130_fd_sc_hs__nand2_4 fc8_3 (.A(var_out), .B(delay_con_msb[3]), .Y(Z));
 
-sky130_fd_sc_hs__nand2_4 fc9_0 (.A(var_out), .B(delay_con_msb[4]), .Y(Z));
-sky130_fd_sc_hs__nand2_4 fc9_1 (.A(var_out), .B(delay_con_msb[4]), .Y(Z));
-sky130_fd_sc_hs__nand2_4 fc9_2 (.A(var_out), .B(delay_con_msb[4]), .Y(Z));
-sky130_fd_sc_hs__nand2_4 fc9_3 (.A(var_out), .B(delay_con_msb[4]), .Y(Z));
-
-sky130_fd_sc_hs__nand2_4 fc10_0 (.A(var_out), .B(delay_con_msb[5]), .Y(Z));
-sky130_fd_sc_hs__nand2_4 fc10_1 (.A(var_out), .B(delay_con_msb[5]), .Y(Z));
-sky130_fd_sc_hs__nand2_4 fc10_2 (.A(var_out), .B(delay_con_msb[5]), .Y(Z));
-sky130_fd_sc_hs__nand2_4 fc10_3 (.A(var_out), .B(delay_con_msb[5]), .Y(Z));
-
-sky130_fd_sc_hs__nand2_4 fc11_0 (.A(var_out), .B(delay_con_msb[6]), .Y(Z));
-sky130_fd_sc_hs__nand2_4 fc11_1 (.A(var_out), .B(delay_con_msb[6]), .Y(Z));
-sky130_fd_sc_hs__nand2_4 fc11_2 (.A(var_out), .B(delay_con_msb[6]), .Y(Z));
-sky130_fd_sc_hs__nand2_4 fc11_3 (.A(var_out), .B(delay_con_msb[6]), .Y(Z));
-
-sky130_fd_sc_hs__nand2_4 fc12_0 (.A(var_out), .B(delay_con_msb[7]), .Y(Z));
-sky130_fd_sc_hs__nand2_4 fc12_1 (.A(var_out), .B(delay_con_msb[7]), .Y(Z));
-sky130_fd_sc_hs__nand2_4 fc12_2 (.A(var_out), .B(delay_con_msb[7]), .Y(Z));
-sky130_fd_sc_hs__nand2_4 fc12_3 (.A(var_out), .B(delay_con_msb[7]), .Y(Z));
-
-
-
-
 endmodule
