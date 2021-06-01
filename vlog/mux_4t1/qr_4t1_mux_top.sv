@@ -9,7 +9,12 @@ module qr_4t1_mux_top (
     input wire logic clk_IB, // Four phase clock input from PI+MDLL
     input wire logic [3:0] din,
     input wire logic rst,
-    output wire logic data
+    input wire logic din_2_dummy,
+    input wire logic din_3_dummy,
+    input wire logic D1DQB_dummy,
+    input wire logic D1DIB_dummy,
+    output wire logic data,
+    output wire logic mux_out_dummy
 );
 
 // logic clk_IB_buf;
@@ -20,7 +25,6 @@ module qr_4t1_mux_top (
 // Instantiate the data path for Q clk path, use the Q clock as the reference clock
 logic D0DQ;
 logic D1MQ;
-logic din_3_dummy;
 logic D0DQ_dummy;
 sky130_fd_sc_hs__dfxtp_2 dff_Q0 (.D(din[3]), .CLK(clk_Q), .Q(D0DQ));
 sky130_fd_sc_hs__dfxtp_2 dff_Q0_dummy (.D(din_3_dummy), .CLK(clk_QB), .Q(D0DQ_dummy));
@@ -28,7 +32,6 @@ sky130_fd_sc_hs__dfxtp_2 dff_Q0_dummy (.D(din_3_dummy), .CLK(clk_QB), .Q(D0DQ_du
 // Instantiate the data path for I clk path
 logic D0DI;
 logic D1MI;
-logic din_2_dummy;
 logic D0DI_dummy;
 sky130_fd_sc_hs__dfxtp_2 dff_I0 (.D(din[2]), .CLK(clk_I), .Q(D0DI));
 sky130_fd_sc_hs__dfxtp_2 dff_I0_dummy (.D(din_2_dummy), .CLK(clk_IB), .Q(D0DI_dummy));
@@ -67,9 +70,6 @@ qr_mux_fixed mux_4 (
     .DOUT(mux_out)
 );
 
-logic D1DQB_dummy;
-logic D1DIB_dummy;
-logic mux_out_dummy;
 qr_mux_fixed mux_4_dummy (
     .DIN0(D0DI_dummy),
     .DIN1(D1DQB_dummy),
