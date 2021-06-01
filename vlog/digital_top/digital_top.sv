@@ -38,7 +38,7 @@ wire [3:0] qr_data_p;  // Output of 16 to 4 mux, positive
 wire [3:0] qr_data_n;  // Output of 16 to 4 mux, negative
 wire clk_halfrate;  // Input clock for 16 to 4 mux
 // wire logic clk_halfrate_n;
-// wire logic clk_prbsgen;
+wire logic clk_prbsgen;
 wire logic din_2_dummy;
 wire logic din_3_dummy;
 wire logic D1DQB_dummy;
@@ -110,7 +110,7 @@ endgenerate
 // Data + positive
 hr_16t4_mux_top hr_mux_16t4_0 (
     .clk_hr(clk_halfrate), // This is a divided (by 2) clock from quarter-rate 4 to 1 mux
-    // .clk_prbs(clk_prbsgen),
+    .clk_prbs(clk_prbsgen),
     .din(din_reorder),
     .rst(rst),
     .dout(qr_data_p)
@@ -135,7 +135,7 @@ qr_4t1_mux_top qr_mux_4t1_0 (
 // Data - negative
 hr_16t4_mux_top hr_mux_16t4_1 (
     .clk_hr(clk_halfrate), // This is a divided (by 2) clock from quarter-rate 4 to 1 mux
-    // .clk_prbs(clk_prbsgen),
+    .clk_prbs(clk_prbsgen),
     .din(~din_reorder), // Inverting the data input for differential output
     .rst(rst),
     .dout(qr_data_n)

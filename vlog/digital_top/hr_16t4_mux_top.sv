@@ -8,11 +8,12 @@ module hr_16t4_mux_top (  // The output data rate should be input clock frequenc
     input wire logic clk_hr,     // Half rate clock input
     input wire logic [15:0] din,  // Sixteen-bit input data
     input wire logic rst,
+    output wire logic clk_prbs,
     output wire logic [3:0] dout // Four-bit output data
 );
 
 wire logic clk_hr_n;
-wire logic clk_prbs;
+// wire logic clk_prbs;
 
 genvar i;
 generate  // Instantiate 4 hr_4t1_mux_top to form 16:4 mux
