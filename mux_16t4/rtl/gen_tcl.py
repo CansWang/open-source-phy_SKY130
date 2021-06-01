@@ -18,6 +18,9 @@ file_list += [e['VLOG_HOME']+'/mux_16t4/hr_4t1_mux_top.sv']
 file_list += [e['VLOG_HOME']+'/mux_16t4/hr_2t1_mux_top.sv']
 file_list += [e['VLOG_HOME']+'/mux_16t4/ff_c.sv']
 file_list += [e['VLOG_HOME']+'/mux_16t4/mux.sv']
+file_list += [e['VLOG_HOME']+'/mux_16t4/div_b2.sv']
+file_list += [e['VLOG_HOME']+'/mux_16t4/ff_c_rn.sv']
+file_list += [e['VLOG_HOME']+'/mux_16t4/inv.sv']
 
 print('loaded verilog source file list:', file_list)
 
