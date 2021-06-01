@@ -39,6 +39,12 @@ wire [3:0] qr_data_n;  // Output of 16 to 4 mux, negative
 wire clk_halfrate;  // Input clock for 16 to 4 mux
 // wire logic clk_halfrate_n;
 // wire logic clk_prbsgen;
+wire logic din_2_dummy;
+wire logic din_3_dummy;
+wire logic D1DQB_dummy;
+wire logic D1DIB_dummy;
+wire logic mux_out_dummy_0;
+wire logic mux_out_dummy_1;
 
 wire logic mtb_n;  // mux to buffer -
 wire logic mtb_p;  // mux to buffer +
@@ -118,6 +124,11 @@ qr_4t1_mux_top qr_mux_4t1_0 (
     .clk_IB(clk_interp_slice_3),
     .din(qr_data_p), // Quarter-rate data from half-rate 16 to 4 mux
     .rst(rst),
+    .din_2_dummy(din_2_dummy),
+    .din_3_dummy(din_3_dummy),
+    .D1DQB_dummy(D1DQB_dummy),
+    .D1DIB_dummy(D1DIB_dummy),
+    .mux_out_dummy(mux_out_dummy_0),
     .data(mtb_p) // Final data output + positive Output driver and termination needs to be added
 );
 
@@ -138,6 +149,11 @@ qr_4t1_mux_top qr_mux_4t1_1 (
     .clk_IB(clk_interp_slice_3),
     .din(qr_data_n), // Quarter-rate data from half-rate 16 to 4 mux
     .rst(rst),
+    .din_2_dummy(din_2_dummy),
+    .din_3_dummy(din_3_dummy),
+    .D1DQB_dummy(D1DQB_dummy),
+    .D1DIB_dummy(D1DIB_dummy),
+    .mux_out_dummy(mux_out_dummy_1),
     .data(mtb_n) // Final data output - negative Output driver and termination needs to be added
 );
 

@@ -76,6 +76,7 @@ def construct():
   postroute_hold = Step( 'cadence-innovus-postroute_hold', default=True )
   signoff        = Step( 'cadence-innovus-signoff',        default=True )
   genlibdb       = Step( 'synopsys-ptpx-genlibdb',         default=True )
+  # merge_fill     = Step( 'mentor-calibre-gdsmerge-child',  default=True )
 #  gdsmerge       = Step( 'mentor-calibre-gdsmerge',        default=True )
   # drc            = Step( 'mentor-calibre-drc',             default=True )
 #  lvs            = Step( 'mentor-calibre-lvs',             default=True )
@@ -88,11 +89,18 @@ def construct():
   power.extend_inputs(custom_geom.all_outputs())
   place.extend_inputs(custom_place.all_outputs())
 
+  dbs = []
+  dc.extend_inputs(dbs)
+  genlibdb.extend_inputs(dbs)
+
+  libs = []
+  lefs = []
 
   lib_lef_steps = \
       [iflow, init, power, place, cts, postcts_hold, route, postroute, signoff]
-#  for step in lib_lef_steps:
-#      step.extend_inputs(libs + lefs)
+  for step in lib_lef_steps:
+      step.extend_inputs(libs + lefs)
+
 
    # gds_list needed for gds_merge step
 
@@ -119,6 +127,7 @@ def construct():
   g.add_step( signoff        )
   g.add_step( genlibdb       )
   g.add_step( gdsmerge       )
+  # g.add_step( merge_fill     )
   # g.add_step( drc            )
   g.add_step( lvs            )
   # g.add_step( debugcalibre   )

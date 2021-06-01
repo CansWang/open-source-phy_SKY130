@@ -23,14 +23,15 @@ outputs:
 #-------------------------------------------------------------------------
 
 commands:
-  - cp ../../build_prbs/18-cadence-innovus-signoff/results/prbs_generator_syn-merged.gds ./outputs/prbs_generator_syn.gds
-  - cp ../../build_16t4/18-cadence-innovus-signoff/results/hr_16t4_mux_top-merged.gds ./outputs/hr_16t4_mux_top.gds
-  - cp ../../build_4t1/19-cadence-innovus-signoff/results/qr_4t1_mux_top-merged.gds ./outputs/qr_4t1_mux_top.gds
+  - cp ../../build_prbs/18-cadence-innovus-signoff/results/prbs_generator_syn-merged.gds ./inputs/prbs_generator_syn.gds
+  - cp ../../build_16t4/18-cadence-innovus-signoff/results/hr_16t4_mux_top-merged.gds ./inputs/hr_16t4_mux_top.gds
+  - cp ../../build_4t1/19-cadence-innovus-signoff/results/qr_4t1_mux_top-merged.gds ./inputs/qr_4t1_mux_top.gds
   # For some reason, Calibre requires this directory to exist
   - mkdir -p $HOME/.calibrewb_workspace/tmp
   # Glob for all gds files in adk
   # Done manually because -indir inputs/adk did not work on Calibre 17
   - ins=""; for f in inputs/adk/*.gds*; do ins="$ins -in $f"; done
+  - for f in inputs/*.gds*; do ins="$ins -in $f"; done
   # Use calibredrv to merge gds files
   # Need 'echo |' to stop calibredrv from hanging if the step is backgrounded,
   # which is a known calibredrv bug noted in the manual (see calibr_drv_ref.pdf)
