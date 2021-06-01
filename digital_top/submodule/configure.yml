@@ -3,23 +3,22 @@
 name: submodule
 
 commands:
-  - mkdir outputs
   - cd outputs
-  - cp ../../build_prbs/18-cadence-innovus-signoff/results/prbs_generator_syn-merged.gds ./prbs_generator_syn.gds
-  - cp ../../build_prbs/21-synopsys-ptpx-genlibdb/outputs/design.db ./prbs_generator_syn.db
-  - cp ../../build_prbs/21-synopsys-ptpx-genlibdb/outputs/design.lib ./prbs_generator_syn.lib
-  - cp ../../build_prbs/20-open-magic-def2spice/prbs_generator_syn.lef ./prbs_generator_syn.lef
-  - cp ../../build_prbs/20-open-magic-def2spice/outputs/design_extracted.spice ./prbs_generator_syn.spice
-  - cp ../../build_16t4/18-cadence-innovus-signoff/results/hr_16t4_mux_top-merged.gds ./hr_16t4_mux_top.gds
-  - cp ../../build_16t4/21-synopsys-ptpx-genlibdb/outputs/design.db ./hr_16t4_mux_top.db
-  - cp ../../build_16t4/21-synopsys-ptpx-genlibdb/outputs/design.lib ./hr_16t4_mux_top.lib
-  - cp ../../build_16t4/20-open-magic-def2spice/hr_16t4_mux_top.lef ./hr_16t4_mux_top.lef
-  - cp ../../build_16t4/20-open-magic-def2spice/outputs/design_extracted.spice ./hr_16t4_mux_top.spice
-  - cp ../../build_4t1/19-cadence-innovus-signoff/results/qr_4t1_mux_top-merged.gds ./qr_4t1_mux_top.gds
-  - cp ../../build_4t1/22-synopsys-ptpx-genlibdb/outputs/design.db ./qr_4t1_mux_top.db
-  - cp ../../build_4t1/22-synopsys-ptpx-genlibdb/outputs/design.lib ./qr_4t1_mux_top.lib
-  - cp ../../build_4t1/21-open-magic-def2spice/qr_4t1_mux_top.lef ./qr_4t1_mux_top.lef
-  - cp ../../build_4t1/21-open-magic-def2spice/outputs/design_extracted.spice ./qr_4t1_mux_top.spice
+  - cp ../../../build_prbs/18-cadence-innovus-signoff/results/prbs_generator_syn-merged.gds ./prbs_generator_syn.gds
+  - cp ../../../build_prbs/21-synopsys-ptpx-genlibdb/outputs/design.db ./prbs_generator_syn.db
+  - cp ../../../build_prbs/21-synopsys-ptpx-genlibdb/outputs/design.lib ./prbs_generator_syn.lib
+  - cp ../../../build_prbs/20-open-magic-def2spice/prbs_generator_syn.lef ./prbs_generator_syn.lef
+  - cp ../../../build_prbs/20-open-magic-def2spice/outputs/design_extracted.spice ./prbs_generator_syn.spice
+  - cp ../../../build_16t4/18-cadence-innovus-signoff/results/hr_16t4_mux_top-merged.gds ./hr_16t4_mux_top.gds
+  - cp ../../../build_16t4/21-synopsys-ptpx-genlibdb/outputs/design.db ./hr_16t4_mux_top.db
+  - cp ../../../build_16t4/21-synopsys-ptpx-genlibdb/outputs/design.lib ./hr_16t4_mux_top.lib
+  - cp ../../../build_16t4/20-open-magic-def2spice/hr_16t4_mux_top.lef ./hr_16t4_mux_top.lef
+  - cp ../../../build_16t4/20-open-magic-def2spice/outputs/design_extracted.spice ./hr_16t4_mux_top.spice
+  - cp ../../../build_4t1/19-cadence-innovus-signoff/results/qr_4t1_mux_top-merged.gds ./qr_4t1_mux_top.gds
+  - cp ../../../build_4t1/22-synopsys-ptpx-genlibdb/outputs/design.db ./qr_4t1_mux_top.db
+  - cp ../../../build_4t1/22-synopsys-ptpx-genlibdb/outputs/design.lib ./qr_4t1_mux_top.lib
+  - cp ../../../build_4t1/21-open-magic-def2spice/qr_4t1_mux_top.lef ./qr_4t1_mux_top.lef
+  - cp ../../../build_4t1/21-open-magic-def2spice/outputs/design_extracted.spice ./qr_4t1_mux_top.spice
 
 
 
