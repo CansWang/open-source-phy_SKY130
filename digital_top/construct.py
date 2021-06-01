@@ -46,7 +46,7 @@ def construct():
 
   constraints = Step( this_dir + '/constraints' )
   dc = Step( this_dir + '/synopsys-dc-synthesis' )
-  # qtm = Step(this_dir + '/qtm')
+  submodule = Step(this_dir + '/submodule')
   # Define blocks function
 
   blocks = []
@@ -89,19 +89,36 @@ def construct():
   power.extend_inputs(custom_geom.all_outputs())
   place.extend_inputs(custom_place.all_outputs())
 
-  dbs = []
+  dbs = [
+      'prbs_generator_syn.db',
+      'hr_16t4_mux_top.db',
+      'qr_4t1_mux_top.db'
+  ]
   dc.extend_inputs(dbs)
   genlibdb.extend_inputs(dbs)
 
-  libs = []
-  lefs = []
+  libs = [
+      'prbs_generator_syn.lib',
+      'hr_16t4_mux_top.lib',
+      'qr_4t1_mux_top.libs'
+  ]
+  lefs = [
+      'prbs_generator_syn.lef',
+      'hr_16t4_mux_top.lef',
+      'qr_4t1_mux_top.lef'
+  ]
 
   lib_lef_steps = \
       [iflow, init, power, place, cts, postcts_hold, route, postroute, signoff]
   for step in lib_lef_steps:
       step.extend_inputs(libs + lefs)
 
-
+  spi_list = [
+        'prbs_generator_syn.spice',
+        'hr_16t4_mux_top.spice',
+        'qr_4t1_mux_top.spice'
+  ]
+  lvs.extend_inputs(spi_list)
    # gds_list needed for gds_merge step
 
    # spi_list or verilog netlists needed for blackbox LVS
@@ -138,11 +155,7 @@ def construct():
   g.add_step( magic_def2spice)
   g.add_step( magic_drc      )
   g.add_step( pex            )
-
-  for block in blocks:
-    g.add_step ( block )
-
-#  g.add_step( qtm )
+  g.add_step( submodule )
 
   #g.add_step( custom_geom )
   #-----------------------------------------------------------------------
@@ -174,22 +187,22 @@ def construct():
   g.connect_by_name( signoff,        pex            )
   g.connect_by_name( magic_def2spice,pex            )
   g.connect_by_name( lvs,            pex            )
+  # g.connect_by_name( adk, 	         submodule            )
 
-#  g.connect_by_name( adk, 	     qtm            )
-
-#  for block in blocks + [qtm]:
-#    g.connect_by_name(block, dc)
-#    g.connect_by_name(block, iflow)
-#    g.connect_by_name(block, init)
-#    g.connect_by_name(block, power)
-#    g.connect_by_name(block, place)
-#    g.connect_by_name(block, cts)
-#    g.connect_by_name(block, postcts_hold)
-#    g.connect_by_name(block, route)
-#    g.connect_by_name(block, postroute)
-#    g.connect_by_name(block, signoff)
-#    g.connect_by_name(block, gdsmerge)
-#    g.connect_by_name(block, lvs)
+    g.connect_by_name(submodule, dc)
+    g.connect_by_name(submodule, iflow)
+    g.connect_by_name(submodule, init)
+    g.connect_by_name(submodule, power)
+    g.connect_by_name(submodule, place)
+    g.connect_by_name(submodule, cts)
+    g.connect_by_name(submodule, postcts_hold)
+    g.connect_by_name(submodule, route)
+    g.connect_by_name(submodule, postroute)
+    g.connect_by_name(submodule, signoff)
+    g.connect_by_name(submodule, gdsmerge)
+    g.connect_by_name(submodule, lvs)
+    g.connect_by_name(submodule, magic_drc)
+    g.connect_by_name(submodule, genlibdb)
 
 
   g.connect_by_name( custom_place,   place          )
