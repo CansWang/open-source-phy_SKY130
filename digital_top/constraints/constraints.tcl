@@ -23,7 +23,7 @@ set TR_QR [expr {0.4*$T}]
 
 create_clock -name clk_interp_slice_0 \
     -period $T \
-    -waveform "$T0 $T2" \ 
+    -waveform "$T0 $T2" \
     [get_ports clk_interp_slice_0]
 
 create_clock -name clk_interp_slice_1 \
