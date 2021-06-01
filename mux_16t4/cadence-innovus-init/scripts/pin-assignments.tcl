@@ -52,7 +52,7 @@ set pins_left {\
   {din[12]} {din[13]} {din[14]} {din[15]}\
 }
 
-set pins_bottom {{clk_hr}}
+set pins_bottom {{clk_hr} {clk_prbs}}
 
 editPin -layer $ports_layer -pin $pins_right  -side RIGHT  -spreadType SIDE
 editPin -layer $ports_layer -pin $pins_left   -side LEFT   -spreadType SIDE

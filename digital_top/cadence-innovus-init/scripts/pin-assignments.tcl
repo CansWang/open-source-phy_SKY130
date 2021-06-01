@@ -42,17 +42,15 @@ set ports_layer M4
 #editPin -layer $ports_layer -pin $pins_left_half  -side LEFT  -spreadType SIDE
 #editPin -layer $ports_layer -pin $pins_right_half -side RIGHT -spreadType SIDE
 
-set pins_top {{rst}}
+set pins_top {{rst} {rst_prbs}}
 
-set pins_right {{dout[0]} {dout[1]} {dout[2]} {dout[3]}}
+set pins_right {{dout_p} {dout_n}}
 
 set pins_left {\
-  {din[0]}  {din[1]}  {din[2]}  {din[3]}  {din[4]}  {din[5]}\
-  {din[6]}  {din[7]}  {din[8]}  {din[9]}  {din[10]} {din[11]}\
-  {din[12]} {din[13]} {din[14]} {din[15]}\
+  {inj_error}\
 }
 
-set pins_bottom {{clk_hr}}
+set pins_bottom {{clk_interp_slice_0} {clk_interp_slice_1} {clk_interp_slice_2} {clk_interp_slice_3}}
 
 editPin -layer $ports_layer -pin $pins_right  -side RIGHT  -spreadType SIDE
 editPin -layer $ports_layer -pin $pins_left   -side LEFT   -spreadType SIDE
