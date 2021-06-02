@@ -4,7 +4,7 @@ lef read inputs/adk/stdcells.lef
 def read design.def
 
 load $::env(design_name)
-lef write $::env(design_name)
+lef write $::env(design_name) -tech
 
 # Extract for LVS
 extract do local
