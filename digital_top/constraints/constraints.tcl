@@ -42,9 +42,5 @@ create_clock -name clk_interp_slice_3 \
     [get_ports clk_interp_slice_3]
 
 
-create_generated_clock -name clk_halfrate \
-    -source [get_ports clk_interp_slice_2] \
-    -divide_by 2 \
-    [get_pins div0/clkout]
 
 # Internal nets
