@@ -100,7 +100,7 @@ def construct():
   libs = [
       'prbs_generator_syn.lib',
       'hr_16t4_mux_top.lib',
-      'qr_4t1_mux_top.libs'
+      'qr_4t1_mux_top.lib'
   ]
   lefs = [
       'prbs_generator_syn.lef',
