@@ -122,25 +122,25 @@ set origin_term_p_y [snap_to_grid 161 $vert_pitch]
 #    add_ndr -name tx_out_buf -spacing {M1:M7 0.12} -width {M1:M3 0.12 M4:M7 0.4}
 #    setAttribute -net {buf1/BTN buf1/BTP dout_p dout_n} -non_default_rule tx_out_buf
 
-placeInstance \
+#placeInstance \
   hr_mux_16t4_0 \
   [snap_to_grid 100 $horiz_pitch]  \
   [expr 50 * $vert_pitch] \
 MX
 
-placeInstance \
+#placeInstance \
   hr_mux_16t4_1 \
   [snap_to_grid 100 $horiz_pitch]  \
   [expr 100 * $vert_pitch] \
 MX
 
-placeInstance \
+#placeInstance \
   qr_mux_4t1_0 \
   [snap_to_grid 150 $horiz_pitch]  \
   [expr 50 * $vert_pitch] \
 MX
 
-placeInstance \
+#placeInstance \
   qr_mux_4t1_1 \
   [snap_to_grid 150 $horiz_pitch]  \
   [expr 100 * $vert_pitch] \
