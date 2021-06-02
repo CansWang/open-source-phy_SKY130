@@ -63,6 +63,10 @@ set_dont_touch [get_cells {del3}]
 set_dont_touch [get_cells {del4}]
 set_dont_touch [get_cells {del5}]
 
+set_dont_touch [get_cells {einj}]
+
+
+
 # Five stages of capbank
 for {set i 1} {$i < 6} {incr i} {
     set_dont_touch [get_cells "capbank$i/fc1"]

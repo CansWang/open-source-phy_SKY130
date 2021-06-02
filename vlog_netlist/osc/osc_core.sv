@@ -21,11 +21,16 @@ module osc_core (
     output osc_036,
     output osc_072,
     output osc_108,
-    output osc_144
+    output osc_144,
 
 // 
 // waiting to integrate the ref_injector
 //  
+
+    input inj_en,
+    output inj_out,
+    output osc_hold
+
 
 // 
 // buffered output phase, goes to phase blender
@@ -121,6 +126,19 @@ digital_varactor_bank capbank5 (
     .ref_clk(ref_clk),
     .var_out(osc_000)
 );
+
+// Edge Injector
+
+logic osc_hold;
+
+edge_injector einj (
+    .ref_clk(ref_clk), // ref_clk input
+    .inj_en(inj_en), // Enable of the injector
+    .inj_out(inj_out), // To injected stage
+    .osc_hold(osc_hold) // To stop the oscillation before the injected stage
+);
+
+
 
 endmodule
 

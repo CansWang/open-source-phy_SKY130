@@ -81,7 +81,7 @@
     #             $core_margin_l $core_margin_b $core_margin_r $core_margin_t
 
 
-    set FP_width [snap_to_grid [expr 80 + 0] $horiz_pitch ]
+    set FP_width [snap_to_grid [expr 140 + 0] $horiz_pitch ]
     set FP_height [snap_to_grid 80 $vert_pitch ]
 
 
