@@ -9,7 +9,7 @@ module aux_core (
     output osc_180
 );
     
-endmodule
+
 
 
 
@@ -66,3 +66,5 @@ delay_cell_osc del7 (
     .en(glob_en),
     .out(osc_000)
 );
+
+endmodule

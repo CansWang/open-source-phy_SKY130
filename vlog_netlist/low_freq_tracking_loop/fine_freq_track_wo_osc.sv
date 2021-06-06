@@ -331,23 +331,24 @@ always @( posedge commit_clk, posedge rst ) begin
         osc_fine_con = 8'b10000000;
     end
 end
+
 // AUX osc
 
 
-logic [5:0] z0; // Floating nodes
+// logic [5:0] z0; // Floating nodes
 
 
-aux_core aux_osc (
-    .glob_en(aux_osc_en),
-    .osc_000(aux_clk_out),
-    .osc_030(z0[0]),
-    .osc_060(z0[1]),
-    .osc_090(z0[2]),
-    .osc_120(z0[3]),
-    .osc_150(z0[4]),
-    .osc_180(z0[5])
+// aux_core aux_osc (
+//     .glob_en(aux_osc_en),
+//     .osc_000(aux_clk_out),
+//     .osc_030(z0[0]),
+//     .osc_060(z0[1]),
+//     .osc_090(z0[2]),
+//     .osc_120(z0[3]),
+//     .osc_150(z0[4]),
+//     .osc_180(z0[5])
 
-);
+// );
 
 // 
 

@@ -26,10 +26,10 @@ set TR_QR [expr {0.4*$T}]
 set REF_T [expr {10.00*$T}]
 set REF_T_05 [expr {5.00*$T}]
 
-create_clock -name clk_ref \
-    -period $REF_T \
-    -waveform "$T0 $REF_T_05" \
-    [get_ports ref_clk]
+# create_clock -name clk_ref \
+#     -period $REF_T \
+#     -waveform "$T0 $REF_T_05" \
+#     [get_ports ref_clk]
 
 create_clock -name clk_out \
     -period $T4 \
