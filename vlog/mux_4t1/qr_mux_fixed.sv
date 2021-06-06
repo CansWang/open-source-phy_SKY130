@@ -8,6 +8,6 @@ module qr_mux_fixed (
     output reg DOUT
 );
 
-assign DOUT = E1 ? (E0 ? DIN3 : DIN2) : (E0 ? DIN1 : DIN0);
+sky130_fd_sc_hs__mux4_4 mux(.X(DOUT), .A0(DIN0), .A1(DIN1), .A2(DIN2), .A3(DIN3), .S0(E0), .S1(E1));
 
 endmodule

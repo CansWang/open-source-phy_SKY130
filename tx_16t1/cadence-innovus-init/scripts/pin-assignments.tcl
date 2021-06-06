@@ -42,7 +42,7 @@ set ports_layer M4
 #editPin -layer $ports_layer -pin $pins_left_half  -side LEFT  -spreadType SIDE
 #editPin -layer $ports_layer -pin $pins_right_half -side RIGHT -spreadType SIDE
 
-set pins_top {{rst}}
+set pins_top {{rst} {din_2_dummy} {din_3_dummy} {D1DQB_dummy} {D1DIB_dummy} {mux_out_dummy}}
 
 set pins_right {{data}}
 
