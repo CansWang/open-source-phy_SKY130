@@ -126,25 +126,24 @@ placeInstance \
   hr_mux_16t4_0 \
   [snap_to_grid 100 $horiz_pitch]  \
   [expr 50 * $vert_pitch] \
-MX
+
 
 placeInstance \
   hr_mux_16t4_1 \
   [snap_to_grid 100 $horiz_pitch]  \
   [expr 100 * $vert_pitch] \
-MX
+
 
 placeInstance \
   qr_mux_4t1_0 \
   [snap_to_grid 150 $horiz_pitch]  \
   [expr 50 * $vert_pitch] \
-MX
+
 
 placeInstance \
   qr_mux_4t1_1 \
   [snap_to_grid 150 $horiz_pitch]  \
   [expr 100 * $vert_pitch] \
-MX
 
 #	placeInstance \
 itx/indiv \
