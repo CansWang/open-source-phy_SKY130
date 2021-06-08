@@ -234,6 +234,9 @@ link
 # Write out useful files
 #-------------------------------------------------------------------------
 
+# change_names command
+change_names -rules verilog -hierarchy
+
 # This ddc can be used as a checkpoint to load up to the current state
 
 write -hierarchy -format ddc \
