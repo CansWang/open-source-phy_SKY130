@@ -192,35 +192,35 @@ Vprobe VDD AVDD DC 0V
 * Fine tuning 7 bits
 
 .subckt fc1 cin en VGND VDD
-X0 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hd__nand2_1 m=1
+X0 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_1 m=1
 .ends
 
 .subckt fc2 cin en VGND VDD
-X0 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hd__nand2_2 m=1
+X0 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_2 m=1
 .ends
 
 .subckt fc3 cin en VGND VDD
-X0 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hd__nand2_2 m=2
+X0 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_2 m=2
 .ends
 
 .subckt fc4 cin en VGND VDD
-X0 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hd__nand2_2 m=4
+X0 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_2 m=4
 .ends
 
 .subckt fc5 cin en VGND VDD
-X0 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hd__nand2_4 m=4
+X0 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_4 m=4
 .ends
 
 * Coarse tuning 3-bits +- 200 ps
 
 .subckt fc6 cin en VGND VDD
-X0 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hd__nand2_8 m=4
+X0 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8 m=4
 .ends
 
 .subckt fc7 cin en VGND VDD
-X0 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hd__nand2_8 m=8
+X0 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8 m=8
 .ends
 
 .subckt fc8 cin en VGND VDD
-X0 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hd__nand2_8 m=16
+X0 cin en VGND VGND VDD VDD z1 sky130_fd_sc_hs__nand2_8 m=16
 .ends

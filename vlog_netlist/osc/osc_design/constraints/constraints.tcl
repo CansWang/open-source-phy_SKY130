@@ -74,7 +74,7 @@ for {set i 1} {$i < 6} {incr i} {
         set_dont_touch [get_cells "capbank$i/fc44_$l"]
     }
 
-    for {set j 4} {$j < 13} {incr j} {
+    for {set j 4} {$j < 9} {incr j} {
         for {set k 0} {$k < 4} {incr k} {
             set_dont_touch [get_cells "capbank$i/fc$j\_$k"]
         }

@@ -13,7 +13,7 @@ e = os.environ
 
 # build up a list of source files
 file_list = []
-file_list += [e['VLOG_HOME']+'/all/prbs_generator_syn.sv']
+file_list += [e['VLOG_HOME']+'/prbs/prbs_generator_syn.sv']
 
 print('loaded verilog source file list:', file_list)
 
