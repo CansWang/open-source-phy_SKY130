@@ -55,7 +55,7 @@ set core_margin_l 0;#[expr 5 * $horiz_pitch]
 
 
 set FP_width [snap_to_grid [expr 200  + 0] $horiz_pitch ]
-set FP_height [snap_to_grid 200 $vert_pitch ]
+set FP_height [snap_to_grid 1400 $vert_pitch ]
 
 set sram_to_acore_spacing_x [snap_to_grid 40 $horiz_pitch]
 set sram_to_acore_spacing_y [snap_to_grid 40 $vert_pitch]
@@ -125,31 +125,31 @@ set origin_term_p_y [snap_to_grid 161 $vert_pitch]
 placeInstance \
   hr_mux_16t4_0 \
   [snap_to_grid 100 $horiz_pitch]  \
-  [snap_to_grid 50 $vert_pitch] \
+  [snap_to_grid 10 $vert_pitch] \
 
 
 placeInstance \
   hr_mux_16t4_1 \
   [snap_to_grid 100 $horiz_pitch]  \
-  [snap_to_grid 100 $vert_pitch] \
+  [snap_to_grid 90 $vert_pitch] \
 
 
 placeInstance \
   qr_mux_4t1_0 \
   [snap_to_grid 150 $horiz_pitch]  \
-  [snap_to_grid 50 $vert_pitch] \
+  [snap_to_grid 10 $vert_pitch] \
 
 
 placeInstance \
   qr_mux_4t1_1 \
   [snap_to_grid 150 $horiz_pitch]  \
-  [snap_to_grid 100 $vert_pitch] \
+  [snap_to_grid 90 $vert_pitch] \
 
 for {set i 0} {$i < 16} {incr i} {
   placeInstance \
-    genblk1_$i__prbs_b \
-    [snap_to_grid 50 $horiz_pitch]  \
-    [snap_to_grid [expr $i * 10] $vert_pitch] \
+    genblk1_$i\__prbs_b \
+    [snap_to_grid 10 $horiz_pitch]  \
+    [snap_to_grid [expr $i * 80 + 10] $vert_pitch] \
 }
 
 #	placeInstance \

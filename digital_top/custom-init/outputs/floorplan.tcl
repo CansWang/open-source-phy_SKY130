@@ -82,7 +82,7 @@
 
 
     set FP_width [snap_to_grid [expr 200 + 0] $horiz_pitch ]
-    set FP_height [snap_to_grid 200 $vert_pitch ]
+    set FP_height [snap_to_grid 1400 $vert_pitch ]
 
 
     #floorPlan -site unithd -s $FP_width $FP_height \

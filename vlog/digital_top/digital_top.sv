@@ -92,9 +92,7 @@ assign dout_p = mtb_p;
 genvar i;  // Declare the generate variable
 generate
     for(i=0; i<16; i=i+1) begin
-        prbs_generator_syn #(
-            .n_prbs(32)
-        ) prbs_b (
+        prbs_generator_syn prbs_b (
             .clk(clk_prbsgen),
             .rst(rst_prbs),
             .cke(1'b1),
