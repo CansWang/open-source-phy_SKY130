@@ -42,5 +42,4 @@ create_clock -name clk_interp_slice_3 \
     [get_ports clk_interp_slice_3]
 
 
-
 # Internal nets
