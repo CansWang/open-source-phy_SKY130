@@ -279,7 +279,7 @@ always @( * ) begin
 end
 
 always @( * ) begin
-    case (CTL_BUF_N)
+    case (CTL_BUF_P)
         6'd0: begin
             CTL_P=40'd0;
         end
