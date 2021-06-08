@@ -261,13 +261,13 @@
         [expr $origin_txindiv_y + $indiv_height + $blockage_height]
 
 	#PI Blockages
-    for {set k 0} {$k<4} {incr k} {
-    	createPlaceBlockage -box \
+    #for {set k 0} {$k<4} {incr k} {
+    	#createPlaceBlockage -box \
         	[expr $origin_txpi_x - $blockage_width]   \
         	[expr $origin_txpi_y - $blockage_height + ($pi_neighbor_spacing)*($k-1)]\
         	[expr $origin_txpi_x + $pi_width + $blockage_width]  \
         	[expr $origin_txpi_y + ($pi_height)*(1) + ($pi_neighbor_spacing)*($k-1) + $blockage_height]
-    }
+  #  }
 
 
    #createPlaceBlockage -box \
