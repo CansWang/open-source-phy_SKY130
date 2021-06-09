@@ -152,6 +152,12 @@ for {set i 0} {$i < 16} {incr i} {
     [snap_to_grid [expr $i * 80 + 10] $vert_pitch] \
 }
 
+createPlaceBlockage -box  \
+  [expr 99 * $horiz_pitch] \
+  [expr 9 * $vert_pitch] \
+  [expr 139 * $horiz_pitch] \
+  [expr 49 * $vert_pitch]
+
 #	placeInstance \
 itx/indiv \
 [expr $origin_txindiv_x-4.5]  \
