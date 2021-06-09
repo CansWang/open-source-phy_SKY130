@@ -81,7 +81,7 @@ sky130_fd_sc_hs__inv_16 inv_hold (.A(inject_window), .Y(osc_hold));
 // Injector, 3-input NAND gate with ENABLE and injection window selection
 
 sky130_fd_sc_hs__nand3_4 inj_0 (.A(ref_to_injector), .B(inject_window), .C(inj_en), .Y(inj_out));
-
+sky130_fd_sc_hs__nand3_4 inj_1 (.A(ref_to_injector), .B(inject_window), .C(inj_en), .Y(inj_out));
  
 
 endmodule

@@ -48,15 +48,15 @@ module osc_core (
 
 delay_cell_osc del1 (
     .in(osc_000),
-    .en(glob_en),
+    .en(osc_hold),
     .out(osc_036)
 );
 
-// 2ND STAGE
+// 2ND STAGE, inject in this stage
 
 delay_cell_osc del2 (
     .in(osc_036),
-    .en(glob_en),
+    .en(inj_out),
     .out(osc_072)
 );
 
