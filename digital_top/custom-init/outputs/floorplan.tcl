@@ -180,6 +180,66 @@
     ###################
     # Place Instances #
     ###################
+
+set hr_0_x [snap_to_grid 100 $horiz_pitch]
+set hr_0_y [snap_to_grid 10 $vert_pitch]
+placeInstance \
+  hr_mux_16t4_0 \
+  [expr $hr_0_x]  \
+  [expr $hr_0_y] \
+
+set hr_1_x [snap_to_grid 100 $horiz_pitch]
+set hr_1_y [snap_to_grid 90 $vert_pitch]
+placeInstance \
+  hr_mux_16t4_1 \
+  [expr $hr_1_x]  \
+  [expr $hr_1_y] \
+
+set qr_0_x [snap_to_grid 150 $horiz_pitch]
+set qr_0_y [snap_to_grid 10 $vert_pitch]
+placeInstance \
+  qr_mux_4t1_0 \
+  [expr $qr_0_x]  \
+  [expr $qr_0_y] \
+
+set qr_1_x [snap_to_grid 150 $horiz_pitch]
+set qr_1_y [snap_to_grid 90 $vert_pitch]
+placeInstance \
+  qr_mux_4t1_1 \
+  [expr $qr_1_x]  \
+  [expr $qr_1_y] \
+
+for {set i 0} {$i < 16} {incr i} {
+  placeInstance \
+    genblk1_$i\__prbs_b \
+    [snap_to_grid 10 $horiz_pitch]  \
+    [snap_to_grid [expr $i * 80 + 10] $vert_pitch] \
+}
+
+createPlaceBlockage -box  \
+  [expr $hr_0_x - $blockage_width] \
+  [expr $hr_0_y - $blockage_height] \
+  [expr $hr_0_x + 40 + $blockage_width] \
+  [expr $hr_0_y + 40 + $blockage_height]
+
+createPlaceBlockage -box  \
+  [expr $hr_1_x - $blockage_width] \
+  [expr $hr_1_y - $blockage_height] \
+  [expr $hr_1_x + 40 + $blockage_width] \
+  [expr $hr_1_y + 40 + $blockage_height]
+
+createPlaceBlockage -box  \
+  [expr $qr_0_x - $blockage_width] \
+  [expr $qr_0_y - $blockage_height] \
+  [expr $qr_0_x + 30 + $blockage_width] \
+  [expr $qr_0_y + 30 + $blockage_height]
+
+createPlaceBlockage -box  \
+  [expr $qr_1_x - $blockage_width] \
+  [expr $qr_1_y - $blockage_height] \
+  [expr $qr_1_x + 30 + $blockage_width] \
+  [expr $qr_1_y + 30 + $blockage_height]
+
 #placeInstance \
   hr_mux_16t4_0 \
   [snap_to_grid 100 $horiz_pitch]  \

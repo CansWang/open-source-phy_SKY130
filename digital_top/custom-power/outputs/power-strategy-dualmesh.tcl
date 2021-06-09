@@ -124,46 +124,6 @@ set origin_term_p_y [snap_to_grid 161 $vert_pitch]
 
 #    add_ndr -name tx_out_buf -spacing {M1:M7 0.12} -width {M1:M3 0.12 M4:M7 0.4}
 #    setAttribute -net {buf1/BTN buf1/BTP dout_p dout_n} -non_default_rule tx_out_buf
-set hr_0_x [snap_to_grid 100 $horiz_pitch]
-set hr_0_y [snap_to_grid 10 $vert_pitch]
-placeInstance \
-  hr_mux_16t4_0 \
-  [expr $hr_0_x]  \
-  [expr $hr_0_y] \
-
-puts $vert_pitch
-puts $horiz_pitch
-
-
-placeInstance \
-  hr_mux_16t4_1 \
-  [snap_to_grid 100 $horiz_pitch]  \
-  [snap_to_grid 90 $vert_pitch] \
-
-
-placeInstance \
-  qr_mux_4t1_0 \
-  [snap_to_grid 150 $horiz_pitch]  \
-  [snap_to_grid 10 $vert_pitch] \
-
-
-placeInstance \
-  qr_mux_4t1_1 \
-  [snap_to_grid 150 $horiz_pitch]  \
-  [snap_to_grid 90 $vert_pitch] \
-
-for {set i 0} {$i < 16} {incr i} {
-  placeInstance \
-    genblk1_$i\__prbs_b \
-    [snap_to_grid 10 $horiz_pitch]  \
-    [snap_to_grid [expr $i * 80 + 10] $vert_pitch] \
-}
-
-createPlaceBlockage -box  \
-  [expr $hr_0_x - $blockage_width] \
-  [expr $hr_0_y - $blockage_height] \
-  [expr $hr_0_x + 40 + $blockage_width] \
-  [expr $hr_0_y + 40 + $blockage_height]
 
 
 #	placeInstance \
