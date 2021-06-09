@@ -25,6 +25,9 @@ module digital_top (
     // input wire logic [17:0] ctl_buf_n1,
     // input wire logic [17:0] ctl_buf_p0,
     // input wire logic [17:0] ctl_buf_p1,
+    input wire logic [5:0] CTL_BUF_N,
+    input wire logic [5:0] CTL_BUF_P,
+
 
     // output wire logic clk_prbsgen,  // Output clock for 16-bit prbs generator
     output wire logic dout_p, // Data output
@@ -175,6 +178,283 @@ qr_4t1_mux_top qr_mux_4t1_1 (
 //assign dout_n = mtb_n;                //
 //assign dout_p = mtb_p;                //
 ////////////////////////////////////////
+
+// control decoder for the output buffer
+logic [39:0] CTL_N;
+logic [39:0] CTL_P;
+
+always @( * ) begin
+    case (CTL_BUF_N)
+        6'd0: begin
+            CTL_N=40'd0;
+        end
+        6'd1: begin
+            CTL_N=40'd1;
+        end
+        6'd2: begin
+            CTL_N=40'd3;
+        end
+        6'd3: begin
+            CTL_N=40'd7;
+        end
+        6'd4: begin
+            CTL_N=40'd15
+        end
+        6'd5: begin
+            CTL_N=40'd31;
+        end
+        6'd6: begin
+            CTL_N=40'd63;
+        end
+        6'd7: begin
+            CTL_N=40'd127;
+        end
+        6'd8: begin
+            CTL_N=40'd255;
+        end
+        6'd9: begin
+            CTL_N=40'd511;
+        end
+        6'd10: begin
+            CTL_N=40'd1023;
+        end
+        6'd11: begin
+            CTL_N=40'd2047;
+        end
+        6'd12: begin
+            CTL_N=40'd4095;
+        end
+        6'd13: begin
+            CTL_N=40'd8191;
+        end
+        6'd14: begin
+            CTL_N=40'd16383;
+        end
+        6'd15: begin
+            CTL_N=40'd32767;
+        end
+        6'd16: begin
+            CTL_N=40'd65535;
+        end
+        6'd17: begin
+            CTL_N=40'd131071;
+        end
+        6'd18: begin
+            CTL_N=40'd262143;
+        end
+        6'd19: begin
+            CTL_N=40'd524287;
+        end
+        6'd20: begin
+            CTL_N=40'd1048575;
+        end
+        6'd21: begin
+            CTL_N=40'd2097151;
+        end
+        6'd22: begin
+            CTL_N=40'd4194303;
+        end
+        6'd23: begin
+            CTL_N=40'd8388607;
+        end
+        6'd24: begin
+            CTL_N=40'd16777215;
+        end
+        6'd25: begin
+            CTL_N=40'd33554431;
+        end
+        6'd26: begin
+            CTL_N=40'd67108863;
+        end
+        6'd27: begin
+            CTL_N=40'd134217727;
+        end
+        6'd28: begin
+            CTL_N=40'd268435455;
+        end
+        6'd29: begin
+            CTL_N=40'd536870911;
+        end
+        6'd30: begin
+            CTL_N=40'd1073741823;
+        end
+        6'd31: begin
+            CTL_N=40'd2147483647;
+        end
+        6'd32: begin
+            CTL_N=40'd4294967295;
+        end
+        6'd33: begin
+            CTL_N=40'd8589934591;
+        end
+        6'd34: begin
+            CTL_N=40'd17179869183;
+        end
+        6'd35: begin
+            CTL_N=40'd34359738367;
+        end
+        6'd36: begin
+            CTL_N=40'd68719476735;
+        end
+        6'd37: begin
+            CTL_N=40'd137438953471;
+        end
+        6'd38: begin
+            CTL_N=40'd274877906943;
+        end
+        6'd39: begin
+            CTL_N=40'd549755813887;
+        end   
+        6'd40: begin
+            CTL_N=40'd1099511627775;
+        end
+    endcase
+end
+
+always @( * ) begin
+    case (CTL_BUF_N)
+        6'd0: begin
+            CTL_P=40'd0;
+        end
+        6'd1: begin
+            CTL_P=40'd1;
+        end
+        6'd2: begin
+            CTL_P=40'd3;
+        end
+        6'd3: begin
+            CTL_P=40'd7;
+        end
+        6'd4: begin
+            CTL_P=40'd15
+        end
+        6'd5: begin
+            CTL_P=40'd31;
+        end
+        6'd6: begin
+            CTL_P=40'd63;
+        end
+        6'd7: begin
+            CTL_P=40'd127;
+        end
+        6'd8: begin
+            CTL_P=40'd255;
+        end
+        6'd9: begin
+            CTL_P=40'd511;
+        end
+        6'd10: begin
+            CTL_P=40'd1023;
+        end
+        6'd11: begin
+            CTL_P=40'd2047;
+        end
+        6'd12: begin
+            CTL_P=40'd4095;
+        end
+        6'd13: begin
+            CTL_P=40'd8191;
+        end
+        6'd14: begin
+            CTL_P=40'd16383;
+        end
+        6'd15: begin
+            CTL_P=40'd32767;
+        end
+        6'd16: begin
+            CTL_P=40'd65535;
+        end
+        6'd17: begin
+            CTL_P=40'd131071;
+        end
+        6'd18: begin
+            CTL_P=40'd262143;
+        end
+        6'd19: begin
+            CTL_P=40'd524287;
+        end
+        6'd20: begin
+            CTL_P=40'd1048575;
+        end
+        6'd21: begin
+            CTL_P=40'd2097151;
+        end
+        6'd22: begin
+            CTL_P=40'd4194303;
+        end
+        6'd23: begin
+            CTL_P=40'd8388607;
+        end
+        6'd24: begin
+            CTL_P=40'd16777215;
+        end
+        6'd25: begin
+            CTL_P=40'd33554431;
+        end
+        6'd26: begin
+            CTL_P=40'd67108863;
+        end
+        6'd27: begin
+            CTL_P=40'd134217727;
+        end
+        6'd28: begin
+            CTL_P=40'd268435455;
+        end
+        6'd29: begin
+            CTL_P=40'd536870911;
+        end
+        6'd30: begin
+            CTL_P=40'd1073741823;
+        end
+        6'd31: begin
+            CTL_P=40'd2147483647;
+        end
+        6'd32: begin
+            CTL_P=40'd4294967295;
+        end
+        6'd33: begin
+            CTL_P=40'd8589934591;
+        end
+        6'd34: begin
+            CTL_P=40'd17179869183;
+        end
+        6'd35: begin
+            CTL_P=40'd34359738367;
+        end
+        6'd36: begin
+            CTL_P=40'd68719476735;
+        end
+        6'd37: begin
+            CTL_P=40'd137438953471;
+        end
+        6'd38: begin
+            CTL_P=40'd274877906943;
+        end
+        6'd39: begin
+            CTL_P=40'd549755813887;
+        end   
+        6'd40: begin
+            CTL_P=40'd1099511627775;
+        end
+    endcase
+end
+
+
+// Instantiate the output buf
+
+output_buffer ibuf (
+    .inn(mtb_n),
+    .inp(mtb_p),
+    .CTL_N0(CTL_N[19:0]),
+    .CTL_N1(CTL_N[39:20]),
+    .CTL_P0(CTL_P[19:0]),
+    .CTL_P1(CTL_P[39:20]),
+    .BTN(dout_p),
+    .BTP(dout_n)
+);
+
+
+
 
 endmodule
 
