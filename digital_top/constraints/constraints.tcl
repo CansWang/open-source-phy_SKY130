@@ -7,7 +7,7 @@ set_driving_cell -no_design_rule \
 
 set_max_fanout 20 $dc_design_name
 
-set T 0.6
+set T 1.0
 
 set T0 [expr {0.00*$T}]
 set T1 [expr {0.25*$T}]
