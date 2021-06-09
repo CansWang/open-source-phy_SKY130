@@ -14,6 +14,9 @@ set core_density_target 0.70; # Placement density of 70% is reasonable
 set vert_pitch  [dbGet top.fPlan.coreSite.size_y]
 set horiz_pitch [dbGet top.fPlan.coreSite.size_x]
 
+set blockage_width [expr $horiz_pitch]
+set blockage_height [expr $vert_pitch]
+
 set sram_FP_adjust [snap_to_grid 350 $horiz_pitch]
 set bottom_y [snap_to_grid 100 $vert_pitch]
 
@@ -121,11 +124,15 @@ set origin_term_p_y [snap_to_grid 161 $vert_pitch]
 
 #    add_ndr -name tx_out_buf -spacing {M1:M7 0.12} -width {M1:M3 0.12 M4:M7 0.4}
 #    setAttribute -net {buf1/BTN buf1/BTP dout_p dout_n} -non_default_rule tx_out_buf
-
+set hr_0_x [snap_to_grid 100 $horiz_pitch]
+set hr_0_y [snap_to_grid 10 $vert_pitch]
 placeInstance \
   hr_mux_16t4_0 \
-  [snap_to_grid 100 $horiz_pitch]  \
-  [snap_to_grid 10 $vert_pitch] \
+  [expr $hr_0_x]  \
+  [expr $hr_0_y] \
+
+puts $vert_pitch
+puts $horiz_pitch
 
 
 placeInstance \
@@ -153,10 +160,11 @@ for {set i 0} {$i < 16} {incr i} {
 }
 
 createPlaceBlockage -box  \
-  [expr 99 * $horiz_pitch] \
-  [expr 9 * $vert_pitch] \
-  [expr 139 * $horiz_pitch] \
-  [expr 49 * $vert_pitch]
+  [expr $hr_0_x - $blockage_width] \
+  [expr $hr_0_y - $blockage_height] \
+  [expr $hr_0_x + 40 + $blockage_width] \
+  [expr $hr_0_y + 40 + $blockage_height]
+
 
 #	placeInstance \
 itx/indiv \
