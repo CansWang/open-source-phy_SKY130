@@ -23,6 +23,9 @@
     set vert_pitch  [dbGet top.fPlan.coreSite.size_y]
     set horiz_pitch [dbGet top.fPlan.coreSite.size_x]
 
+    set blockage_width [expr $horiz_pitch]
+    set blockage_height [expr $vert_pitch]
+
     #================
     #test for the vert_pitch
     #================
@@ -239,6 +242,34 @@ createPlaceBlockage -box  \
   [expr $qr_1_y - $blockage_height] \
   [expr $qr_1_x + 30 + $blockage_width] \
   [expr $qr_1_y + 30 + $blockage_height]
+
+createRouteBlk -box \
+  [expr $hr_0_x - $blockage_width] \
+  [expr $hr_0_y - $blockage_height] \
+  [expr $hr_0_x + 40 + $blockage_width] \
+  [expr $hr_0_y + 40 + $blockage_height] \
+  -name hr_0_blk -layer all
+
+createRouteBlk -box \
+  [expr $hr_1_x - $blockage_width] \
+  [expr $hr_1_y - $blockage_height] \
+  [expr $hr_1_x + 40 + $blockage_width] \
+  [expr $hr_1_y + 40 + $blockage_height] \
+  -name hr_1_blk -layer all
+
+createRouteBlk -box \
+  [expr $qr_0_x - $blockage_width] \
+  [expr $qr_0_y - $blockage_height] \
+  [expr $qr_0_x + 30 + $blockage_width] \
+  [expr $qr_0_y + 30 + $blockage_height] \
+  -name qr_0_blk -layer all
+
+createRouteBlk -box \
+  [expr $qr_1_x - $blockage_width] \
+  [expr $qr_1_y - $blockage_height] \
+  [expr $qr_1_x + 30 + $blockage_width] \
+  [expr $qr_1_y + 30 + $blockage_height] \
+  -name qr_1_blk -layer all
 
 #placeInstance \
   hr_mux_16t4_0 \

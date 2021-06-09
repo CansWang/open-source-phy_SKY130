@@ -14,9 +14,6 @@ set core_density_target 0.70; # Placement density of 70% is reasonable
 set vert_pitch  [dbGet top.fPlan.coreSite.size_y]
 set horiz_pitch [dbGet top.fPlan.coreSite.size_x]
 
-set blockage_width [expr $horiz_pitch]
-set blockage_height [expr $vert_pitch]
-
 set sram_FP_adjust [snap_to_grid 350 $horiz_pitch]
 set bottom_y [snap_to_grid 100 $vert_pitch]
 
