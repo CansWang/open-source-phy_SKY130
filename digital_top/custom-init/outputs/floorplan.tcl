@@ -186,28 +186,28 @@
 set x_offset 0.19
 set y_offset 0.24
 set hr_0_x [expr [snap_to_grid 100 3] - $x_offset]
-set hr_0_y [expr [snap_to_grid 10 $vert_pitch - $y_offset]
+set hr_0_y [expr [snap_to_grid 10 $vert_pitch] - $y_offset]
 placeInstance \
   hr_mux_16t4_0 \
   [expr $hr_0_x]  \
   [expr $hr_0_y] \
 
 set hr_1_x [expr [snap_to_grid 100 3] - $x_offset]
-set hr_1_y [expr [snap_to_grid 90 $vert_pitch - $y_offset]
+set hr_1_y [expr [snap_to_grid 90 $vert_pitch] - $y_offset]
 placeInstance \
   hr_mux_16t4_1 \
   [expr $hr_1_x]  \
   [expr $hr_1_y] \
 
 set qr_0_x [expr [snap_to_grid 150 3] - $x_offset]
-set qr_0_y [expr [snap_to_grid 10 $vert_pitch - $y_offset]
+set qr_0_y [expr [snap_to_grid 10 $vert_pitch] - $y_offset]
 placeInstance \
   qr_mux_4t1_0 \
   [expr $qr_0_x]  \
   [expr $qr_0_y] \
 
 set qr_1_x [expr [snap_to_grid 150 3] - $x_offset]
-set qr_1_y [expr [snap_to_grid 90 $vert_pitch - $y_offset]
+set qr_1_y [expr [snap_to_grid 90 $vert_pitch] - $y_offset]
 placeInstance \
   qr_mux_4t1_1 \
   [expr $qr_1_x]  \
