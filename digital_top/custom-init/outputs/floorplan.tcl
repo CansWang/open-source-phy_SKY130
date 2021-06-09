@@ -84,8 +84,8 @@
     #             $core_margin_l $core_margin_b $core_margin_r $core_margin_t
 
 
-    set FP_width [snap_to_grid [expr 200 + 0] $horiz_pitch ]
-    set FP_height [snap_to_grid 1400 $vert_pitch ]
+    set FP_width [snap_to_grid [expr 500 + 0] $horiz_pitch ]
+    set FP_height [snap_to_grid 500 $vert_pitch ]
 
 
     #floorPlan -site unithd -s $FP_width $FP_height \
@@ -186,38 +186,73 @@
 set x_offset 0.19
 set y_offset 0.24
 set hr_0_x [expr [snap_to_grid 100 3] - $x_offset]
-set hr_0_y [expr [snap_to_grid 10 $vert_pitch] - $y_offset]
+set hr_0_y [expr [snap_to_grid 170 $vert_pitch] - $y_offset]
 placeInstance \
   hr_mux_16t4_0 \
   [expr $hr_0_x]  \
   [expr $hr_0_y] \
 
 set hr_1_x [expr [snap_to_grid 100 3] - $x_offset]
-set hr_1_y [expr [snap_to_grid 90 $vert_pitch] - $y_offset]
+set hr_1_y [expr [snap_to_grid 250 $vert_pitch] - $y_offset]
 placeInstance \
   hr_mux_16t4_1 \
   [expr $hr_1_x]  \
   [expr $hr_1_y] \
 
 set qr_0_x [expr [snap_to_grid 150 3] - $x_offset]
-set qr_0_y [expr [snap_to_grid 10 $vert_pitch] - $y_offset]
+set qr_0_y [expr [snap_to_grid 170 $vert_pitch] - $y_offset]
 placeInstance \
   qr_mux_4t1_0 \
   [expr $qr_0_x]  \
   [expr $qr_0_y] \
 
 set qr_1_x [expr [snap_to_grid 150 3] - $x_offset]
-set qr_1_y [expr [snap_to_grid 90 $vert_pitch] - $y_offset]
+set qr_1_y [expr [snap_to_grid 250 $vert_pitch] - $y_offset]
 placeInstance \
   qr_mux_4t1_1 \
   [expr $qr_1_x]  \
   [expr $qr_1_y] \
 
-for {set i 0} {$i < 16} {incr i} {
+for {set i 0} {$i < 6} {incr i} {
+  placeInstance \
+    genblk1_$i\__prbs_b \
+    [snap_to_grid 90 $horiz_pitch]  \
+    [snap_to_grid [expr $i * 80 + 10] $vert_pitch] \
+}
+
+for {set i 6} {$i < 8} {incr i} {
   placeInstance \
     genblk1_$i\__prbs_b \
     [snap_to_grid 10 $horiz_pitch]  \
-    [snap_to_grid [expr $i * 80 + 10] $vert_pitch] \
+    [snap_to_grid [expr ($i-4) * 80 + 10] $vert_pitch] \
+}
+
+for {set i 8} {$i < 10} {incr i} {
+  placeInstance \
+    genblk1_$i\__prbs_b \
+    [snap_to_grid 170 $horiz_pitch]  \
+    [snap_to_grid [expr ($i-8) * 80 + 10] $vert_pitch] \
+}
+
+for {set i 10} {$i < 12} {incr i} {
+  placeInstance \
+    genblk1_$i\__prbs_b \
+    [snap_to_grid 170 $horiz_pitch]  \
+    [snap_to_grid [expr ($i-6) * 80 + 10] $vert_pitch] \
+}
+
+for {set i 12} {$i < 14} {incr i} {
+  placeInstance \
+    genblk1_$i\__prbs_b \
+    [snap_to_grid 250 $horiz_pitch]  \
+    [snap_to_grid [expr ($i-12) * 80 + 10] $vert_pitch] \
+}
+
+for {set i 14} {$i < 16} {incr i} {
+  placeInstance \
+    genblk1_$i\__prbs_b \
+    [snap_to_grid 250 $horiz_pitch]  \
+    [snap_to_grid [expr ($i-10) * 80 + 10] $vert_pitch] \
 }
 
 createPlaceBlockage -box  \
