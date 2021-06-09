@@ -23,8 +23,7 @@
     set vert_pitch  [dbGet top.fPlan.coreSite.size_y]
     set horiz_pitch [dbGet top.fPlan.coreSite.size_x]
 
-    set blockage_width [expr $horiz_pitch]
-    set blockage_height [expr $vert_pitch]
+    set blk_width 3
 
     #================
     #test for the vert_pitch
@@ -185,28 +184,28 @@
     ###################
 set x_offset 0.19
 set y_offset 0.24
-set hr_0_x [expr [snap_to_grid 100 3] - $x_offset]
+set hr_0_x [expr [snap_to_grid 170 3] - $x_offset]
 set hr_0_y [expr [snap_to_grid 170 $vert_pitch] - $y_offset]
 placeInstance \
   hr_mux_16t4_0 \
   [expr $hr_0_x]  \
   [expr $hr_0_y] \
 
-set hr_1_x [expr [snap_to_grid 100 3] - $x_offset]
+set hr_1_x [expr [snap_to_grid 170 3] - $x_offset]
 set hr_1_y [expr [snap_to_grid 250 $vert_pitch] - $y_offset]
 placeInstance \
   hr_mux_16t4_1 \
   [expr $hr_1_x]  \
   [expr $hr_1_y] \
 
-set qr_0_x [expr [snap_to_grid 150 3] - $x_offset]
+set qr_0_x [expr [snap_to_grid 250 3] - $x_offset]
 set qr_0_y [expr [snap_to_grid 170 $vert_pitch] - $y_offset]
 placeInstance \
   qr_mux_4t1_0 \
   [expr $qr_0_x]  \
   [expr $qr_0_y] \
 
-set qr_1_x [expr [snap_to_grid 150 3] - $x_offset]
+set qr_1_x [expr [snap_to_grid 250 3] - $x_offset]
 set qr_1_y [expr [snap_to_grid 250 $vert_pitch] - $y_offset]
 placeInstance \
   qr_mux_4t1_1 \
@@ -218,6 +217,19 @@ for {set i 0} {$i < 6} {incr i} {
     genblk1_$i\__prbs_b \
     [snap_to_grid 90 $horiz_pitch]  \
     [snap_to_grid [expr $i * 80 + 10] $vert_pitch] \
+
+  createPlaceBlockage -box  \
+    [expr [snap_to_grid 90 $horiz_pitch] - $blk_width] \
+    [expr [snap_to_grid [expr $i * 80 + 10] $vert_pitch] - $blk_width] \
+    [expr [snap_to_grid 90 $horiz_pitch] + 70 + $blk_width] \
+    [expr [snap_to_grid [expr $i * 80 + 10] $vert_pitch] + 70 + $blk_width]
+
+  createRouteBlk -box  \
+    [expr [snap_to_grid 90 $horiz_pitch] - $blk_width] \
+    [expr [snap_to_grid [expr $i * 80 + 10] $vert_pitch] - $blk_width] \
+    [expr [snap_to_grid 90 $horiz_pitch] + 70 + $blk_width] \
+    [expr [snap_to_grid [expr $i * 80 + 10] $vert_pitch] + 70 + $blk_width] \
+    -layer all
 }
 
 for {set i 6} {$i < 8} {incr i} {
@@ -225,6 +237,19 @@ for {set i 6} {$i < 8} {incr i} {
     genblk1_$i\__prbs_b \
     [snap_to_grid 10 $horiz_pitch]  \
     [snap_to_grid [expr ($i-4) * 80 + 10] $vert_pitch] \
+
+  createPlaceBlockage -box  \
+    [expr [snap_to_grid 10 $horiz_pitch] - $blk_width] \
+    [expr [snap_to_grid [expr ($i-4) * 80 + 10] $vert_pitch] - $blk_width] \
+    [expr [snap_to_grid 10 $horiz_pitch] + 70 + $blk_width] \
+    [expr [snap_to_grid [expr ($i-4) * 80 + 10] $vert_pitch] + 70 + $blk_width]
+
+  createRouteBlk -box  \
+    [expr [snap_to_grid 10 $horiz_pitch] - $blk_width] \
+    [expr [snap_to_grid [expr ($i-4) * 80 + 10] $vert_pitch] - $blk_width] \
+    [expr [snap_to_grid 10 $horiz_pitch] + 70 + $blk_width] \
+    [expr [snap_to_grid [expr ($i-4) * 80 + 10] $vert_pitch] + 70 + $blk_width] \
+    -layer all
 }
 
 for {set i 8} {$i < 10} {incr i} {
@@ -232,6 +257,19 @@ for {set i 8} {$i < 10} {incr i} {
     genblk1_$i\__prbs_b \
     [snap_to_grid 170 $horiz_pitch]  \
     [snap_to_grid [expr ($i-8) * 80 + 10] $vert_pitch] \
+
+  createPlaceBlockage -box  \
+    [expr [snap_to_grid 170 $horiz_pitch] - $blk_width] \
+    [expr [snap_to_grid [expr ($i-8) * 80 + 10] $vert_pitch] - $blk_width] \
+    [expr [snap_to_grid 170 $horiz_pitch] + 70 + $blk_width] \
+    [expr [snap_to_grid [expr ($i-8) * 80 + 10] $vert_pitch] + 70 + $blk_width]
+
+  createRouteBlk -box  \
+    [expr [snap_to_grid 170 $horiz_pitch] - $blk_width] \
+    [expr [snap_to_grid [expr ($i-8) * 80 + 10] $vert_pitch] - $blk_width] \
+    [expr [snap_to_grid 170 $horiz_pitch] + 70 + $blk_width] \
+    [expr [snap_to_grid [expr ($i-8) * 80 + 10] $vert_pitch] + 70 + $blk_width] \
+    -layer all
 }
 
 for {set i 10} {$i < 12} {incr i} {
@@ -239,6 +277,19 @@ for {set i 10} {$i < 12} {incr i} {
     genblk1_$i\__prbs_b \
     [snap_to_grid 170 $horiz_pitch]  \
     [snap_to_grid [expr ($i-6) * 80 + 10] $vert_pitch] \
+
+  createPlaceBlockage -box  \
+    [expr [snap_to_grid 170 $horiz_pitch] - $blk_width] \
+    [expr [snap_to_grid [expr ($i-6) * 80 + 10] $vert_pitch] - $blk_width] \
+    [expr [snap_to_grid 170 $horiz_pitch] + 70 + $blk_width] \
+    [expr [snap_to_grid [expr ($i-6) * 80 + 10] $vert_pitch] + 70 + $blk_width]
+
+  createRouteBlk -box  \
+    [expr [snap_to_grid 170 $horiz_pitch] - $blk_width] \
+    [expr [snap_to_grid [expr ($i-6) * 80 + 10] $vert_pitch] - $blk_width] \
+    [expr [snap_to_grid 170 $horiz_pitch] + 70 + $blk_width] \
+    [expr [snap_to_grid [expr ($i-6) * 80 + 10] $vert_pitch] + 70 + $blk_width] \
+    -layer all
 }
 
 for {set i 12} {$i < 14} {incr i} {
@@ -246,6 +297,19 @@ for {set i 12} {$i < 14} {incr i} {
     genblk1_$i\__prbs_b \
     [snap_to_grid 250 $horiz_pitch]  \
     [snap_to_grid [expr ($i-12) * 80 + 10] $vert_pitch] \
+
+  createPlaceBlockage -box  \
+    [expr [snap_to_grid 250 $horiz_pitch] - $blk_width] \
+    [expr [snap_to_grid [expr ($i-12) * 80 + 10] $vert_pitch] - $blk_width] \
+    [expr [snap_to_grid 250 $horiz_pitch] + 70 + $blk_width] \
+    [expr [snap_to_grid [expr ($i-12) * 80 + 10] $vert_pitch] + 70 + $blk_width]
+
+  createRouteBlk -box  \
+    [expr [snap_to_grid 250 $horiz_pitch] - $blk_width] \
+    [expr [snap_to_grid [expr ($i-12) * 80 + 10] $vert_pitch] - $blk_width] \
+    [expr [snap_to_grid 250 $horiz_pitch] + 70 + $blk_width] \
+    [expr [snap_to_grid [expr ($i-12) * 80 + 10] $vert_pitch] + 70 + $blk_width] \
+    -layer all
 }
 
 for {set i 14} {$i < 16} {incr i} {
@@ -253,58 +317,71 @@ for {set i 14} {$i < 16} {incr i} {
     genblk1_$i\__prbs_b \
     [snap_to_grid 250 $horiz_pitch]  \
     [snap_to_grid [expr ($i-10) * 80 + 10] $vert_pitch] \
+
+  createPlaceBlockage -box  \
+    [expr [snap_to_grid 250 $horiz_pitch] - $blk_width] \
+    [expr [snap_to_grid [expr ($i-10) * 80 + 10] $vert_pitch] - $blk_width] \
+    [expr [snap_to_grid 250 $horiz_pitch] + 70 + $blk_width] \
+    [expr [snap_to_grid [expr ($i-10) * 80 + 10] $vert_pitch] + 70 + $blk_width]
+
+  createRouteBlk -box  \
+    [expr [snap_to_grid 250 $horiz_pitch] - $blk_width] \
+    [expr [snap_to_grid [expr ($i-10) * 80 + 10] $vert_pitch] - $blk_width] \
+    [expr [snap_to_grid 250 $horiz_pitch] + 70 + $blk_width] \
+    [expr [snap_to_grid [expr ($i-10) * 80 + 10] $vert_pitch] + 70 + $blk_width] \
+    -layer all
 }
 
 createPlaceBlockage -box  \
-  [expr $hr_0_x - $blockage_width] \
-  [expr $hr_0_y - $blockage_height] \
-  [expr $hr_0_x + 40 + $blockage_width] \
-  [expr $hr_0_y + 40 + $blockage_height]
+  [expr $hr_0_x - $blk_width] \
+  [expr $hr_0_y - $blk_width] \
+  [expr $hr_0_x + 40 + $blk_width] \
+  [expr $hr_0_y + 40 + $blk_width]
 
 createPlaceBlockage -box  \
-  [expr $hr_1_x - $blockage_width] \
-  [expr $hr_1_y - $blockage_height] \
-  [expr $hr_1_x + 40 + $blockage_width] \
-  [expr $hr_1_y + 40 + $blockage_height]
+  [expr $hr_1_x - $blk_width] \
+  [expr $hr_1_y - $blk_width] \
+  [expr $hr_1_x + 40 + $blk_width] \
+  [expr $hr_1_y + 40 + $blk_width]
 
 createPlaceBlockage -box  \
-  [expr $qr_0_x - $blockage_width] \
-  [expr $qr_0_y - $blockage_height] \
-  [expr $qr_0_x + 30 + $blockage_width] \
-  [expr $qr_0_y + 30 + $blockage_height]
+  [expr $qr_0_x - $blk_width] \
+  [expr $qr_0_y - $blk_width] \
+  [expr $qr_0_x + 30 + $blk_width] \
+  [expr $qr_0_y + 30 + $blk_width]
 
 createPlaceBlockage -box  \
-  [expr $qr_1_x - $blockage_width] \
-  [expr $qr_1_y - $blockage_height] \
-  [expr $qr_1_x + 30 + $blockage_width] \
-  [expr $qr_1_y + 30 + $blockage_height]
+  [expr $qr_1_x - $blk_width] \
+  [expr $qr_1_y - $blk_width] \
+  [expr $qr_1_x + 30 + $blk_width] \
+  [expr $qr_1_y + 30 + $blk_width]
 
 createRouteBlk -box \
-  [expr $hr_0_x - $blockage_width] \
-  [expr $hr_0_y - $blockage_height] \
-  [expr $hr_0_x + 40 + $blockage_width] \
-  [expr $hr_0_y + 40 + $blockage_height] \
+  [expr $hr_0_x - $blk_width] \
+  [expr $hr_0_y - $blk_width] \
+  [expr $hr_0_x + 40 + $blk_width] \
+  [expr $hr_0_y + 40 + $blk_width] \
   -name hr_0_blk -layer all
 
 createRouteBlk -box \
-  [expr $hr_1_x - $blockage_width] \
-  [expr $hr_1_y - $blockage_height] \
-  [expr $hr_1_x + 40 + $blockage_width] \
-  [expr $hr_1_y + 40 + $blockage_height] \
+  [expr $hr_1_x - $blk_width] \
+  [expr $hr_1_y - $blk_width] \
+  [expr $hr_1_x + 40 + $blk_width] \
+  [expr $hr_1_y + 40 + $blk_width] \
   -name hr_1_blk -layer all
 
 createRouteBlk -box \
-  [expr $qr_0_x - $blockage_width] \
-  [expr $qr_0_y - $blockage_height] \
-  [expr $qr_0_x + 30 + $blockage_width] \
-  [expr $qr_0_y + 30 + $blockage_height] \
+  [expr $qr_0_x - $blk_width] \
+  [expr $qr_0_y - $blk_width] \
+  [expr $qr_0_x + 30 + $blk_width] \
+  [expr $qr_0_y + 30 + $blk_width] \
   -name qr_0_blk -layer all
 
 createRouteBlk -box \
-  [expr $qr_1_x - $blockage_width] \
-  [expr $qr_1_y - $blockage_height] \
-  [expr $qr_1_x + 30 + $blockage_width] \
-  [expr $qr_1_y + 30 + $blockage_height] \
+  [expr $qr_1_x - $blk_width] \
+  [expr $qr_1_y - $blk_width] \
+  [expr $qr_1_x + 30 + $blk_width] \
+  [expr $qr_1_y + 30 + $blk_width] \
   -name qr_1_blk -layer all
 
 #placeInstance \
