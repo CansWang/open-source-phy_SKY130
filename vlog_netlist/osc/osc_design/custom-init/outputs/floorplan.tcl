@@ -225,13 +225,19 @@
  #      [snap_to_grid [expr $origin_txpi_x + $pi_width + 20] $horiz_pitch] \
  #       [expr $origin_txpi_y + ($pi_neighbor_spacing)] \
  #            MX
-
+# delaycell origin
+set del5_origin [expr (32) * $horiz_pitch]
+set del1_origin [expr (69) * $horiz_pitch]
+set del4_origin [expr (107) * $horiz_pitch]
+set del2_origin [expr (142) * $horiz_pitch]
+set del3_origin [expr (181) * $horiz_pitch]
 # placement for delay cells
+
     for {set j 0} {$j < 5} {incr j} {
     
     placeInstance \
       del5/genblk1_$j\__inand \
-      [expr (32) * $horiz_pitch] \
+      $del5_origin \
       [expr (19 + $j) * $vert_pitch] \
     }
 
@@ -239,7 +245,7 @@
     
     placeInstance \
       del1/genblk1_$j\__inand \
-      [expr (78) * $horiz_pitch] \
+      $del1_origin \
       [expr (19 + $j) * $vert_pitch] \
     }
 
@@ -247,7 +253,7 @@
 
     placeInstance \
       del4/genblk1_$j\__inand \
-      [expr (107) * $horiz_pitch] \
+      $del4_origin \
       [expr (19 + $j) * $vert_pitch] \
     }
 
@@ -255,7 +261,7 @@
 
     placeInstance \
       del2/genblk1_$j\__inand \
-      [expr (136) * $horiz_pitch] \
+      $del2_origin \
       [expr (19 + $j) * $vert_pitch] \
     }
 
@@ -264,19 +270,14 @@
     
     placeInstance \
       del3/genblk1_$j\__inand \
-      [expr (173) * $horiz_pitch] \
+      $del3_origin \
       [expr (19 + $j) * $vert_pitch] \
     }
 
 puts $horiz_pitch
 puts $vert_pitch
 
-# delaycell origin
-set del5_origin [expr (32) * $horiz_pitch]
-set del1_origin [expr (69) * $horiz_pitch]
-set del4_origin [expr (107) * $horiz_pitch]
-set del2_origin [expr (136) * $horiz_pitch]
-set del3_origin [expr (169) * $horiz_pitch]
+
 
 # placement for varactor, del5
 placeInstance \

@@ -293,8 +293,8 @@ setEdit -width_horizontal 1
 set del5_origin [expr (32) * $horiz_pitch]
 set del1_origin [expr (69) * $horiz_pitch]
 set del4_origin [expr (107) * $horiz_pitch]
-set del2_origin [expr (136) * $horiz_pitch]
-set del3_origin [expr (169) * $horiz_pitch]
+set del2_origin [expr (142) * $horiz_pitch]
+set del3_origin [expr (181) * $horiz_pitch]
 
 setEdit -nets osc_000
 editAddRoute [expr $del5_origin + 5*$horiz_pitch] [expr (19 + 5) * $vert_pitch]
