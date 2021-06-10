@@ -1,3 +1,5 @@
+
+`default_nettype none
 module output_buffer (
     input inn,
     input inp,
@@ -56,3 +58,5 @@ endgenerate
 // This should be done in magic!
 
 endmodule
+
+`default_nettype wire
