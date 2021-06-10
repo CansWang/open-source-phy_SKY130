@@ -40,7 +40,7 @@ module osc_core (
 
 delay_cell_osc del1 (
     .in(osc_000),
-    .en(osc_hold),
+    .en(glob_en),
     .out(osc_036)
 );
 
@@ -48,7 +48,7 @@ delay_cell_osc del1 (
 
 delay_cell_osc del2 (
     .in(osc_036),
-    .en(inj_out),
+    .en(osc_hold),
     .out(osc_072)
 );
 
@@ -56,7 +56,7 @@ delay_cell_osc del2 (
 
 delay_cell_osc del3 (
     .in(osc_072),
-    .en(glob_en),
+    .en(inj_out),
     .out(osc_108)
 );
 

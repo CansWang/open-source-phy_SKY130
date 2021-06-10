@@ -570,6 +570,17 @@ for {set j 0} {$j < 4} {incr j} {
 }
 
 
+# place the edge injector
+
+placeInstance \
+    einj/inj_0
+    [expr ($del3_origin + (22) * $horiz_pitch)] \
+    [expr (23) * $vert_pitch] \
+
+placeInstance \
+    einj/inj_1
+    [expr ($del3_origin + (22) * $horiz_pitch)] \
+    [expr (22) * $vert_pitch] \
 
 
     ###################
