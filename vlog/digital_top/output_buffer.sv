@@ -13,8 +13,8 @@ module output_buffer (
 logic [39:0] CTL_N;
 logic [39:0] CTL_P;
 
-assgin CTL_N={CTL_N0 ,CTL_N1};
-assgin CTL_P={CTL_P0 ,CTL_P1};
+assgin CTL_N={CTL_N0,CTL_N1};
+assgin CTL_P={CTL_P0,CTL_P1};
 
 // buffer to match the fanout
 // SET_DONT_TOUCH!!
@@ -32,8 +32,7 @@ sky130_fd_sc_hs__inv_8 predrv_n_1 (.A(inn), .Y(inn_buf));
 
 // TRI_STATE_BUT
 // SET_DONT_TOUCH!!
-logic BTN;
-logic BTP;
+
 
 genvar i;
 generate
