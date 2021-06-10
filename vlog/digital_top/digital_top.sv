@@ -198,7 +198,7 @@ always @( * ) begin
             CTL_N=40'd7;
         end
         6'd4: begin
-            CTL_N=40'd15
+            CTL_N=40'd15;
         end
         6'd5: begin
             CTL_N=40'd31;
@@ -304,7 +304,7 @@ always @( * ) begin
         end
         6'd39: begin
             CTL_N=40'd549755813887;
-        end   
+        end
         6'd40: begin
             CTL_N=40'd1099511627775;
         end
@@ -326,7 +326,7 @@ always @( * ) begin
             CTL_P=40'd7;
         end
         6'd4: begin
-            CTL_P=40'd15
+            CTL_P=40'd15;
         end
         6'd5: begin
             CTL_P=40'd31;
@@ -432,7 +432,7 @@ always @( * ) begin
         end
         6'd39: begin
             CTL_P=40'd549755813887;
-        end   
+        end
         6'd40: begin
             CTL_P=40'd1099511627775;
         end
