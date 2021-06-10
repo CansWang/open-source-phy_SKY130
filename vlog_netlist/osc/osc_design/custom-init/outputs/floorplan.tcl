@@ -226,6 +226,347 @@
  #       [expr $origin_txpi_y + ($pi_neighbor_spacing)] \
  #            MX
 
+# placement for delay cells
+    for {set j 0} {$j < 5} {incr j} {
+    
+    placeInstance \
+      del5/genblk1_$j\__inand \
+      [expr (32) * $horiz_pitch] \
+      [expr (19 + $j) * $vert_pitch] \
+    }
+
+    for {set j 0} {$j < 5} {incr j} {
+    
+    placeInstance \
+      del1/genblk1_$j\__inand \
+      [expr (78) * $horiz_pitch] \
+      [expr (19 + $j) * $vert_pitch] \
+    }
+
+    for {set j 0} {$j < 5} {incr j} {
+
+    placeInstance \
+      del4/genblk1_$j\__inand \
+      [expr (107) * $horiz_pitch] \
+      [expr (19 + $j) * $vert_pitch] \
+    }
+
+    for {set j 0} {$j < 5} {incr j} {
+
+    placeInstance \
+      del2/genblk1_$j\__inand \
+      [expr (136) * $horiz_pitch] \
+      [expr (19 + $j) * $vert_pitch] \
+    }
+
+
+    for {set j 0} {$j < 5} {incr j} {
+    
+    placeInstance \
+      del3/genblk1_$j\__inand \
+      [expr (173) * $horiz_pitch] \
+      [expr (19 + $j) * $vert_pitch] \
+    }
+
+puts $horiz_pitch
+puts $vert_pitch
+
+# delaycell origin
+set del5_origin [expr (32) * $horiz_pitch]
+set del1_origin [expr (69) * $horiz_pitch]
+set del4_origin [expr (107) * $horiz_pitch]
+set del2_origin [expr (136) * $horiz_pitch]
+set del3_origin [expr (169) * $horiz_pitch]
+
+# placement for varactor, del5
+placeInstance \
+    capbank5_fc1 \
+    [expr ($del5_origin - (3) * $horiz_pitch)] \
+    [expr (19 + 4) * $vert_pitch] \
+
+
+placeInstance \
+    capbank5_fc2 \
+    [expr ($del5_origin - (5) * $horiz_pitch)] \
+    [expr (19 + 3) * $vert_pitch] \
+
+
+placeInstance \
+    capbank5_fc3_0 \
+    [expr ($del5_origin - (5) * $horiz_pitch)] \
+    [expr (19 + 2) * $vert_pitch] \
+
+
+placeInstance \
+    capbank5_fc3_1 \
+    [expr ($del5_origin - (5) * $horiz_pitch)] \
+    [expr (19 + 1) * $vert_pitch] \
+
+for {set j 0} {$j < 4} {incr j} {
+    
+    placeInstance \
+      capbank5_fc4_$j \
+      [expr ($del5_origin - (5) * $horiz_pitch)] \
+      [expr (19 - $j) * $vert_pitch] \
+
+    placeInstance \
+      capbank5_fc44_$j \
+      [expr ($del5_origin - (0) * $horiz_pitch)] \
+      [expr (18 - $j) * $vert_pitch] \
+
+    placeInstance \
+      capbank5_fc5_$j \
+      [expr ($del5_origin + (5) * $horiz_pitch)] \
+      [expr (18 - $j) * $vert_pitch] \
+
+    placeInstance \
+      capbank5_fc6_$j \
+      [expr ($del5_origin - (5) * $horiz_pitch)] \
+      [expr (14 - $j) * $vert_pitch] \
+
+    placeInstance \
+      capbank5_fc7_$j \
+      [expr ($del5_origin + (5) * $horiz_pitch)] \
+      [expr (15 - $j) * $vert_pitch] \
+
+    placeInstance \
+      capbank5_fc8_$j \
+      [expr ($del5_origin - (14) * $horiz_pitch)] \
+      [expr (19 + $j) * $vert_pitch] \
+
+}
+
+# placement for varactor, del1
+placeInstance \
+    capbank1_fc1 \
+    [expr ($del1_origin - (3) * $horiz_pitch)] \
+    [expr (19 + 4) * $vert_pitch] \
+
+
+placeInstance \
+    capbank1_fc2 \
+    [expr ($del1_origin - (5) * $horiz_pitch)] \
+    [expr (19 + 3) * $vert_pitch] \
+
+
+placeInstance \
+    capbank1_fc3_0 \
+    [expr ($del1_origin - (5) * $horiz_pitch)] \
+    [expr (19 + 2) * $vert_pitch] \
+
+
+placeInstance \
+    capbank1_fc3_1 \
+    [expr ($del1_origin - (5) * $horiz_pitch)] \
+    [expr (19 + 1) * $vert_pitch] \
+
+for {set j 0} {$j < 4} {incr j} {
+    
+    placeInstance \
+      capbank1_fc4_$j \
+      [expr ($del1_origin - (5) * $horiz_pitch)] \
+      [expr (19 - $j) * $vert_pitch] \
+
+    placeInstance \
+      capbank1_fc44_$j \
+      [expr ($del1_origin - (0) * $horiz_pitch)] \
+      [expr (18 - $j) * $vert_pitch] \
+
+    placeInstance \
+      capbank1_fc5_$j \
+      [expr ($del1_origin + (5) * $horiz_pitch)] \
+      [expr (18 - $j) * $vert_pitch] \
+
+    placeInstance \
+      capbank1_fc6_$j \
+      [expr ($del1_origin - (5) * $horiz_pitch)] \
+      [expr (14 - $j) * $vert_pitch] \
+
+    placeInstance \
+      capbank1_fc7_$j \
+      [expr ($del1_origin + (5) * $horiz_pitch)] \
+      [expr (15 - $j) * $vert_pitch] \
+
+    placeInstance \
+      capbank1_fc8_$j \
+      [expr ($del1_origin - (14) * $horiz_pitch)] \
+      [expr (19 + $j) * $vert_pitch] \
+
+}
+
+# placement for varactor, del4
+placeInstance \
+    capbank4_fc1 \
+    [expr ($del4_origin - (3) * $horiz_pitch)] \
+    [expr (19 + 4) * $vert_pitch] \
+
+
+placeInstance \
+    capbank4_fc2 \
+    [expr ($del4_origin - (5) * $horiz_pitch)] \
+    [expr (19 + 3) * $vert_pitch] \
+
+
+placeInstance \
+    capbank4_fc3_0 \
+    [expr ($del4_origin - (5) * $horiz_pitch)] \
+    [expr (19 + 2) * $vert_pitch] \
+
+
+placeInstance \
+    capbank4_fc3_1 \
+    [expr ($del4_origin - (5) * $horiz_pitch)] \
+    [expr (19 + 1) * $vert_pitch] \
+
+for {set j 0} {$j < 4} {incr j} {
+    
+    placeInstance \
+      capbank4_fc4_$j \
+      [expr ($del4_origin - (5) * $horiz_pitch)] \
+      [expr (19 - $j) * $vert_pitch] \
+
+    placeInstance \
+      capbank4_fc44_$j \
+      [expr ($del4_origin - (0) * $horiz_pitch)] \
+      [expr (18 - $j) * $vert_pitch] \
+
+    placeInstance \
+      capbank4_fc5_$j \
+      [expr ($del4_origin + (5) * $horiz_pitch)] \
+      [expr (18 - $j) * $vert_pitch] \
+
+    placeInstance \
+      capbank4_fc6_$j \
+      [expr ($del4_origin - (5) * $horiz_pitch)] \
+      [expr (14 - $j) * $vert_pitch] \
+
+    placeInstance \
+      capbank4_fc7_$j \
+      [expr ($del4_origin + (5) * $horiz_pitch)] \
+      [expr (15 - $j) * $vert_pitch] \
+
+    placeInstance \
+      capbank4_fc8_$j \
+      [expr ($del4_origin - (14) * $horiz_pitch)] \
+      [expr (19 + $j) * $vert_pitch] \
+
+}
+
+# placement for varactor, del2
+placeInstance \
+    capbank2_fc1 \
+    [expr ($del2_origin - (3) * $horiz_pitch)] \
+    [expr (19 + 4) * $vert_pitch] \
+
+
+placeInstance \
+    capbank2_fc2 \
+    [expr ($del2_origin - (5) * $horiz_pitch)] \
+    [expr (19 + 3) * $vert_pitch] \
+
+
+placeInstance \
+    capbank2_fc3_0 \
+    [expr ($del2_origin - (5) * $horiz_pitch)] \
+    [expr (19 + 2) * $vert_pitch] \
+
+
+placeInstance \
+    capbank2_fc3_1 \
+    [expr ($del2_origin - (5) * $horiz_pitch)] \
+    [expr (19 + 1) * $vert_pitch] \
+
+for {set j 0} {$j < 4} {incr j} {
+    
+    placeInstance \
+      capbank2_fc4_$j \
+      [expr ($del2_origin - (5) * $horiz_pitch)] \
+      [expr (19 - $j) * $vert_pitch] \
+
+    placeInstance \
+      capbank2_fc44_$j \
+      [expr ($del2_origin - (0) * $horiz_pitch)] \
+      [expr (18 - $j) * $vert_pitch] \
+
+    placeInstance \
+      capbank2_fc5_$j \
+      [expr ($del2_origin + (5) * $horiz_pitch)] \
+      [expr (18 - $j) * $vert_pitch] \
+
+    placeInstance \
+      capbank2_fc6_$j \
+      [expr ($del2_origin - (5) * $horiz_pitch)] \
+      [expr (14 - $j) * $vert_pitch] \
+
+    placeInstance \
+      capbank2_fc7_$j \
+      [expr ($del2_origin + (5) * $horiz_pitch)] \
+      [expr (15 - $j) * $vert_pitch] \
+
+    placeInstance \
+      capbank2_fc8_$j \
+      [expr ($del2_origin - (14) * $horiz_pitch)] \
+      [expr (19 + $j) * $vert_pitch] \
+
+}
+
+# placement for varactor, del3
+placeInstance \
+    capbank3_fc1 \
+    [expr ($del3_origin - (3) * $horiz_pitch)] \
+    [expr (19 + 4) * $vert_pitch] \
+
+
+placeInstance \
+    capbank3_fc2 \
+    [expr ($del3_origin - (5) * $horiz_pitch)] \
+    [expr (19 + 3) * $vert_pitch] \
+
+
+placeInstance \
+    capbank3_fc3_0 \
+    [expr ($del3_origin - (5) * $horiz_pitch)] \
+    [expr (19 + 2) * $vert_pitch] \
+
+
+placeInstance \
+    capbank3_fc3_1 \
+    [expr ($del3_origin - (5) * $horiz_pitch)] \
+    [expr (19 + 1) * $vert_pitch] \
+
+for {set j 0} {$j < 4} {incr j} {
+    
+    placeInstance \
+      capbank3_fc4_$j \
+      [expr ($del3_origin - (5) * $horiz_pitch)] \
+      [expr (19 - $j) * $vert_pitch] \
+
+    placeInstance \
+      capbank3_fc44_$j \
+      [expr ($del3_origin - (0) * $horiz_pitch)] \
+      [expr (18 - $j) * $vert_pitch] \
+
+    placeInstance \
+      capbank3_fc5_$j \
+      [expr ($del3_origin + (5) * $horiz_pitch)] \
+      [expr (18 - $j) * $vert_pitch] \
+
+    placeInstance \
+      capbank3_fc6_$j \
+      [expr ($del3_origin - (5) * $horiz_pitch)] \
+      [expr (14 - $j) * $vert_pitch] \
+
+    placeInstance \
+      capbank3_fc7_$j \
+      [expr ($del3_origin + (5) * $horiz_pitch)] \
+      [expr (15 - $j) * $vert_pitch] \
+
+    placeInstance \
+      capbank3_fc8_$j \
+      [expr ($del3_origin - (14) * $horiz_pitch)] \
+      [expr (19 + $j) * $vert_pitch] \
+
+}
 
 
 

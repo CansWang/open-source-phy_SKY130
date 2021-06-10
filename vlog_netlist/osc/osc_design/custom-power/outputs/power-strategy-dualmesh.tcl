@@ -128,51 +128,6 @@
 
 puts [snap_to_grid 30 $horiz_pitch]
 
-    for {set j 0} {$j < 5} {incr j} {
-    
-    placeInstance \
-      del5/genblk1_$j\__inand \
-      [snap_to_grid 15 $horiz_pitch] \
-      [expr (19 + $j) * $vert_pitch] \
-      MX
-    }
-
-    for {set j 0} {$j < 5} {incr j} {
-    
-    placeInstance \
-      del1/genblk1_$j\__inand \
-      [snap_to_grid 27 $horiz_pitch] \
-      [expr (19 + $j) * $vert_pitch] \
-      MX
-    }
-
-    for {set j 0} {$j < 5} {incr j} {
-
-    placeInstance \
-      del4/genblk1_$j\__inand \
-      [snap_to_grid 40 $horiz_pitch] \
-      [expr (19 + $j) * $vert_pitch] \
-      MX
-    }
-
-    for {set j 0} {$j < 5} {incr j} {
-
-    placeInstance \
-      del2/genblk1_$j\__inand \
-      [snap_to_grid 53 $horiz_pitch] \
-      [expr (19 + $j) * $vert_pitch] \
-      MX
-    }
-
-
-    for {set j 0} {$j < 5} {incr j} {
-    
-    placeInstance \
-      del3/genblk1_$j\__inand \
-      [snap_to_grid 64 $horiz_pitch] \
-      [expr (19 + $j) * $vert_pitch] \
-      MX
-    }
 
 
 
@@ -311,11 +266,6 @@ set pin_tx_outn_y [expr $origin_ref_y]
 #createPhysicalPin dout_p -net dout_p -layer 10 -rect $pin_tx_outp_x [expr $pin_tx_outp_y+20] [expr $pin_tx_outp_x+$outbuf_pin_width] [expr $pin_tx_outp_y+$outbuf_pin_height+20]
 #createPhysicalPin dout_n -net dout_n -layer 10 -rect $pin_tx_outn_x [expr $pin_tx_outn_y+20] [expr $pin_tx_outn_x+$outbuf_pin_width] [expr $pin_tx_outn_y+$outbuf_pin_height+20]
 
-set term_pin_width 4.93
-set term_pin_height 1.2
-set term_pin_offset_x [expr 15.330+$term_pin_width/2]
-set term_pin_offset_y [expr 0.735+$term_pin_height/2]
-
 # Route Blk for via 4-8
 #createRouteBlk -box [expr $pin_tx_outp_x - 1] [expr $pin_tx_outp_y + 19] [expr $pin_tx_outp_x + $outbuf_pin_width + 1] [expr $pin_tx_outp_y + $outbuf_pin_height + 21] -layer {via3 via4 } -name blk_term_p_vian_tx_outp_x
 #createRouteBlk -box [expr $pin_tx_outn_x + 1] [expr $pin_tx_outn_y + 19] [expr $pin_tx_outn_x + $outbuf_pin_width + 1] [expr $pin_tx_outn_y + $outbuf_pin_height + 21] -layer {via3 via4 } -name blk_term_n_via
@@ -336,9 +286,35 @@ setViaGenMode -use_fgc 1
 setViaGenMode -use_cce false
 
 setEdit -layer_vertical M5
-setEdit -width_vertical 4
+setEdit -width_vertical 1
 setEdit -layer_horizontal M4
-setEdit -width_horizontal 4
+setEdit -width_horizontal 1
+
+set del5_origin [expr (32) * $horiz_pitch]
+set del1_origin [expr (69) * $horiz_pitch]
+set del4_origin [expr (107) * $horiz_pitch]
+set del2_origin [expr (136) * $horiz_pitch]
+set del3_origin [expr (169) * $horiz_pitch]
+
+setEdit -nets osc_000
+editAddRoute [expr $del5_origin + 5*$horiz_pitch] [expr (19 + 5) * $vert_pitch]
+editCommitRoute [expr [snap_to_grid 15 $horiz_pitch] + 5*$horiz_pitch] [expr (10) * $vert_pitch]
+
+setEdit -nets osc_036
+editAddRoute [expr $del1_origin + 5*$horiz_pitch] [expr (19 + 5) * $vert_pitch]
+editCommitRoute [expr [snap_to_grid 37 $horiz_pitch] + 5*$horiz_pitch] [expr (10) * $vert_pitch]
+
+setEdit -nets osc_144
+editAddRoute [expr $del4_origin + 5*$horiz_pitch] [expr (19 + 5) * $vert_pitch]
+editCommitRoute [expr [snap_to_grid 51 $horiz_pitch] + 5*$horiz_pitch] [expr (10) * $vert_pitch]
+
+setEdit -nets osc_072
+editAddRoute [expr $del2_origin + 5*$horiz_pitch] [expr (19 + 5) * $vert_pitch]
+editCommitRoute [expr [snap_to_grid 65 $horiz_pitch] + 5*$horiz_pitch] [expr (10) * $vert_pitch]
+
+setEdit -nets osc_108
+editAddRoute [expr $del3_origin + 5*$horiz_pitch] [expr (19 + 5) * $vert_pitch]
+editCommitRoute [expr [snap_to_grid 83 $horiz_pitch] + 5*$horiz_pitch] [expr (10) * $vert_pitch]
 
 #setEdit -nets ext_tx_outp
 #editAddRoute [expr $pin_tx_outp_x] [expr $pin_tx_outp_y+2]
@@ -353,10 +329,10 @@ setEdit -width_horizontal 4
 #editCommitRoute [expr $origin_term_n_x+$term_width/2+2] [expr $origin_term_n_y]
 
 
-setEdit -layer_horizontal M4
-setEdit -layer_vertical M5
-setEdit -width_horizontal $term_pin_height
-setEdit -width_vertical 1
+# setEdit -layer_horizontal M4
+# setEdit -layer_vertical M5
+# setEdit -width_horizontal $term_pin_height
+# setEdit -width_vertical 1
 
 # setEdit -nets buf1/BTP
 # editAddRoute [expr $origin_term_p_x+$term_pin_offset_x-$term_pin_width/2] [expr $origin_term_p_y+$term_pin_offset_y]

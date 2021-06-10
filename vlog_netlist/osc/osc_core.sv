@@ -1,15 +1,7 @@
 module osc_core (
     input glob_en,
-    input [4:0] delay_con_lsb_1,
-    input [7:0] delay_con_msb_1,
-    input [4:0] delay_con_lsb_2,
-    input [7:0] delay_con_msb_2,
-    input [4:0] delay_con_lsb_3,
-    input [7:0] delay_con_msb_3,
-    input [4:0] delay_con_lsb_4,
-    input [7:0] delay_con_msb_4,
-    input [4:0] delay_con_lsb_5,
-    input [7:0] delay_con_msb_5,    
+    input [4:0] delay_con_lsb,
+    input [7:0] delay_con_msb,
     input [3:0] con_perb_1,
     input [3:0] con_perb_2,
     input [3:0] con_perb_3,
@@ -48,15 +40,15 @@ module osc_core (
 
 delay_cell_osc del1 (
     .in(osc_000),
-    .en(glob_en),
+    .en(osc_hold),
     .out(osc_036)
 );
 
-// 2ND STAGE
+// 2ND STAGE, inject in this stage
 
 delay_cell_osc del2 (
     .in(osc_036),
-    .en(glob_en),
+    .en(inj_out),
     .out(osc_072)
 );
 

@@ -85,6 +85,33 @@ for {set i 1} {$i < 6} {incr i} {
     }
 }
 
+# dont touch for the edge injector
+for {set i 1} {$i < 5} {incr i} {
+    set_dont_touch [get_cells "einj/inj_del_$i"]
+    set_dont_touch [get_cells "einj/dff_del_$i"]
+}
+for {set i 0} {$i < 4} {incr i} {
+    set_dont_touch [get_cells "einj/inj_del_5_$i"]
+    set_dont_touch [get_cells "einj/del_64_$i"]
+    set_dont_touch [get_cells "einj/dff_del_5_$i"]
+}
+
+    set_dont_touch [get_cells "einj/dff_1"]
+    set_dont_touch [get_cells "einj/dff_2"]
+    set_dont_touch [get_cells "einj/inv_hold"]
+    set_dont_touch [get_cells "einj/inj_0"]
+    set_dont_touch [get_cells "einj/inj_1"]
+
+    set_dont_touch [get_cells "einj/del_1"]
+    set_dont_touch [get_cells "einj/del_4"]
+    set_dont_touch [get_cells "einj/del_16"]
+    set_dont_touch [get_cells "einj/buf_ref"]
+
+
+
+
+
+
 
 
 
