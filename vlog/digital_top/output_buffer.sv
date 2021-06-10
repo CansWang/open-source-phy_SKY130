@@ -15,8 +15,8 @@ module output_buffer (
 wire logic [39:0] CTL_N;
 wire logic [39:0] CTL_P;
 
-assgin CTL_N={CTL_N0,CTL_N1};
-assgin CTL_P={CTL_P0,CTL_P1};
+assign CTL_N={CTL_N0,CTL_N1};
+assign CTL_P={CTL_P0,CTL_P1};
 
 // buffer to match the fanout
 // SET_DONT_TOUCH!!
