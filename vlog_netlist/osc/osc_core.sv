@@ -9,6 +9,19 @@ module osc_core (
     input [3:0] con_perb_5,
     input ref_clk,
 
+// PI control
+    input [3:0] pi1_l,
+    input [3:0] pi1_r,
+    input [3:0] pi2_l,
+    input [3:0] pi2_r,
+    input [3:0] pi3_l,
+    input [3:0] pi3_r,
+    input [3:0] pi4_l,
+    input [3:0] pi4_r,
+    input [3:0] pi5_l,
+    input [3:0] pi5_r,
+        
+
     output osc_000,
     output osc_036,
     output osc_072,
@@ -21,7 +34,13 @@ module osc_core (
 
     input inj_en,
     output inj_out,
-    output osc_hold
+    output osc_hold,
+
+    output p1,
+    output p2,
+    output p3,
+    output p4,
+    output p5
 
 
 // 
@@ -44,12 +63,29 @@ delay_cell_osc del1 (
     .out(osc_036)
 );
 
+phase_interpolator pi1 (
+    .l_phase(osc_000),
+    .r_phase(osc_036),
+    .l_con(pi1_l),
+    .r_con(pi1_r),
+    .ckout(p1)
+);
+
+
 // 2ND STAGE, inject in this stage
 
 delay_cell_osc del2 (
     .in(osc_036),
     .en(osc_hold),
     .out(osc_072)
+);
+
+phase_interpolator pi2 (
+    .l_phase(osc_036),
+    .r_phase(osc_000),
+    .l_con(pi2_l),
+    .r_con(pi2_r),
+    .ckout(p2)
 );
 
 // 3RD STAGE
@@ -60,12 +96,28 @@ delay_cell_osc del3 (
     .out(osc_108)
 );
 
+phase_interpolator pi3 (
+    .l_phase(osc_072),
+    .r_phase(osc_108),
+    .l_con(pi3_l),
+    .r_con(pi3_r),
+    .ckout(p3)
+);
+
 // 4TH STAGE
 
 delay_cell_osc del4 (
     .in(osc_108),
     .en(glob_en),
     .out(osc_144)
+);
+
+phase_interpolator pi4 (
+    .l_phase(osc_108),
+    .r_phase(osc_144),
+    .l_con(pi4_l),
+    .r_con(pi4_r),
+    .ckout(p4)
 );
 
 // 5TH STAGE
@@ -76,6 +128,13 @@ delay_cell_osc del5 (
     .out(osc_000)
 );
 
+phase_interpolator pi5 (
+    .l_phase(osc_144),
+    .r_phase(osc_000),
+    .l_con(pi5_l),
+    .r_con(pi5_r),
+    .ckout(p5)
+);
 
 // DIGITAL VARACTOR BANK
 // 1ST

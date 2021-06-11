@@ -82,7 +82,7 @@
 
 
     set FP_width [snap_to_grid [expr 140 + 0] $horiz_pitch ]
-    set FP_height [snap_to_grid 80 $vert_pitch ]
+    set FP_height [snap_to_grid 101 $vert_pitch ]
 
 
     #floorPlan -site unithd -s $FP_width $FP_height \
@@ -573,16 +573,278 @@ for {set j 0} {$j < 4} {incr j} {
 # place the edge injector
 
 placeInstance \
-    einj/inj_0
+    einj/inj_0 \
     [expr ($del3_origin + (22) * $horiz_pitch)] \
     [expr (23) * $vert_pitch] \
 
 placeInstance \
-    einj/inj_1
+    einj/inj_1 \
     [expr ($del3_origin + (22) * $horiz_pitch)] \
     [expr (22) * $vert_pitch] \
 
+placeInstance \
+    einj/dff_1 \
+    [expr ($del3_origin + (22) * $horiz_pitch)] \
+    [expr (21) * $vert_pitch] \
 
+placeInstance \
+    einj/dff_2 \
+    [expr ($del3_origin + (22) * $horiz_pitch)] \
+    [expr (20) * $vert_pitch] \
+
+placeInstance \
+    einj/inv_hold \
+    [expr ($del3_origin + (22) * $horiz_pitch)] \
+    [expr (19) * $vert_pitch] \
+
+for {set j 1} {$j < 5} {incr j} {
+
+  placeInstance \
+      einj/dff_del_$j \
+      [expr ($del3_origin + (39) * $horiz_pitch)] \
+      [expr (19 - $j) * $vert_pitch] \
+
+}
+
+for {set j 0} {$j < 4} {incr j} {
+
+  placeInstance \
+      einj/dff_del_5_$j \
+      [expr ($del3_origin + (22) * $horiz_pitch)] \
+      [expr (18 - $j) * $vert_pitch] \
+
+}
+
+for {set j 0} {$j < 4} {incr j} {
+
+  placeInstance \
+      einj/inj_del_5_$j \
+      [expr ($del3_origin + (56) * $horiz_pitch)] \
+      [expr (23 - $j) * $vert_pitch] \
+
+}
+
+for {set j 1} {$j < 5} {incr j} {
+
+  placeInstance \
+      einj/inj_del_$j \
+      [expr ($del3_origin + (56) * $horiz_pitch)] \
+      [expr (19 - $j) * $vert_pitch] \
+
+}
+
+  placeInstance \
+      einj/buf_ref \
+      [expr ($del3_origin + (79) * $horiz_pitch)] \
+      [expr (23 - 0) * $vert_pitch] \
+
+  placeInstance \
+      einj/del_1 \
+      [expr ($del3_origin + (79) * $horiz_pitch)] \
+      [expr (23 - 1) * $vert_pitch] \
+
+  placeInstance \
+      einj/del_4 \
+      [expr ($del3_origin + (79) * $horiz_pitch)] \
+      [expr (23 - 2) * $vert_pitch] \
+
+  placeInstance \
+      einj/del_16 \
+      [expr ($del3_origin + (79) * $horiz_pitch)] \
+      [expr (23 - 3) * $vert_pitch] \
+
+for {set j 0} {$j < 4} {incr j} {
+
+  placeInstance \
+      einj/del_64_$j \
+      [expr ($del3_origin + (79) * $horiz_pitch)] \
+      [expr (19 - $j) * $vert_pitch] \
+
+}
+
+
+# Phase Interpolator Placement
+# PI5
+placeInstance \
+    pi5/buf_l \
+    [expr $del5_origin - (2) * $horiz_pitch] \
+    [expr (24) * $vert_pitch]
+
+placeInstance \
+    pi5/buf_r \
+    [expr $del5_origin - (21) * $horiz_pitch] \
+    [expr (24) * $vert_pitch]
+
+for {set j 0} {$j < 4} {incr j} {
+
+  placeInstance \
+      pi5/blend_left_$j \
+      [expr $del5_origin - (2) * $horiz_pitch] \
+      [expr (25 + $j) * $vert_pitch] \
+
+}
+
+for {set j 0} {$j < 4} {incr j} {
+
+  placeInstance \
+      pi5/blend_right_$j \
+      [expr $del5_origin - (21) * $horiz_pitch] \
+      [expr (25 + $j) * $vert_pitch] \
+
+}
+
+  placeInstance \
+      pi5/out_buf \
+      [expr $del5_origin - (0) * $horiz_pitch] \
+      [expr (25 + $j) * $vert_pitch] \
+
+
+#  PI1
+placeInstance \
+    pi1/buf_l \
+    [expr $del1_origin - (0) * $horiz_pitch] \
+    [expr (24) * $vert_pitch]
+
+placeInstance \
+    pi1/buf_r \
+    [expr $del1_origin - (19) * $horiz_pitch] \
+    [expr (24) * $vert_pitch]
+
+for {set j 0} {$j < 4} {incr j} {
+
+  placeInstance \
+      pi1/blend_left_$j \
+      [expr $del1_origin - (0) * $horiz_pitch] \
+      [expr (25 + $j) * $vert_pitch] \
+
+}
+
+for {set j 0} {$j < 4} {incr j} {
+
+  placeInstance \
+      pi1/blend_right_$j \
+      [expr $del1_origin - (19) * $horiz_pitch] \
+      [expr (25 + $j) * $vert_pitch] \
+
+}
+
+  placeInstance \
+      pi1/out_buf \
+      [expr $del1_origin - (0) * $horiz_pitch] \
+      [expr (25 + $j) * $vert_pitch] \
+
+
+
+#  PI4
+placeInstance \
+    pi4/buf_l \
+    [expr $del4_origin - (0) * $horiz_pitch] \
+    [expr (24) * $vert_pitch]
+
+placeInstance \
+    pi4/buf_r \
+    [expr $del4_origin - (19) * $horiz_pitch] \
+    [expr (24) * $vert_pitch]
+
+for {set j 0} {$j < 4} {incr j} {
+
+  placeInstance \
+      pi4/blend_left_$j \
+      [expr $del4_origin - (0) * $horiz_pitch] \
+      [expr (25 + $j) * $vert_pitch] \
+
+}
+
+for {set j 0} {$j < 4} {incr j} {
+
+  placeInstance \
+      pi4/blend_right_$j \
+      [expr $del4_origin - (19) * $horiz_pitch] \
+      [expr (25 + $j) * $vert_pitch] \
+
+}
+
+  placeInstance \
+      pi4/out_buf \
+      [expr $del4_origin - (0) * $horiz_pitch] \
+      [expr (25 + $j) * $vert_pitch] \
+
+
+
+#  PI2
+
+placeInstance \
+    pi2/buf_l \
+    [expr $del2_origin + (4) * $horiz_pitch] \
+    [expr (24) * $vert_pitch]
+
+placeInstance \
+    pi2/buf_r \
+    [expr $del2_origin - (15) * $horiz_pitch] \
+    [expr (24) * $vert_pitch]
+
+for {set j 0} {$j < 4} {incr j} {
+
+  placeInstance \
+      pi2/blend_left_$j \
+      [expr $del2_origin + (4) * $horiz_pitch] \
+      [expr (25 + $j) * $vert_pitch] \
+
+}
+
+for {set j 0} {$j < 4} {incr j} {
+
+  placeInstance \
+      pi2/blend_right_$j \
+      [expr $del2_origin - (15) * $horiz_pitch] \
+      [expr (25 + $j) * $vert_pitch] \
+
+}
+
+  placeInstance \
+      pi2/out_buf \
+      [expr $del2_origin + (0) * $horiz_pitch] \
+      [expr (25 + $j) * $vert_pitch] \
+
+
+#  PI3
+
+placeInstance \
+    pi3/buf_l \
+    [expr $del3_origin + (5) * $horiz_pitch] \
+    [expr (24) * $vert_pitch]
+
+placeInstance \
+    pi3/buf_r \
+    [expr $del3_origin - (14) * $horiz_pitch] \
+    [expr (24) * $vert_pitch]
+
+for {set j 0} {$j < 4} {incr j} {
+
+  placeInstance \
+      pi3/blend_left_$j \
+      [expr $del3_origin + (5) * $horiz_pitch] \
+      [expr (25 + $j) * $vert_pitch] \
+
+}
+
+for {set j 0} {$j < 4} {incr j} {
+
+  placeInstance \
+      pi3/blend_right_$j \
+      [expr $del3_origin - (14) * $horiz_pitch] \
+      [expr (25 + $j) * $vert_pitch] \
+
+}
+
+  placeInstance \
+      pi3/out_buf \
+      [expr $del3_origin + (0) * $horiz_pitch] \
+      [expr (25 + $j) * $vert_pitch] \
+
+
+
+109
     ###################
     # Place Blockages #
     ###################

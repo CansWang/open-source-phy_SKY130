@@ -64,7 +64,7 @@ set_dont_touch [get_cells {del4}]
 set_dont_touch [get_cells {del5}]
 
 set_dont_touch [get_cells {einj}]
-
+set_dont_touch [get_cells {pi1 pi2 pi3 pi4 pi5}]
 
 
 # Five stages of capbank
