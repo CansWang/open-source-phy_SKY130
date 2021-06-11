@@ -760,5 +760,97 @@ deleteRouteBlk -name blk_term_n
 #createRouteBlk -box [expr $origin_term_n_x] [expr $origin_term_n_y] [expr $origin_term_n_x+$cell_height] [expr $origin_term_n_y+$term_height] -layer {1 2 3 4 5 6 7} -name fence_term_n2
 #createRouteBlk -box [expr $origin_term_n_x+$term_width] [expr $origin_term_n_y] [expr $origin_term_n_x+$term_width-$cell_height] [expr $origin_term_n_y+$term_height] -layer {1 2 3 4 5 6 7} -name fence_term_n3
 
+set x_offset 0.19
+set y_offset 0.24
+set hr_0_x [expr [snap_to_grid 170 3] - $x_offset]
+set hr_0_y [expr [snap_to_grid 170 $vert_pitch] - $y_offset]
+set hr_1_x [expr [snap_to_grid 170 3] - $x_offset]
+set hr_1_y [expr [snap_to_grid 250 $vert_pitch] - $y_offset]
+set qr_0_x [expr [snap_to_grid 250 3] - $x_offset]
+set qr_0_y [expr [snap_to_grid 170 $vert_pitch] - $y_offset]
+set qr_1_x [expr [snap_to_grid 250 3] - $x_offset]
+set qr_1_y [expr [snap_to_grid 250 $vert_pitch] - $y_offset]
+
+createRouteBlk -box \
+  [expr $hr_0_x - $blk_width] \
+  [expr $hr_0_y - $blk_width] \
+  [expr $hr_0_x + 40 + $blk_width] \
+  [expr $hr_0_y + 40 + $blk_width] \
+  -name hr_0_blk -layer all
+
+createRouteBlk -box \
+  [expr $hr_1_x - $blk_width] \
+  [expr $hr_1_y - $blk_width] \
+  [expr $hr_1_x + 40 + $blk_width] \
+  [expr $hr_1_y + 40 + $blk_width] \
+  -name hr_1_blk -layer all
+
+createRouteBlk -box \
+  [expr $qr_0_x - $blk_width] \
+  [expr $qr_0_y - $blk_width] \
+  [expr $qr_0_x + 30 + $blk_width] \
+  [expr $qr_0_y + 30 + $blk_width] \
+  -name qr_0_blk -layer all
+
+createRouteBlk -box \
+  [expr $qr_1_x - $blk_width] \
+  [expr $qr_1_y - $blk_width] \
+  [expr $qr_1_x + 30 + $blk_width] \
+  [expr $qr_1_y + 30 + $blk_width] \
+  -name qr_1_blk -layer all
+
+  for {set i 0} {$i < 6} {incr i} {
+    createRouteBlk -box  \
+      [expr [snap_to_grid 90 $horiz_pitch] - $blk_width] \
+      [expr [snap_to_grid [expr $i * 80 + 10] $vert_pitch] - $blk_width] \
+      [expr [snap_to_grid 90 $horiz_pitch] + 70 + $blk_width] \
+      [expr [snap_to_grid [expr $i * 80 + 10] $vert_pitch] + 70 + $blk_width] \
+      -layer all
+  }
+
+  for {set i 6} {$i < 8} {incr i} {
+    createRouteBlk -box  \
+      [expr [snap_to_grid 10 $horiz_pitch] - $blk_width] \
+      [expr [snap_to_grid [expr ($i-4) * 80 + 10] $vert_pitch] - $blk_width] \
+      [expr [snap_to_grid 10 $horiz_pitch] + 70 + $blk_width] \
+      [expr [snap_to_grid [expr ($i-4) * 80 + 10] $vert_pitch] + 70 + $blk_width] \
+      -layer all
+  }
+
+  for {set i 8} {$i < 10} {incr i} {
+    createRouteBlk -box  \
+      [expr [snap_to_grid 170 $horiz_pitch] - $blk_width] \
+      [expr [snap_to_grid [expr ($i-8) * 80 + 10] $vert_pitch] - $blk_width] \
+      [expr [snap_to_grid 170 $horiz_pitch] + 70 + $blk_width] \
+      [expr [snap_to_grid [expr ($i-8) * 80 + 10] $vert_pitch] + 70 + $blk_width] \
+      -layer all
+  }
+
+  for {set i 10} {$i < 12} {incr i} {
+    createRouteBlk -box  \
+      [expr [snap_to_grid 170 $horiz_pitch] - $blk_width] \
+      [expr [snap_to_grid [expr ($i-6) * 80 + 10] $vert_pitch] - $blk_width] \
+      [expr [snap_to_grid 170 $horiz_pitch] + 70 + $blk_width] \
+      [expr [snap_to_grid [expr ($i-6) * 80 + 10] $vert_pitch] + 70 + $blk_width] \
+      -layer all
+  }
+
+  for {set i 12} {$i < 14} {incr i} {
+    createRouteBlk -box  \
+      [expr [snap_to_grid 250 $horiz_pitch] - $blk_width] \
+      [expr [snap_to_grid [expr ($i-12) * 80 + 10] $vert_pitch] - $blk_width] \
+      [expr [snap_to_grid 250 $horiz_pitch] + 70 + $blk_width] \
+      [expr [snap_to_grid [expr ($i-12) * 80 + 10] $vert_pitch] + 70 + $blk_width] \
+      -layer all
+  }
+
+  for {set i 14} {$i < 16} {incr i} {
+    createRouteBlk -box  \
+      [expr [snap_to_grid 250 $horiz_pitch] - $blk_width] \
+      [expr [snap_to_grid [expr ($i-10) * 80 + 10] $vert_pitch] - $blk_width] \
+      [expr [snap_to_grid 250 $horiz_pitch] + 70 + $blk_width] \
+      [expr [snap_to_grid [expr ($i-10) * 80 + 10] $vert_pitch] + 70 + $blk_width] \
+      -layer all
+  }
 
 # Final Step, connects all the power grid from M10 to M1
