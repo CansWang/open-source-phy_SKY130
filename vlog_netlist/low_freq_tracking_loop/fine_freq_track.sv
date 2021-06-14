@@ -6,6 +6,7 @@ module fine_freq_track_wo_osc (
     input ref_clk,
     input rst,
     input aux_osc_en,
+    input fftl_en,
     input [4:0] fine_control_avg_window_select,
     input aux_in,
     input [3:0] fine_con_step_size,
@@ -268,20 +269,6 @@ always @( posedge ref_clk, posedge accumu_reset_async ) begin
     end
 end 
 // END
-
-// logic [21:0] ref_clk_count;
-// always @(posedge ref_clk) begin
-//     if (rst) begin
-//         ref_clk_count = fine_control_avg_window;
-//     end else if (ref_clk_count > 0) begin
-//         ref_clk_count = ref_clk_count - 1;
-//     end else if (ref_clk_count == 22'd0) begin
-//         ref_clk_count = fine_control_avg_window;
-//         // Add reset for accumulator
-//         stat_error = 25'd0;
-//         stat_clean = 25'd0;
-//     end
-// end
 
 
 

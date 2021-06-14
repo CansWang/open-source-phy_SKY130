@@ -34,18 +34,12 @@
 
     set bottom_y [snap_to_grid 100 $vert_pitch]
 
-    set pi_width [dbGet [lindex [dbGet -p top.insts.name *iPI*] 0].cell.size_x]
-    set pi_height [dbGet [lindex [dbGet -p top.insts.name *iPI*] 0].cell.size_y]
+    set qr_mux_height [dbGet [lindex [dbGet -p top.insts.name qr_mux_4t1_0] 0].cell.size_x]
+    set qr_mux_width [dbGet [lindex [dbGet -p top.insts.name qr_mux_4t1_0] 0].cell.size_y]
 
-    set indiv_width [dbGet [dbGet -p top.insts.name *indiv*].cell.size_x]
-    set indiv_height [dbGet [dbGet -p top.insts.name *indiv*].cell.size_y]
+    set hr_mux_height [dbGet [lindex [dbGet -p top.insts.name hr_mux_16t4_0] 0].cell.size_x]
 
-    set tri_height [dbGet [dbGet -p top.insts.name *iBUF_0__i_tri_buf_p*].cell.size_y]
-    set tri_width [dbGet [dbGet -p top.insts.name *iBUF_0__i_tri_buf_p*].cell.size_x]
-
-    set term_height [dbGet [lindex [dbGet -p top.insts.name buf1/i_term_p] 0].cell.size_y]
-    # set term_height [dbGet [lindex [dbGet -p top.insts.name itx/buf1/i_term_p] 0].cell.size_y]
-    set term_width [dbGet [lindex [dbGet -p top.insts.name buf1/i_term_p] 0].cell.size_x]
+    set hr_mux_width [dbGet [lindex [dbGet -p top.insts.name hr_mux_16t4_0] 0].cell.size_x]
 
     # Make room in the floorplan for the core power ring
 
@@ -81,8 +75,8 @@
     #             $core_margin_l $core_margin_b $core_margin_r $core_margin_t
 
 
-    set FP_width [snap_to_grid [expr 40 + 0] $horiz_pitch ]
-    set FP_height [snap_to_grid 40 $vert_pitch ]
+    set FP_width [snap_to_grid [expr 50 + 0] $horiz_pitch ]
+    set FP_height [snap_to_grid 50 $vert_pitch ]
 
 
     #floorPlan -site unithd -s $FP_width $FP_height \

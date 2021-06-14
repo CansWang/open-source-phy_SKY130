@@ -123,77 +123,6 @@
 #    setAttribute -net {buf1/BTN buf1/BTP dout_p dout_n} -non_default_rule tx_out_buf
 
 
-#	placeInstance \
-	itx/indiv \
-		[expr $origin_txindiv_x-4.5]  \
-		[expr $origin_txindiv_y-$vert_pitch] \
-		MX
-
-# createRouteBlk -box \
-    [expr $origin_mdll_x-$blockage_width] \
-    [expr $origin_mdll_y-$blockage_width] \
-    [expr $origin_mdll_x+$mdll_width+$blockage_width] \
-    [expr $origin_mdll_y+$mdll_height+$blockage_width] \
-    -name mdll_block -layer 1
-
-# createRouteBlk -box \
-    [expr $origin_async_x-$blockage_width] \
-    [expr $origin_async_y-$blockage_width] \
-    [expr $origin_async_x+$input_buffer_width+$blockage_width] \
-    [expr $origin_async_y+$input_buffer_height+$blockage_width] \
-    -name inbuf_async_blk -layer 1
-
-# createRouteBlk -box \
-    [expr $origin_main_x-$blockage_width] \
-    [expr $origin_main_y-$blockage_width] \
-    [expr $origin_main_x+$input_buffer_width+$blockage_width] \
-    [expr $origin_main_y+$input_buffer_height+$blockage_width] \
-    -name inbuf_main_blk -layer 1
-
-# createRouteBlk -box \
-    [expr $origin_mon_x-$blockage_width] \
-    [expr $origin_mon_y-$blockage_width] \
-    [expr $origin_mon_x+$input_buffer_width+$blockage_width] \
-    [expr $origin_mon_y+$input_buffer_height+$blockage_width] \
-    -name inbuf_mon_blk -layer 1
-
-# createRouteBlk -box \
-    [expr $origin_ref_x-$blockage_width] \
-    [expr $origin_ref_y-$blockage_width] \
-    [expr $origin_ref_x+$input_buffer_width+$blockage_width] \
-    [expr $origin_ref_y+$input_buffer_height+$blockage_width] \
-    -name inbuf_ref_blk -layer 1
-
-# createRouteBlk -box \
-    [expr $origin_sram_ffe_x - $blockage_width] \
-    [expr $origin_sram_ffe_y2 - $blockage_height] \
-    [expr $origin_sram_ffe_x + 2*$sram_pair_spacing + $blockage_width] \
-    [expr $origin_sram_ffe_y2 + $sram_height       + $blockage_height] \
-    -name memory_ffe_blk -layer 1
-
-# createRouteBlk -box \
-    [expr $origin_sram_ffe_x + 2*$sram_pair_spacing] \
-    [expr $origin_sram_ffe_y2 - $blockage_height] \
-    [expr $origin_sram_ffe_x + 2*$sram_pair_spacing + $small_sram_width + $blockage_width]\
-    [expr $origin_sram_ffe_y2 + 2*$small_sram_height + $blockage_height] \
-    -name memory_hist_blk -layer 1
-
-# createRouteBlk -box \
-    [expr $origin_sram_adc_x - $blockage_width] \
-    [expr $origin_sram_adc_y - $blockage_height] \
-    [expr $origin_sram_adc_x + 2*$sram_pair_spacing + $sram_width +  $blockage_width] \
-    [expr $origin_sram_adc_y + $sram_height         + $blockage_height] \
-    -name memory_adc_blk -layer 1
-
-# createRouteBlk -box \
-    [expr $origin_acore_x-$blockage_width] \
-    [expr $origin_acore_y-$blockage_width] \
-    [expr $origin_acore_x+$acore_width+$blockage_width] \
-    [expr $origin_acore_y+$acore_height+$blockage_width] \
-    -name acore_blk -layer 1
-
-
-
 addStripe \
     -pin_layer M1 \
     -over_pins 1 \
@@ -214,8 +143,28 @@ addStripe \
 
 deleteRouteBlk -name *
 
-# Temperal M1 Power Grid Fix
-sroute -nets {DVDD DVSS}
+
+addStripe -nets {DVDD DVSS} \
+   -layer M4 \
+   -direction vertical \
+   -width 1 \
+   -spacing 2 \
+   -start_offset 2 \
+   -set_to_set_distance 6 \
+   -start_from left \
+   -max_same_layer_jog_length 2 \
+   -padcore_ring_top_layer_limit M4 \
+   -padcore_ring_bottom_layer_limit M4 \
+   -block_ring_top_layer_limit M4 \
+   -block_ring_bottom_layer_limit M4 \
+   -use_wire_group 0 \
+   -snap_wire_center_to_grid None \
+   -skip_via_on_pin {standardcell} \
+   -skip_via_on_wire_shape {noshape} \
+   -create_pins 1 \
+   -extend_to design_boundary
+
+
 
 set acore_x $origin_acore_x
 set acore_y $origin_acore_y

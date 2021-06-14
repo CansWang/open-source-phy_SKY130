@@ -81,8 +81,8 @@
     #             $core_margin_l $core_margin_b $core_margin_r $core_margin_t
 
 
-    set FP_width [snap_to_grid [expr 70 + 0] $horiz_pitch ]
-    set FP_height [snap_to_grid 70 $vert_pitch ]
+    set FP_width [snap_to_grid [expr 250 + 0] $horiz_pitch ]
+    set FP_height [snap_to_grid 250 $vert_pitch ]
 
 
     #floorPlan -site unithd -s $FP_width $FP_height \

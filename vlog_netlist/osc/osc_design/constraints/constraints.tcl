@@ -63,8 +63,7 @@ set_dont_touch [get_cells {del3}]
 set_dont_touch [get_cells {del4}]
 set_dont_touch [get_cells {del5}]
 
-set_dont_touch [get_cells {einj}]
-set_dont_touch [get_cells {pi1 pi2 pi3 pi4 pi5}]
+# set_dont_touch [get_cells {pi1 pi2 pi3 pi4 pi5}]
 
 
 # Five stages of capbank
@@ -107,6 +106,21 @@ for {set i 0} {$i < 4} {incr i} {
     set_dont_touch [get_cells "einj/del_16"]
     set_dont_touch [get_cells "einj/buf_ref"]
 
+#  dont touch for the pi
+for {set i 1} {$i < 6} {incr i} {
+    set_dont_touch [get_cells "pi$i/buf_l"]
+    set_dont_touch [get_cells "pi$i/buf_r"]
+    set_dont_touch [get_cells "pi$i/out_buf"]
+
+for {set j 0} {$j < 4} {incr j} {
+    set_dont_touch [get_cells "pi$i/blend_left_$j"]
+    set_dont_touch [get_cells "pi$i/blend_right_$j"]
+
+}
+
+
+    
+}
 
 
 

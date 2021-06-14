@@ -36,18 +36,19 @@
 
     set bottom_y [snap_to_grid 100 $vert_pitch]
 
-    set pi_width [dbGet [lindex [dbGet -p top.insts.name *iPI*] 0].cell.size_x]
-    set pi_height [dbGet [lindex [dbGet -p top.insts.name *iPI*] 0].cell.size_y]
+    # Read dimension from lef file
 
-    set indiv_width [dbGet [dbGet -p top.insts.name *indiv*].cell.size_x]
-    set indiv_height [dbGet [dbGet -p top.insts.name *indiv*].cell.size_y]
+    set qr_mux_height [dbGet [lindex [dbGet -p top.insts.name qr_mux_4t1_0] 0].cell.size_y]
+    set qr_mux_width [dbGet [lindex [dbGet -p top.insts.name qr_mux_4t1_0] 0].cell.size_x]
 
-    set tri_height [dbGet [dbGet -p top.insts.name *iBUF_0__i_tri_buf_p*].cell.size_y]
-    set tri_width [dbGet [dbGet -p top.insts.name *iBUF_0__i_tri_buf_p*].cell.size_x]
+    set hr_mux_height [dbGet [lindex [dbGet -p top.insts.name hr_mux_16t4_0] 0].cell.size_y]
+    set hr_mux_width [dbGet [lindex [dbGet -p top.insts.name hr_mux_16t4_0] 0].cell.size_x]
 
-    set term_height [dbGet [lindex [dbGet -p top.insts.name buf1/i_term_p] 0].cell.size_y]
-    # set term_height [dbGet [lindex [dbGet -p top.insts.name itx/buf1/i_term_p] 0].cell.size_y]
-    set term_width [dbGet [lindex [dbGet -p top.insts.name buf1/i_term_p] 0].cell.size_x]
+    set prbs_gen_height [dbGet [lindex [dbGet -p top.insts.name genblk1_15__prbs_b] 0].cell.size_y]
+    set prbs_gen_width [dbGet [lindex [dbGet -p top.insts.name genblk1_15__prbs_b] 0].cell.size_x]
+
+    
+
 
     # Make room in the floorplan for the core power ring
 
@@ -93,24 +94,8 @@
 
     setFlipping s
 
-    set sram_to_acore_spacing_x [snap_to_grid 40 $horiz_pitch]
-    set sram_to_acore_spacing_y [snap_to_grid 40 $vert_pitch]
-
-    set sram_to_buff_spacing_y [snap_to_grid 30 $vert_pitch]
-
-    set sram_to_sram_spacing  [snap_to_grid 30 $horiz_pitch]
-    set sram_neighbor_spacing [expr $sram_width + $sram_to_sram_spacing]
-    set sram_pair_spacing [expr 2*$sram_width + $sram_to_sram_spacing]
-    set sram_vert_spacing [snap_to_grid 200 $vert_pitch]
-
-    set pi_to_pi_spacing    [snap_to_grid 10 $vert_pitch]
-    set pi_neighbor_spacing [expr $pi_height + $pi_to_pi_spacing]
-    set pi_neighbor_spacing_vertical [expr $pi_height + $pi_to_pi_spacing]
     #set origin_acore_x    [snap_to_grid [expr $FP_width/2 - $acore_width/2] $horiz_pitch ]
     #set origin_acore_y    [expr $sram_height + $sram_to_acore_spacing_y ]
-    puts $pi_to_pi_spacing
-    puts $pi_neighbor_spacing
-
 
 
     set origin_acore_x    [expr 199.98]
@@ -156,12 +141,7 @@
     set origin_ref_x [expr 504.09]
     set origin_ref_y [expr 184.32 - $bottom_y]
 
-    set origin_txpi_x  [snap_to_grid 100 $horiz_pitch]
-    set txpi_x_spacing [snap_to_grid [expr $pi_width + 30] $horiz_pitch]
-    set origin_txpi_y  [snap_to_grid 75 $vert_pitch]
-    set txpi_y_spacing [snap_to_grid [expr $pi_height + 30] $vert_pitch]
-    puts $origin_txpi_y
-    puts $txpi_y_spacing
+
 
 	set origin_term_n_x [snap_to_grid 15 $horiz_pitch]
 	set origin_term_n_y [snap_to_grid 90 $vert_pitch]
@@ -182,30 +162,32 @@
     ###################
     # Place Instances #
     ###################
+set pg_hori_pitch 3
 set x_offset 0.19
 set y_offset 0.24
-set hr_0_x [expr [snap_to_grid 170 3] - $x_offset]
+set hr_0_x [expr 62*$pg_hori_pitch - $x_offset]
 set hr_0_y [expr [snap_to_grid 170 $vert_pitch] - $y_offset]
+
 placeInstance \
   hr_mux_16t4_0 \
   [expr $hr_0_x]  \
   [expr $hr_0_y] \
 
-set hr_1_x [expr [snap_to_grid 170 3] - $x_offset]
+set hr_1_x [expr 62*$pg_hori_pitch - $x_offset]
 set hr_1_y [expr [snap_to_grid 250 $vert_pitch] - $y_offset]
 placeInstance \
   hr_mux_16t4_1 \
   [expr $hr_1_x]  \
   [expr $hr_1_y] \
 
-set qr_0_x [expr [snap_to_grid 250 3] - $x_offset]
+set qr_0_x [expr 84*$pg_hori_pitch - $x_offset]
 set qr_0_y [expr [snap_to_grid 170 $vert_pitch] - $y_offset]
 placeInstance \
   qr_mux_4t1_0 \
   [expr $qr_0_x]  \
   [expr $qr_0_y] \
 
-set qr_1_x [expr [snap_to_grid 250 3] - $x_offset]
+set qr_1_x [expr 84*$pg_hori_pitch - $x_offset]
 set qr_1_y [expr [snap_to_grid 250 $vert_pitch] - $y_offset]
 placeInstance \
   qr_mux_4t1_1 \
@@ -293,95 +275,26 @@ for {set i 14} {$i < 16} {incr i} {
 createPlaceBlockage -box  \
   [expr $hr_0_x - $blk_width] \
   [expr $hr_0_y - $blk_width] \
-  [expr $hr_0_x + 40 + $blk_width] \
-  [expr $hr_0_y + 40 + $blk_width]
+  [expr $hr_0_x + $hr_mux_width + $blk_width] \
+  [expr $hr_0_y + $hr_mux_height + $blk_width]
 
 createPlaceBlockage -box  \
   [expr $hr_1_x - $blk_width] \
   [expr $hr_1_y - $blk_width] \
-  [expr $hr_1_x + 40 + $blk_width] \
-  [expr $hr_1_y + 40 + $blk_width]
+  [expr $hr_1_x + $hr_mux_width + $blk_width] \
+  [expr $hr_1_y + $hr_mux_height + $blk_width]
 
 createPlaceBlockage -box  \
   [expr $qr_0_x - $blk_width] \
   [expr $qr_0_y - $blk_width] \
-  [expr $qr_0_x + 30 + $blk_width] \
-  [expr $qr_0_y + 30 + $blk_width]
+  [expr $qr_0_x + $qr_mux_width + $blk_width] \
+  [expr $qr_0_y + $qr_mux_height + $blk_width]
 
 createPlaceBlockage -box  \
   [expr $qr_1_x - $blk_width] \
   [expr $qr_1_y - $blk_width] \
-  [expr $qr_1_x + 30 + $blk_width] \
-  [expr $qr_1_y + 30 + $blk_width]
-
-#placeInstance \
-  hr_mux_16t4_0 \
-  [snap_to_grid 100 $horiz_pitch]  \
-  [expr 50 * $vert_pitch] \
-
-#placeInstance \
-  hr_mux_16t4_1 \
-  [snap_to_grid 100 $horiz_pitch]  \
-  [expr 100 * $vert_pitch] \
-
-#placeInstance \
-  qr_mux_4t1_0 \
-  [snap_to_grid 150 $horiz_pitch]  \
-  [expr 50 * $vert_pitch] \
-
-#placeInstance \
-  qr_mux_4t1_1 \
-  [snap_to_grid 150 $horiz_pitch]  \
-  [expr 100 * $vert_pitch] \
-
-#	placeInstance \
-        buf1/i_term_n \
-        $origin_term_n_x \
-        $origin_term_n_y
-
-#	placeInstance \
-        buf1/i_term_p \
-        $origin_term_p_x \
-        $origin_term_p_y
-
- #   for {set k 0} {$k<6} {incr k} {
-  #      for {set j 0} {$j<6} {incr j} {
-   #         placeInstance \
-                buf1/iBUF_[expr ($j) + ($k)*6]\__i_tri_buf_p/tri_buf \
-                [snap_to_grid [expr 39 + ($k) * ($tri_width*3)] $horiz_pitch]\
-                [snap_to_grid [expr 134 + ($j) * ($tri_height*3)] $vert_pitch]
-    #    }
-   # }
-
-#    for {set k 0} {$k<6} {incr k} {
- #       for {set j 0} {$j<6} {incr j} {
-  #          placeInstance \
-                buf1/iBUF_[expr ($j) + ($k)*6]\__i_tri_buf_n/tri_buf \
-                [snap_to_grid [expr 39 + ($k) * ($tri_width*3)] $horiz_pitch] \
-                [snap_to_grid [expr 110 + ($j) * ($tri_height*3)] $vert_pitch]
-   #     }
-   # }
-
-    #PI Macros
-    #
-    #
-#    for {set k 0} {$k<4} {incr k} {
- #       placeInstance \
-        iPI_$k\__iPI \
-            $origin_txpi_x \
-            [expr $origin_txpi_y + ($pi_neighbor_spacing)*($k-1)]
-  #  }
-
-
- #   placeInstance \
-    indiv \
-        [snap_to_grid [expr $origin_txpi_x + $pi_width + 20] $horiz_pitch] \
-        [expr $origin_txpi_y + ($pi_neighbor_spacing)] \
-             MX
-
-
-
-
+  [expr $qr_1_x + $qr_mux_width + $blk_width] \
+  [expr $qr_1_y + $qr_mux_height + $blk_width]
 
     ###################
     # Place Blockages #
