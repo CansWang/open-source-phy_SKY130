@@ -75,11 +75,11 @@ editPin -layer $ports_layer -pin $pins_right_half -side RIGHT -spreadType SIDE
 # editPin -layer $ports_layer -pin $pins_top    -side TOP    -spreadType SIDE
 
 editPin -layer $ports_layer -pin {p5} -assign $del5_origin 106.56
-editPin -layer $ports_layer -pin {p1} -assign $del1_origin 106.56
+editPin -layer $ports_layer -pin {p1} -assign [expr 78 * $horiz_pitch] 106.56
 editPin -layer $ports_layer -pin {p4} -assign [expr ($del4_origin + 1)] 106.56
 editPin -layer $ports_layer -pin {p2} -assign $del2_origin 106.56
 editPin -layer $ports_layer -pin {p3} -assign [expr ($del3_origin + 1)] 106.56
-editPin -layer $ports_layer -pin {osc_000} -assign 20.50 106.56
+editPin -layer $ports_layer -pin {osc_000} -assign [expr 46 * $horiz_pitch] 106.56
 editPin -layer $ports_layer -pin {osc_036} -assign 40.50 106.56
 editPin -layer $ports_layer -pin {osc_144} -assign 60.50 106.56
 editPin -layer $ports_layer -pin {osc_072} -assign 75.50 106.56
