@@ -305,21 +305,15 @@ always @( posedge commit_clk, posedge rst) begin
 end
 
 always @( posedge commit_clk, posedge rst ) begin
-    case (CurrentState)
-        STATE_UP: begin
-        osc_fine_con = osc_fine_con - fine_con_step_size;
-        end
-        STATE_DN: begin
-        osc_fine_con = osc_fine_con + fine_con_step_size;
-        end
-        STATE_UC: begin
-        osc_fine_con = osc_fine_con + 1'b0;
-        end
-        STATE_RS: begin
-        osc_fine_con = 13'b1000000000000;
-        end
-    endcase
     if (rst) begin
+        osc_fine_con = 13'b1000000000000;
+    end else if (CurrentState == STATE_UP) begin
+        osc_fine_con = osc_fine_con - fine_con_step_size;
+    end else if (CurrentState == STATE_DN) begin
+        osc_fine_con = osc_fine_con + fine_con_step_size;
+    end else if (CurrentState == STATE_UC) begin
+        osc_fine_con = osc_fine_con + 1'b0;
+    end else if (CurrentState == STATE_RS) begin
         osc_fine_con = 13'b1000000000000;
     end
 end
