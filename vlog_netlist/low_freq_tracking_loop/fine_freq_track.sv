@@ -1,6 +1,6 @@
 // Level triggered programmable counter
 // 
-module fine_freq_track_wo_osc (
+module fine_freq_track (
     input clk_out,
     input [5:0] div_ratio_half,
     input ref_clk,
@@ -10,17 +10,22 @@ module fine_freq_track_wo_osc (
     input [4:0] fine_control_avg_window_select,
     input aux_in,
     input [3:0] fine_con_step_size,
+    input [12:0] manual_control_osc,
     output reg out_star,
     // output accumu_select, // Decide the current rising edge sample goes into which category
-    output reg [7:0] osc_fine_con
+    output reg [12:0] osc_fine_con_final
     // TODO add FSM for osc_fine_con[7:0]
  
 );
 
-
+reg [12:0] osc_fine_con;
 logic aux_clk_out;
 logic [5:0] osc_clk_count;
 logic [5:0] toggle_flag;
+
+// Select osc control
+assign osc_fine_con_final= (fftl_en)? osc_fine_con:manual_control_osc;
+
 
 // Synchronize the ref_clk with clk_out to avoid metastability
 
@@ -311,11 +316,11 @@ always @( posedge commit_clk, posedge rst ) begin
         osc_fine_con = osc_fine_con + 1'b0;
         end
         STATE_RS: begin
-        osc_fine_con = 8'b10000000;
+        osc_fine_con = 13'b1000000000000;
         end
     endcase
     if (rst) begin
-        osc_fine_con = 8'b10000000;
+        osc_fine_con = 13'b1000000000000;
     end
 end
 // AUX osc
