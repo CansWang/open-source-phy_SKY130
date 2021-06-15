@@ -16,23 +16,39 @@ module digital_top (
     // input wire logic clk_async,
     // input wire logic clk_encoder,
     // input wire logic ctl_valid,
-    input wire logic clk_interp_slice_0,
-    input wire logic clk_interp_slice_1,
-    input wire logic clk_interp_slice_2,
-    input wire logic clk_interp_slice_3,
+    // input wire logic clk_interp_slice_0,
+    // input wire logic clk_interp_slice_1,
+    // input wire logic clk_interp_slice_2,
+    // input wire logic clk_interp_slice_3,
     // output buffer control
-    // input wire logic [17:0] ctl_buf_n0,
-    // input wire logic [17:0] ctl_buf_n1,
-    // input wire logic [17:0] ctl_buf_p0,
-    // input wire logic [17:0] ctl_buf_p1,
     input wire logic [5:0] CTL_BUF_N,
     input wire logic [5:0] CTL_BUF_P,
+    input wire logic osc_en,
+    input wire logic aux_osc_en,
+    input wire logic inj_en,
+    input wire logic fftl_en,
+    input wire logic [3:0] con_perb,
+    input wire logic [5:0] div_ratio_half,
+    input wire logic [4:0] fine_control_avg_window_select,
+    input wire logic [3:0] fine_con_step_size,
+    input wire logic [12:0] manual_control_osc,
 
+
+// Test MUX Select 
+
+    input wire logic [2:0] test_mux_select,
+
+// End
 
     // output wire logic clk_prbsgen,  // Output clock for 16-bit prbs generator
     output wire logic dout_p, // Data output
-    output wire logic dout_n
+    output wire logic dout_n,
+    output wire logic test_inj_hold,
+    output wire logic test_inj_out
     // tx_debug_intf.tx tx
+
+
+
 );
 
 // logic [15:0] prbsdata;
@@ -117,12 +133,29 @@ hr_16t4_mux_top hr_mux_16t4_0 (
     .dout(qr_data_p)
 );
 
+wire logic ck_Q;
+wire logic ck_I;
+wire logic ck_QB;
+wire logic ck_IB;
+wire logic pi1;
+wire logic pi2;
+wire logic pi3;
+wire logic pi4;
+wire logic pi5;
+
+
+assign ck_Q= (osc_en) ? pi1:1'bz;
+assign ck_I= (osc_en) ? pi3:1'bz;
+assign ck_QB= (osc_en) ? (~pi1):1'bz;
+assign ck_IB= (osc_en) ? (~pi3):1'bz;
+
+
 //Instantiate quarter-rate 4 to 1 mux top
 qr_4t1_mux_top qr_mux_4t1_0 (
-    .clk_Q(clk_interp_slice_0),  // Quarter-rate clock input
-    .clk_QB(clk_interp_slice_2),
-    .clk_I(clk_interp_slice_1),
-    .clk_IB(clk_interp_slice_3),
+    .clk_Q(ck_Q),  // Quarter-rate clock input
+    .clk_QB(ck_I),
+    .clk_I(ck_QB),
+    .clk_IB(ck_IB),
     .din(qr_data_p), // Quarter-rate data from half-rate 16 to 4 mux
     .rst(rst),
     .din_2_dummy(din_2_dummy),
@@ -144,10 +177,10 @@ hr_16t4_mux_top hr_mux_16t4_1 (
 
 //Instantiate quarter-rate 4 to 1 mux top
 qr_4t1_mux_top qr_mux_4t1_1 (
-    .clk_Q(clk_interp_slice_0),  // Quarter-rate clock input
-    .clk_QB(clk_interp_slice_2),
-    .clk_I(clk_interp_slice_1),
-    .clk_IB(clk_interp_slice_3),
+    .clk_Q(ck_Q),  // Quarter-rate clock input
+    .clk_QB(ck_I),
+    .clk_I(ck_QB),
+    .clk_IB(ck_IB),
     .din(qr_data_n), // Quarter-rate data from half-rate 16 to 4 mux
     .rst(rst),
     .din_2_dummy(din_2_dummy),
@@ -442,6 +475,7 @@ end
 
 // Instantiate the output buf
 
+
 output_buffer ibuf (
     .inn(mtb_n),
     .inp(mtb_p),
@@ -452,6 +486,99 @@ output_buffer ibuf (
     .BTN(dout_p),
     .BTP(dout_n)
 );
+
+
+
+
+
+
+
+wire logic osc_000;
+wire logic osc_036;
+wire logic osc_072;
+wire logic osc_108;
+wire logic osc_144;
+wire logic [12:0] osc_con;
+
+
+
+
+// ANALOG TOP Here!
+
+osc_core osc_inst (
+.glob_en(osc_en),
+.delay_con_lsb(osc_con[4:0]),
+.delay_con_msb(osc_con[12:5]),
+.con_perb_1(),
+.con_perb_2(),
+.con_perb_3(),
+.con_perb_4(),
+.con_perb_5(),
+.ref_clk(ref_clk),
+
+// PI control
+.pi1_l(),
+.pi1_r(),
+.pi2_l(),
+.pi2_r(),
+.pi3_l(),
+.pi3_r(),
+.pi4_l(),
+.pi4_r(),
+.pi5_l(),
+.pi5_r(),
+        
+
+.osc_000(osc_000),
+.osc_036(osc_036),
+.osc_072(osc_072),
+.osc_108(osc_108),
+.osc_144(osc_144),
+
+// 
+// waiting to integrate the ref_injector
+//  
+
+.inj_en(inj_en),
+.inj_out(test_inj_out), // 
+.osc_hold(test_inj_hold), // 
+
+// 
+// buffered output phase, goes to phase blender
+// 
+
+.p1(pi1),
+.p2(pi2),
+.p3(pi3),
+.p4(pi4),
+.p5(pi5)
+
+);
+
+// Fine tracking loop
+
+fine_freq_track ftl (
+
+.clk_out(pi),
+.div_ratio_half(div_ratio_half),
+.ref_clk(ref_clk),
+.rst(rst),
+.aux_osc_en(aux_osc_en),
+
+.fine_control_avg_window_select(fine_control_avg_window_select),
+.aux_in(),
+.fine_con_step_size(fine_con_step_size),
+.out_star(test_out_star),
+
+// output accumu_select, // Decide the current rising edge sample goes into which category
+.fftl_en(fftl_en), // This enable controls whether to bypass the loop or not
+.manual_control_osc(manual_control_osc),
+.osc_fine_con_final(osc_con)
+
+);
+
+
+// test mux
 
 
 

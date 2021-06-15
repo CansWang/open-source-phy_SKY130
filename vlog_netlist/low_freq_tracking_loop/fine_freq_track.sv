@@ -318,10 +318,7 @@ always @( posedge commit_clk, posedge rst ) begin
     end
 end
 // AUX osc
-
-
 logic [5:0] z0; // Floating nodes
-
 
 aux_core aux_osc (
     .glob_en(aux_osc_en),
@@ -334,7 +331,5 @@ aux_core aux_osc (
     .osc_180(z0[5])
 
 );
-
 // 
-
 endmodule

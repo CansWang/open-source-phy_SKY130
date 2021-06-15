@@ -18,6 +18,8 @@ file_list += [e['VLOG_HOME']+'/digital_top/prbs_generator_syn.sv']
 file_list += [e['VLOG_HOME']+'/digital_top/qr_4t1_mux_top.sv']
 file_list += [e['VLOG_HOME']+'/digital_top/hr_16t4_mux_top.sv']
 file_list += [e['VLOG_HOME']+'/digital_top/output_buffer.sv']
+file_list += [e['VLOG_HOME']+'/digital_top/osc_core.sv']
+file_list += [e['VLOG_HOME']+'/digital_top/fine_track_loop.sv']
 
 print('loaded verilog source file list:', file_list)
 

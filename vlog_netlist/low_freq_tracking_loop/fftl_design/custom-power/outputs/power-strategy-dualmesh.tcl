@@ -124,20 +124,20 @@
 
 
 addStripe \
-    -pin_layer M1 \
+    -pin_layer M2 \
     -over_pins 1 \
-    -block_ring_top_layer_limit M1 \
+    -block_ring_top_layer_limit M2 \
     -max_same_layer_jog_length 3.6 \
-    -padcore_ring_bottom_layer_limit M1 \
-    -padcore_ring_top_layer_limit M1 \
+    -padcore_ring_bottom_layer_limit M2 \
+    -padcore_ring_top_layer_limit M2 \
     -spacing 2.24 \
-    -master "sky130_fd_sc_hd__tap*" \
-    -merge_stripes_value 0.25 \
+    -master "sky130_fd_sc_hs__tap*" \
+    -merge_stripes_value 0.245 \
     -create_pins 1 \
     -direction horizontal \
-    -layer M1 \
-    -block_ring_bottom_layer_limit M1 \
-    -width 0.24 \
+    -layer M2 \
+    -block_ring_bottom_layer_limit M2 \
+    -width 0.49 \
     -extend_to design_boundary \
     -nets {DVDD DVSS}
 

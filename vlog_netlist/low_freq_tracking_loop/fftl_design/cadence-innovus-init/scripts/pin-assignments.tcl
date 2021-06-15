@@ -37,7 +37,7 @@ if { $clock_ports != 0 } {
 
 # Spread the pins evenly across the left and right sides of the block
 
-set ports_layer M4
+set ports_layer M3
 
 editPin -layer $ports_layer -pin $pins_left_half  -side LEFT  -spreadType SIDE
 editPin -layer $ports_layer -pin $pins_right_half -side RIGHT -spreadType SIDE

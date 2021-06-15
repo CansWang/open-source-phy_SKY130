@@ -217,6 +217,6 @@ editAddRoute [expr $del2_origin + 5*$horiz_pitch] [expr (19 + 5) * $vert_pitch]
 editCommitRoute [expr $del2_origin + 5*$horiz_pitch] [expr (10) * $vert_pitch]
 
 setEdit -nets osc_108
-editAddRoute [expr $del3_origin + 9*$horiz_pitch] [expr (19 + 5) * $vert_pitch]
-editCommitRoute [expr $del3_origin + 9*$horiz_pitch] [expr (10) * $vert_pitch]
+editAddRoute [expr $del3_origin + 11*$horiz_pitch] [expr (19 + 5) * $vert_pitch]
+editCommitRoute [expr $del3_origin + 11*$horiz_pitch] [expr (10) * $vert_pitch]
 

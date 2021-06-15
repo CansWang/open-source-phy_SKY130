@@ -81,7 +81,7 @@
     #             $core_margin_l $core_margin_b $core_margin_r $core_margin_t
 
 
-    set FP_width [snap_to_grid [expr 160 + 0] $horiz_pitch]
+    set FP_width [snap_to_grid [expr 180 + 0] $horiz_pitch]
     set FP_height [snap_to_grid 101 $vert_pitch ]
 
 
@@ -574,34 +574,34 @@ set del3_origin [expr (224) * $horiz_pitch]
 
 placeInstance \
     einj_inj_0 \
-    [expr ($del3_origin + (22) * $horiz_pitch)] \
+    [expr ($del3_origin + (28) * $horiz_pitch)] \
     [expr (23) * $vert_pitch] \
 
 placeInstance \
     einj_inj_1 \
-    [expr ($del3_origin + (22) * $horiz_pitch)] \
+    [expr ($del3_origin + (28) * $horiz_pitch)] \
     [expr (22) * $vert_pitch] \
 
 placeInstance \
     einj_dff_1 \
-    [expr ($del3_origin + (22) * $horiz_pitch)] \
+    [expr ($del3_origin + (28) * $horiz_pitch)] \
     [expr (21) * $vert_pitch] \
 
 placeInstance \
     einj_dff_2 \
-    [expr ($del3_origin + (22) * $horiz_pitch)] \
+    [expr ($del3_origin + (28) * $horiz_pitch)] \
     [expr (20) * $vert_pitch] \
 
 placeInstance \
     einj_inv_hold \
-    [expr ($del3_origin + (22) * $horiz_pitch)] \
+    [expr ($del3_origin + (28) * $horiz_pitch)] \
     [expr (19) * $vert_pitch] \
 
 for {set j 1} {$j < 5} {incr j} {
 
   placeInstance \
       einj_dff_del_$j \
-      [expr ($del3_origin + (39) * $horiz_pitch)] \
+      [expr ($del3_origin + (45) * $horiz_pitch)] \
       [expr (19 - $j) * $vert_pitch] \
 
 }
@@ -610,7 +610,7 @@ for {set j 0} {$j < 4} {incr j} {
 
   placeInstance \
       einj_dff_del_5_$j \
-      [expr ($del3_origin + (22) * $horiz_pitch)] \
+      [expr ($del3_origin + (28) * $horiz_pitch)] \
       [expr (18 - $j) * $vert_pitch] \
 
 }
@@ -619,7 +619,7 @@ for {set j 0} {$j < 4} {incr j} {
 
   placeInstance \
       einj_inj_del_5_$j \
-      [expr ($del3_origin + (56) * $horiz_pitch)] \
+      [expr ($del3_origin + (62) * $horiz_pitch)] \
       [expr (23 - $j) * $vert_pitch] \
 
 }
@@ -628,36 +628,36 @@ for {set j 1} {$j < 5} {incr j} {
 
   placeInstance \
       einj_inj_del_$j \
-      [expr ($del3_origin + (56) * $horiz_pitch)] \
+      [expr ($del3_origin + (62) * $horiz_pitch)] \
       [expr (19 - $j) * $vert_pitch] \
 
 }
 
   placeInstance \
       einj_buf_ref \
-      [expr ($del3_origin + (79) * $horiz_pitch)] \
+      [expr ($del3_origin + (85) * $horiz_pitch)] \
       [expr (23 - 0) * $vert_pitch] \
 
   placeInstance \
       einj_del_1 \
-      [expr ($del3_origin + (79) * $horiz_pitch)] \
+      [expr ($del3_origin + (85) * $horiz_pitch)] \
       [expr (23 - 1) * $vert_pitch] \
 
   placeInstance \
       einj_del_4 \
-      [expr ($del3_origin + (79) * $horiz_pitch)] \
+      [expr ($del3_origin + (85) * $horiz_pitch)] \
       [expr (23 - 2) * $vert_pitch] \
 
   placeInstance \
       einj_del_16 \
-      [expr ($del3_origin + (79) * $horiz_pitch)] \
+      [expr ($del3_origin + (85) * $horiz_pitch)] \
       [expr (23 - 3) * $vert_pitch] \
 
 for {set j 0} {$j < 4} {incr j} {
 
   placeInstance \
       einj_del_64_$j \
-      [expr ($del3_origin + (79) * $horiz_pitch)] \
+      [expr ($del3_origin + (85) * $horiz_pitch)] \
       [expr (19 - $j) * $vert_pitch] \
 
 }
