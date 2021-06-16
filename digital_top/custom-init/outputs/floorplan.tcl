@@ -137,37 +137,37 @@ set osc_inst_origin_y [expr $place_origin_y - $block_clearance_y -$place_blk_y -
 
 placeInstance \
   hr_mux_16t4_0 \
-  [expr $place_origin_x + ((1) * $prbs_gen_width) + (2 * (1) * $place_blk_x) + ((1) * $block_clearance_x) + 0.5 ] \
-  [expr $place_origin_y + $ftl_height + (2 * $place_blk_y) + $block_clearance_y]
+  [expr $place_origin_x + ((1) * $prbs_gen_width) + (2 * (1) * $place_blk_x) + ((1) * $block_clearance_x) + $horiz_pitch ] \
+  [expr $place_origin_y + $ftl_height + (2 * $place_blk_y) + $block_clearance_y - $vert_pitch]
 
 placeInstance \
   qr_mux_4t1_0 \
-  [expr $place_origin_x + ((2) * $prbs_gen_width) + (2 * (2) * $place_blk_x) + ((2) * $block_clearance_x) + 0.5 ] \
-  [expr $place_origin_y + $ftl_height + (2 * $place_blk_y) + $block_clearance_y]
+  [expr $place_origin_x + ((2) * $prbs_gen_width) + (2 * (2) * $place_blk_x) + ((2) * $block_clearance_x) + $horiz_pitch ] \
+  [expr $place_origin_y + $ftl_height + (2 * $place_blk_y) + $block_clearance_y - $vert_pitch]
 
 placeInstance \
   hr_mux_16t4_1 \
-  [expr $place_origin_x + ((1) * $prbs_gen_width) + (2 * (1) * $place_blk_x) + ((1) * $block_clearance_x) + 0.5 ] \
-  [expr $place_origin_y - $osc_core_height - (4 * $place_blk_y) - (2 * $block_clearance_y) - $hr_mux_height]
+  [expr $place_origin_x + ((1) * $prbs_gen_width) + (2 * (1) * $place_blk_x) + ((1) * $block_clearance_x) + $horiz_pitch ] \
+  [expr $place_origin_y - $osc_core_height - (4 * $place_blk_y) - (2 * $block_clearance_y) - $hr_mux_height  - $vert_pitch]
 
 placeInstance \
   qr_mux_4t1_1 \
-  [expr $place_origin_x + ((2) * $prbs_gen_width) + (2 * (2) * $place_blk_x) + ((2) * $block_clearance_x) + 0.5 ] \
-  [expr $place_origin_y - $osc_core_height - (4 * $place_blk_y) - (2 * $block_clearance_y) - $hr_mux_height]
+  [expr $place_origin_x + ((2) * $prbs_gen_width) + (2 * (2) * $place_blk_x) + ((2) * $block_clearance_x) + $horiz_pitch ] \
+  [expr $place_origin_y - $osc_core_height - (4 * $place_blk_y) - (2 * $block_clearance_y) - $hr_mux_height  - $vert_pitch]
 
 
 for {set i 0} {$i < 3} {incr i} {
   placeInstance \
     genblk1_$i\__prbs_b \
-    [expr $place_origin_x + (($i) * $prbs_gen_width) + (2 * ($i) * $place_blk_x) + (($i) * $block_clearance_x) + 0.5 ] \
-    [expr $place_origin_y + $hr_mux_height + $ftl_height + (4 * $place_blk_y) + (2 * $block_clearance_y)]
+    [expr $place_origin_x + (($i) * $prbs_gen_width) + (2 * ($i) * $place_blk_x) + (($i) * $block_clearance_x) + $horiz_pitch ] \
+    [expr $place_origin_y + $hr_mux_height + $ftl_height + (4 * $place_blk_y) + (2 * $block_clearance_y) - $vert_pitch]
 }
 
 for {set i 3} {$i < 6} {incr i} {
   placeInstance \
     genblk1_$i\__prbs_b \
-    [expr $place_origin_x + (($i-3) * $prbs_gen_width) + (2 * ($i-3) * $place_blk_x) + (($i-3) * $block_clearance_x) + 0.5 ] \
-    [expr $place_origin_y + $prbs_gen_height +$hr_mux_height + $ftl_height + (6 * $place_blk_y) + (3 * $block_clearance_y)]
+    [expr $place_origin_x + (($i-3) * $prbs_gen_width) + (2 * ($i-3) * $place_blk_x) + (($i-3) * $block_clearance_x) + $horiz_pitch ] \
+    [expr $place_origin_y + $prbs_gen_height +$hr_mux_height + $ftl_height + (6 * $place_blk_y) + (3 * $block_clearance_y) - $vert_pitch]
 }
 
 for {set i 6} {$i < 10} {incr i} {
@@ -180,15 +180,15 @@ for {set i 6} {$i < 10} {incr i} {
 for {set i 10} {$i < 13} {incr i} {
   placeInstance \
     genblk1_$i\__prbs_b \
-    [expr $place_origin_x + (($i - 10) * $prbs_gen_width) + (2 * ($i - 10) * $place_blk_x) + (($i - 10) * $block_clearance_x) + 0.5 ] \
-    [expr ($place_origin_y - $prbs_gen_height - $osc_core_height - (6 * $place_blk_y) - (3 * $block_clearance_y) - $hr_mux_height)]
+    [expr $place_origin_x + (($i - 10) * $prbs_gen_width) + (2 * ($i - 10) * $place_blk_x) + (($i - 10) * $block_clearance_x) + $horiz_pitch ] \
+    [expr ($place_origin_y - $prbs_gen_height - $osc_core_height - (6 * $place_blk_y) - (3 * $block_clearance_y) - $hr_mux_height) - $vert_pitch]
 }
 
 for {set i 13} {$i < 16} {incr i} {
   placeInstance \
     genblk1_$i\__prbs_b \
-    [expr $place_origin_x + (($i - 13) * $prbs_gen_width) + (2 * ($i - 13) * $place_blk_x) + (($i - 13) * $block_clearance_x) + 0.5 ] \
-    [expr ($place_origin_y - (2 * $prbs_gen_height) - $osc_core_height - (8 * $place_blk_y) - (4 * $block_clearance_y) - $hr_mux_height)]
+    [expr $place_origin_x + (($i - 13) * $prbs_gen_width) + (2 * ($i - 13) * $place_blk_x) + (($i - 13) * $block_clearance_x) + $horiz_pitch ] \
+    [expr ($place_origin_y - (2 * $prbs_gen_height) - $osc_core_height - (8 * $place_blk_y) - (4 * $block_clearance_y) - $hr_mux_height) - $vert_pitch]
 }
 
 

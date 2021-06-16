@@ -23,9 +23,11 @@ outputs:
 #-------------------------------------------------------------------------
 
 commands:
-  - cp ../../build_prbs/18-cadence-innovus-signoff/results/prbs_generator_syn-merged.gds ./inputs/prbs_generator_syn.gds
-  - cp ../../build_16t4/18-cadence-innovus-signoff/results/hr_16t4_mux_top-merged.gds ./inputs/hr_16t4_mux_top.gds
-  - cp ../../build_4t1/19-cadence-innovus-signoff/results/qr_4t1_mux_top-merged.gds ./inputs/qr_4t1_mux_top.gds
+  # - cp ../../build_prbs/18-cadence-innovus-signoff/results/prbs_generator_syn-merged.gds ./inputs/prbs_generator_syn.gds
+  # - cp ../../build_16t4/18-cadence-innovus-signoff/results/hr_16t4_mux_top-merged.gds ./inputs/hr_16t4_mux_top.gds
+  # - cp ../../build_4t1/19-cadence-innovus-signoff/results/qr_4t1_mux_top-merged.gds ./inputs/qr_4t1_mux_top.gds
+  # - cp /tmp/canw/mflowgen/build/build_digital/8-submodule/outputs/osc_core.gds ./inputs/osc_core.gds
+  # - cp /tmp/canw/mflowgen/build/build_digital/8-submodule/outputs/fine_freq_track.gds ./inputs/fine_freq_track.gds
   # For some reason, Calibre requires this directory to exist
   - mkdir -p $HOME/.calibrewb_workspace/tmp
   # Glob for all gds files in adk

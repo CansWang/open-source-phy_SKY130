@@ -128,6 +128,17 @@ def construct():
   ]
   lvs.extend_inputs(spi_list)
    # gds_list needed for gds_merge step
+  gds_list = [
+        'prbs_generator_syn.gds',
+        'hr_16t4_mux_top.gds',
+        'qr_4t1_mux_top.gds',
+        'osc_core.gds',
+        'fine_freq_track.gds'
+  ]
+
+  gdsmerge.extend_inputs(gds_list) 
+
+
 
    # spi_list or verilog netlists needed for blackbox LVS
 
@@ -259,7 +270,7 @@ def construct():
   #
   # g.connect_by_name( signoff,        drc            )
   # g.connect_by_name( gdsmerge,       drc            )
-  g.connect_by_name( signoff,        lvs            )
+  # g.connect_by_name( signoff,        lvs            )
   g.connect_by_name( gdsmerge,       lvs            )
 
   # g.connect_by_name( adk,            debugcalibre   )
