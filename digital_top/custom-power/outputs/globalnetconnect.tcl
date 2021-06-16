@@ -21,11 +21,14 @@ globalNetConnect DVSS -type pgpin -pin DVSS -inst qr_mux_4t1_* -override
 globalNetConnect DVDD -type pgpin -pin DVDD -inst hr_mux_16t4_* -override
 globalNetConnect DVSS -type pgpin -pin DVSS -inst hr_mux_16t4_* -override
 
-globalNetConnect AVDD -type pgpin -pin DVDD -inst osc_inst -overside
-globalNetConnect AVSS -type pgpin -pin DVSS -inst osc_inst -overside
-
 globalNetConnect DVDD -type pgpin -pin DVDD -inst ftl -override
 globalNetConnect DVSS -type pgpin -pin DVSS -inst ftl -override
+
+# AVDD AVSS
+
+globalNetConnect AVDD -type pgpin -pin DVDD -inst osc_inst -override
+globalNetConnect AVSS -type pgpin -pin DVSS -inst osc_inst -override
+
 
 
 # TODO: are special net connections needed for the MDLL?

@@ -91,7 +91,7 @@
 
 
     set FP_width [snap_to_grid [expr 550 + 0] $horiz_pitch ]
-    set FP_height [snap_to_grid 850 $vert_pitch ]
+    set FP_height [snap_to_grid 900 $vert_pitch ]
 
 
     #floorPlan -site unithd -s $FP_width $FP_height \
@@ -133,38 +133,40 @@ placeInstance \
   $place_origin_x \
   [expr $place_origin_y - $block_clearance_y -$place_blk_y - $osc_core_height] 
 
+set osc_inst_origin_y [expr $place_origin_y - $block_clearance_y -$place_blk_y - $osc_core_height]
+
 placeInstance \
   hr_mux_16t4_0 \
-  [expr $place_origin_x + 0.5 * $ftl_width] \
+  [expr $place_origin_x + ((1) * $prbs_gen_width) + (2 * (1) * $place_blk_x) + ((1) * $block_clearance_x) + 0.5 ] \
   [expr $place_origin_y + $ftl_height + (2 * $place_blk_y) + $block_clearance_y]
 
 placeInstance \
   qr_mux_4t1_0 \
-  [expr $place_origin_x + 0.5 * $ftl_width + $hr_mux_width + $block_clearance_x + (2 * $place_blk_x)] \
+  [expr $place_origin_x + ((2) * $prbs_gen_width) + (2 * (2) * $place_blk_x) + ((2) * $block_clearance_x) + 0.5 ] \
   [expr $place_origin_y + $ftl_height + (2 * $place_blk_y) + $block_clearance_y]
 
 placeInstance \
   hr_mux_16t4_1 \
-  [expr $place_origin_x + 0.5 * $ftl_width] \
+  [expr $place_origin_x + ((1) * $prbs_gen_width) + (2 * (1) * $place_blk_x) + ((1) * $block_clearance_x) + 0.5 ] \
   [expr $place_origin_y - $osc_core_height - (4 * $place_blk_y) - (2 * $block_clearance_y) - $hr_mux_height]
 
 placeInstance \
   qr_mux_4t1_1 \
-  [expr $place_origin_x + 0.5 * $ftl_width + $hr_mux_width + $block_clearance_x + (2 * $place_blk_x)] \
+  [expr $place_origin_x + ((2) * $prbs_gen_width) + (2 * (2) * $place_blk_x) + ((2) * $block_clearance_x) + 0.5 ] \
   [expr $place_origin_y - $osc_core_height - (4 * $place_blk_y) - (2 * $block_clearance_y) - $hr_mux_height]
 
 
 for {set i 0} {$i < 3} {incr i} {
   placeInstance \
     genblk1_$i\__prbs_b \
-    [expr $place_origin_x + (($i) * $prbs_gen_width) + (2 * ($i) * $place_blk_x) + (($i) * $block_clearance_x) ] \
+    [expr $place_origin_x + (($i) * $prbs_gen_width) + (2 * ($i) * $place_blk_x) + (($i) * $block_clearance_x) + 0.5 ] \
     [expr $place_origin_y + $hr_mux_height + $ftl_height + (4 * $place_blk_y) + (2 * $block_clearance_y)]
 }
 
 for {set i 3} {$i < 6} {incr i} {
   placeInstance \
     genblk1_$i\__prbs_b \
-    [expr $place_origin_x + (($i-3) * $prbs_gen_width) + (2 * ($i-3) * $place_blk_x) + (($i-3) * $block_clearance_x) ] \
+    [expr $place_origin_x + (($i-3) * $prbs_gen_width) + (2 * ($i-3) * $place_blk_x) + (($i-3) * $block_clearance_x) + 0.5 ] \
     [expr $place_origin_y + $prbs_gen_height +$hr_mux_height + $ftl_height + (6 * $place_blk_y) + (3 * $block_clearance_y)]
 }
 
@@ -178,14 +180,14 @@ for {set i 6} {$i < 10} {incr i} {
 for {set i 10} {$i < 13} {incr i} {
   placeInstance \
     genblk1_$i\__prbs_b \
-    [expr $place_origin_x + (($i - 10) * $prbs_gen_width) + (2 * ($i - 10) * $place_blk_x) + (($i - 10) * $block_clearance_x) ] \
+    [expr $place_origin_x + (($i - 10) * $prbs_gen_width) + (2 * ($i - 10) * $place_blk_x) + (($i - 10) * $block_clearance_x) + 0.5 ] \
     [expr ($place_origin_y - $prbs_gen_height - $osc_core_height - (6 * $place_blk_y) - (3 * $block_clearance_y) - $hr_mux_height)]
 }
 
 for {set i 13} {$i < 16} {incr i} {
   placeInstance \
     genblk1_$i\__prbs_b \
-    [expr $place_origin_x + (($i - 13) * $prbs_gen_width) + (2 * ($i - 13) * $place_blk_x) + (($i - 13) * $block_clearance_x) ] \
+    [expr $place_origin_x + (($i - 13) * $prbs_gen_width) + (2 * ($i - 13) * $place_blk_x) + (($i - 13) * $block_clearance_x) + 0.5 ] \
     [expr ($place_origin_y - (2 * $prbs_gen_height) - $osc_core_height - (8 * $place_blk_y) - (4 * $block_clearance_y) - $hr_mux_height)]
 }
 
@@ -201,7 +203,7 @@ set pos_tri_buf_y [expr ($place_origin_y + 3 * $vert_pitch)]
   for {set i 0} {$i < 6} {incr i} {
     placeInstance \
       ibuf_genblk1_$i\__i_tri_buf_p \
-      [expr ($pos_tri_buf_x + ($i * $tri_buf_width))] \
+      [expr ($pos_tri_buf_x + ($i * 2 * $tri_buf_width))] \
       $pos_tri_buf_y
 
   }
@@ -260,7 +262,7 @@ set neg_tri_buf_y [expr ($place_origin_y - 3 * $vert_pitch)]
   for {set i 0} {$i < 6} {incr i} {
     placeInstance \
       ibuf_genblk1_$i\__i_tri_buf_n \
-      [expr ($pos_tri_buf_x + ($i * $tri_buf_width))] \
+      [expr ($pos_tri_buf_x + ($i * 2 * $tri_buf_width))] \
       $neg_tri_buf_y
 
   }
@@ -459,3 +461,22 @@ set neg_tri_buf_y [expr ($place_origin_y - 3 * $vert_pitch)]
     #createInstGroup test -region
     #addInstToInstGroup test {qr_mux_4t1_0 qr_mux_4t1_1}
     #createRegion test 35 107 72 145
+
+
+# Avoid cells to be put into AVDD/AVSS
+
+  createPlaceBlockage -box \
+    [expr $place_origin_x - (2 * $place_blk_x) - $horiz_pitch] \
+    [expr $osc_inst_origin_y - $place_blk_y ] \
+    [expr $place_origin_x + (2 * $place_blk_x) + $osc_core_width] \
+    [expr $osc_inst_origin_y + $place_blk_y + $osc_core_height] \
+    -name osc_place_blk
+
+  createRouteBlk -box \
+    [expr $place_origin_x - (2 * $place_blk_x) - $horiz_pitch] \
+    [expr $osc_inst_origin_y - $place_blk_y - $horiz_pitch] \
+    [expr $place_origin_x + (2 * $place_blk_x) + $osc_core_width] \
+    [expr $osc_inst_origin_y + $place_blk_y + $osc_core_height] \
+    -name osc_route_blk \
+    -layer M2
+

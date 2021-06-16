@@ -18,6 +18,7 @@ set T5 [expr {1.25*$T}]
 
 set TR_4X [expr {0.025*$T}]
 set TR [expr {0.1*$T}]
+set TR_2X [expr {0.05*$T}]
 set TR_HR [expr {0.2*$T}]
 set TR_QR [expr {0.4*$T}]
 set TR_10 [expr {0.01*$T}]
@@ -49,12 +50,17 @@ create_clock -name ref \
      -waveform "$T0 $T2" \
      [get_ports ref_clk_ext]
 
+create_clock -name QR_clk_1 \
+     -period $TR_HR \
+     -waveform "$T0 $TR" \
+     [get_pins hr_mux_16t4_0/clk]
 
-# Pass the clk property to one of the mdll output
-create_generated_clock -name mdll_out \
-    -source [get_ports ref_clk_ext] \
-    -multiply_by 10 \
-    [get_pins osc_inst/p3]
+create_clock -name QR_clk_1 \
+     -period $TR_HR \
+     -waveform "$T0 $TR" \
+     [get_pins hr_mux_16t4_1/clk]
+
+
 
 # Internal nets
 
