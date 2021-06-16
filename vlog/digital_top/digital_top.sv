@@ -61,7 +61,7 @@ module digital_top (
 
     output wire logic test_mux_misc,
     output wire logic test_mux_clk_Q,
-    output wire logic test_mux_clk_I,
+    output wire logic test_mux_clk_I
 
 
 
@@ -145,14 +145,7 @@ generate
     end
 endgenerate
 
-// Data + positive
-hr_16t4_mux_top hr_mux_16t4_0 (
-    .clk(ck_I), // This is a divided (by 2) clock from quarter-rate 4 to 1 mux
-    .clk_prbs(clk_prbsgen),
-    .din(din_reorder),
-    .rst(rst),
-    .dout(qr_data_p)
-);
+
 
 wire logic ck_Q;
 wire logic ck_I;
@@ -169,6 +162,16 @@ assign ck_Q= (osc_en) ? pi1:1'bz;
 assign ck_I= (osc_en) ? pi3:1'bz;
 assign ck_QB= (osc_en) ? (~pi1):1'bz;
 assign ck_IB= (osc_en) ? (~pi3):1'bz;
+
+
+// Data + positive
+hr_16t4_mux_top hr_mux_16t4_0 (
+    .clk(ck_I), // This is a divided (by 2) clock from quarter-rate 4 to 1 mux
+    .clk_prbs(clk_prbsgen),
+    .din(din_reorder),
+    .rst(rst),
+    .dout(qr_data_p)
+);
 
 
 //Instantiate quarter-rate 4 to 1 mux top
@@ -535,6 +538,10 @@ assign pi5_con_complemetary = 4'b1111 - pi5_con;
 
 // ANALOG TOP Here!
 
+wire logic test_inj_out;
+wire logic test_inj_hold;
+
+
 osc_core osc_inst (
 .glob_en(osc_en),
 .delay_con_lsb(osc_con[4:0]),
@@ -592,6 +599,7 @@ osc_core osc_inst (
 // Fine tracking loop
 
 wire logic test_aux_clk;
+wire logic test_out_star;
 
 fine_freq_track ftl (
 
@@ -626,8 +634,8 @@ sky130_fd_sc_hs__inv_8 test_buf_3 (.A(test_buf_in_0), .Y(test_mux_misc));
 
 sky130_fd_sc_hs__einvp_8 test_mux_0 (.A(test_out_star), .TE(test_mux_select[0]), .Z(test_buf_in_0));
 sky130_fd_sc_hs__einvp_8 test_mux_1 (.A(test_inj_out), .TE(test_mux_select[1]), .Z(test_buf_in_0));
-sky130_fd_sc_hs__einvp_8 test_mux_1 (.A(test_aux_clk), .TE(test_mux_select[2]), .Z(test_buf_in_0));
-sky130_fd_sc_hs__einvp_8 test_mux_1 (.A(test_inj_hold), .TE(test_mux_select[3]), .Z(test_buf_in_0));
+sky130_fd_sc_hs__einvp_8 test_mux_2 (.A(test_aux_clk), .TE(test_mux_select[2]), .Z(test_buf_in_0));
+sky130_fd_sc_hs__einvp_8 test_mux_3 (.A(test_inj_hold), .TE(test_mux_select[3]), .Z(test_buf_in_0));
 
 
 
@@ -635,15 +643,15 @@ sky130_fd_sc_hs__einvp_8 test_mux_1 (.A(test_inj_hold), .TE(test_mux_select[3]),
 wire logic test_clk_buf_in_0;
 wire logic test_clk_buf_in_1;
 
-sky130_fd_sc_hs__einvp_8 test_mux_Q0 (.A(pi1_con), .TE(test_mux_clk_Q_select[0]), .Z(test_clk_buf_in_0));
-sky130_fd_sc_hs__einvp_8 test_mux_Q1 (.A(pi1_con_complemetary), .TE(test_mux_clk_Q_select[0]), .Z(test_clk_buf_in_0));
+sky130_fd_sc_hs__einvp_8 test_mux_Q0 (.A(pi1), .TE(test_mux_clk_Q_select[0]), .Z(test_clk_buf_in_0));
+sky130_fd_sc_hs__einvp_8 test_mux_Q1 (.A(pi5), .TE(test_mux_clk_Q_select[0]), .Z(test_clk_buf_in_0));
 sky130_fd_sc_hs__inv_8 test_clk_Q_buf0 (.A(test_clk_buf_in_0), .Y(test_mux_clk_Q)); //TODO
 sky130_fd_sc_hs__inv_8 test_clk_Q_buf1 (.A(test_clk_buf_in_0), .Y(test_mux_clk_Q)); 
 sky130_fd_sc_hs__inv_8 test_clk_Q_buf2 (.A(test_clk_buf_in_0), .Y(test_mux_clk_Q)); //TODO
 sky130_fd_sc_hs__inv_8 test_clk_Q_buf3 (.A(test_clk_buf_in_0), .Y(test_mux_clk_Q));
 
-sky130_fd_sc_hs__einvp_8 test_mux_I0 (.A(pi3_con), .TE(test_mux_clk_I_select[0]), .Z(test_clk_buf_in_1));
-sky130_fd_sc_hs__einvp_8 test_mux_I1 (.A(pi3_con_complemetary), .TE(test_mux_clk_I_select[1]), .Z(test_clk_buf_in_1));
+sky130_fd_sc_hs__einvp_8 test_mux_I0 (.A(pi3), .TE(test_mux_clk_I_select[0]), .Z(test_clk_buf_in_1));
+sky130_fd_sc_hs__einvp_8 test_mux_I1 (.A(pi2), .TE(test_mux_clk_I_select[1]), .Z(test_clk_buf_in_1));
 sky130_fd_sc_hs__inv_8 test_clk_I_buf0 (.A(test_clk_buf_in_0), .Y(test_mux_clk_I));
 sky130_fd_sc_hs__inv_8 test_clk_I_buf1 (.A(test_clk_buf_in_0), .Y(test_mux_clk_I));
 sky130_fd_sc_hs__inv_8 test_clk_I_buf2 (.A(test_clk_buf_in_0), .Y(test_mux_clk_I));

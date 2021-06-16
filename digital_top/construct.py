@@ -92,7 +92,9 @@ def construct():
   dbs = [
       'prbs_generator_syn.db',
       'hr_16t4_mux_top.db',
-      'qr_4t1_mux_top.db'
+      'qr_4t1_mux_top.db',
+      'osc_core.db',
+      'fine_freq_track.db'
   ]
   dc.extend_inputs(dbs)
   genlibdb.extend_inputs(dbs)
@@ -100,12 +102,16 @@ def construct():
   libs = [
       'prbs_generator_syn.lib',
       'hr_16t4_mux_top.lib',
-      'qr_4t1_mux_top.lib'
+      'qr_4t1_mux_top.lib',
+      'osc_core.lib',
+      'fine_freq_track.lib'
   ]
   lefs = [
       'prbs_generator_syn.lef',
       'hr_16t4_mux_top.lef',
-      'qr_4t1_mux_top.lef'
+      'qr_4t1_mux_top.lef',
+      'osc_core.lef',
+      'fine_freq_track.lef'
   ]
 
   lib_lef_steps = \
@@ -116,7 +122,9 @@ def construct():
   spi_list = [
         'prbs_generator_syn.spice',
         'hr_16t4_mux_top.spice',
-        'qr_4t1_mux_top.spice'
+        'qr_4t1_mux_top.spice',
+        'osc_core.spice',
+        'fine_freq_track.spice'
   ]
   lvs.extend_inputs(spi_list)
    # gds_list needed for gds_merge step

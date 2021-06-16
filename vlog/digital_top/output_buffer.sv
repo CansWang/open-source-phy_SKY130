@@ -20,14 +20,26 @@ assign CTL_P={CTL_P0,CTL_P1};
 
 // buffer to match the fanout
 // SET_DONT_TOUCH!!
-wire logic inn_buf;
-wire logic inp_buf;
+wire logic inn_buf_0;
+wire logic inn_buf_1;
+wire logic inp_buf_0;
+wire logic inp_buf_1;
 
-sky130_fd_sc_hs__inv_8 predrv_p_0 (.A(inp), .Y(inp_buf));
-sky130_fd_sc_hs__inv_8 predrv_p_1 (.A(inp), .Y(inp_buf));
+sky130_fd_sc_hs__inv_8 predrv_p0_0 (.A(inp), .Y(inp_buf_0));
+sky130_fd_sc_hs__inv_8 predrv_p0_1 (.A(inp), .Y(inp_buf_0));
+sky130_fd_sc_hs__inv_8 predrv_p1_0 (.A(inp_buf_0), .Y(inp_buf_1));
+sky130_fd_sc_hs__inv_8 predrv_p1_1 (.A(inp_buf_0), .Y(inp_buf_1));
+sky130_fd_sc_hs__inv_8 predrv_p1_2 (.A(inp_buf_0), .Y(inp_buf_1));
+sky130_fd_sc_hs__inv_8 predrv_p1_3 (.A(inp_buf_0), .Y(inp_buf_1));
 
-sky130_fd_sc_hs__inv_8 predrv_n_0 (.A(inn), .Y(inn_buf));
-sky130_fd_sc_hs__inv_8 predrv_n_1 (.A(inn), .Y(inn_buf));
+
+sky130_fd_sc_hs__inv_8 predrv_n0_0 (.A(inn), .Y(inn_buf_0));
+sky130_fd_sc_hs__inv_8 predrv_n0_1 (.A(inn), .Y(inn_buf_0));
+sky130_fd_sc_hs__inv_8 predrv_n1_0 (.A(inn_buf_0), .Y(inn_buf_1));
+sky130_fd_sc_hs__inv_8 predrv_n1_1 (.A(inn_buf_0), .Y(inn_buf_1));
+sky130_fd_sc_hs__inv_8 predrv_n1_2 (.A(inn_buf_0), .Y(inn_buf_1));
+sky130_fd_sc_hs__inv_8 predrv_n1_3 (.A(inn_buf_0), .Y(inn_buf_1));
+
 // 
 
 
@@ -39,13 +51,13 @@ genvar i;
 generate
     for (i = 0; i<40;i=i+1) begin
         sky130_fd_sc_hs__einvp_2 i_tri_buf_n (
-            .A(inn_buf),
+            .A(inn_buf_1),
             .TE(CTL_N[i]),
             .Z(BTN)
         );
 
         sky130_fd_sc_hs__einvp_2 i_tri_buf_p (
-            .A(inp_buf),
+            .A(inp_buf_1),
             .TE(CTL_P[i]),
             .Z(BTP)
         );

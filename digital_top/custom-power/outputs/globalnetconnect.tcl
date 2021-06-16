@@ -21,23 +21,12 @@ globalNetConnect DVSS -type pgpin -pin DVSS -inst qr_mux_4t1_* -override
 globalNetConnect DVDD -type pgpin -pin DVDD -inst hr_mux_16t4_* -override
 globalNetConnect DVSS -type pgpin -pin DVSS -inst hr_mux_16t4_* -override
 
-#globalNetConnect CVDD -type pgpin -pin CVDD1 -inst {imdll} -override
-#globalNetConnect CVDD -type pgpin -pin CVDD2 -inst {imdll} -override
-#globalNetConnect DVDD -type pgpin -pin DVDD -inst {imdll} -override
-#globalNetConnect DVSS -type pgpin -pin DVSS -inst {imdll} -override
+globalNetConnect AVDD -type pgpin -pin DVDD -inst osc_inst -overside
+globalNetConnect AVSS -type pgpin -pin DVSS -inst osc_inst -overside
 
+globalNetConnect DVDD -type pgpin -pin DVDD -inst ftl -override
+globalNetConnect DVSS -type pgpin -pin DVSS -inst ftl -override
 
-#globalNetConnect DVDD -type pgpin -pin DVDD -inst {iacore} -override
-#globalNetConnect DVSS -type pgpin -pin DVSS -inst {iacore} -override
-
-#globalNetConnect AVDD -type pgpin -pin AVDD -inst {iacore} -override
-#globalNetConnect AVSS -type pgpin -pin AVSS -inst {iacore} -override
-
-#globalNetConnect CVDD -type pgpin -pin CVDD -inst {iacore} -override
-#globalNetConnect CVSS -type pgpin -pin CVSS -inst {iacore} -override
-
-#globalNetConnect DVDD -type pgpin -pin avdd -inst {*ibuf_*} -override
-#globalNetConnect DVSS -type pgpin -pin avss -inst {*ibuf_*} -override
 
 # TODO: are special net connections needed for the MDLL?
 #

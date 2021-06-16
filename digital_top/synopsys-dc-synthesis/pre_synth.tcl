@@ -47,4 +47,5 @@ set DC_RETIME_REGISTERS $env(retime_registers)
 # allow unconnected registers to be removed.
 
 set compile_optimize_unloaded_seq_logic_with_no_bound_opt true
+define_name_rules verilog -case_insensitive
 

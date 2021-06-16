@@ -46,13 +46,7 @@ set pins_top {{rst} {rst_prbs}}
 
 set pins_right {{dout_p} {dout_n}}
 
-set pins_left {\
-  {inj_error}\
-}
-
-set pins_bottom {{clk_interp_slice_0} {clk_interp_slice_1} {clk_interp_slice_2} {clk_interp_slice_3}}
-
 editPin -layer $ports_layer -pin $pins_right  -side RIGHT  -spreadType SIDE
-editPin -layer $ports_layer -pin $pins_left   -side LEFT   -spreadType SIDE
-editPin -layer $ports_layer -pin $pins_bottom -side BOTTOM -spreadType SIDE
+# editPin -layer $ports_layer -pin $pins_left   -side LEFT   -spreadType SIDE
+# editPin -layer $ports_layer -pin $pins_bottom -side BOTTOM -spreadType SIDE
 editPin -layer $ports_layer -pin $pins_top    -side TOP    -spreadType SIDE
