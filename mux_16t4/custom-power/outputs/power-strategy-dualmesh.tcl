@@ -213,6 +213,7 @@ addStripe \
     -nets {DVDD DVSS}
 
 deleteRouteBlk -name *
+deletePlaceBlockage -all
 
 # Temperal M1 Power Grid Fix
 # sroute -nets {DVDD DVSS}
@@ -221,9 +222,9 @@ addStripe -nets {DVDD DVSS} \
    -layer M4 \
    -direction vertical \
    -width 1 \
-   -spacing 2 \
+   -spacing 5 \
    -start_offset 2 \
-   -set_to_set_distance 6 \
+   -set_to_set_distance 12 \
    -start_from left \
    -max_same_layer_jog_length 2 \
    -padcore_ring_top_layer_limit M4 \

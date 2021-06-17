@@ -31,9 +31,9 @@ parameters:
   design_name: undefined
 
 commands: 
-  - cat inputs/design.lvs.v inputs/prbs_generator_syn.lvs.v inputs/qr_4t1_mux_top.lvs.v inputs/fine_freq_track.lvs.v inputs/osc_core.lvs.v > ./design.lvs.v
+  - cat inputs/design.lvs.v inputs/prbs_generator_syn.lvs.v inputs/hr_16t4_mux_top.lvs.v inputs/qr_4t1_mux_top.lvs.v inputs/fine_freq_track.lvs.v inputs/osc_core.lvs.v > ./design.lvs.v
   - cat inputs/adk/stdcells.spi inputs/prbs_generator_syn.spice inputs/qr_4t1_mux_top.spice inputs/fine_freq_track.spice inputs/osc_core.spice > ./lvs.spi
-  - v2lvs -i -lsp ./lvs.spi -s ./lvs.spi -v inputs/design.lvs.v -o design_lvs.spice
+  - v2lvs -i -lsp inputs/adk/stdcells.spi -s inputs/adk/stdcells.spi -v ./design.lvs.v -o design_lvs.spice
   - sh run_lvs.sh
 
 preconditions:

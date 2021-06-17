@@ -13,10 +13,10 @@ e = os.environ
 
 # build up a list of source files
 file_list = []
-file_list += ['/tmp/canw/open-source-phy_SKY130/vlog_netlist/low_freq_tracking_loop/fine_freq_track.sv']
-file_list += ['/tmp/canw/open-source-phy_SKY130/vlog_netlist/low_freq_tracking_loop/delay_cell_osc.sv']
-file_list += ['/tmp/canw/open-source-phy_SKY130/vlog_netlist/low_freq_tracking_loop/aux_core.sv']
-file_list += ['/tmp/canw/open-source-phy_SKY130/vlog_netlist/low_freq_tracking_loop/double_esampler.sv']
+file_list += ['/sim/canswang/open-source-phy_SKY130/vlog_netlist/low_freq_tracking_loop/fine_freq_track.sv']
+file_list += ['/sim/canswang/open-source-phy_SKY130/vlog_netlist/low_freq_tracking_loop/delay_cell_osc.sv']
+file_list += ['/sim/canswang/open-source-phy_SKY130/vlog_netlist/low_freq_tracking_loop/aux_core.sv']
+file_list += ['/sim/canswang/open-source-phy_SKY130/vlog_netlist/low_freq_tracking_loop/double_esampler.sv']
 
 print('loaded verilog source file list:', file_list)
 

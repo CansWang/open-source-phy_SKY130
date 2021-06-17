@@ -62,6 +62,7 @@ def construct():
   lvs = Step(this_dir + '/open-netgen-lvs')
   pex = Step(this_dir + '/open-magic-ext2spice')
 
+
 # Default steps
 
   info           = Step( 'info',                           default=True )
@@ -176,6 +177,8 @@ def construct():
   g.add_step( pex            )
   g.add_step( submodule )
 
+
+
   #g.add_step( custom_geom )
   #-----------------------------------------------------------------------
   # Graph -- Add edges
@@ -206,6 +209,9 @@ def construct():
   g.connect_by_name( signoff,        pex            )
   g.connect_by_name( magic_def2spice,pex            )
   g.connect_by_name( lvs,            pex            )
+
+
+
 
   g.connect_by_name(submodule, dc)
   g.connect_by_name(submodule, iflow)

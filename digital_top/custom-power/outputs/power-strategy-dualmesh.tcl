@@ -83,10 +83,10 @@ sroute -connect { blockPin } \
 
 
 
-createRouteBlk -box 144.00 304.00 144.100 411.00  -layer {M2 M4} -name AVDD_blk1
-createRouteBlk -box 144.00 411.0 335.50 411.50  -layer {M2 M4} -name AVDD_blk2
-createRouteBlk -box 144.00 304.00 335.50 304.50  -layer {M2 M4} -name AVDD_blk3
-createRouteBlk -box 335.00 304.00 335.50 411.00  -layer {M2 M4} -name AVDD_blk4
+# createRouteBlk -box 144.00 304.00 144.100 411.00  -layer {M2 M4} -name AVDD_blk1
+# createRouteBlk -box 144.00 411.0 335.50 411.50  -layer {M2 M4} -name AVDD_blk2
+# createRouteBlk -box 144.00 304.00 335.50 304.50  -layer {M2 M4} -name AVDD_blk3
+# createRouteBlk -box 335.00 304.00 335.50 411.00  -layer {M2 M4} -name AVDD_blk4
 
 # M2 power grid
 
@@ -146,15 +146,19 @@ sroute -connect { blockPin } \
 
 sroute -connect { blockPin } \
     -inst { osc_inst } \
-    -layerChangeRange { M4 M5 } \
+    -layerChangeRange { M6 M6 } \
     -blockPinTarget { boundaryWithPin } \
     -allowJogging 1 \
-    -crossoverViaLayerRange { M5 M1 } \
-    -corePinLayer {M5} \
-    -nets {AVDD AVSS} \
+    -crossoverViaLayerRange { M6 M1 } \
+    -corePinLayer {M6} \
+    -nets {AVDD DVSS} \
     -allowLayerChange 1 \
     -blockPin useLef \
-    -targetViaLayerRange { M5 M1 }
+    -targetViaLayerRange { M6 M1 }
+
+createPhysicalPin AVDD -net AVDD -layer M6 -rect 152.24 900.43 154.24 902.43
+
+
 
 # M4 Power strip on the right-hand side
 
@@ -163,7 +167,7 @@ addStripe -nets {DVDD DVSS} \
    -direction vertical \
    -width 1 \
    -spacing 5 \
-   -start_offset 400 \
+   -start_offset 394 \
    -set_to_set_distance 12 \
    -start_from left \
    -max_same_layer_jog_length 2 \

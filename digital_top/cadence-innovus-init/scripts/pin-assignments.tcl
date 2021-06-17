@@ -78,11 +78,15 @@ set pins_left {{rst} {rst_prbs} {inj_error} {CTL_BUF_N[0]} \
 set pins_top {{pi1_con[0]} {pi1_con[1]} {pi1_con[2]} {pi1_con[3]} \
     {pi2_con[0]} {pi2_con[1]} {pi2_con[2]} {pi2_con[3]} \
     {pi3_con[0]} {pi3_con[1]} {pi3_con[2]} {pi3_con[3]} \
+
+}
+
+set pins_bot    { {test_mux_select[0]} {test_mux_select[1]} {test_mux_select[2]} \
+    {test_mux_select[3]} {test_mux_clk_I_select[0]} {test_mux_clk_I_select[1]} \
+    {test_mux_clk_Q_select[0]} {test_mux_clk_Q_select[1]} \
     {pi4_con[0]} {pi4_con[1]} {pi4_con[2]} {pi4_con[3]} \
     {pi5_con[0]} {pi5_con[1]} {pi5_con[2]} {pi5_con[3]} \
-    {test_mux_select[0]} {test_mux_select[1]} {test_mux_select[2]} \
-    {test_mux_select[3]} {test_mux_clk_I_select[0]} {test_mux_clk_I_select[1]} \
-    {test_mux_clk_Q_select[0]} {test_mux_clk_Q_select[1]}}
+    }
 
 
 
@@ -95,18 +99,21 @@ set pins_top {{pi1_con[0]} {pi1_con[1]} {pi1_con[2]} {pi1_con[3]} \
 
 editPin -layer $ports_layer -pin $pins_left  -side LEFT  -spreadType SIDE
 editPin -layer $ports_layer -pin $pins_top  -side TOP  -spreadType SIDE
-
+editPin -layer $ports_layer -pin $pins_bot  -side BOTTOM  -spreadType SIDE
 
 set pins_top {{rst} {rst_prbs}}
 
 
-editPin -layer M3 -pin dout_p -pinWidth 6 -pinDepth 150 -assign {549.00 450.00} -edge 2
-editPin -layer M3 -pin dout_n -pinWidth 6 -pinDepth 150 -assign {549.00 405.00} -edge 2
+editPin -layer M3 -pin dout_p -pinWidth 6 -pinDepth 135 -assign {549.00 450.00} -edge 2
+editPin -layer M3 -pin dout_n -pinWidth 6 -pinDepth 135 -assign {549.00 405.00} -edge 2
 editPin -layer M3 -pin ref_clk_ext_n -pinWidth 4 -pinDepth 20 -assign {549.00 500.00} -edge 2
 editPin -layer M3 -pin ref_clk_ext_p -pinWidth 4 -pinDepth 20 -assign {549.00 575.00} -edge 2
 editPin -layer M3 -pin test_mux_clk_I -pinWidth 4 -pinDepth 20 -assign {549.00 750.00} -edge 2
 editPin -layer M3 -pin test_mux_clk_Q -pinWidth 4 -pinDepth 20 -assign {549.00 800.00} -edge 2
 editPin -layer M3 -pin test_mux_misc -pinWidth 4 -pinDepth 20 -assign {549.00 850.00} -edge 2
+
+
+# Manual fix for pins
 
 
 

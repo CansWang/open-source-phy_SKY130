@@ -3,8 +3,6 @@ name: rtl
 commands:
   - |
     mkdir -p outputs
-    cp -r $VLOG_HOME/mux_16t4 ./outputs
-    cat "./outputs/mux_16t4/hr_16t4_mux_top.sv" "./outputs/mux_16t4/hr_4t1_mux_top.sv" "./outputs/mux_16t4/ff_c.sv" "./outputs/mux_16t4/hr_2t1_mux_top.sv" "./outputs/mux_16t4/mux.sv" > "./outputs/design.v"
     python gen_tcl.py
 
 

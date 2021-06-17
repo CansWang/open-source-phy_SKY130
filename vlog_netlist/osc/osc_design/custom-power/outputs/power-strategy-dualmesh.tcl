@@ -144,23 +144,23 @@ addStripe \
     -nets {DVDD DVSS}
 
 deleteRouteBlk -name *
-
+deletePlaceBlockage -all
 # Temperal M1 Power Grid Fix
 
 
 addStripe -nets {DVDD DVSS} \
-   -layer M4 \
+   -layer M6 \
    -direction vertical \
-   -width 1 \
-   -spacing 5 \
+   -width 2 \
+   -spacing 8 \
    -start_offset 2 \
-   -set_to_set_distance 12 \
+   -set_to_set_distance 20 \
    -start_from left \
    -max_same_layer_jog_length 2 \
-   -padcore_ring_top_layer_limit M4 \
-   -padcore_ring_bottom_layer_limit M4 \
-   -block_ring_top_layer_limit M4 \
-   -block_ring_bottom_layer_limit M4 \
+   -padcore_ring_top_layer_limit M6 \
+   -padcore_ring_bottom_layer_limit M6 \
+   -block_ring_top_layer_limit M6 \
+   -block_ring_bottom_layer_limit M6 \
    -use_wire_group 0 \
    -snap_wire_center_to_grid None \
    -skip_via_on_pin {standardcell} \
@@ -217,6 +217,6 @@ editAddRoute [expr $del2_origin + 5*$horiz_pitch] [expr (19 + 5) * $vert_pitch]
 editCommitRoute [expr $del2_origin + 5*$horiz_pitch] [expr (10) * $vert_pitch]
 
 setEdit -nets osc_108
-editAddRoute [expr $del3_origin + 11*$horiz_pitch] [expr (19 + 5) * $vert_pitch]
-editCommitRoute [expr $del3_origin + 11*$horiz_pitch] [expr (10) * $vert_pitch]
+editAddRoute [expr $del3_origin + 7*$horiz_pitch] [expr (19 + 5) * $vert_pitch]
+editCommitRoute [expr $del3_origin + 7*$horiz_pitch] [expr (10) * $vert_pitch]
 

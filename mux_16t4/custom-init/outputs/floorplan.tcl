@@ -85,3 +85,18 @@
 
     setFlipping s
 
+    createPlaceBlockage -box  \
+        0 \
+        0 \
+        [expr (3 * $horiz_pitch)] \
+        $FP_height \
+        -name tapcell_blk_left
+
+
+
+    createPlaceBlockage -box  \
+        [expr $FP_width - (3 * $horiz_pitch)] \
+        0 \
+        $FP_width \
+        $FP_height \
+        -name tapcell_blk_right
