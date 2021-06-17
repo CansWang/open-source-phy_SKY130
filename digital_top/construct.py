@@ -115,7 +115,7 @@ def construct():
   ]
 
   lib_lef_steps = \
-      [iflow, init, power, place, cts, postcts_hold, route, postroute, signoff]
+      [iflow, init, power, place, cts, postcts_hold, route, postroute, signoff, magic_def2spice]
   for step in lib_lef_steps:
       step.extend_inputs(libs + lefs)
 
@@ -219,6 +219,7 @@ def construct():
   g.connect_by_name(submodule, signoff)
   g.connect_by_name(submodule, gdsmerge)
   g.connect_by_name(submodule, lvs)
+  g.connect_by_name(submodule, magic_def2spice)
   g.connect_by_name(submodule, magic_drc)
   g.connect_by_name(submodule, genlibdb)
 

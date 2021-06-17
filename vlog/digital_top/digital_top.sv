@@ -12,7 +12,8 @@ module digital_top (
     input wire logic rst_prbs,
     // input wire logic [31:0] init_vals [16],
     input wire logic inj_error,
-    input wire logic ref_clk_ext,
+    input wire logic ref_clk_ext_p,
+    input wire logic ref_clk_ext_n,
     // input wire logic [Npi-1:0] ctl_pi [Nout-1:0],
     // input wire logic clk_async,
     // input wire logic clk_encoder,
@@ -658,17 +659,29 @@ sky130_fd_sc_hs__inv_8 test_clk_I_buf2 (.A(test_clk_buf_in_0), .Y(test_mux_clk_I
 sky130_fd_sc_hs__inv_8 test_clk_I_buf3 (.A(test_clk_buf_in_0), .Y(test_mux_clk_I));
 
 
-wire logic ref_buf;
+wire logic ref_buf_p;
+wire logic ref_buf_n;
 // ref_clk input buffer
 // 1st stage
-sky130_fd_sc_hs__inv_8 ref_clk_in_buf1_0 (.A(ref_clk_ext), .Y(ref_buf));
-sky130_fd_sc_hs__inv_8 ref_clk_in_buf1_1 (.A(ref_clk_ext), .Y(ref_buf));
+sky130_fd_sc_hs__inv_8 ref_clk_in_buf1_0 (.A(ref_clk_ext_p), .Y(ref_buf_p));
+sky130_fd_sc_hs__inv_8 ref_clk_in_buf1_1 (.A(ref_clk_ext_p), .Y(ref_buf_p));
 
 // 2nd stage
-sky130_fd_sc_hs__inv_8 ref_clk_in_buf2_0 (.A(ref_buf), .Y(ref_clk));
-sky130_fd_sc_hs__inv_8 ref_clk_in_buf2_1 (.A(ref_buf), .Y(ref_clk));
-sky130_fd_sc_hs__inv_8 ref_clk_in_buf2_2 (.A(ref_buf), .Y(ref_clk));
-sky130_fd_sc_hs__inv_8 ref_clk_in_buf2_3 (.A(ref_buf), .Y(ref_clk));
+sky130_fd_sc_hs__inv_8 ref_clk_in_buf2_0 (.A(ref_buf_p), .Y(ref_clk));
+sky130_fd_sc_hs__inv_8 ref_clk_in_buf2_1 (.A(ref_buf_p), .Y(ref_clk));
+sky130_fd_sc_hs__inv_8 ref_clk_in_buf2_2 (.A(ref_buf_p), .Y(ref_clk));
+sky130_fd_sc_hs__inv_8 ref_clk_in_buf2_3 (.A(ref_buf_p), .Y(ref_clk));
+
+// Neg ref, dummy
+// 1st stage
+sky130_fd_sc_hs__inv_8 ref_clk_in_buf3_0 (.A(ref_clk_ext_n), .Y(ref_buf_n));
+sky130_fd_sc_hs__inv_8 ref_clk_in_buf3_1 (.A(ref_clk_ext_n), .Y(ref_buf_n));
+
+// 2nd stage
+sky130_fd_sc_hs__inv_8 ref_clk_in_buf4_0 (.A(ref_buf_n), .Y()); // floating output
+sky130_fd_sc_hs__inv_8 ref_clk_in_buf4_1 (.A(ref_buf_n), .Y());
+sky130_fd_sc_hs__inv_8 ref_clk_in_buf4_2 (.A(ref_buf_n), .Y());
+sky130_fd_sc_hs__inv_8 ref_clk_in_buf4_3 (.A(ref_buf_n), .Y());
 
 
 

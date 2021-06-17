@@ -45,10 +45,16 @@ set_max_transition $TR_10 [current_design]
 #     -waveform "$T3 $T5" \
 #     [get_ports clk_interp_slice_3]
 
-create_clock -name ref \
+create_clock -name ref_n \
      -period $T \
      -waveform "$T0 $T2" \
-     [get_ports ref_clk_ext]
+     [get_ports ref_clk_ext_n]
+
+create_clock -name ref_p \
+     -period $T \
+     -waveform "$T2 $T4" \
+     [get_ports ref_clk_ext_p]
+
 
 create_clock -name QR_clk_1 \
      -period $TR_HR \
@@ -93,12 +99,14 @@ create_clock -name QR_clk_1 \
         set_dont_touch [get_cells "test_clk_Q_buf$l"]
         set_dont_touch [get_cells "test_clk_I_buf$l"]
         set_dont_touch [get_cells "ref_clk_in_buf2_$l"]
+        set_dont_touch [get_cells "ref_clk_in_buf4_$l"]
     }
 
     for {set l 0} {$l < 2} {incr l} {
         set_dont_touch [get_cells "test_mux_Q$l"]
         set_dont_touch [get_cells "test_mux_I$l"]
         set_dont_touch [get_cells "ref_clk_in_buf1_$l"]
+        set_dont_touch [get_cells "ref_clk_in_buf2_$l"]
     }
 
 

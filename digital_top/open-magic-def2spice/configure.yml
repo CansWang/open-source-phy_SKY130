@@ -13,6 +13,7 @@ name: open-magic-def2spice
 inputs:
   - adk
   - design.def.gz
+  - submodule
 
 outputs:
   - design_extracted.spice
@@ -25,10 +26,25 @@ parameters:
   design_name: undefined
 
 commands:
+  # - cp ../../../build_prbs/18-cadence-innovus-signoff/results/prbs_generator_syn.def.gz ./prbs_generator_syn.def.gz
+  # - gunzip prbs_generator_syn.def.gz
+  # - sed -i 's/\//____/g' prbs_generator_syn.def
+  # - cp ../../../build_16t4/18-cadence-innovus-signoff/results/hr_16t4_mux_top.def.gz ./hr_16t4_mux_top.def.gz
+  # - gunzip hr_16t4_mux_top.def.gz
+  # - sed -i 's/\//____/g' hr_16t4_mux_top.def
+  # - cp ../../../build_4t1/19-cadence-innovus-signoff/results/qr_4t1_mux_top.def.gz ./qr_4t1_mux_top.def.gz
+  # - gunzip qr_4t1_mux_top.def.gz
+  # - sed -i 's/\//____/g' qr_4t1_mux_top.def
+  # - cp ../../../mdll/17-cadence-innovus-signoff/results/osc_core.def.gz ./osc_core.def.gz
+  # - gunzip osc_core.def.gz
+  # - sed -i 's/\//____/g' osc_core.def
+  # - cp ../../../fftl/19-cadence-innovus-signoff/results/fine_freq_track.def.gz ./fine_freq_track.def.gz
+  # - gunzip fine_freq_track.def.gz
+  # - sed -i 's/\//____/g' fine_freq_track.def
   - cp inputs/adk/magicrc .magicrc
   - cp inputs/adk/rtk-tech.lef rtk-tech-nolicon.lef
   - sed -i '/LAYER licon/,/END licon/d' rtk-tech-nolicon.lef
   - cp -L inputs/design.def.gz design.def.gz 
   - gunzip design.def.gz 
   - sed -i 's/\//____/g' design.def # FIXME: Fix generated names properly in layout 
-  - magic -noconsole -dnull extract.tcl | tee def2spice.log
+  - magic -noconsole -dnull extract.tcl feedback save error.log | tee def2spice.log
