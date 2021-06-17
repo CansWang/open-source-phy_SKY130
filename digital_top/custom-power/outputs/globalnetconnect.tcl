@@ -27,7 +27,7 @@ globalNetConnect DVSS -type pgpin -pin DVSS -inst ftl -override
 # AVDD AVSS
 
 globalNetConnect AVDD -type pgpin -pin DVDD -inst osc_inst -override
-globalNetConnect AVSS -type pgpin -pin DVSS -inst osc_inst -override
+globalNetConnect DVSS -type pgpin -pin DVSS -inst osc_inst -override
 
 
 

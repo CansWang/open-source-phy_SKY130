@@ -37,8 +37,22 @@ set horiz_pitch [dbGet top.fPlan.coreSite.size_x]
 #     -nets {DVDD DVSS}
 
 
+  createRouteBlk -box \
+    287.04 \
+    675.99 \
+    306.72 \
+    679.32 \
+    -name drc_error_route_blk0 \
+    -layer M4
 
-deleteRouteBlk -name *
+  createRouteBlk -box \
+    156.24 \
+    358.00 \
+    170.24 \
+    365.68 \
+    -name drc_error_route_blk1 \
+    -layer M5
+
 
 
 createRouteBlk -box 62.50 0 63.00 850.00  -layer M4 -name left_blk1
@@ -67,7 +81,7 @@ sroute -connect { blockPin } \
     -blockPin useLef \
     -targetViaLayerRange { M5 M1 }
 
-deleteRouteBlk -name left_blk*
+
 
 createRouteBlk -box 144.00 304.00 144.100 411.00  -layer {M2 M4} -name AVDD_blk1
 createRouteBlk -box 144.00 411.0 335.50 411.50  -layer {M2 M4} -name AVDD_blk2
@@ -96,8 +110,9 @@ addStripe \
 
 
 createRouteBlk -box 149.5 200.5 150.00 850.00 -layer {M4} -name UP_blk1
-# createRouteBlk -box 149.5 600.5 399.36 601.0  -layer {M2 M4} -name UP_blk2
 createRouteBlk -box 399.36 201.0 400.50 850.00  -layer {M2 M4} -name UP_blk3
+createRouteBlk -box 399.36 287 400.5 1 -layer {M4} -name DN_blk1
+createRouteBlk -box 148.5 1.00 149 286.38  -layer {M4} -name DN_blk3
 
 
 
@@ -125,32 +140,6 @@ sroute -connect { blockPin } \
     -blockPin useLef \
     -targetViaLayerRange { M5 M1 }
 
-createRouteBlk -box 399.36 287 400.5 1 -layer {M4} -name DN_blk1
-# createRouteBlk -box 148.5 286.38 399.36 287  -layer {M4} -name DN_blk2
-createRouteBlk -box 148.5 1.00 149 286.38  -layer {M4} -name DN_blk3
-
-
-sroute -connect { blockPin } \
-    -inst { genblk1_10__prbs_b genblk1_11__prbs_b genblk1_12__prbs_b genblk1_13__prbs_b genblk1_14__prbs_b genblk1_15__prbs_b hr_mux_16t4_1 qr_mux_4t1_1} \
-    -layerChangeRange { M4 M4 } \
-    -blockPinTarget { boundaryWithPin } \
-    -allowJogging 1 \
-    -crossoverViaLayerRange { M5 M1 } \
-    -nets {DVDD DVSS} \
-    -allowLayerChange 0 \
-    -blockPin useLef \
-    -targetViaLayerRange { M5 M1 }
-
-sroute -connect { blockPin } \
-    -inst { genblk1_10__prbs_b genblk1_11__prbs_b genblk1_12__prbs_b genblk1_13__prbs_b genblk1_14__prbs_b genblk1_15__prbs_b hr_mux_16t4_1 qr_mux_4t1_1} \
-    -layerChangeRange { M4 M4 } \
-    -blockPinTarget { blockPin } \
-    -allowJogging 1 \
-    -crossoverViaLayerRange { M5 M1 } \
-    -nets {DVDD DVSS} \
-    -allowLayerChange 0 \
-    -blockPin useLef \
-    -targetViaLayerRange { M5 M1 }
 
 
 # AVDD AVSS Power grid
@@ -167,7 +156,34 @@ sroute -connect { blockPin } \
     -blockPin useLef \
     -targetViaLayerRange { M5 M1 }
 
-# M6 Power strip ???
+# M4 Power strip on the right-hand side
 
+addStripe -nets {DVDD DVSS} \
+   -layer M4 \
+   -direction vertical \
+   -width 1 \
+   -spacing 5 \
+   -start_offset 400 \
+   -set_to_set_distance 12 \
+   -start_from left \
+   -max_same_layer_jog_length 2 \
+   -padcore_ring_top_layer_limit M4 \
+   -padcore_ring_bottom_layer_limit M4 \
+   -block_ring_top_layer_limit M4 \
+   -block_ring_bottom_layer_limit M4 \
+   -use_wire_group 0 \
+   -snap_wire_center_to_grid None \
+   -skip_via_on_pin {standardcell} \
+   -skip_via_on_wire_shape {noshape} \
+   -create_pins 1 \
+   -extend_to design_boundary
 
 deleteRouteBlk -name *
+
+  createRouteBlk -box \
+    156.24 \
+    358.00 \
+    170.24 \
+    365.68 \
+    -name drc_error_route_blk1 \
+    -layer M5

@@ -472,11 +472,4 @@ set neg_tri_buf_y [expr ($place_origin_y - 3 * $vert_pitch)]
     [expr $osc_inst_origin_y + $place_blk_y + $osc_core_height] \
     -name osc_place_blk
 
-  createRouteBlk -box \
-    [expr $place_origin_x - (2 * $place_blk_x) - $horiz_pitch] \
-    [expr $osc_inst_origin_y - $place_blk_y - $horiz_pitch] \
-    [expr $place_origin_x + (2 * $place_blk_x) + $osc_core_width] \
-    [expr $osc_inst_origin_y + $place_blk_y + $osc_core_height] \
-    -name osc_route_blk \
-    -layer M2
 

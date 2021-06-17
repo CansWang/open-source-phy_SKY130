@@ -11,9 +11,6 @@ def read design.def
 save $::env(design_name).mag
 load $::env(design_name).mag
 
-flatten $::env(design_name)_flat
-load $::env(design_name)_flat
-
 # Extract for LVS
 extract do local
 extract no capacitance
@@ -26,7 +23,6 @@ ext2spice lvs
 ext2spice subcircuit on
 ext2spice subcircuit top on
 ext2spice -o outputs/design_extracted.spice
-
 
 feedback save error.log
 

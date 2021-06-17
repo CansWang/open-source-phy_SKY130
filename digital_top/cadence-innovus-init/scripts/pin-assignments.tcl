@@ -100,13 +100,13 @@ editPin -layer $ports_layer -pin $pins_top  -side TOP  -spreadType SIDE
 set pins_top {{rst} {rst_prbs}}
 
 
-editPin -layer M4 -pin dout_p -pinWidth 6 -pinDepth 150 -assign {549.00 450.00} -edge 2
-editPin -layer M4 -pin dout_n -pinWidth 6 -pinDepth 150 -assign {549.00 405.00} -edge 2
-editPin -layer M4 -pin ref_clk_ext_n -pinWidth 4 -pinDepth 20 -assign {549.00 500.00} -edge 2
-editPin -layer M4 -pin ref_clk_ext_p -pinWidth 4 -pinDepth 20 -assign {549.00 575.00} -edge 2
-editPin -layer M4 -pin test_mux_clk_I -pinWidth 4 -pinDepth 20 -assign {549.00 750.00} -edge 2
-editPin -layer M4 -pin test_mux_clk_Q -pinWidth 4 -pinDepth 20 -assign {549.00 800.00} -edge 2
-editPin -layer M4 -pin test_mux_misc -pinWidth 4 -pinDepth 20 -assign {549.00 850.00} -edge 2
+editPin -layer M3 -pin dout_p -pinWidth 6 -pinDepth 150 -assign {549.00 450.00} -edge 2
+editPin -layer M3 -pin dout_n -pinWidth 6 -pinDepth 150 -assign {549.00 405.00} -edge 2
+editPin -layer M3 -pin ref_clk_ext_n -pinWidth 4 -pinDepth 20 -assign {549.00 500.00} -edge 2
+editPin -layer M3 -pin ref_clk_ext_p -pinWidth 4 -pinDepth 20 -assign {549.00 575.00} -edge 2
+editPin -layer M3 -pin test_mux_clk_I -pinWidth 4 -pinDepth 20 -assign {549.00 750.00} -edge 2
+editPin -layer M3 -pin test_mux_clk_Q -pinWidth 4 -pinDepth 20 -assign {549.00 800.00} -edge 2
+editPin -layer M3 -pin test_mux_misc -pinWidth 4 -pinDepth 20 -assign {549.00 850.00} -edge 2
 
 
 
