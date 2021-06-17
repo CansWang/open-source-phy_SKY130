@@ -472,7 +472,7 @@ report_names     \
 change_names -rules verilog -hierarchy
 
 # Write out files
-
+change_names -rules verilog -hierarchy
 write -format ddc \
       -hierarchy  \
       -output ${dc_results_dir}/${dc_design_name}.mapped.ddc

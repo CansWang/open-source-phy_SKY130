@@ -4,7 +4,7 @@ commands:
   - |
     mkdir -p outputs
     cp -r $VLOG_HOME/digital_top ./outputs
-    cat "./outputs/digital_top/digital_top.sv" "./outputs/digital_top/prbs_generator_syn.sv" "./outputs/digital_top/qr_4t1_mux_top.sv" "./outputs/digital_top/hr_16t4_mux_top.sv"> "./outputs/design.v"
+    cat "./outputs/digital_top/digital_top.sv" "./outputs/digital_top/prbs_generator_syn.sv" "./outputs/digital_top/qr_4t1_mux_top.sv" "./outputs/digital_top/hr_16t4_mux_top.sv" "./outputs/digital_top/output_buffer.sv"> "./outputs/design.v"
     python gen_tcl.py
 
 

@@ -12,25 +12,66 @@ module digital_top (
     input wire logic rst_prbs,
     // input wire logic [31:0] init_vals [16],
     input wire logic inj_error,
+    input wire logic ref_clk_ext_p,
+    input wire logic ref_clk_ext_n,
     // input wire logic [Npi-1:0] ctl_pi [Nout-1:0],
     // input wire logic clk_async,
     // input wire logic clk_encoder,
     // input wire logic ctl_valid,
-    input wire logic clk_interp_slice_0,
-    input wire logic clk_interp_slice_1,
-    input wire logic clk_interp_slice_2,
-    input wire logic clk_interp_slice_3,
+    // input wire logic clk_interp_slice_0,
+    // input wire logic clk_interp_slice_1,
+    // input wire logic clk_interp_slice_2,
+    // input wire logic clk_interp_slice_3,
     // output buffer control
-    // input wire logic [17:0] ctl_buf_n0,
-    // input wire logic [17:0] ctl_buf_n1,
-    // input wire logic [17:0] ctl_buf_p0,
-    // input wire logic [17:0] ctl_buf_p1,
+    input wire logic [5:0] CTL_BUF_N,
+    input wire logic [5:0] CTL_BUF_P,
+    input wire logic osc_en,
+    input wire logic aux_osc_en,
+    input wire logic inj_en,
+    input wire logic fftl_en,
+    input wire logic [3:0] con_perb,
+    input wire logic [5:0] div_ratio_half,
+    input wire logic [4:0] fine_control_avg_window_select,
+    input wire logic [3:0] fine_con_step_size,
+    input wire logic [12:0] manual_control_osc,
+
+    input wire logic [3:0] pi1_con,
+    input wire logic [3:0] pi2_con,
+    input wire logic [3:0] pi3_con,
+    input wire logic [3:0] pi4_con,
+    input wire logic [3:0] pi5_con,
+
+
+
+// Test MUX Select 
+
+    input wire logic [3:0] test_mux_select,
+    input wire logic [1:0] test_mux_clk_I_select,
+    input wire logic [1:0] test_mux_clk_Q_select,
+
+
+// End
 
     // output wire logic clk_prbsgen,  // Output clock for 16-bit prbs generator
     output wire logic dout_p, // Data output
-    output wire logic dout_n
+    output wire logic dout_n,
+
     // tx_debug_intf.tx tx
+
+// Test output instantiation
+
+    output wire logic test_mux_misc,
+    output wire logic test_mux_clk_Q,
+    output wire logic test_mux_clk_I
+
+
+
+
 );
+// ref_clk
+wire logic ref_clk;
+
+
 
 // logic [15:0] prbsdata;
 
@@ -105,21 +146,41 @@ generate
     end
 endgenerate
 
+
+
+wire logic ck_Q;
+wire logic ck_I;
+wire logic ck_QB;
+wire logic ck_IB;
+wire logic pi1;
+wire logic pi2;
+wire logic pi3;
+wire logic pi4;
+wire logic pi5;
+
+
+assign ck_Q= (osc_en) ? pi1:1'bz;
+assign ck_I= (osc_en) ? pi3:1'bz;
+assign ck_QB= (osc_en) ? (~pi1):1'bz;
+assign ck_IB= (osc_en) ? (~pi3):1'bz;
+
+
 // Data + positive
 hr_16t4_mux_top hr_mux_16t4_0 (
-    .clk(clk_interp_slice_2), // This is a divided (by 2) clock from quarter-rate 4 to 1 mux
+    .clk(ck_I), // This is a divided (by 2) clock from quarter-rate 4 to 1 mux
     .clk_prbs(clk_prbsgen),
     .din(din_reorder),
     .rst(rst),
     .dout(qr_data_p)
 );
 
+
 //Instantiate quarter-rate 4 to 1 mux top
 qr_4t1_mux_top qr_mux_4t1_0 (
-    .clk_Q(clk_interp_slice_0),  // Quarter-rate clock input
-    .clk_QB(clk_interp_slice_2),
-    .clk_I(clk_interp_slice_1),
-    .clk_IB(clk_interp_slice_3),
+    .clk_Q(ck_Q),  // Quarter-rate clock input
+    .clk_QB(ck_I),
+    .clk_I(ck_QB),
+    .clk_IB(ck_IB),
     .din(qr_data_p), // Quarter-rate data from half-rate 16 to 4 mux
     .rst(rst),
     .din_2_dummy(din_2_dummy),
@@ -132,7 +193,7 @@ qr_4t1_mux_top qr_mux_4t1_0 (
 
 // Data - negative
 hr_16t4_mux_top hr_mux_16t4_1 (
-    .clk(clk_interp_slice_2), // This is a divided (by 2) clock from quarter-rate 4 to 1 mux
+    .clk(ck_I), // This is a divided (by 2) clock from quarter-rate 4 to 1 mux
     .clk_prbs(clk_prbsgen),
     .din(~din_reorder), // Inverting the data input for differential output
     .rst(rst),
@@ -141,10 +202,10 @@ hr_16t4_mux_top hr_mux_16t4_1 (
 
 //Instantiate quarter-rate 4 to 1 mux top
 qr_4t1_mux_top qr_mux_4t1_1 (
-    .clk_Q(clk_interp_slice_0),  // Quarter-rate clock input
-    .clk_QB(clk_interp_slice_2),
-    .clk_I(clk_interp_slice_1),
-    .clk_IB(clk_interp_slice_3),
+    .clk_Q(ck_Q),  // Quarter-rate clock input
+    .clk_QB(ck_I),
+    .clk_I(ck_QB),
+    .clk_IB(ck_IB),
     .din(qr_data_n), // Quarter-rate data from half-rate 16 to 4 mux
     .rst(rst),
     .din_2_dummy(din_2_dummy),
@@ -175,6 +236,454 @@ qr_4t1_mux_top qr_mux_4t1_1 (
 //assign dout_n = mtb_n;                //
 //assign dout_p = mtb_p;                //
 ////////////////////////////////////////
+
+// control decoder for the output buffer
+logic [39:0] CTL_N;
+logic [39:0] CTL_P;
+
+always @( * ) begin
+    case (CTL_BUF_N)
+        6'd0: begin
+            CTL_N=40'd0;
+        end
+        6'd1: begin
+            CTL_N=40'd1;
+        end
+        6'd2: begin
+            CTL_N=40'd3;
+        end
+        6'd3: begin
+            CTL_N=40'd7;
+        end
+        6'd4: begin
+            CTL_N=40'd15;
+        end
+        6'd5: begin
+            CTL_N=40'd31;
+        end
+        6'd6: begin
+            CTL_N=40'd63;
+        end
+        6'd7: begin
+            CTL_N=40'd127;
+        end
+        6'd8: begin
+            CTL_N=40'd255;
+        end
+        6'd9: begin
+            CTL_N=40'd511;
+        end
+        6'd10: begin
+            CTL_N=40'd1023;
+        end
+        6'd11: begin
+            CTL_N=40'd2047;
+        end
+        6'd12: begin
+            CTL_N=40'd4095;
+        end
+        6'd13: begin
+            CTL_N=40'd8191;
+        end
+        6'd14: begin
+            CTL_N=40'd16383;
+        end
+        6'd15: begin
+            CTL_N=40'd32767;
+        end
+        6'd16: begin
+            CTL_N=40'd65535;
+        end
+        6'd17: begin
+            CTL_N=40'd131071;
+        end
+        6'd18: begin
+            CTL_N=40'd262143;
+        end
+        6'd19: begin
+            CTL_N=40'd524287;
+        end
+        6'd20: begin
+            CTL_N=40'd1048575;
+        end
+        6'd21: begin
+            CTL_N=40'd2097151;
+        end
+        6'd22: begin
+            CTL_N=40'd4194303;
+        end
+        6'd23: begin
+            CTL_N=40'd8388607;
+        end
+        6'd24: begin
+            CTL_N=40'd16777215;
+        end
+        6'd25: begin
+            CTL_N=40'd33554431;
+        end
+        6'd26: begin
+            CTL_N=40'd67108863;
+        end
+        6'd27: begin
+            CTL_N=40'd134217727;
+        end
+        6'd28: begin
+            CTL_N=40'd268435455;
+        end
+        6'd29: begin
+            CTL_N=40'd536870911;
+        end
+        6'd30: begin
+            CTL_N=40'd1073741823;
+        end
+        6'd31: begin
+            CTL_N=40'd2147483647;
+        end
+        6'd32: begin
+            CTL_N=40'd4294967295;
+        end
+        6'd33: begin
+            CTL_N=40'd8589934591;
+        end
+        6'd34: begin
+            CTL_N=40'd17179869183;
+        end
+        6'd35: begin
+            CTL_N=40'd34359738367;
+        end
+        6'd36: begin
+            CTL_N=40'd68719476735;
+        end
+        6'd37: begin
+            CTL_N=40'd137438953471;
+        end
+        6'd38: begin
+            CTL_N=40'd274877906943;
+        end
+        6'd39: begin
+            CTL_N=40'd549755813887;
+        end
+        6'd40: begin
+            CTL_N=40'd1099511627775;
+        end
+    endcase
+end
+
+always @( * ) begin
+    case (CTL_BUF_P)
+        6'd0: begin
+            CTL_P=40'd0;
+        end
+        6'd1: begin
+            CTL_P=40'd1;
+        end
+        6'd2: begin
+            CTL_P=40'd3;
+        end
+        6'd3: begin
+            CTL_P=40'd7;
+        end
+        6'd4: begin
+            CTL_P=40'd15;
+        end
+        6'd5: begin
+            CTL_P=40'd31;
+        end
+        6'd6: begin
+            CTL_P=40'd63;
+        end
+        6'd7: begin
+            CTL_P=40'd127;
+        end
+        6'd8: begin
+            CTL_P=40'd255;
+        end
+        6'd9: begin
+            CTL_P=40'd511;
+        end
+        6'd10: begin
+            CTL_P=40'd1023;
+        end
+        6'd11: begin
+            CTL_P=40'd2047;
+        end
+        6'd12: begin
+            CTL_P=40'd4095;
+        end
+        6'd13: begin
+            CTL_P=40'd8191;
+        end
+        6'd14: begin
+            CTL_P=40'd16383;
+        end
+        6'd15: begin
+            CTL_P=40'd32767;
+        end
+        6'd16: begin
+            CTL_P=40'd65535;
+        end
+        6'd17: begin
+            CTL_P=40'd131071;
+        end
+        6'd18: begin
+            CTL_P=40'd262143;
+        end
+        6'd19: begin
+            CTL_P=40'd524287;
+        end
+        6'd20: begin
+            CTL_P=40'd1048575;
+        end
+        6'd21: begin
+            CTL_P=40'd2097151;
+        end
+        6'd22: begin
+            CTL_P=40'd4194303;
+        end
+        6'd23: begin
+            CTL_P=40'd8388607;
+        end
+        6'd24: begin
+            CTL_P=40'd16777215;
+        end
+        6'd25: begin
+            CTL_P=40'd33554431;
+        end
+        6'd26: begin
+            CTL_P=40'd67108863;
+        end
+        6'd27: begin
+            CTL_P=40'd134217727;
+        end
+        6'd28: begin
+            CTL_P=40'd268435455;
+        end
+        6'd29: begin
+            CTL_P=40'd536870911;
+        end
+        6'd30: begin
+            CTL_P=40'd1073741823;
+        end
+        6'd31: begin
+            CTL_P=40'd2147483647;
+        end
+        6'd32: begin
+            CTL_P=40'd4294967295;
+        end
+        6'd33: begin
+            CTL_P=40'd8589934591;
+        end
+        6'd34: begin
+            CTL_P=40'd17179869183;
+        end
+        6'd35: begin
+            CTL_P=40'd34359738367;
+        end
+        6'd36: begin
+            CTL_P=40'd68719476735;
+        end
+        6'd37: begin
+            CTL_P=40'd137438953471;
+        end
+        6'd38: begin
+            CTL_P=40'd274877906943;
+        end
+        6'd39: begin
+            CTL_P=40'd549755813887;
+        end
+        6'd40: begin
+            CTL_P=40'd1099511627775;
+        end
+    endcase
+end
+
+
+// Instantiate the output buf
+
+
+output_buffer ibuf (
+    .inn(mtb_n),
+    .inp(mtb_p),
+    .CTL_N0(CTL_N[19:0]),
+    .CTL_N1(CTL_N[39:20]),
+    .CTL_P0(CTL_P[19:0]),
+    .CTL_P1(CTL_P[39:20]),
+    .BTN(dout_p),
+    .BTP(dout_n)
+);
+
+
+wire logic osc_000;
+wire logic osc_036;
+wire logic osc_072;
+wire logic osc_108;
+wire logic osc_144;
+wire logic [12:0] osc_con;
+
+// complemetary control codes
+wire logic [3:0] pi1_con_complemetary;
+assign pi1_con_complemetary = 4'b1111 - pi1_con;
+
+wire logic [3:0] pi2_con_complemetary;
+assign pi2_con_complemetary = 4'b1111 - pi2_con;
+
+wire logic [3:0] pi3_con_complemetary;
+assign pi3_con_complemetary = 4'b1111 - pi3_con;
+
+wire logic [3:0] pi4_con_complemetary;
+assign pi4_con_complemetary = 4'b1111 - pi4_con;
+
+wire logic [3:0] pi5_con_complemetary;
+assign pi5_con_complemetary = 4'b1111 - pi5_con;
+
+
+// ANALOG TOP Here!
+
+wire logic test_inj_out;
+wire logic test_inj_hold;
+
+
+osc_core osc_inst (
+.glob_en(osc_en),
+.delay_con_lsb(osc_con[4:0]),
+.delay_con_msb(osc_con[12:5]),
+.con_perb_1(con_perb),
+.con_perb_2(con_perb),
+.con_perb_3(con_perb),
+.con_perb_4(con_perb),
+.con_perb_5(con_perb),
+.ref_clk(ref_clk),
+
+// PI control
+.pi1_l(pi1_con),
+.pi1_r(pi1_con_complemetary),
+
+.pi2_l(pi2_con),
+.pi2_r(pi2_con_complemetary),
+
+.pi3_l(pi3_con),
+.pi3_r(pi3_con_complemetary),
+
+.pi4_l(pi4_con),
+.pi4_r(pi4_con_complemetary),
+
+.pi5_l(pi5_con),
+.pi5_r(pi5_con_complemetary),
+        
+// 
+.osc_000(osc_000),
+.osc_036(osc_036),
+.osc_072(osc_072),
+.osc_108(osc_108),
+.osc_144(osc_144),
+
+// 
+// waiting to integrate the ref_injector
+//  
+
+.inj_en(inj_en),
+.inj_out(test_inj_out), // 
+.osc_hold(test_inj_hold), // 
+
+// 
+// buffered output phase, goes to phase blender
+// 
+
+.p1(pi1),
+.p2(pi2),
+.p3(pi3),
+.p4(pi4),
+.p5(pi5)
+
+);
+
+// Fine tracking loop
+
+wire logic test_aux_clk;
+wire logic test_out_star;
+
+fine_freq_track ftl (
+
+.clk_out(pi3),
+.div_ratio_half(div_ratio_half),
+.ref_clk(ref_clk),
+.rst(rst),
+.aux_osc_en(aux_osc_en),
+.aux_clk_out(test_aux_clk),
+
+.fine_control_avg_window_select(fine_control_avg_window_select),
+.fine_con_step_size(fine_con_step_size),
+.out_star(test_out_star),
+
+// output accumu_select, // Decide the current rising edge sample goes into which category
+.fftl_en(fftl_en), // This enable controls whether to bypass the loop or not
+.manual_control_osc(manual_control_osc),
+.osc_fine_con_final(osc_con)
+
+);
+
+
+// test mux instantiation
+wire logic test_buf_in_0;
+
+// TODO
+sky130_fd_sc_hs__inv_8 test_buf_0 (.A(test_buf_in_0), .Y(test_mux_misc));
+sky130_fd_sc_hs__inv_8 test_buf_1 (.A(test_buf_in_0), .Y(test_mux_misc));
+sky130_fd_sc_hs__inv_8 test_buf_2 (.A(test_buf_in_0), .Y(test_mux_misc));
+sky130_fd_sc_hs__inv_8 test_buf_3 (.A(test_buf_in_0), .Y(test_mux_misc));
+
+
+sky130_fd_sc_hs__einvp_8 test_mux_0 (.A(test_out_star), .TE(test_mux_select[0]), .Z(test_buf_in_0));
+sky130_fd_sc_hs__einvp_8 test_mux_1 (.A(test_inj_out), .TE(test_mux_select[1]), .Z(test_buf_in_0));
+sky130_fd_sc_hs__einvp_8 test_mux_2 (.A(test_aux_clk), .TE(test_mux_select[2]), .Z(test_buf_in_0));
+sky130_fd_sc_hs__einvp_8 test_mux_3 (.A(test_inj_hold), .TE(test_mux_select[3]), .Z(test_buf_in_0));
+
+
+
+// OSC monitor
+wire logic test_clk_buf_in_0;
+wire logic test_clk_buf_in_1;
+
+sky130_fd_sc_hs__einvp_8 test_mux_Q0 (.A(pi1), .TE(test_mux_clk_Q_select[0]), .Z(test_clk_buf_in_0));
+sky130_fd_sc_hs__einvp_8 test_mux_Q1 (.A(pi5), .TE(test_mux_clk_Q_select[0]), .Z(test_clk_buf_in_0));
+sky130_fd_sc_hs__inv_8 test_clk_Q_buf0 (.A(test_clk_buf_in_0), .Y(test_mux_clk_Q)); //TODO
+sky130_fd_sc_hs__inv_8 test_clk_Q_buf1 (.A(test_clk_buf_in_0), .Y(test_mux_clk_Q)); 
+sky130_fd_sc_hs__inv_8 test_clk_Q_buf2 (.A(test_clk_buf_in_0), .Y(test_mux_clk_Q)); //TODO
+sky130_fd_sc_hs__inv_8 test_clk_Q_buf3 (.A(test_clk_buf_in_0), .Y(test_mux_clk_Q));
+
+sky130_fd_sc_hs__einvp_8 test_mux_I0 (.A(pi3), .TE(test_mux_clk_I_select[0]), .Z(test_clk_buf_in_1));
+sky130_fd_sc_hs__einvp_8 test_mux_I1 (.A(pi2), .TE(test_mux_clk_I_select[1]), .Z(test_clk_buf_in_1));
+sky130_fd_sc_hs__inv_8 test_clk_I_buf0 (.A(test_clk_buf_in_0), .Y(test_mux_clk_I));
+sky130_fd_sc_hs__inv_8 test_clk_I_buf1 (.A(test_clk_buf_in_0), .Y(test_mux_clk_I));
+sky130_fd_sc_hs__inv_8 test_clk_I_buf2 (.A(test_clk_buf_in_0), .Y(test_mux_clk_I));
+sky130_fd_sc_hs__inv_8 test_clk_I_buf3 (.A(test_clk_buf_in_0), .Y(test_mux_clk_I));
+
+
+wire logic ref_buf_p;
+wire logic ref_buf_n;
+// ref_clk input buffer
+// 1st stage
+sky130_fd_sc_hs__inv_8 ref_clk_in_buf1_0 (.A(ref_clk_ext_p), .Y(ref_buf_p));
+sky130_fd_sc_hs__inv_8 ref_clk_in_buf1_1 (.A(ref_clk_ext_p), .Y(ref_buf_p));
+
+// 2nd stage
+sky130_fd_sc_hs__inv_8 ref_clk_in_buf2_0 (.A(ref_buf_p), .Y(ref_clk));
+sky130_fd_sc_hs__inv_8 ref_clk_in_buf2_1 (.A(ref_buf_p), .Y(ref_clk));
+sky130_fd_sc_hs__inv_8 ref_clk_in_buf2_2 (.A(ref_buf_p), .Y(ref_clk));
+sky130_fd_sc_hs__inv_8 ref_clk_in_buf2_3 (.A(ref_buf_p), .Y(ref_clk));
+
+// Neg ref, dummy
+// 1st stage
+sky130_fd_sc_hs__inv_8 ref_clk_in_buf3_0 (.A(ref_clk_ext_n), .Y(ref_buf_n));
+sky130_fd_sc_hs__inv_8 ref_clk_in_buf3_1 (.A(ref_clk_ext_n), .Y(ref_buf_n));
+
+// 2nd stage
+sky130_fd_sc_hs__inv_8 ref_clk_in_buf4_0 (.A(ref_buf_n), .Y()); // floating output
+sky130_fd_sc_hs__inv_8 ref_clk_in_buf4_1 (.A(ref_buf_n), .Y());
+sky130_fd_sc_hs__inv_8 ref_clk_in_buf4_2 (.A(ref_buf_n), .Y());
+sky130_fd_sc_hs__inv_8 ref_clk_in_buf4_3 (.A(ref_buf_n), .Y());
+
+
 
 endmodule
 

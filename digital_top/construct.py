@@ -92,7 +92,9 @@ def construct():
   dbs = [
       'prbs_generator_syn.db',
       'hr_16t4_mux_top.db',
-      'qr_4t1_mux_top.db'
+      'qr_4t1_mux_top.db',
+      'osc_core.db',
+      'fine_freq_track.db'
   ]
   dc.extend_inputs(dbs)
   genlibdb.extend_inputs(dbs)
@@ -100,26 +102,43 @@ def construct():
   libs = [
       'prbs_generator_syn.lib',
       'hr_16t4_mux_top.lib',
-      'qr_4t1_mux_top.lib'
+      'qr_4t1_mux_top.lib',
+      'osc_core.lib',
+      'fine_freq_track.lib'
   ]
   lefs = [
       'prbs_generator_syn.lef',
       'hr_16t4_mux_top.lef',
-      'qr_4t1_mux_top.lef'
+      'qr_4t1_mux_top.lef',
+      'osc_core.lef',
+      'fine_freq_track.lef'
   ]
 
   lib_lef_steps = \
-      [iflow, init, power, place, cts, postcts_hold, route, postroute, signoff]
+      [iflow, init, power, place, cts, postcts_hold, route, postroute, signoff, magic_def2spice]
   for step in lib_lef_steps:
       step.extend_inputs(libs + lefs)
 
   spi_list = [
         'prbs_generator_syn.spice',
         'hr_16t4_mux_top.spice',
-        'qr_4t1_mux_top.spice'
+        'qr_4t1_mux_top.spice',
+        'osc_core.spice',
+        'fine_freq_track.spice'
   ]
   lvs.extend_inputs(spi_list)
    # gds_list needed for gds_merge step
+  gds_list = [
+        'prbs_generator_syn.gds',
+        'hr_16t4_mux_top.gds',
+        'qr_4t1_mux_top.gds',
+        'osc_core.gds',
+        'fine_freq_track.gds'
+  ]
+
+  gdsmerge.extend_inputs(gds_list) 
+
+
 
    # spi_list or verilog netlists needed for blackbox LVS
 
@@ -200,6 +219,7 @@ def construct():
   g.connect_by_name(submodule, signoff)
   g.connect_by_name(submodule, gdsmerge)
   g.connect_by_name(submodule, lvs)
+  g.connect_by_name(submodule, magic_def2spice)
   g.connect_by_name(submodule, magic_drc)
   g.connect_by_name(submodule, genlibdb)
 
@@ -251,7 +271,7 @@ def construct():
   #
   # g.connect_by_name( signoff,        drc            )
   # g.connect_by_name( gdsmerge,       drc            )
-  g.connect_by_name( signoff,        lvs            )
+  # g.connect_by_name( signoff,        lvs            )
   g.connect_by_name( gdsmerge,       lvs            )
 
   # g.connect_by_name( adk,            debugcalibre   )

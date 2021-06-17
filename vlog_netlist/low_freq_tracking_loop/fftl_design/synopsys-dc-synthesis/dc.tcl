@@ -238,6 +238,7 @@ link
 
 write -hierarchy -format ddc \
       -output ${dc_results_dir}/${dc_design_name}.elab.ddc
+change_names -rules verilog -hierarchy
 
 # This Verilog is useful to double-check the netlist that dc will use for
 # mapping

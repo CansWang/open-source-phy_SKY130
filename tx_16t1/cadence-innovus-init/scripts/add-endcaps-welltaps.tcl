@@ -9,7 +9,8 @@
 addWellTap -cell [list $ADK_WELL_TAP_CELL] \
            -prefix       WELLTAP \
            -cellInterval $ADK_WELL_TAP_INTERVAL \
-           -checkerboard
+           -checkerboard \
+           -inRowOffset 1.44
 
 verifyWellTap -cells [list $ADK_WELL_TAP_CELL] \
               -report reports/welltap.rpt \

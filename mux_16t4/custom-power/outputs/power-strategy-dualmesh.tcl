@@ -195,27 +195,50 @@ MX
 
 
 addStripe \
--pin_layer M1 \
--over_pins 1 \
--block_ring_top_layer_limit M1 \
--max_same_layer_jog_length 3.6 \
--padcore_ring_bottom_layer_limit M1 \
--padcore_ring_top_layer_limit M1 \
--spacing 2.24 \
--master "sky130_fd_sc_hd__tap*" \
--merge_stripes_value 0.25 \
--create_pins 1 \
--direction horizontal \
--layer M1 \
--block_ring_bottom_layer_limit M1 \
--width 0.24 \
--extend_to design_boundary \
--nets {DVDD DVSS}
+    -pin_layer M2 \
+    -over_pins 1 \
+    -block_ring_top_layer_limit M2 \
+    -max_same_layer_jog_length 3.6 \
+    -padcore_ring_bottom_layer_limit M2 \
+    -padcore_ring_top_layer_limit M2 \
+    -spacing 2.24 \
+    -master "sky130_fd_sc_hs__tap*" \
+    -merge_stripes_value 0.245 \
+    -create_pins 1 \
+    -direction horizontal \
+    -layer M2 \
+    -block_ring_bottom_layer_limit M2 \
+    -width 0.49 \
+    -extend_to design_boundary \
+    -nets {DVDD DVSS}
 
 deleteRouteBlk -name *
 
 # Temperal M1 Power Grid Fix
-sroute -nets {DVDD DVSS}
+# sroute -nets {DVDD DVSS}
+
+addStripe -nets {DVDD DVSS} \
+   -layer M4 \
+   -direction vertical \
+   -width 1 \
+   -spacing 2 \
+   -start_offset 2 \
+   -set_to_set_distance 6 \
+   -start_from left \
+   -max_same_layer_jog_length 2 \
+   -padcore_ring_top_layer_limit M4 \
+   -padcore_ring_bottom_layer_limit M4 \
+   -block_ring_top_layer_limit M4 \
+   -block_ring_bottom_layer_limit M4 \
+   -use_wire_group 0 \
+   -snap_wire_center_to_grid None \
+   -skip_via_on_pin {standardcell} \
+   -skip_via_on_wire_shape {noshape} \
+   -create_pins 1 \
+   -extend_to design_boundary
+
+
+
 
 set acore_x $origin_acore_x
 set acore_y $origin_acore_y
@@ -559,8 +582,8 @@ deleteRouteBlk -name {*out_M7_blk *pre_routed}
 
 
 
-addStripe -nets {DVDD DVSS} \
-  -layer M4 -direction vertical -width 1 -spacing 2 -start_offset 2 -set_to_set_distance 6 -start_from left -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit M4 -padcore_ring_bottom_layer_limit M4 -block_ring_top_layer_limit M4 -block_ring_bottom_layer_limit M4 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
+# addStripe -nets {DVDD DVSS} \
+  # -layer M4 -direction vertical -width 1 -spacing 2 -start_offset 2 -set_to_set_distance 6 -start_from left -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit M4 -padcore_ring_bottom_layer_limit M4 -block_ring_top_layer_limit M4 -block_ring_bottom_layer_limit M4 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
 
 #  -layer M4 -direction vertical -width 1 -spacing 2 -start_offset [expr $boundary_width] -set_to_set_distance 2 -start_from left -switch_layer_over_obs false -max_same_layer_jog_length 2 -padcore_ring_top_layer_limit M5 -padcore_ring_bottom_layer_limit M5 -block_ring_top_layer_limit M5 -block_ring_bottom_layer_limit M5 -use_wire_group 0 -snap_wire_center_to_grid None -skip_via_on_pin {standardcell} -skip_via_on_wire_shape {noshape} -create_pins 1 -extend_to design_boundary
 

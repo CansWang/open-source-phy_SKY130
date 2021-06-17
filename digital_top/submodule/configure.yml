@@ -7,22 +7,42 @@ commands:
   - cp ../../../build_prbs/18-cadence-innovus-signoff/results/prbs_generator_syn-merged.gds ./prbs_generator_syn.gds
   - cp ../../../build_prbs/21-synopsys-ptpx-genlibdb/outputs/design.db ./prbs_generator_syn.db
   - cp ../../../build_prbs/21-synopsys-ptpx-genlibdb/outputs/design.lib ./prbs_generator_syn.lib
-  - cp ../../../build_prbs/20-open-magic-def2spice/prbs_generator_syn.lef ./prbs_generator_syn.lef
+  - cp ../../../build_prbs/18-cadence-innovus-signoff/results/prbs_generator_syn.lef ./prbs_generator_syn.lef
   - cp ../../../build_prbs/20-open-magic-def2spice/outputs/design_extracted.spice ./prbs_generator_syn.spice
+  - cp ../../../build_prbs/18-cadence-innovus-signoff/results/prbs_generator_syn.lvs.v ./prbs_generator_syn.lvs.v
+
   - cp ../../../build_16t4/18-cadence-innovus-signoff/results/hr_16t4_mux_top-merged.gds ./hr_16t4_mux_top.gds
   - cp ../../../build_16t4/21-synopsys-ptpx-genlibdb/outputs/design.db ./hr_16t4_mux_top.db
   - cp ../../../build_16t4/21-synopsys-ptpx-genlibdb/outputs/design.lib ./hr_16t4_mux_top.lib
-  - cp ../../../build_16t4/20-open-magic-def2spice/hr_16t4_mux_top.lef ./hr_16t4_mux_top.lef
+  - cp ../../../build_16t4/18-cadence-innovus-signoff/results/hr_16t4_mux_top.lef ./hr_16t4_mux_top.lef
   - cp ../../../build_16t4/20-open-magic-def2spice/outputs/design_extracted.spice ./hr_16t4_mux_top.spice
+  - cp ../../../build_16t4/18-cadence-innovus-signoff/results/hr_16t4_mux_top.lvs.v ./hr_16t4_mux_top.lvs.v
+
   - cp ../../../build_4t1/19-cadence-innovus-signoff/results/qr_4t1_mux_top-merged.gds ./qr_4t1_mux_top.gds
   - cp ../../../build_4t1/22-synopsys-ptpx-genlibdb/outputs/design.db ./qr_4t1_mux_top.db
   - cp ../../../build_4t1/22-synopsys-ptpx-genlibdb/outputs/design.lib ./qr_4t1_mux_top.lib
-  - cp ../../../build_4t1/21-open-magic-def2spice/qr_4t1_mux_top.lef ./qr_4t1_mux_top.lef
+  - cp ../../../build_4t1/19-cadence-innovus-signoff/results/qr_4t1_mux_top.lef ./qr_4t1_mux_top.lef
   - cp ../../../build_4t1/21-open-magic-def2spice/outputs/design_extracted.spice ./qr_4t1_mux_top.spice
+  - cp ../../../build_4t1/19-cadence-innovus-signoff/results/qr_4t1_mux_top.lvs.v ./qr_4t1_mux_top.lvs.v
+
+  - cp ../../../mdll/17-cadence-innovus-signoff/results/osc_core-merged.gds ./osc_core.gds
+  - cp ../../../mdll/17-cadence-innovus-signoff/results/osc_core.lef ./osc_core.lef
+  - cp ../../../mdll/20-synopsys-ptpx-genlibdb/osc_core.db ./osc_core.db
+  - cp ../../../mdll/20-synopsys-ptpx-genlibdb/osc_core.lib ./osc_core.lib
+  - cp ../../../mdll/19-open-magic-def2spice/outputs/design_extracted.spice ./osc_core.spice
+  - cp ../../../mdll/17-cadence-innovus-signoff/results/osc_core.lvs.v ./osc_core.lvs.v
+
+  - cp ../../../fftl/19-cadence-innovus-signoff/results/fine_freq_track-merged.gds ./fine_freq_track.gds
+  - cp ../../../fftl/19-cadence-innovus-signoff/results/fine_freq_track.lef ./fine_freq_track.lef
+  - cp ../../../fftl/19-cadence-innovus-signoff/results/fine_freq_track.lvs.v ./fine_freq_track.lvs.v
+  - cp ../../../fftl/22-synopsys-ptpx-genlibdb/fine_freq_track.db ./fine_freq_track.db
+  - cp ../../../fftl/22-synopsys-ptpx-genlibdb/fine_freq_track.lib ./fine_freq_track.lib
+  - cp ../../../fftl/21-open-magic-def2spice/outputs/design_extracted.spice ./fine_freq_track.spice
 
 
 
 inputs:
+  
 
 outputs:
   - prbs_generator_syn.db
@@ -30,13 +50,29 @@ outputs:
   - prbs_generator_syn.lef
   - prbs_generator_syn.spice
   - prbs_generator_syn.gds
+  - prbs_generator_syn.lvs.v
   - hr_16t4_mux_top.db
   - hr_16t4_mux_top.lib
   - hr_16t4_mux_top.lef
   - hr_16t4_mux_top.spice
   - hr_16t4_mux_top.gds
+  - hr_16t4_mux_top.lvs.v
   - qr_4t1_mux_top.db
   - qr_4t1_mux_top.lib
   - qr_4t1_mux_top.lef
   - qr_4t1_mux_top.spice
   - qr_4t1_mux_top.gds
+  - qr_4t1_mux_top.lvs.v
+  - fine_freq_track.db
+  - fine_freq_track.lib
+  - fine_freq_track.lef
+  - fine_freq_track.spice
+  - fine_freq_track.gds
+  - fine_freq_track.lvs.v
+  - osc_core.db
+  - osc_core.lib
+  - osc_core.lef
+  - osc_core.spice
+  - osc_core.gds
+  - osc_core.lvs.v
+

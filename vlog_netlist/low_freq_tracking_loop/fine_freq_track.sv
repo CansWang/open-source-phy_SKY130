@@ -1,25 +1,31 @@
 // Level triggered programmable counter
 // 
-module fine_freq_track_wo_osc (
+module fine_freq_track (
     input clk_out,
     input [5:0] div_ratio_half,
     input ref_clk,
     input rst,
     input aux_osc_en,
+    input fftl_en,
     input [4:0] fine_control_avg_window_select,
-    input aux_in,
     input [3:0] fine_con_step_size,
+    input [12:0] manual_control_osc,
+    output aux_clk_out,
     output reg out_star,
     // output accumu_select, // Decide the current rising edge sample goes into which category
-    output reg [7:0] osc_fine_con
+    output reg [12:0] osc_fine_con_final
     // TODO add FSM for osc_fine_con[7:0]
  
 );
 
-
+reg [12:0] osc_fine_con;
 logic aux_clk_out;
 logic [5:0] osc_clk_count;
 logic [5:0] toggle_flag;
+
+// Select osc control
+assign osc_fine_con_final= (fftl_en)? osc_fine_con:manual_control_osc;
+
 
 // Synchronize the ref_clk with clk_out to avoid metastability
 
@@ -74,7 +80,7 @@ end
 
 logic sample_hit;
 double_esampler esample (
-    .aux_clk(aux_in),
+    .aux_clk(aux_clk_out),
     .osc_out_star(out_star),
     .hit(sample_hit),
     .accumu_select(accumu_select),
@@ -269,20 +275,6 @@ always @( posedge ref_clk, posedge accumu_reset_async ) begin
 end 
 // END
 
-// logic [21:0] ref_clk_count;
-// always @(posedge ref_clk) begin
-//     if (rst) begin
-//         ref_clk_count = fine_control_avg_window;
-//     end else if (ref_clk_count > 0) begin
-//         ref_clk_count = ref_clk_count - 1;
-//     end else if (ref_clk_count == 22'd0) begin
-//         ref_clk_count = fine_control_avg_window;
-//         // Add reset for accumulator
-//         stat_error = 25'd0;
-//         stat_clean = 25'd0;
-//     end
-// end
-
 
 
 
@@ -313,29 +305,20 @@ always @( posedge commit_clk, posedge rst) begin
 end
 
 always @( posedge commit_clk, posedge rst ) begin
-    case (CurrentState)
-        STATE_UP: begin
-        osc_fine_con = osc_fine_con - fine_con_step_size;
-        end
-        STATE_DN: begin
-        osc_fine_con = osc_fine_con + fine_con_step_size;
-        end
-        STATE_UC: begin
-        osc_fine_con = osc_fine_con + 1'b0;
-        end
-        STATE_RS: begin
-        osc_fine_con = 8'b10000000;
-        end
-    endcase
     if (rst) begin
-        osc_fine_con = 8'b10000000;
+        osc_fine_con = 13'b1000000000000;
+    end else if (CurrentState == STATE_UP) begin
+        osc_fine_con = osc_fine_con - fine_con_step_size;
+    end else if (CurrentState == STATE_DN) begin
+        osc_fine_con = osc_fine_con + fine_con_step_size;
+    end else if (CurrentState == STATE_UC) begin
+        osc_fine_con = osc_fine_con + 1'b0;
+    end else if (CurrentState == STATE_RS) begin
+        osc_fine_con = 13'b1000000000000;
     end
 end
 // AUX osc
-
-
 logic [5:0] z0; // Floating nodes
-
 
 aux_core aux_osc (
     .glob_en(aux_osc_en),
@@ -348,7 +331,5 @@ aux_core aux_osc (
     .osc_180(z0[5])
 
 );
-
 // 
-
 endmodule

@@ -242,6 +242,8 @@ write -hierarchy -format ddc \
 # This Verilog is useful to double-check the netlist that dc will use for
 # mapping
 
+change_names -rules verilog -hierarchy
+
 write -hierarchy -format verilog \
       -output ${dc_results_dir}/${dc_design_name}.elab.v
 
